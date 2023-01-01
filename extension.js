@@ -35,7 +35,7 @@ class MathExtension {
                     blockType: Scratch.BlockType.REPORTER,
                     text: 'Negitive value of [ONE]',
                     arguments: {
-                    ONE: {
+                        ONE: {
                             type: Scratch.ArgumentType.NUMBER,
                             defaultValue: '10'
                         }
@@ -173,6 +173,16 @@ class MathExtension {
                             defaultValue: "4"
                         }
                     }
+                },
+                {
+                    opcode: 'true',
+                    blockType: Scratch.BlockType.BOOLEAN,
+                    text: "True",
+                },
+                {
+                    opcode: 'false',
+                    blockType: Scratch.BlockType.BOOLEAN,
+                    text: "False",
                 }
             ],
             menus: {
@@ -205,6 +215,7 @@ class MathExtension {
     isBetween(args) { if (args.THREE >= args.ONE && args.ONE >= args.TWO) { return true; } else { return false; } }
     square(args) { if (args.ONE == 'square') { args.ONE = 2; return Math.pow(args.TWO, args.ONE); } if (args.ONE == 'cube') { args.ONE = 3; return Math.pow(args.TWO, args.ONE); } if (args.ONE == 'quartic') { args.ONE = 4; return Math.pow(args.TWO, args.ONE); } }
     squareRoot(args) { if (args.ONE == 'Square root') { args.ONE = 2; } if (args.ONE == 'Cube root') { args.ONE = 3; } if (args.ONE == 'Quartic root') { args.ONE = 4; } return Math.pow(args.TWO, 1 / args.ONE); }
-    
+    true() { return true; }
+    false() { return false; }
 }
 Scratch.extensions.register(new MathExtension());
