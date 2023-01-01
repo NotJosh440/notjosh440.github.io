@@ -83,10 +83,10 @@ class MathExtension {
                 {
                     opcode: 'pi',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: "[INPUT]",
+                    text: "Value of [INPUT]",
                     arguments: {
                         INPUT: {
-                            type: Scratch.ArgumentType.NUMBER,
+                            type: Scratch.ArgumentType.STRING,
                             defaultValue: "π",
                             menu: 'PiMenu'
                         }
@@ -145,10 +145,10 @@ class MathExtension {
                 {
                     opcode: 'square',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: "[ONE] [TWO]",
+                    text: "[ONE] of [TWO]",
                     arguments: {
                         ONE: {
-                            type: Scratch.ArgumentType.NUMBER,
+                            type: Scratch.ArgumentType.STRING,
                             menu: "Square",
                             defaultValue: "square"
                         },
