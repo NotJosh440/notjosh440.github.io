@@ -1,7 +1,7 @@
 class MathExtension {
     getInfo() {
         return {
-            id: 'MathExtension', // change this if you make an actual extension!
+            id: 'MathExtension',
             name: 'Math Extension',
             blocks: [
                 {
@@ -175,6 +175,27 @@ class MathExtension {
                     }
                 },
                 {
+                    opcode: 'greaterThan',
+                    blockType: Scratch.BlockType.BOOLEAN,
+                    text: "[ONE] > [TWO] > [THREE]",
+                    arguments: {
+                        ONE: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: "1"
+                        },
+                        TWO: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: "5"
+                        },
+                        THREE: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: "10"
+                        }
+                    }
+                }
+            ],
+            blocks: [
+                {
                     opcode: 'true',
                     blockType: Scratch.BlockType.BOOLEAN,
                     text: "True",
@@ -217,5 +238,12 @@ class MathExtension {
     squareRoot(args) { if (args.ONE == 'Square root') { args.ONE = 2; } if (args.ONE == 'Cube root') { args.ONE = 3; } if (args.ONE == 'Quartic root') { args.ONE = 4; } return Math.pow(args.TWO, 1 / args.ONE); }
     true() { return true; }
     false() { return false; }
+    greaterThan(args) {
+        if (args.ONE > args.TWO && args.TWO > args.THREE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 Scratch.extensions.register(new MathExtension());
