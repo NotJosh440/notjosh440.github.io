@@ -166,7 +166,7 @@ class MathExtension {
                         ONE: {
                             type: Scratch.ArgumentType.STRING,
                             menu: "Square",
-                            defaultValue: "Square root"
+                            defaultValue: "Square"
                         },
                         TWO: {
                             type: Scratch.ArgumentType.NUMBER,
