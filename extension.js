@@ -192,9 +192,7 @@ class MathExtension {
                             defaultValue: "10"
                         }
                     }
-                }
-            ],
-            blocks: [
+                },
                 {
                     opcode: 'true',
                     blockType: Scratch.BlockType.BOOLEAN,
