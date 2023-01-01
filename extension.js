@@ -177,7 +177,7 @@ class MathExtension {
                 {
                     opcode: 'greaterThan',
                     blockType: Scratch.BlockType.BOOLEAN,
-                    text: "[ONE] > [TWO] > [THREE]",
+                    text: "[ONE] < [TWO] < [THREE]",
                     arguments: {
                         ONE: {
                             type: Scratch.ArgumentType.NUMBER,
@@ -237,7 +237,7 @@ class MathExtension {
     true() { return true; }
     false() { return false; }
     greaterThan(args) {
-        if (args.ONE > args.TWO && args.TWO > args.THREE) {
+        if (args.ONE < args.TWO && args.TWO < args.THREE) {
             return true;
         } else {
             return false;
