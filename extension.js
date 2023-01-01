@@ -161,11 +161,11 @@ class MathExtension {
                 {
                     opcode: 'squareRoot',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: "[ONE] of [TWO]",
+                    text: "[ONE] root of [TWO]",
                     arguments: {
                         ONE: {
                             type: Scratch.ArgumentType.STRING,
-                            menu: "SquareRoot",
+                            menu: "Square",
                             defaultValue: "Square root"
                         },
                         TWO: {
@@ -215,10 +215,7 @@ class MathExtension {
                     items: ['even', 'odd', 'prime', 'whole', 'positive', 'negitive']
                 },
                 Square: {
-                    items: ['square', 'cube', 'quartic']
-                },
-                SquareRoot: {
-                    items: ['Square root', 'Cube root', 'Quartic root']
+                    items: ['Square', 'Cube', 'Quartic']
                 }
             }
         }
@@ -233,7 +230,7 @@ class MathExtension {
     isDivisable(args) { if (args.ONE % args.TWO == 0) { return true } else { return false }; }
     isBetween(args) { if (args.THREE >= args.ONE && args.ONE >= args.TWO) { return true; } else { return false; } }
     square(args) { if (args.ONE == 'square') { args.ONE = 2; return Math.pow(args.TWO, args.ONE); } if (args.ONE == 'cube') { args.ONE = 3; return Math.pow(args.TWO, args.ONE); } if (args.ONE == 'quartic') { args.ONE = 4; return Math.pow(args.TWO, args.ONE); } }
-    squareRoot(args) { if (args.ONE == 'Square root') { args.ONE = 2; } if (args.ONE == 'Cube root') { args.ONE = 3; } if (args.ONE == 'Quartic root') { args.ONE = 4; } return Math.pow(args.TWO, 1 / args.ONE); }
+    squareRoot(args) { if (args.ONE == 'Square') { args.ONE = 2; } if (args.ONE == 'Cube') { args.ONE = 3; } if (args.ONE == 'Quartic') { args.ONE = 4; } return Math.pow(args.TWO, 1 / args.ONE); }
     true() { return true; }
     false() { return false; }
     greaterThan(args) {
