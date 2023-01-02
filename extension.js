@@ -194,6 +194,25 @@ class MathExtension {
                     }
                 },
                 {
+                    opcode: 'LessThan',
+                    blockType: Scratch.BlockType.BOOLEAN,
+                    text: "[ONE] > [TWO] > [THREE]",
+                    arguments: {
+                        ONE: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: "10"
+                        },
+                        TWO: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: "5"
+                        },
+                        THREE: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: "1"
+                        }
+                    }
+                },
+                {
                     opcode: 'true',
                     blockType: Scratch.BlockType.BOOLEAN,
                     text: "True",
@@ -202,6 +221,16 @@ class MathExtension {
                     opcode: 'false',
                     blockType: Scratch.BlockType.BOOLEAN,
                     text: "False",
+                },
+                {
+                    opcode: 'greaterThanOrEquals',
+                    blockType: Scratch.BlockType.BOOLEAN,
+                    text: "[ONE] ≥ [TWO]",
+                },
+                {
+                    opcode: 'lessThanOrEquals',
+                    blockType: Scratch.BlockType.BOOLEAN,
+                    text: "[ONE] ≤ [TWO]",
                 }
             ],
             menus: {
@@ -238,6 +267,27 @@ class MathExtension {
             return true;
         } else {
             return false;
+        }
+    }
+    lessThan(args) {
+        if (args.ONE > args.TWO && args.TWO > args.THREE) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    greaterThanOrEquals(args) {
+        if (args.ONE >= args.TWO) {
+            return true;
+        } else {
+            return this.false;
+        }
+    }
+    lessThanOrEquals(args) {
+        if (args.ONE <= args.TWO) {
+            return true;
+        } else {
+            return this.false;
         }
     }
 }
