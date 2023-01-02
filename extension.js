@@ -300,14 +300,14 @@ class MathExtension {
         if (args.ONE >= args.TWO) {
             return true;
         } else {
-            return this.false;
+            return false;
         }
     }
     lessThanOrEquals(args) {
         if (args.ONE <= args.TWO) {
             return true;
         } else {
-            return this.false;
+            return false;
         }
     }
 }
