@@ -226,11 +226,31 @@ class MathExtension {
                     opcode: 'greaterThanOrEquals',
                     blockType: Scratch.BlockType.BOOLEAN,
                     text: "[ONE] ≥ [TWO]",
+                    arguments: {
+                        ONE: {
+                                type: Scratch.ArgumentType.NUMBER,
+                                defaultValue: "10"
+                            },
+                        TWO: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: "5"
+                        }
+                    }
                 },
                 {
                     opcode: 'lessThanOrEquals',
                     blockType: Scratch.BlockType.BOOLEAN,
                     text: "[ONE] ≤ [TWO]",
+                    arguments: {
+                        ONE: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: "5"
+                        },
+                        TWO: {
+                            type: Scratch.ArgumentType.NUMBER,
+                            defaultValue: "10"
+                        }
+                    }
                 }
             ],
             menus: {
