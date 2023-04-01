@@ -7,10 +7,18 @@
             {
                 var final = $('#text').val() + "  " + $('#1').val() + "  " + $('#2').val() + "  " + $('#3').val() + "  " + $('#4').val() + "  " + $('#5').val();
                 var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + final + '&amp;size=50x50';
-                // $('#barcode').attr('src', url);
-                <img id='barcode' src={url} width="500" height="500" />
+                $('#barcode').attr('src', url);
+                showQR();
+            }
+            function showQR(){
+                document.getElementById("barcode").style.display = "block";
             }
         </script>
+        <style>
+            #barcode{
+                display: none;
+            }
+        </style>
     </head>
     <body>
 
@@ -20,6 +28,7 @@
         <input type="text" id="4" name="4"><br><br>
         
         <button onclick="generateBarCode()">Generate</button>
+        <img id='barcode' src="" width="500" height="500" />
 
         
     </body>
