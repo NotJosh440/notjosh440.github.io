@@ -8,14 +8,10 @@
                 var final = $('#text').val() + "  " + $('#1').val() + "  " + $('#2').val() + "  " + $('#3').val() + "  " + $('#4').val() + "  " + $('#5').val() + "";
                 var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + final + '&amp;size=50x50';
                 $('#barcode').attr('src', url);
-                $('#barcode').attr('title', url);
             }
         </script>
     </head>
     <body>
-        <input id="text" type="text" 
-            value="NRIC or Work Permit" style="Width:20%"
-            onblur='generateBarCode();' /> 
 
         <input type="text" id="1" name="1"><br><br>
         <input type="text" id="2" name="2"><br><br>
