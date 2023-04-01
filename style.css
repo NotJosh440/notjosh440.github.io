@@ -1,0 +1,40 @@
+body{
+    margin:0px;
+    padding:0px;
+    background-color: black;
+}
+.increment{
+    margin:0px;
+    font-size:xx-large;
+}
+h1, h2, h3, p, label, h6{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #f4d;
+    text-align:center;
+    
+}
+p{
+    margin:8px;
+}
+h3{
+    margin-top:32px;
+    margin-bottom:18px;
+    font-size:x-large;
+}
+input, label{
+    text-align: center;
+    font-size:larger;
+}
+input[type="number"]{
+    width:8%;
+    font-size:xx-large;
+}
+input[type="radio"], input[type="checkbox"]{
+    align-items: center;
+}
+input[type="number"].BIG{
+    width:12%;
+}
+input[type="range"]{
+    width:80%;
+}
