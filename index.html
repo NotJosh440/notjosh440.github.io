@@ -16,11 +16,11 @@
                 function generageQRCode(){
                         document.getElementById("check").onclick = function () {
                                 let allAreFilled = true;
-                                document.getElementById("myForm").querySelectorAll("[required]").forEach(function (i) {
+                                document.getElementById("names").querySelectorAll("[required]").forEach(function (i) {
                                         if (!allAreFilled) return;
                                         if (i.type === "radio") {
                                                 let radioValueCheck = false;
-                                                document.getElementById("myForm").querySelectorAll(`[name=${i.name}]`).forEach(function (r) {
+                                                document.getElementById("names").querySelectorAll(`[name=${i.name}]`).forEach(function (r) {
                                                         if (r.checked) radioValueCheck = true;
                                                 })
                                                 allAreFilled = radioValueCheck;
