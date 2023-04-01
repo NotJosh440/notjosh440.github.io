@@ -24,65 +24,19 @@
 
         <p>new here</p>
 
-        <section class="heading">
-                <div class="title">QRcodes</div>
-                <div class="sub-title">Generate QRCode for anything!</div>
-        </section>
-        <section class="user-input">
-                <label for="input_text">Type something...</label>
-                <input type="text" name="input_text" id="input_text" autocomplete="off">
-                <button class="button" type="submit">Generate QR Code</button>
-        </section>
-        <div class="qr-code" style="display: none;"></div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-        <script src="./js/app.js">
-                
-
-                btn.addEventListener("click", () => {
-                        let user_input = document.querySelector("#input_text");
-                        if (user_input.value != "") {
-                                if (document.querySelector(".qr-code").childElementCount == 0) {
-                                        generate(user_input);
-                                } else {
-                                        document.querySelector(".qr-code").innerHTML = "";
-                                        generate(user_input);
-                                }
-                        } else {
-                                document.querySelector(".qr-code").style = "display: none";
-                                console.log("not valid input");
-                        }
-                })
-
-
-        
-                function generate(user_input) {
-
-                        document.querySelector(".qr-code").style = "";
-
-                        var qrcode = new QRCode(document.querySelector(".qr-code"), {
-                                text: `${user_input.value}`,
-                                width: 180, //128
-                                height: 180,
-                                colorDark: "#000000",
-                                colorLight: "#ffffff",
-                                correctLevel: QRCode.CorrectLevel.H
-                        });
-
-                        console.log(qrcode);
-
-                        if (document.querySelector(".qr-code img").getAttribute("src") == null) {
-                                setTimeout(() => {
-                                        download_link.setAttribute("href", `${document.querySelector("canvas").toDataURL()}`);
-                                }, 300);
-                        } else {
-                                setTimeout(() => {
-                                        download_link.setAttribute("href", `${document.querySelector(".qr-code img").getAttribute("src")}`);
-                                }, 300);
-                        }
-                }
-        </script>
-
-        
+        <div class="user-input-section">
+                <section class="heading">
+                        <div class="title">QRcodes</div>
+                        <div class="sub-title">Generate QRCode for anything!</div>
+                </section>
+                <section class="user-input">
+                        <input type="text" placeholder="Type something..." name="input_text" id="input_text" autocomplete="off">
+                        <button class="button" type="submit">Generate<i class="fa-solid fa-rotate"></i></button>
+                </section>
+        </div>
+        <div class="qr-code-container">
+                <div class="qr-code" style></div>
+        </div>
 
 </body>
 
