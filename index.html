@@ -64,6 +64,10 @@
                 function showQR() {
                         document.getElementById("barcode").style.display = "block";
                 }
+
+                function reloadScirpt(){
+                        location.reload();
+                }
         </script>
         <style>
                 #barcode {
@@ -365,7 +369,7 @@
                 <button type="generate" onclick="generateBarCode()">
                         <h2>Generate</h2>
                 </button>
-                <button type="reset">
+                <button type="reset" onclick="reloadScirpt()">
                         <h2>Clear Data</h2>
                 </button></a>
                 <img id='barcode' src="" width="500" height="500" />
