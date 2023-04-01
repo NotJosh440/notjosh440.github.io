@@ -85,295 +85,293 @@
                         }
                 </script>
 
-                        <h1>Pre-match</h1>
-                        <p><label for="names">Scouter's initials:</label></p>
-                        <p><input type="text" id="names" name="names" required></p><br>
-                        <p><label for="match">Match Number:</label></p>
-                        <p><input type="number" id="match" name="match" value=0 class="BIG"></p>
-                        <h3>Robot:</h3>
-                        <p>
-                                <input type="radio" id="red1" name="robot" value="red1">
-                                <label for="red1">Red 1</label>
-                                <input type="radio" id="blue1" name="robot" value="blue1">
-                                <label for="blue1">Blue 1</label>
-                        </p>
-                        <p>
-                                <input type="radio" id="red2" name="robot" value="red2">
-                                <label for="red2">Red 2</label>
-                                <input type="radio" id="blue2" name="robot" value="blue2">
-                                <label for="blue2">Blue 2</label>
-                        </p>
-                        <p>
-                                <input type="radio" id="red3" name="robot" value="red3">
-                                <label for="red3">Red 3</label>
-                                <input type="radio" id="blue3" name="robot" value="blue3">
-                                <label for="blue3">Blue 3</label>
-                        </p>
-                        <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
-                        <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG"></p>
-                        <p><input type="checkbox" id="noshow" name="noshow" value=1>
-                                <label for="noshow">No show</label>
-                        </p>
-                        <h1>Autonomous</h1>
-                        <h3>Starting Location:</h3>
-                        <table style="width:100%">
-                                <tr>
-                                        <td style="width:30%">
-                                                <p>
-                                                        <input type="radio" id="left" name="location" value="left">
-                                                        <label for="left">Left</label>
-                                                </p>
-                                        </td>
-                                        <td style="width:30%">
-                                                <p>
-                                                        <input type="radio" id="middle" name="location" value="middle">
-                                                        <label for="middle">Middle</label>
-                                                </p>
-                                        </td>
-                                        <td style="width:30%">
-                                                <p>
-                                                        <input type="radio" id="right" name="location" value="right">
-                                                        <label for="right">Right</label>
-                                                </p>
-                                        </td>
-                                </tr>
-                        </table><br>
-                        <p><label for="auto_upper_cone">Upper Cone Scored:</label><br>
-                                <button type="button" onclick="decrement('auto_upper_cone')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="auto_upper_cone" name="auto_upper_cone" value=0 min=0>
-                                <button type="button" onclick="increment('auto_upper_cone')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <p>
-                                <label for="auto_middle_cone">Middle Cone Scored:</label><br>
-                                <button type="button" onclick="decrement('auto_middle_cone')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="auto_middle_cone" name="auto_middle_cone" value=0 min=0>
-                                <button type="button" onclick="increment('auto_middle_cone')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <p>
-                                <label for="auto_lower_cone">Lower Cone Scored:</label><br>
-                                <button type="button" onclick="decrement('auto_lower_cone')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="auto_lower_cone" name="auto_lower_cone" value=0 min=0>
-                                <button type="button" onclick="increment('auto_lower_cone')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <p>
-                                <label for="auto_upper_cube">Upper Cube Scored:</label><br>
-                                <button type="button" onclick="decrement('auto_upper_cube')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="auto_upper_cube" name="auto_upper_cube" value=0 min=0>
-                                <button type="button" onclick="increment('auto_upper_cube')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <p>
-                                <label for="auto_middle_cube">Middle Cube Scored:</label><br>
-                                <button type="button" onclick="decrement('auto_middle_cube')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="auto_middle_cube" name="auto_middle_cube" value=0 min=0>
-                                <button type="button" onclick="increment('auto_middle_cube')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <p>
-                                <label for="auto_lower_cube">Lower Cube Scored:</label><br>
-                                <button type="button" onclick="decrement('auto_lower_cube')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="auto_lower_cube" name="auto_lower_cube" value=0 min=0>
-                                <button type="button" onclick="increment('auto_lower_cube')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p><br>
-                        <p>
-                                <input type="checkbox" id="mobility" name="mobility" value=1>
-                                <label for="mobility">Exited Community?</label>
-                        </p>
-                        <p>
-                                <input type="checkbox" id="auto_pickup" name="auto_pickup" value=1>
-                                <label for="auto_pickup">Picked up Cone or Cube in Auto?</label>
-                        </p>
-
-                        <table style="width:100%">
-                                <tr>
-                                        <td style="width:30%">
-                                                <p>
-                                                        <input type="radio" id="auto_none" name="auto_dock_engage"
-                                                                value="AUTO NONE" checked>
-                                                        <label for="auto_none">None</label>
-                                                </p>
-                                        </td>
-                                        <td style="width:30%">
-                                                <p>
-                                                        <input type="radio" id="auto_docked" name="auto_dock_engage"
-                                                                value="AUTO DOCK">
-                                                        <label for="auto_docked">Docked</label>
-                                                </p>
-                                        </td>
-                                        <td style="width:30%">
-                                                <p>
-                                                        <input type="radio" id="auto_engaged" name="auto_dock_engage"
-                                                                value="AUTO DOCK ENGAGE">
-                                                        <label for="auto_engaged">Engaged</label>
-                                                </p>
-                                        </td>
-                                </tr>
-                        </table><br>
-                        <h1>Teleop</h1>
-                        <p>
-                                <label for="teleop_upper_cone">Upper Cone Scored:</label><br>
-                                <button type="button" onclick="decrement('teleop_upper_cone')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="teleop_upper_cone" name="teleop_upper_cone" value=0 min=0>
-                                <button type="button" onclick="increment('teleop_upper_cone')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <p>
-                                <label for="teleop_middle_cone">Middle Cone Scored:</label><br>
-                                <button type="button" onclick="decrement('teleop_middle_cone')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="teleop_middle_cone" name="teleop_middle_cone" value=0 min=0>
-                                <button type="button" onclick="increment('teleop_middle_cone')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <p>
-                                <label for="teleop_lower_cone">Lower Cone Scored:</label><br>
-                                <button type="button" onclick="decrement('teleop_lower_cone')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="teleop_lower_cone" name="teleop_lower_cone" value=0 min=0>
-                                <button type="button" onclick="increment('teleop_lower_cone')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <p>
-                                <label for="teleop_upper_cube">Upper Cube Scored:</label><br>
-                                <button type="button" onclick="decrement('teleop_upper_cube')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="teleop_upper_cube" name="teleop_upper_cube" value=0 min=0>
-                                <button type="button" onclick="increment('teleop_upper_cube')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <p>
-                                <label for="teleop_middle_cube">Middle Cube Scored:</label><br>
-                                <button type="button" onclick="decrement('teleop_middle_cube')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="teleop_middle_cube" name="teleop_middle_cube" value=0 min=0>
-                                <button type="button" onclick="increment('teleop_middle_cube')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <p>
-                                <label for="teleop_lower_cube">Lower Cube Scored:</label><br>
-                                <button type="button" onclick="decrement('teleop_lower_cube')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="teleop_lower_cube" name="teleop_lower_cube" value=0 min=0>
-                                <button type="button" onclick="increment('teleop_lower_cube')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p><br>
-                        <h3>Can pick up from:</h3>
-                        <table style="width:100%;">
-                                <tr>
-                                        <td>
-                                                <p><input type="checkbox" id="ground" name="ground" value=1>
-                                                        <label for="ground">Ground</label>
-                                                </p>
-                                        </td>
-                                        <td>
-                                                <p><input type="checkbox" id="substation" name="substation" value=1>
-                                                        <label for="substation">Substation</label>
-                                                </p>
-                                        </td>
-                                </tr>
-                        </table>
-                        <p>
-                                <label for="links">Links:</label><br>
-                                <button type="button" onclick="decrement('links')">
-                                        <h3 class="increment">&emsp;-&emsp;</h3>
-                                </button>
-                                <input type="number" id="links" name="links" value=0 min=0>
-                                <button type="button" onclick="increment('links')">
-                                        <h3 class="increment">&emsp;+&emsp;</h3>
-                                </button>
-                        </p>
-                        <br>
-                        <h1>Endgame</h1>
-                        <p>
-                                <label for="early_endgame">Attempted Before Endgame?</label>
-                                <input type="checkbox" id="early_endgame" name="early_endgame" value=1>
-                        </p>
-                        <h3>Endgame Position</h3>
-                        <p>
-                                <input type="radio" id="no_endgame" name="endgame" value="TELE NONE" checked>
-                                <label for="no_endgame">None</label>
-                                <input type="radio" id="parked" name="endgame" value="TELE PARK">
-                                <label for="parked">Parked</label>
-                        </p>
-                        <p>
-                                <input type="radio" id="docked" name="endgame" value="TELE DOCK">
-                                <label for="docked">Docked</label>
-                                <input type="radio" id="engaged" name="endgame" value="TELE DOCK ENGAGE">
-                                <label for="engaged">Engaged</label>
-                        </p><br>
-                        <label for="num_docked">
-                                <h3 style="margin:0px;">Number of Docked Robots</h3>
-                        </label>
-                        <p>
-                                <input type="range" id="num_docked" name="num_docked" min="0" max="3" step="1"
-                                        value="0">
-                        </p>
-                        <h1>Post-Match</h1>
-                        <p><label for="skill">Skill of Driver and Operator</label></p>
-                        <h3 style="margin:0px;">Bad&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Good</h3>
-                        <p><input type="range" id="skill" name="skill" min="1" max="3"></p>
-                        <p><label for="defense">Defense Capabilities</label></p>
-                        <h3 style="margin:0px;">Bad&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Good</h3>
-                        <p><input type="range" id="defense" name="defense" min="1" max="3"></p>
-
-                        <p>
-                                <input type="checkbox" id="died" name="died" value=1>
-                                <label for="died">Died</label><br>
-                                <input type="checkbox" id="tipped" name="tipped" value=1>
-                                <label for="tipped">Tipped Over</label><br>
-                                <input type="checkbox" id="card" name="card" value=1>
-                                <label for="card">Got Yellow/Red Card</label><br>
-                                <input type="checkbox" id="damage" name="damage" value=1>
-                                <label for="damage">Damaged</label>
-                        </p>
-                        <label for="comments">&emsp;Comments</label><br>
-                        &emsp;<textarea id="comments" name="comments" cols="30" rows="5"
-                                required></textarea><br><br><br>
-                        <button type="submit" onclick="generateBarCode()">
-                                <h2>Send it!!!</h2>
+                <h1>Pre-match</h1>
+                <p><label for="names">Scouter's initials:</label></p>
+                <p><input type="text" id="names" name="names" required></p><br>
+                <p><label for="match">Match Number:</label></p>
+                <p><input type="number" id="match" name="match" value=0 class="BIG"></p>
+                <h3>Robot:</h3>
+                <p>
+                        <input type="radio" id="red1" name="robot" value="red1">
+                        <label for="red1">Red 1</label>
+                        <input type="radio" id="blue1" name="robot" value="blue1">
+                        <label for="blue1">Blue 1</label>
+                </p>
+                <p>
+                        <input type="radio" id="red2" name="robot" value="red2">
+                        <label for="red2">Red 2</label>
+                        <input type="radio" id="blue2" name="robot" value="blue2">
+                        <label for="blue2">Blue 2</label>
+                </p>
+                <p>
+                        <input type="radio" id="red3" name="robot" value="red3">
+                        <label for="red3">Red 3</label>
+                        <input type="radio" id="blue3" name="robot" value="blue3">
+                        <label for="blue3">Blue 3</label>
+                </p>
+                <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
+                <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG"></p>
+                <p><input type="checkbox" id="noshow" name="noshow" value=1>
+                        <label for="noshow">No show</label>
+                </p>
+                <h1>Autonomous</h1>
+                <h3>Starting Location:</h3>
+                <table style="width:100%">
+                        <tr>
+                                <td style="width:30%">
+                                        <p>
+                                                <input type="radio" id="left" name="location" value="left">
+                                                <label for="left">Left</label>
+                                        </p>
+                                </td>
+                                <td style="width:30%">
+                                        <p>
+                                                <input type="radio" id="middle" name="location" value="middle">
+                                                <label for="middle">Middle</label>
+                                        </p>
+                                </td>
+                                <td style="width:30%">
+                                        <p>
+                                                <input type="radio" id="right" name="location" value="right">
+                                                <label for="right">Right</label>
+                                        </p>
+                                </td>
+                        </tr>
+                </table><br>
+                <p><label for="auto_upper_cone">Upper Cone Scored:</label><br>
+                        <button type="button" onclick="decrement('auto_upper_cone')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
                         </button>
-                        <button type="reset">
-                                <h2>Clear Data</h2>
-                        </button></a>
-                        <button type="generate" onclick="generateBarCode()">
-                                <h2>Generate</h2>
+                        <input type="number" id="auto_upper_cone" name="auto_upper_cone" value=0 min=0>
+                        <button type="button" onclick="increment('auto_upper_cone')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
                         </button>
-                        <img id='barcode' src="" width="500" height="500" />
+                </p>
+                <p>
+                        <label for="auto_middle_cone">Middle Cone Scored:</label><br>
+                        <button type="button" onclick="decrement('auto_middle_cone')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="auto_middle_cone" name="auto_middle_cone" value=0 min=0>
+                        <button type="button" onclick="increment('auto_middle_cone')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p>
+                <p>
+                        <label for="auto_lower_cone">Lower Cone Scored:</label><br>
+                        <button type="button" onclick="decrement('auto_lower_cone')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="auto_lower_cone" name="auto_lower_cone" value=0 min=0>
+                        <button type="button" onclick="increment('auto_lower_cone')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p>
+                <p>
+                        <label for="auto_upper_cube">Upper Cube Scored:</label><br>
+                        <button type="button" onclick="decrement('auto_upper_cube')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="auto_upper_cube" name="auto_upper_cube" value=0 min=0>
+                        <button type="button" onclick="increment('auto_upper_cube')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p>
+                <p>
+                        <label for="auto_middle_cube">Middle Cube Scored:</label><br>
+                        <button type="button" onclick="decrement('auto_middle_cube')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="auto_middle_cube" name="auto_middle_cube" value=0 min=0>
+                        <button type="button" onclick="increment('auto_middle_cube')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p>
+                <p>
+                        <label for="auto_lower_cube">Lower Cube Scored:</label><br>
+                        <button type="button" onclick="decrement('auto_lower_cube')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="auto_lower_cube" name="auto_lower_cube" value=0 min=0>
+                        <button type="button" onclick="increment('auto_lower_cube')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p><br>
+                <p>
+                        <input type="checkbox" id="mobility" name="mobility" value=1>
+                        <label for="mobility">Exited Community?</label>
+                </p>
+                <p>
+                        <input type="checkbox" id="auto_pickup" name="auto_pickup" value=1>
+                        <label for="auto_pickup">Picked up Cone or Cube in Auto?</label>
+                </p>
+
+                <table style="width:100%">
+                        <tr>
+                                <td style="width:30%">
+                                        <p>
+                                                <input type="radio" id="auto_none" name="auto_dock_engage"
+                                                        value="AUTO NONE" checked>
+                                                <label for="auto_none">None</label>
+                                        </p>
+                                </td>
+                                <td style="width:30%">
+                                        <p>
+                                                <input type="radio" id="auto_docked" name="auto_dock_engage"
+                                                        value="AUTO DOCK">
+                                                <label for="auto_docked">Docked</label>
+                                        </p>
+                                </td>
+                                <td style="width:30%">
+                                        <p>
+                                                <input type="radio" id="auto_engaged" name="auto_dock_engage"
+                                                        value="AUTO DOCK ENGAGE">
+                                                <label for="auto_engaged">Engaged</label>
+                                        </p>
+                                </td>
+                        </tr>
+                </table><br>
+                <h1>Teleop</h1>
+                <p>
+                        <label for="teleop_upper_cone">Upper Cone Scored:</label><br>
+                        <button type="button" onclick="decrement('teleop_upper_cone')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="teleop_upper_cone" name="teleop_upper_cone" value=0 min=0>
+                        <button type="button" onclick="increment('teleop_upper_cone')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p>
+                <p>
+                        <label for="teleop_middle_cone">Middle Cone Scored:</label><br>
+                        <button type="button" onclick="decrement('teleop_middle_cone')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="teleop_middle_cone" name="teleop_middle_cone" value=0 min=0>
+                        <button type="button" onclick="increment('teleop_middle_cone')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p>
+                <p>
+                        <label for="teleop_lower_cone">Lower Cone Scored:</label><br>
+                        <button type="button" onclick="decrement('teleop_lower_cone')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="teleop_lower_cone" name="teleop_lower_cone" value=0 min=0>
+                        <button type="button" onclick="increment('teleop_lower_cone')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p>
+                <p>
+                        <label for="teleop_upper_cube">Upper Cube Scored:</label><br>
+                        <button type="button" onclick="decrement('teleop_upper_cube')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="teleop_upper_cube" name="teleop_upper_cube" value=0 min=0>
+                        <button type="button" onclick="increment('teleop_upper_cube')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p>
+                <p>
+                        <label for="teleop_middle_cube">Middle Cube Scored:</label><br>
+                        <button type="button" onclick="decrement('teleop_middle_cube')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="teleop_middle_cube" name="teleop_middle_cube" value=0 min=0>
+                        <button type="button" onclick="increment('teleop_middle_cube')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p>
+                <p>
+                        <label for="teleop_lower_cube">Lower Cube Scored:</label><br>
+                        <button type="button" onclick="decrement('teleop_lower_cube')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="teleop_lower_cube" name="teleop_lower_cube" value=0 min=0>
+                        <button type="button" onclick="increment('teleop_lower_cube')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p><br>
+                <h3>Can pick up from:</h3>
+                <table style="width:100%;">
+                        <tr>
+                                <td>
+                                        <p><input type="checkbox" id="ground" name="ground" value=1>
+                                                <label for="ground">Ground</label>
+                                        </p>
+                                </td>
+                                <td>
+                                        <p><input type="checkbox" id="substation" name="substation" value=1>
+                                                <label for="substation">Substation</label>
+                                        </p>
+                                </td>
+                        </tr>
+                </table>
+                <p>
+                        <label for="links">Links:</label><br>
+                        <button type="button" onclick="decrement('links')">
+                                <h3 class="increment">&emsp;-&emsp;</h3>
+                        </button>
+                        <input type="number" id="links" name="links" value=0 min=0>
+                        <button type="button" onclick="increment('links')">
+                                <h3 class="increment">&emsp;+&emsp;</h3>
+                        </button>
+                </p>
+                <br>
+                <h1>Endgame</h1>
+                <p>
+                        <label for="early_endgame">Attempted Before Endgame?</label>
+                        <input type="checkbox" id="early_endgame" name="early_endgame" value=1>
+                </p>
+                <h3>Endgame Position</h3>
+                <p>
+                        <input type="radio" id="no_endgame" name="endgame" value="TELE NONE" checked>
+                        <label for="no_endgame">None</label>
+                        <input type="radio" id="parked" name="endgame" value="TELE PARK">
+                        <label for="parked">Parked</label>
+                </p>
+                <p>
+                        <input type="radio" id="docked" name="endgame" value="TELE DOCK">
+                        <label for="docked">Docked</label>
+                        <input type="radio" id="engaged" name="endgame" value="TELE DOCK ENGAGE">
+                        <label for="engaged">Engaged</label>
+                </p><br>
+                <label for="num_docked">
+                        <h3 style="margin:0px;">Number of Docked Robots</h3>
+                </label>
+                <p>
+                        <input type="range" id="num_docked" name="num_docked" min="0" max="3" step="1" value="0">
+                </p>
+                <h1>Post-Match</h1>
+                <p><label for="skill">Skill of Driver and Operator</label></p>
+                <h3 style="margin:0px;">Bad&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Good</h3>
+                <p><input type="range" id="skill" name="skill" min="1" max="3"></p>
+                <p><label for="defense">Defense Capabilities</label></p>
+                <h3 style="margin:0px;">Bad&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Good</h3>
+                <p><input type="range" id="defense" name="defense" min="1" max="3"></p>
+
+                <p>
+                        <input type="checkbox" id="died" name="died" value=1>
+                        <label for="died">Died</label><br>
+                        <input type="checkbox" id="tipped" name="tipped" value=1>
+                        <label for="tipped">Tipped Over</label><br>
+                        <input type="checkbox" id="card" name="card" value=1>
+                        <label for="card">Got Yellow/Red Card</label><br>
+                        <input type="checkbox" id="damage" name="damage" value=1>
+                        <label for="damage">Damaged</label>
+                </p>
+                <label for="comments">&emsp;Comments</label><br> &emsp;<textarea id="comments" name="comments" cols="30"
+                        rows="5" required></textarea><br><br><br>
+                <input type="submit" onclick="generateBarCode()">
+                        <h2>Send it!!!</h2>
+                </input>
+                <button type="reset">
+                        <h2>Clear Data</h2>
+                </button></a>
+                <button type="generate" onclick="generateBarCode()">
+                        <h2>Generate</h2>
+                </button>
+                <img id='barcode' src="" width="500" height="500" />
         </div>
 </body>
 
