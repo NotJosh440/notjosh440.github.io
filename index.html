@@ -16,10 +16,12 @@
             value="NRIC or Work Permit" style="Width:20%"
             onblur='generateBarCode();' /> 
 
-      <img id='barcode' 
-            src="
-                 var a = 1; var b = 2
-                 https://api.qrserver.com/v1/create-qr-code/?data=" + a + "&sublist=" + b&amp;size=50000x50000" 
+      <img id='barcode'
+            <script type="text/javascript">
+                var a = 1; var b = 2
+            </script>
+    
+            src="https://api.qrserver.com/v1/create-qr-code/?data=" + a + "&sublist=" + b + ""&amp;size=50000x50000" 
             alt="" 
             title="HELLO" 
             width="500" 
