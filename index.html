@@ -32,6 +32,7 @@
                                         alert('Fill all the fields');
                                 }
                         };
+                }
                 var name = $('#names').val();
                 var matchNum = $('#match').val();
                 var robotColor = $("input:radio[name=robot]:checked").val();
@@ -82,8 +83,6 @@
                 var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=50x50';
                 $('#barcode').attr('src', url);
                 showQR();
-
-                }
         </script>
         <style>
                 #barcode {
