@@ -15,6 +15,7 @@
                 var robotColor = $("input:radio[name=robot]:checked").val();
                 var teamNum = $('#teamnumber').val();
                 var noShow = $('#noshow').val();
+
                 var location = $("input:radio[name=location]:checked").val();
                 var autoUpperCone = $('#auto_upper_cone').val();
                 var autoMiddleCone = $('#auto_middle_cone').val();
@@ -25,6 +26,7 @@
                 var mobility = $('#mobility').val();
                 var autoPickup = $('#auto_pickup').val();
                 var autoDock = $("input:radio[name=auto_dock_engage]:checked").val();
+
                 var upperCone = $('#teleop_upper_cone').val();
                 var middleCone = $('#teleop_middle_cone').val();
                 var lowerCone = $('#teleop_lower_cone').val();
@@ -35,14 +37,18 @@
                 var ground = $('#ground').val();
                 var links = $('#links').val();
                 var beforeEndgame = $('#early_endgame').val();
+
                 var autoDock = $("input:radio[name=endgame]:checked").val();
                 var numDock = $('#num_docked').val();
+
                 var driveSkill = $('#skill').val();
                 var defenseSkill = $('#defense').val();
+
                 var died = $('#died').val();
                 var tipped = $('#tipped').val();
                 var card = $('#card').val();
                 var damage = $('#damage').val();
+
                 var comment = $('#comments').val();
 
                 var finalArray = [name, matchNum,robotColor,teamNum,noShow,location,autoUpperCone,autoMiddleCone,autoLowerCone,autoUpperCube,autoMiddleCube,autoLowerCube,mobility,autoPickup,autoDock,upperCone,middleCone,lowerCone,upperCube,middleCube,lowerCube,substation,ground,links,beforeEndgame,autoDock,numDock,driveSkill,defenseSkill,died,tipped,card,damage,comment];
@@ -174,15 +180,15 @@
         <table style="width:100%">
             <tr>
             <td style="width:30%"><p>
-        <input type="radio" id="auto_none" name="auto_dock_engage" value="NONE" checked>
+        <input type="radio" id="auto_none" name="auto_dock_engage" value="AUTO NONE" checked>
         <label for="auto_none">None</label>
         </p></td>
         <td style="width:30%"><p>
-        <input type="radio" id="auto_docked" name="auto_dock_engage" value="DOCK">
+        <input type="radio" id="auto_docked" name="auto_dock_engage" value="AUTODOCK">
         <label for="auto_docked">Docked</label>
         </p></td>
         <td style="width:30%"><p>
-        <input type="radio" id="auto_engaged" name="auto_dock_engage" value="DOCK ENGAGE">
+        <input type="radio" id="auto_engaged" name="auto_dock_engage" value="AUTO DOCK ENGAGE">
         <label for="auto_engaged">Engaged</label>
         </p></td>
             </tr>
@@ -251,15 +257,15 @@
         </p>
         <h3>Endgame Position</h3>
         <p>
-        <input type="radio" id="no_endgame" name="endgame" value="NONE" checked>
+        <input type="radio" id="no_endgame" name="endgame" value="TELE NONE" checked>
         <label for="no_endgame">None</label>
-        <input type="radio" id="parked" name="endgame" value="PARK">
+        <input type="radio" id="parked" name="endgame" value="TELE PARK">
         <label for="parked">Parked</label>
         </p>
         <p>
-        <input type="radio" id="docked" name="endgame" value="DOCK">
+        <input type="radio" id="docked" name="endgame" value="TELE DOCK">
         <label for="docked">Docked</label>
-        <input type="radio" id="engaged" name="endgame" value="DOCK ENGAGE">
+        <input type="radio" id="engaged" name="endgame" value="TELE DOCK ENGAGE">
         <label for="engaged">Engaged</label>
         </p><br>
         <label for="num_docked"><h3 style="margin:0px;">Number of Docked Robots</h3></label>
