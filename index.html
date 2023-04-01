@@ -1,43 +1,26 @@
-<html lang="en">
+<html>
+    <head>
+        <title>Testing QR code</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            function generateBarCode()
+            {
+                var nric = $('#text').val();
+                var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + nric + '&amp;size=50x50';
+                $('#barcode').attr('src', url);
+            }
+        </script>
+    </head>
+    <body>
+        <input id="text" type="text" 
+            value="NRIC or Work Permit" style="Width:20%"
+            onblur='generateBarCode();' /> 
 
-<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="/_next/static/chunks/framework-2c79e2a64abdb08b.js" defer></script>
-        <title>Document</title>
-</head>
-
-<body>
-
-
-        <h3>3181 helpful info</h3>
-        <p> team info for excel app <a
-                        href="ms-excel:ofe|u|https://pittsfordcsd-my.sharepoint.com/:x:/g/personal/joshua_angona_students_pittsford_monroe_edu/EbXdC6QLGmNJvYao8FomsfoBt5fDap9pEgcdyJcDyVU1dg?e=yQWFWn">
-                        here</a></p>
-        <p> team info for web version <a
-                        href="https://pittsfordcsd-my.sharepoint.com/:x:/g/personal/joshua_angona_students_pittsford_monroe_edu/EbXdC6QLGmNJvYao8FomsfoBt5fDap9pEgcdyJcDyVU1dg?e=Ic2cLx">
-                        here</a></p>
-        <a href="https://notjosh440.github.io/scouting%20with%20top.htm"> go to here for ease</a>
-        <p></p>
-        <button class="focus:shadow-outline mx-2 rounded bg-gray-700 py-6 px-6 font-bold uppercase text-white hover:bg-gray-700 focus:shadow-lg focus:outline-none disabled:bg-gray-300 dark:bg-red-rhr" type="button">Commit</button>
-
-        <p>new here</p>
-
-        <div class="user-input-section">
-                <section class="heading">
-                        <div class="title">QRcodes</div>
-                        <div class="sub-title">Generate QRCode for anything!</div>
-                </section>
-                <section class="user-input">
-                        <input type="text" placeholder="Type something..." name="input_text" id="input_text" autocomplete="off">
-                        <button class="button" type="submit">Generate<i class="fa-solid fa-rotate"></i></button>
-                </section>
-        </div>
-        <div class="qr-code-container">
-                <div class="qr-code" style></div>
-        </div>
-
-</body>
-
+      <img id='barcode' 
+            src="https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&amp;size=100x100" 
+            alt="" 
+            title="HELLO" 
+            width="50" 
+            height="50" />
+    </body>
 </html>
