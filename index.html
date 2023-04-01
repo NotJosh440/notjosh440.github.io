@@ -5,6 +5,26 @@
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            function generateBarCode()
+            {
+                var team = $("input:radio[name=robot]:checked").val()
+                var final = $('#names').val() + "  " + $('#match').val() + "  " + team + "  " + $('#teamnumber').val();
+                var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + final + '&amp;size=50x50';
+                $('#barcode').attr('src', url);
+                showQR();
+            }
+            function showQR(){
+                document.getElementById("barcode").style.display = "block";
+            }
+        </script>
+        <style>
+            #barcode{
+                display: none;
+            }
+        </style>
 </head>
 <body>
     <div class="scouting_form">
@@ -233,6 +253,10 @@
         &emsp;<textarea id="comments" name="comments" cols="30" rows="5" required></textarea><br><br><br>
         <button type="submit"><h2>Send it!!!</h2></button>
         <button type="reset"><h2>Clear Data</h2></button></a>
+        <button onclick="generateBarCode()"><h2>Generate</h2></button>
+        <img id='barcode' src="" width="500" height="500" />
+
+        
         
     </form>
 </div>
