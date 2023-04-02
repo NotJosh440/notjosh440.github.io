@@ -67,6 +67,18 @@
                 card, damage, comment];
         var finalString = finalArray.join(";");
         var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=50x50';
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'submit.php');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+        // display the image in the browser
+        var img = document.createElement('img');
+        img.src = window.URL.createObjectURL(new Blob([this.response], {type: 'image/png'}));
+        document.body.appendChild(img);
+        };
+        xhr.send('url=' + encodeURIComponent(url));
+
         $('#barcode').attr('src', url);
         showQR();
     }
@@ -75,5 +87,6 @@
         <iframe src="index.html"></iframe>
         document.getElementById("barcode").style.display = "block";
     }
-                
+
 </script>
+
