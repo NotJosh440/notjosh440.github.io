@@ -54,8 +54,7 @@
     }
 
     function showQR() {
-        <?php echo '<img src=url alt="John">';?>
-        //document.getElementById("barcode").style.display = "block";
+        
     }
 
 </script>
