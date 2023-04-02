@@ -87,6 +87,8 @@
                         }
                 </script>
 
+                <form action="submit.php" method="post" onsubmit="return checkForm()">
+                        
                         <h1>Pre-match</h1>
                         <p><label for="names">Scouter's initials:</label></p>
                         <p><input type="text" id="names" name="names" required></p><br>
@@ -374,26 +376,7 @@
                                 <h2>Generate</h2>
                         </button>
                         <img id='barcode' src="" width="500" height="500" />
-
-                        <script>
-                        document.getElementById("check").onclick = function () {
-                                        let allAreFilled = true;
-                                        document.getElementById("names").querySelectorAll("[required]").forEach(function (i) {
-                                                if (!allAreFilled) return;
-                                                if (i.type === "radio") {
-                                                        let radioValueCheck = false;
-                                                        document.getElementById("names").querySelectorAll(`[name=${i.name}]`).forEach(function (r) {
-                                                                if (r.checked) radioValueCheck = true;
-                                                        })
-                                                        allAreFilled = radioValueCheck;
-                                                        return;
-                                                }
-                                                if (!i.value) { allAreFilled = false; return; }
-                                        })
-                                        if (!allAreFilled) {
-                                                alert('Fill all the fields');
-                                        }
-                                };</script>
+                </form>
         </div>
 </body>
 
