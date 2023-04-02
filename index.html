@@ -372,7 +372,7 @@
                         <textarea id="comments" name="comments" cols="30"
                                 rows="5" required></textarea><br><br><br>
 
-                        <button type="submit">
+                        <button type="submit" id="submit">
                                 <h2>Send it!!!</h2>
                         </button>
                         <button type="reset">
@@ -381,29 +381,20 @@
                         <button onclick="generageQRCode()" id="check">
                                 <h2>Generate</h2>
                         </button>
-
+                        <img id='barcode' src="" width="500" height="500" />
+                        
                         <script>
-                                $(document).ready(function () {
-                                        var formIsValid = function formIsValid() {
-                                                // your validation routines go here
-                                                // return a single boolean for pass/fail validations
-                                                var name = document.forms.myForm.fname.value;
-                                                return !!name; // will convert falsy values (like null and '') to false and truthy values (like 'fred') to true.
-                                        };
-                                        $('form').submit(function (e) {
-                                                var allGood = formIsValid();
-                                                if (!allGood) {
-                                                        e.preventDefault();
-                                                }
-                                                $('#barcode').toggle(allGood); // hide if validation failed, show if passed.
-                                                return allGood; // stops propagation and prevents form submission if false.
-                                        });
-                                });
+                                const submitButton = document.getElementById('submit');
+                                //const successImage = document.getElementById('barcode');
 
+                                submitButton.addEventListener('click', (event) => {
+                                        event.preventDefault(); // Prevent the form from submitting
+
+                                        generageQRCode();
+                                });
                         </script>
                         
                 </form>
-                <img id='barcode' src="" width="500" height="500" />
 
         </div>
 </body>
