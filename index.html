@@ -64,7 +64,32 @@
                 }
 
                 function showQR() {
-                        document.getElementById("barcode").style.display = "block";
+                        const form = document.getElementById('scoutingForm');
+                        const errorMessage = document.getElementById('error-message');
+
+                        if (form.checkValidity()) {
+                                // Display the success image
+                                document.getElementById("barcode").style.display = "block";
+                                errorMessage.style.display = 'none';
+
+                        } else {
+                                // Show an error message and highlight the incomplete fields
+                                errorMessage.style.display = 'block';
+
+                                const invalidFields = form.querySelectorAll(':invalid');
+
+                                invalidFields.forEach((field) => {
+                                        field.classList.add('invalid');
+                                        field.addEventListener('input', () => {
+                                                field.classList.remove('invalid');
+                                                errorMessage.style.display = 'none';
+                                        });
+                                });
+
+                                // Scroll to the first invalid field
+                                invalidFields[0].scrollIntoView({ behavior: 'smooth' });
+                        }
+                        
                 }
 
         </script>
@@ -90,7 +115,7 @@
                         
                 </script>
 
-                <form action="" method="post" onsubmit="return checkForm()">
+                <form action="" method="post" onsubmit="return checkForm()" id="scoutingForm">
 
                         <h1>Pre-match</h1>
                         <p><label for="names">Scouter's initials:</label></p>
@@ -396,6 +421,7 @@
                         
                 </form>
 
+                <p id="error-message" style="display: none; color: red;">Please fill out all required fields.</p>
         </div>
 </body>
 </html>
