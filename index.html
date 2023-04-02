@@ -9,24 +9,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-               $(document).ready(function () {
-                        var formIsValid = function formIsValid() {
-                                // your validation routines go here
-                                // return a single boolean for pass/fail validations
-                                var name = document.forms.myForm.fname.value;
-                                return !!name; // will convert falsy values (like null and '') to false and truthy values (like 'fred') to true.
-                        };
-                        $('form').submit(function (e) {
-                                var allGood = formIsValid();
-                                if (!allGood) {
-                                        e.preventDefault();
-                                }
-                                $('#barcode').toggle(allGood); // hide if validation failed, show if passed.
-                                return allGood; // stops propagation and prevents form submission if false.
-                        });
-                });
-        
-        
+                
                 function generageQRCode() {
                         var name = $('#names').val();
                         var matchNum = $('#match').val();
@@ -398,6 +381,26 @@
                         <button onclick="generageQRCode()" id="check">
                                 <h2>Generate</h2>
                         </button>
+
+                        <script>
+                                $(document).ready(function () {
+                                        var formIsValid = function formIsValid() {
+                                                // your validation routines go here
+                                                // return a single boolean for pass/fail validations
+                                                var name = document.forms.myForm.fname.value;
+                                                return !!name; // will convert falsy values (like null and '') to false and truthy values (like 'fred') to true.
+                                        };
+                                        $('form').submit(function (e) {
+                                                var allGood = formIsValid();
+                                                if (!allGood) {
+                                                        e.preventDefault();
+                                                }
+                                                $('#barcode').toggle(allGood); // hide if validation failed, show if passed.
+                                                return allGood; // stops propagation and prevents form submission if false.
+                                        });
+                                });
+
+                        </script>
                         
                 </form>
                 <img id='barcode' src="" width="500" height="500" />
