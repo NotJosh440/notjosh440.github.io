@@ -1,22 +1,4 @@
 <script>
-//   function checkForm() {
-//     var requiredFields = document.querySelectorAll("[required]");
-//     var allFieldsFilled = true;
-//     for (var i = 0; i < requiredFields.length; i++) {
-//       if (requiredFields[i].value == "") {
-//         allFieldsFilled = false;
-//         break;
-//       }
-//     }
-//     if (allFieldsFilled) {
-//       generageQRCode();
-
-//     } else {
-//       alert("Please fill out all required fields.");
-//       return false;
-//     }
-//   }
-
 
     function generageQRCode(){         
         var name = $('#names').val();
@@ -67,25 +49,13 @@
                 card, damage, comment];
         var finalString = finalArray.join(";");
         var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=50x50';
-        
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'submit.php');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
-        // display the image in the browser
-        var img = document.createElement('img');
-        img.src = window.URL.createObjectURL(new Blob([this.response], {type: 'image/png'}));
-        document.body.appendChild(img);
-        };
-        xhr.send('url=' + encodeURIComponent(url));
-
         $('#barcode').attr('src', url);
         showQR();
     }
 
     function showQR() {
-        <iframe src="index.html"></iframe>
-        document.getElementById("barcode").style.display = "block";
+        <?php echo '<img src=url alt="John">';?>
+        //document.getElementById("barcode").style.display = "block";
     }
 
 </script>
