@@ -8,14 +8,17 @@ body{
     font-size:xx-large;
 }
 
-h1, h2, h3, p, label, h6{
+h1, h2, h3, label, h6{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #f4d;
+    color: rgb(188, 5, 154);
     text-align:center;
     
 }
 p{
     margin:8px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #f4d;
+    text-align: center;
 }
 h3{
     margin-top:32px;
