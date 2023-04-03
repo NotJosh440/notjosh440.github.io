@@ -33,7 +33,7 @@ input[type="radio"], input[type="checkbox"]{
     align-items: center;
 }
 input[type="number"].BIG{
-    width: 100px;;
+    width: 200px;;
 }
 input[type="range"]{
     width:80%;
