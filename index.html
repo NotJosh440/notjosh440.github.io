@@ -10,7 +10,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
                 
-                function generageQRCode() {
+                function generateQRCode() {
                         var name = $('#names').val();
                         var matchNum = $('#match').val();
                         var robotColor = $("input:radio[name=robot]:checked").val();
@@ -114,8 +114,8 @@
                 function scroll(element, offset){
                         const id = element;
                         const yOffset = offset;
-                        const element = document.getElementById(id);
-                        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        const elementToScrollTo = document.getElementById(id);
+                        const y = elementToScrollTo.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
                         window.scrollTo({ top: y, behavior: 'smooth' });
                 }
@@ -527,7 +527,7 @@
 
                                 submitButton.addEventListener('click', (event) => {
                                         event.preventDefault(); // Prevent the form from submitting
-                                        generageQRCode();
+                                        generateQRCode();
                                 });
                         </script>
                         
