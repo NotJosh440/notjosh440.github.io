@@ -82,8 +82,8 @@
                                 fields.forEach((field) => {
                                         if (!field.value) {
                                                 console.log(field);
-                                                const errorMessage = field.nextElementSibling;
-                                                console.log(field.getElementById);
+                                                const errorMessage = field.parentElement.querySelector('.errorMessage');
+                                                console.log(field.value);
                                                 errorMessage.style.display = 'block';
                                                 console.log("3");
                                         }
