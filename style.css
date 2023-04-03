@@ -7,6 +7,7 @@ body{
     margin:0px;
     font-size:xx-large;
 }
+
 h1, h2, h3, p, label, h6{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #f4d;
@@ -38,4 +39,7 @@ input[type="number"].BIG{
 }
 input[type="range"]{
     width:80%;
+}
+input[type="text"].initials{
+    width: 75px;
 }
