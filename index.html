@@ -69,7 +69,7 @@
                         if (form.checkValidity()) {
                                 // Display the success image
                                 QR.style.display = 'block';
-                                QR.scrollIntoView({ behavior: 'smooth' });
+                                scrollToElement(QR);
                                 hideErrorMessages();
 
                         } else {
@@ -88,7 +88,7 @@
                                 // Scroll to the first unfilled field
                                 const unfilledField = form.querySelector(':required:not(:valid)');
                                 unfilledField.scrollIntoView({ behavior: 'smooth' });
-                                scroll(unfilledField, -100);
+                                scrollToElement(unfilledField);
 
                         }
                         
@@ -111,14 +111,22 @@
                         QR.style.display = 'none';
                 }
 
-                function scroll(element, offset){
-                        const id = element;
-                        const yOffset = offset;
-                        const elementToScrollTo = document.getElementById(id);
-                        const y = elementToScrollTo.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                function scrollToElement(element) {
+                                // Get the top offset position of the element
+                                var topOffset = element.offsetTop;
 
-                        window.scrollTo({ top: y, behavior: 'smooth' });
-                }
+                                // Get the height of the element
+                                var elementHeight = element.offsetHeight;
+
+                                // Calculate the center position of the element
+                                var centerPosition = topOffset - (window.innerHeight - elementHeight) / 2;
+
+                                // Scroll to the center position of the element
+                                window.scrollTo({
+                                        top: centerPosition,
+                                        behavior: "smooth"
+                                });
+                        }
 
         </script>
         <style>
