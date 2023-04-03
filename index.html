@@ -106,6 +106,10 @@
                         });
                 }
 
+                function hideQR(){
+                        QR.style.display = 'none';
+                }
+
         </script>
         <style>
                 
@@ -493,7 +497,7 @@
                         </button>
 
 
-                        <button type="reset">
+                        <button type="reset" id="reset">
                                 <h2>Clear Data</h2>
                         </button>
 
@@ -503,11 +507,16 @@
 
                         <script>
                                 const submitButton = document.getElementById('submit');
+                                const resetButton = document.getElementById('reset');
                                 const QR = document.getElementById('barcode');
 
                                 submitButton.addEventListener('click', (event) => {
-                                        event.preventDefault(); // Prevent the form from submitting
+                                        //event.preventDefault(); // Prevent the form from submitting
+                                        hideQR();
+                                });
 
+                                submitButton.addEventListener('click', (event) => {
+                                        event.preventDefault(); // Prevent the form from submitting
                                         generageQRCode();
                                 });
                         </script>
