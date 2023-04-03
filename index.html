@@ -66,9 +66,6 @@
 
                 function showQR() {
                         const form = document.getElementById('scoutingForm');
-                        const errorName = document.getElementById('errorMessageForName');
-                        const errorMatchNum = document.getElementById('errorMessageForMatchNum');
-                        const errorTeam = document.getElementById('errorMessageForTeam');
                         const errorComment = document.getElementById('errorMessageForComment');
 
                         if (form.checkValidity()) {
@@ -498,7 +495,7 @@
 
                         <script>
                                 const submitButton = document.getElementById('submit');
-                                //const successImage = document.getElementById('barcode');
+                                const successImage = document.getElementById('barcode');
 
                                 submitButton.addEventListener('click', (event) => {
                                         event.preventDefault(); // Prevent the form from submitting
