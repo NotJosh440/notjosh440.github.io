@@ -63,33 +63,41 @@
                         showQR();
                 }
 
+
                 function showQR() {
                         const form = document.getElementById('scoutingForm');
-                        const errorMessage = document.getElementById('error-message');
+                        const errorName = document.getElementById('errorMessageForName');
+                        const errorMatchNum = document.getElementById('errorMessageForMatchNum');
+                        const errorTeam = document.getElementById('errorMessageForTeam');
+                        const errorComment = document.getElementById('errorMessageForComment');
 
                         if (form.checkValidity()) {
                                 // Display the success image
-                                document.getElementById("barcode").style.display = "block";
-                                errorMessage.style.display = 'none';
-
+                                successImage.style.display = 'block';
+                                hideErrorMessages();
                         } else {
-                                // Show an error message and highlight the incomplete fields
-                                errorMessage.style.display = 'block';
+                                // Show error messages for the unfilled fields
+                                const fields = form.querySelectorAll(':required');
 
-                                const invalidFields = form.querySelectorAll(':invalid');
-
-                                invalidFields.forEach((field) => {
-                                        field.classList.add('invalid');
-                                        field.addEventListener('input', () => {
-                                                field.classList.remove('invalid');
-                                                errorMessage.style.display = 'none';
-                                        });
+                                fields.forEach((field) => {
+                                        if (!field.value) {
+                                                const errorMessage = field.nextElementSibling;
+                                                errorMessage.style.display = 'block';
+                                        }
                                 });
 
-                                // Scroll to the first invalid field
-                                invalidFields[0].scrollIntoView({ behavior: 'smooth' });
+                                // Scroll to the first unfilled field
+                                const unfilledField = form.querySelector(':required:not(:valid)');
+                                unfilledField.scrollIntoView({ behavior: 'smooth' });
                         }
                         
+                }
+
+                function hideErrorMessages() {
+                        const errorMessages = form.querySelectorAll('.error-message');
+                        errorMessages.forEach((errorMessage) => {
+                                errorMessage.style.display = 'none';
+                        });
                 }
 
         </script>
@@ -117,12 +125,23 @@
 
                 <form action="" method="post" onsubmit="return checkForm()" id="scoutingForm">
 
+
                         <h1>Pre-match</h1>
+
+
                         <p><label for="names">Scouter's initials:</label></p>
                         <p><input type="text" id="names" name="names" required></p><br>
+                        <p class="errorMessage" id="errorMessageForName" style="display: none; color: red;">Please fill out this fields.</p>
+
+
                         <p><label for="match">Match Number:</label></p>
-                        <p><input type="number" id="match" name="match" value=0 class="BIG"></p>
+                        <p><input type="number" id="match" name="match" value=0 class="BIG" required></p>
+                        <p class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;">Please fill out this field.</p>
+
+
                         <h3>Robot:</h3>
+
+
                         <p>
                                 <input type="radio" id="red1" name="robot" value="red1">
                                 <label for="red1">Red 1</label>
@@ -141,13 +160,24 @@
                                 <input type="radio" id="blue3" name="robot" value="blue3">
                                 <label for="blue3">Blue 3</label>
                         </p>
+
+
                         <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
                         <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG"></p>
+                        <p class="errorMessage" id="errorMessageForTeam style="display: none; color: red;">Please fill out this field.</p>
+
+
                         <p><input type="checkbox" id="noshow" name="noshow" value=1>
                                 <label for="noshow">No show</label>
                         </p>
+
+
                         <h1>Autonomous</h1>
+
+
                         <h3>Starting Location:</h3>
+
+
                         <table style="width:100%">
                                 <tr>
                                         <td style="width:30%">
@@ -170,6 +200,8 @@
                                         </td>
                                 </tr>
                         </table><br>
+
+
                         <p><label for="auto_upper_cone">Upper Cone Scored:</label><br>
                                 <button type="button" onclick="decrement('auto_upper_cone')">
                                         <h3 class="increment">&emsp;-&emsp;</h3>
@@ -229,10 +261,14 @@
                                         <h3 class="increment">&emsp;+&emsp;</h3>
                                 </button>
                         </p><br>
+
+
                         <p>
                                 <input type="checkbox" id="mobility" name="mobility" value=1>
                                 <label for="mobility">Exited Community?</label>
                         </p>
+
+
                         <p>
                                 <input type="checkbox" id="auto_pickup" name="auto_pickup" value=1>
                                 <label for="auto_pickup">Picked up Cone or Cube in Auto?</label>
@@ -263,7 +299,11 @@
                                         </td>
                                 </tr>
                         </table><br>
+
+
                         <h1>Teleop</h1>
+
+
                         <p>
                                 <label for="teleop_upper_cone">Upper Cone Scored:</label><br>
                                 <button type="button" onclick="decrement('teleop_upper_cone')">
@@ -324,7 +364,11 @@
                                         <h3 class="increment">&emsp;+&emsp;</h3>
                                 </button>
                         </p><br>
+
+
                         <h3>Can pick up from:</h3>
+
+
                         <table style="width:100%;">
                                 <tr>
                                         <td>
@@ -339,6 +383,8 @@
                                         </td>
                                 </tr>
                         </table>
+
+
                         <p>
                                 <label for="links">Links:</label><br>
                                 <button type="button" onclick="decrement('links')">
@@ -350,12 +396,20 @@
                                 </button>
                         </p>
                         <br>
+
+
                         <h1>Endgame</h1>
+
+
                         <p>
                                 <label for="early_endgame">Attempted Before Endgame?</label>
                                 <input type="checkbox" id="early_endgame" name="early_endgame" value=1>
                         </p>
+
+
                         <h3>Endgame Position</h3>
+
+
                         <p>
                                 <input type="radio" id="no_endgame" name="endgame" value="TELE NONE" checked>
                                 <label for="no_endgame">None</label>
@@ -368,19 +422,38 @@
                                 <input type="radio" id="engaged" name="endgame" value="TELE DOCK ENGAGE">
                                 <label for="engaged">Engaged</label>
                         </p><br>
+
+
                         <label for="num_docked">
                                 <h3 style="margin:0px;">Number of Docked Robots</h3>
                         </label>
+                        
+
                         <p>
                                 <input type="range" id="num_docked" name="num_docked" min="0" max="3" step="1" value="0">
                         </p>
+
+
                         <h1>Post-Match</h1>
+
+
                         <p><label for="skill">Skill of Driver and Operator</label></p>
+
+
                         <h3 style="margin:0px;">Bad&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Good</h3>
+
+
                         <p><input type="range" id="skill" name="skill" min="1" max="3"></p>
+
+
                         <p><label for="defense">Defense Capabilities</label></p>
+
+
                         <h3 style="margin:0px;">Bad&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Good</h3>
+
+
                         <p><input type="range" id="defense" name="defense" min="1" max="3"></p>
+
 
                         <p>
                                 <input type="checkbox" id="died" name="died" value=1>
@@ -392,22 +465,36 @@
                                 <input type="checkbox" id="damage" name="damage" value=1>
                                 <label for="damage">Damaged</label>
                         </p>
+
+
                         <label for="comments">&emsp;Comments</label>
                         <br> &emsp;
+
+
                         <textarea id="comments" name="comments" cols="30"
-                                rows="5" required></textarea><br><br><br>
+                                rows="5" required>
+                        </textarea><br><br><br>
+                        <p class="errorMessage" id="errorMessageForComments" style="display: none; color: red;">Please fill out this field.</p>
+
 
                         <button type="submit" id="submit">
                                 <h2>Send it!!!</h2>
                         </button>
+
+
                         <button type="reset">
                                 <h2>Clear Data</h2>
                         </button>
+
+                        
                         <button onclick="generageQRCode()" id="check">
                                 <h2>Generate</h2>
                         </button>
+
+
                         <img id='barcode' src="" width="500" height="500" />
                         
+
                         <script>
                                 const submitButton = document.getElementById('submit');
                                 //const successImage = document.getElementById('barcode');
@@ -421,7 +508,6 @@
                         
                 </form>
 
-                <p id="error-message" style="display: none; color: red;">Please fill out all required fields.</p>
         </div>
 </body>
 </html>
