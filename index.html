@@ -488,7 +488,7 @@
 
 
                         <textarea id="comments" name="comments" cols="30" rows="5" required correspondingErrorId="errorMessageForComments"></textarea>
-                        <p align="right" class="errorMessage" id="errorMessageForComments" style="display: none; color: red;">Please fill out this field.</p>
+                        <p class="errorMessage" id="errorMessageForComments" style="display: none; color: red;">Please fill out this field.</p>
                         <br><br><br>
 
 
@@ -510,8 +510,7 @@
                                 const resetButton = document.getElementById('reset');
                                 const QR = document.getElementById('barcode');
 
-                                submitButton.addEventListener('click', (event) => {
-                                        //event.preventDefault(); // Prevent the form from submitting
+                                resetButton.addEventListener('click', (event) => {
                                         hideQR();
                                 });
 
