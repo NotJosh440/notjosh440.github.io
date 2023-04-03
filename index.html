@@ -83,7 +83,7 @@
                                         if (!field.value) {
                                                 console.log(field);
                                                 const errorMessage = field.parentElement.querySelector('.errorMessage');
-                                                console.log(field.value);
+                                                console.log();
                                                 errorMessage.style.display = 'block';
                                                 console.log("3");
                                         }
@@ -135,12 +135,12 @@
 
                         <p><label for="names">Scouter's initials:</label></p>
                         <p><input type="text" id="names" name="names" required></p>
-                        <p class="errorMessage" id="errorMessageForName" style="display: none; color: red;">Please fill out this fields.</p>
+                        <div class="errorMessage" id="errorMessageForName" style="display: none; color: red;">Please fill out this fields.</div>
                         <br>
 
                         <p><label for="match">Match Number:</label></p>
                         <p><input type="number" id="match" name="match" value=0 class="BIG" required></p>
-                        <p class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;">Please fill out this field.</p>
+                        <div class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;">Please fill out this field.</div>
 
 
                         <h3>Robot:</h3>
@@ -168,7 +168,7 @@
 
                         <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
                         <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG"></p>
-                        <p class="errorMessage" id="errorMessageForTeam style="display: none; color: red;">Please fill out this field.</p>
+                        <div class="errorMessage" id="errorMessageForTeam" style="display: none; color: red;">Please fill out this field.</div>
 
 
                         <p><input type="checkbox" id="noshow" name="noshow" value=1>
@@ -478,7 +478,7 @@
                         <textarea id="comments" name="comments" cols="30"
                                 rows="5" required>
                         </textarea><br><br><br>
-                        <p class="errorMessage" id="errorMessageForComments" style="display: none; color: red;">Please fill out this field.</p>
+                        <div class="errorMessage" id="errorMessageForComments" style="display: none; color: red;">Please fill out this field.</div>
 
 
                         <button type="submit" id="submit">
