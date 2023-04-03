@@ -65,7 +65,6 @@
 
                 function showQR() {
                         const form = document.getElementById('scoutingForm');
-                        const errorComment = document.getElementById('errorMessageForComment');
 
                         if (form.checkValidity()) {
                                 // Display the success image
@@ -96,6 +95,7 @@
 
                 function hideErrorMessages() {
 
+                        const form = document.getElementById('scoutingForm');
                         const fields = form.querySelectorAll(':required');
 
                         fields.forEach((field) => {
