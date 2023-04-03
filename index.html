@@ -71,7 +71,7 @@
                                 // Display the success image
                                 QR.style.display = 'block';
                                 QR.scrollIntoView({ behavior: 'smooth' });
-                                hideErrorMessages();
+                                //hideErrorMessages();
                         } else {
                                 // Show error messages for the unfilled fields
                                 const fields = form.querySelectorAll(':required');
@@ -80,6 +80,9 @@
                                         if (!field.value) {
                                                 const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
                                                 errorMessage.style.display = 'block';
+                                        }else{
+                                                const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
+                                                errorMessage.style.display = 'none';
                                         }
                                 });
 
@@ -93,7 +96,7 @@
 
                 function hideErrorMessages() {
                         const form = document.getElementById('scoutingForm');
-                        const errorMessages = document.getElementById(form.querySelectorAll(':required').getAttribute("correspondingErrorId"));
+                        const errorMessages = form.querySelectorAll('.errorMessage');
                         errorMessages.forEach((errorMessage) => {
                                 errorMessage.style.display = 'none';
                         });
