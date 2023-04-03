@@ -81,8 +81,11 @@
 
                                 fields.forEach((field) => {
                                         if (!field.value) {
+                                                console.log("1");
                                                 const errorMessage = field.nextElementSibling;
+                                                console.log("2");
                                                 errorMessage.style.display = 'block';
+                                                console.log("3");
                                         }
                                 });
 
@@ -90,13 +93,12 @@
                                 const unfilledField = form.querySelector(':required:not(:valid)');
                                 unfilledField.scrollIntoView({ behavior: 'smooth' });
 
-                                console.log("scroll");
                         }
                         
                 }
 
                 function hideErrorMessages() {
-                        const errorMessages = form.querySelectorAll('.error-message');
+                        const errorMessages = form.querySelectorAll('.errorMessage');
                         errorMessages.forEach((errorMessage) => {
                                 errorMessage.style.display = 'none';
                         });
