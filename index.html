@@ -81,11 +81,9 @@
 
                                 fields.forEach((field) => {
                                         if (!field.value) {
-                                                console.log(field);
-                                                const errorMessage = field.parentElement.querySelector('.errorMessage');
-                                                console.log();
+                                                var errorMessage = Document.getElementById(field.getAttribute("correspondingErrorId"));
+                                                
                                                 errorMessage.style.display = 'block';
-                                                console.log("3");
                                         }
                                 });
 
@@ -134,13 +132,13 @@
 
 
                         <p><label for="names">Scouter's initials:</label></p>
-                        <p><input type="text" id="names" name="names" required></p>
-                        <p class="errorMessage" id="errorMessageForName" style="display: none; color: red;">Please fill out this fields.</p>
+                        <p><input type="text" id="names" name="names" required correspondingErrorId="errorMessageForName"></p>
+                        <p class="errorMessage" id="errorMessageForName" style="display: none; color: red;" error>Please fill out this fields.</p>
                         <br>
 
                         <p><label for="match">Match Number:</label></p>
-                        <p><input type="number" id="match" name="match" value=0 class="BIG" required></p>
-                        <p class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;">Please fill out this field.</p>
+                        <p><input type="number" id="match" name="match" value=0 class="BIG" required correspondingErrorId="errorMessageForMatchNum"></p>
+                        <p class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;" error>Please fill out this field.</p>
 
 
                         <h3>Robot:</h3>
@@ -167,7 +165,7 @@
 
 
                         <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
-                        <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG"></p>
+                        <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG" correspondingErrorId="errorMessageForTeam"></p>
                         <p class="errorMessage" id="errorMessageForTeam" style="display: none; color: red;">Please fill out this field.</p>
 
 
@@ -475,10 +473,9 @@
                         <br> &emsp;
 
 
-                        <textarea id="comments" name="comments" cols="30"
-                                rows="5" required>
-                        </textarea><br><br><br>
+                        <textarea id="comments" name="comments" cols="30" rows="5" required correspondingErrorId="errorMessageForComments"></textarea>
                         <p class="errorMessage" id="errorMessageForComments" style="display: none; color: red;">Please fill out this field.</p>
+                        <br><br><br>
 
 
                         <button type="submit" id="submit">
