@@ -42,4 +42,5 @@ input[type="range"]{
 }
 input[type="text"].initials{
     width: 75px;
+    height: 50;
 }
