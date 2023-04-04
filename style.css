@@ -70,8 +70,6 @@ input[type="text"].initials{
     width: 75px;
     height: 50;
 }
-
-
 .slider-container {
     position: relative;
     width: 100%;
@@ -80,30 +78,29 @@ input[type="text"].initials{
 .slider {
     -webkit-appearance: none;
     width: 100%;
-    height: 15px;
+    height: 20px;
     border-radius: 10px;
     background-color: #ddd;
     outline: none;
     opacity: 0.7;
     transition: opacity 0.2s;
-    background: linear-gradient(to right, #4CAF50 0%, #4CAF50 calc(var(--fill) / 100 * (100% - 30px)), #ddd calc(var(--fill) / 100 * (100% - 30px)), #ddd 100%);
 }
 
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background-color: rgb(255, 175, 216);
+    background-color: #4CAF50;
     cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background-color: rgb(255, 175, 216);
+    background-color: #4CAF50;
     cursor: pointer;
 }
 
@@ -122,5 +119,5 @@ input[type="text"].initials{
     text-align: center;
     width: calc(100% / 3);
     font-size: 14px;
-    color: #fff;
+    color: #999;
 }

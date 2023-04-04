@@ -477,14 +477,24 @@
                         
 
                         <p>
-                                <input type="range" id="num_docked" name="num_docked" min="0" max="3" step="1" value="0" class="slider">
-                               
-                                <div class="slider-labels">
-                                        <span>0</span>
-                                        <span>1</span>
-                                        <span>2</span>
-                                        <span>3</span>
-                                </div>
+                                <input type="range" id="num_docked" name="num_docked" min="0" max="3" step="1" value="0">
+                                        <div class="slider-labels">
+                                                <span>1</span>
+                                                <span>50</span>
+                                                <span>100</span>
+                                        </div>
+                                <p id="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                
+                                
+                                <script>
+                                        const slider = document.getElementById("num_docked");
+                                        const paragraph = document.getElementById("paragraph");
+
+                                        slider.addEventListener("input", () => {
+                                                const value = slider.value;
+                                                paragraph.textContent = "Lorem ipsum ".repeat(value);
+                                        });
+                                </script>
                         </p>
                         <br><br>
 
