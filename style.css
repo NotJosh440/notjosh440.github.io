@@ -16,6 +16,7 @@ body{
     align-items: center;
 }
 .subBox {
+    margin: 0 auto;
     height: 75;
     width: 275px;
     background-color: rgb(218, 53, 144);
