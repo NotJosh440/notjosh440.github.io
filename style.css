@@ -71,14 +71,10 @@ input[type="text"].initials{
     height: 50;
 }
 .radio-group {
-    display: grid;
-    grid-template-columns: auto min-content;
-    grid-column-gap: 10px;
-    align-items: center;
+    display: flex;
+    justify-content: center;
 }
+
 .radio-group label {
-    grid-column: 1;
-}
-.radio-group input {
-    grid-column: 2;
+    margin: 0 20px;
 }
