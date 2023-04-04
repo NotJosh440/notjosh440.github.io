@@ -7,7 +7,21 @@ body{
     margin:0px;
     font-size:xx-large;
 }
-
+.box {
+    height: 200px;
+    width: 100%;
+    background-color: rgb(218, 53, 144);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.h1Font{
+    font-size: 32px; /* same size as default h1 */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; /* example font family */
+    font-weight: bold; /* example font weight */
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
 h1, h2, h3, h4, h6{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(218, 53, 144);
