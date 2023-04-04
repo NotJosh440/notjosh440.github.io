@@ -8,7 +8,7 @@ body{
     font-size:xx-large;
 }
 .titleBox {
-    height: 150px;
+    height: 125px;
     width: 100%;
     background-color: rgb(218, 53, 144);
     display: flex;
