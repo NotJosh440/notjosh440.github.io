@@ -9,7 +9,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-                
+                var url;
                 function generateQRCode() {
                         var name = $('#names').val();
                         var matchNum = $('#match').val();
@@ -58,7 +58,7 @@
                                 substation, ground, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
                         var finalString = finalArray.join("🛇");
-                        var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=300x300';
+                        url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=300x300';
                         $('#barcode').attr('src', url);
                         showQR();
                 }
@@ -109,6 +109,7 @@
 
                 function hideQR(){
                         QR.style.display = 'none';
+                        url = "";
                 }
 
                 function scrollToElement(element) {
@@ -472,7 +473,7 @@
 
 
                         <label for="num_docked">
-                                <h3 style="margin:0px;">Number of Docked Robots</h3>
+                                <h3 style="margin:0px;" id="textNumDocked">Number of Docked Robots: 0</h3>
                         </label>
                         
 
@@ -483,11 +484,11 @@
                                 
                                 <script>
                                         const slider = document.getElementById("num_docked");
-                                        const paragraph = document.getElementById("paragraph");
+                                        const paragraph = document.getElementById("textNumDocked");
 
                                         slider.addEventListener("input", () => {
                                                 const value = slider.value;
-                                                paragraph.textContent = value;
+                                                paragraph.textContent = "Number of Docked Robots: " + value;
                                         });
                                 </script>
                         </p>
