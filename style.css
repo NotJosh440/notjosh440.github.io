@@ -10,14 +10,14 @@ body{
 
 h1, h2, h3, label, h6{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgb(136, 22, 115);
+    color: rgb(225, 104, 119);
     text-align:center;
     
 }
 p{
     margin:8px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #f4d;
+    color: rgb(225, 104, 119);
     text-align: center;
 }
 h3{
