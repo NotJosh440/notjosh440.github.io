@@ -80,7 +80,7 @@ input[type="text"].initials{
 .slider {
     -webkit-appearance: none;
     width: 100%;
-    height: 20px;
+    height: 15px;
     border-radius: 10px;
     background-color: #ddd;
     outline: none;
@@ -92,16 +92,16 @@ input[type="text"].initials{
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background-color: rgb(255, 175, 216);
     cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background-color: rgb(255, 175, 216);
     cursor: pointer;
