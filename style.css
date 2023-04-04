@@ -17,7 +17,7 @@ body{
 }
 .subBox {
     height: 75;
-    width: 315px;
+    width: 275px;
     background-color: rgb(218, 53, 144);
     display: flex;
     justify-content: center;
