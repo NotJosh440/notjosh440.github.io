@@ -70,3 +70,11 @@ input[type="text"].initials{
     width: 75px;
     height: 50;
 }
+.radio-group {
+    display: flex;
+    justify-content: center;
+}
+
+.radio-group label {
+    margin: 0 10px;
+}
