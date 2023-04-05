@@ -8,6 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+        <script src="qrcode.min.js"></script>
         <script type="text/javascript">
                 var url;
                 function generateQRCode() {
@@ -60,39 +61,40 @@
                         var finalString = finalArray.join("🛇");
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=300x300';
                         $('#barcode').attr('src', url);
-                        showQR();
+                        //showQR();
+                        qrCode.makeCode("your-text-here");
                 }
 
-                function showQR() {
-                        const form = document.getElementById('scoutingForm');
+                // function showQR() {
+                //         const form = document.getElementById('scoutingForm');
 
-                        if (form.checkValidity()) {
-                                // Display the success image
-                                QR.style.display = 'block';
-                                scrollToElement(QR);
-                                hideErrorMessages();
+                //         if (form.checkValidity()) {
+                //                 // Display the success image
+                //                 QR.style.display = 'block';
+                //                 scrollToElement(QR);
+                //                 hideErrorMessages();
 
-                        } else {
-                                // Show error messages for the unfilled fields
-                                const fields = form.querySelectorAll(':required');
+                //         } else {
+                //                 // Show error messages for the unfilled fields
+                //                 const fields = form.querySelectorAll(':required');
 
-                                fields.forEach((field) => {
-                                        if (!field.value) {
-                                                const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
-                                                errorMessage.style.display = 'block';
-                                        }else{
-                                                hideErrorMessages();
-                                        }
-                                });
+                //                 fields.forEach((field) => {
+                //                         if (!field.value) {
+                //                                 const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
+                //                                 errorMessage.style.display = 'block';
+                //                         }else{
+                //                                 hideErrorMessages();
+                //                         }
+                //                 });
 
-                                // Scroll to the first unfilled field
-                                const unfilledField = form.querySelector(':required:not(:valid)');
-                                unfilledField.scrollIntoView({ behavior: 'smooth' });
-                                scrollToElement(unfilledField);
+                //                 // Scroll to the first unfilled field
+                //                 const unfilledField = form.querySelector(':required:not(:valid)');
+                //                 unfilledField.scrollIntoView({ behavior: 'smooth' });
+                //                 scrollToElement(unfilledField);
 
-                        }
+                //         }
                         
-                }
+                // }
 
                 function hideErrorMessages() {
 
@@ -107,25 +109,30 @@
                         });
                 }
 
-                function hideQR(){
-                        QR.style.display = 'none';
-                        $('#barcode').attr('src', "");
-                }
+                // function hideQR(){
+                //         QR.style.display = 'none';
+                //         $('#barcode').attr('src', "");
+                // }
 
                 function scrollToElement(element) {
-                                // Get the top offset position of the element
-                                var topOffset = element.offsetTop;
-                                // Get the height of the element
-                                var elementHeight = element.offsetHeight;
-                                // Calculate the center position of the element
-                                var centerPosition = topOffset - (window.innerHeight - elementHeight) / 2;
-                                // Scroll to the center position of the element
-                                window.scrollTo({
-                                        top: centerPosition,
-                                        behavior: "smooth"
-                                });
-                        }
+                        // Get the top offset position of the element
+                        var topOffset = element.offsetTop;
+                        // Get the height of the element
+                        var elementHeight = element.offsetHeight;
+                        // Calculate the center position of the element
+                        var centerPosition = topOffset - (window.innerHeight - elementHeight) / 2;
+                        // Scroll to the center position of the element
+                        window.scrollTo({
+                                top: centerPosition,
+                                behavior: "smooth"
+                        });
+                }
 
+                var qrCode = new QRCode(document.getElementById("qr-code"), {
+                        text: "your-text-here",
+                        width: 300,
+                        height: 300,
+                });
         </script>
         <style>
                 
@@ -222,11 +229,11 @@
 
                         <div class="radio-group">
                                 <input type="radio" id="left" class="radio-group">
-                                <label for="left" style="margin-right: 20;">Left</label>
+                                <label for="left" class="rightMargin">Left</label>
                                 <input type="radio" id="middle" class="radio-group">
-                                <label for="middle" style="margin-right: 20;">Middle</label>
+                                <label for="middle" class="rightMargin">Middle</label>
                                 <input type="radio" id="right" class="radio-group">
-                                <label for="right" style="margin-right: 20;">Right</label>
+                                <label for="right" class="rightMargin">Right</label>
                         </div>
                         <br>
 
@@ -537,8 +544,8 @@
                         </button>
 
 
-                        <img id='barcode' src="" width="300" height="300" />
-                        
+                        <!-- <img id='barcode' src="" width="300" height="300" /> -->
+                        <canvas id="qr-code"></canvas>
 
                         <script>
                                 const submitButton = document.getElementById('submit');
