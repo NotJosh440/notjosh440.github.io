@@ -60,6 +60,7 @@
                                 substation, ground, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
                         var finalString = finalArray.join("🛇");
+                        console.log(screenWidth90);
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=' + screenWidth90 + 'x' + screenWidth90 + '';
                         $('#barcode').attr('src', url);
                         showQR();
