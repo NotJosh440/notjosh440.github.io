@@ -62,7 +62,7 @@
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=300x300';
                         $('#barcode').attr('src', url);
                         //showQR();
-                        qrCode.makeCode("your-text-here");
+                        qrCode.makeCode(finalString);
                 }
 
                 // function showQR() {
