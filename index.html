@@ -69,7 +69,7 @@
 
                         if (form.checkValidity()) {
                                 // Display the success image
-                                QR.style.display = 'block';
+                                QR.style.display = 'inline-block';
                                 scrollToElement(QR);
                                 hideErrorMessages();
 
@@ -130,7 +130,7 @@
         <style>
                 
                 #barcode {
-                        display: inline-none;
+                        display: none;
                 }
 
         </style>
@@ -530,7 +530,7 @@
                                         <h2>Clear Data</h2>
                                 </button>
 
-                                <img id='barcode' src="" width="300" height="300" style="display: inline-none;"/>
+                                <img id='barcode' src="" width="300" height="300" style="display: none"/>
                         </div>
 
                         <script>
