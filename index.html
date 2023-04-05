@@ -11,7 +11,6 @@
         <script src="qrcode.min.js"></script>
         <script type="text/javascript">
                 var url;
-                const screenWidth90 = window.innerWidth * .9;
                 function generateQRCode() {
                         var name = $('#names').val();
                         var matchNum = $('#match').val();
@@ -61,7 +60,7 @@
                                 card, damage, comment];
                         var finalString = finalArray.join("🛇");
                         console.log(screenWidth90);
-                        url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=' + screenWidth90 + 'x' + screenWidth90 + '';
+                        url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size="20000x20000";
                         $('#barcode').attr('src', url);
                         showQR();
                 }
@@ -134,6 +133,7 @@
                 #barcode {
                         display: none;
                 }
+                
 
         </style>
 </head>
@@ -531,7 +531,7 @@
                                         <h2>Clear Data</h2>
                                 </button>
 
-                                <img id='barcode' src="" width=screenWidth90 height=screenWidth90 style="display: none; margin:0 auto;"/>
+                                <img id='barcode' src="" style="display: none; margin:0 auto;" class="qrCode"/>
                         </div>
 
                         <script>
@@ -546,6 +546,9 @@
 
                                 submitButton.addEventListener('click', (event) => {
                                         event.preventDefault(); // Prevent the form from submitting
+                                        const screenWidth90 = window.innerWidth * 0.9;
+                                        document.getElementById("barcode").style.width = `${screenWidth90}px`;
+                                        document.getElementById("barcode").style.height = `${screenWidth90}px`;
                                         generateQRCode();
                                 });
                         </script>
