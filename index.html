@@ -11,6 +11,7 @@
         <script src="qrcode.min.js"></script>
         <script type="text/javascript">
                 var url;
+                const screenWidth90 = window.innerWidth * 0.9;
                 function generateQRCode() {
                         var name = $('#names').val();
                         var matchNum = $('#match').val();
@@ -59,7 +60,6 @@
                                 substation, ground, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
                         var finalString = finalArray.join("🛇");
-                        const screenWidth90 = window.innerWidth * 0.9;
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=' + screenWidth90 + 'x' + screenWidth90 + '';
                         $('#barcode').attr('src', url);
                         showQR();
@@ -531,7 +531,7 @@
                                         <h2>Clear Data</h2>
                                 </button>
 
-                                <img id='barcode' src="" width="300" height="300" style="display: none; margin:0 auto;"/>
+                                <img id='barcode' src="" width="0"+screenWidth90 height="0"+screenWidth90 style="display: none; margin:0 auto;"/>
                         </div>
 
                         <script>
