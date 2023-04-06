@@ -70,9 +70,11 @@
                                 groundOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
                         var finalString = finalArray.join("|");
-                        showQR();
+                        document.getElementById("qrtext").style.display = "block";
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
                         $('#barcode').attr('src', url);
+                        showQR();
+                        document.getElementById("qrtext").style.display = "none";
                 }
 
                 function showQR() {
@@ -560,7 +562,8 @@
                                 </button>
                                 <br><br>
 
-                                <img id='barcode' src="" style="display: none; margin:0 auto;" class="qrCode" alt="Please wait while your QR Code is loading..."/>
+                                <p id="qrtext" class="qrtext">Please wait while your QR Code is loading...</p>
+                                <img id='barcode' src="" style="display: none; margin:0 auto;" class="qrCode"/>
                         </div>
 
                         <script>
