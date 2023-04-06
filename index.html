@@ -10,7 +10,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
         <script src="qrcode.min.js"></script>
         <script type="text/javascript">
+                var scouterInitial;
                 var url;
+
                 function generateQRCode() {
                         var name = $('#names').val();
                         var matchNum = $('#match').val();
@@ -126,6 +128,11 @@
                                 behavior: "smooth"
                         });
                 }
+
+                function SetInitials() {
+                        document.getElementById("names").value = scouterInitial;
+
+                }
         </script>
         <style>
                 
@@ -148,6 +155,7 @@
 
                 <!-- Simple JS to implement buttons -->
                 <script>
+
                         function increment(id) {
                                 document.getElementById(id).stepUp();
                         }
@@ -167,7 +175,7 @@
 
 
                         <p><label for="names">Scouter's initials:</label></p>
-                        <p><input type="text" id="names" name="names" required correspondingErrorId="errorMessageForName" class="initials"></p>
+                        <p><input type="text" id="names" name="names" required correspondingErrorId="errorMessageForName" class="initials" onchange="SetInitials()"></p>
                         <p class="errorMessage" id="errorMessageForName" style="display: none; color: red;" error>Please fill out this field.</p>
                         <br>
 
@@ -539,13 +547,11 @@
                                 const submitButton = document.getElementById('submit');
                                 const resetButton = document.getElementById('reset');
                                 const QR = document.getElementById('barcode');
-                                var scouterInitial;
 
                                 resetButton.addEventListener('click', (event) => {
                                         hideQR();
                                         document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
                                         console.log(scouterInitial);
-                                        document.getElementById("names").value = scouterInitial;
                                         console.log(scouterInitial);
                                 });
 
