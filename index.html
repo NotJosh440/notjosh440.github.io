@@ -17,7 +17,7 @@
                         var matchNum = $('#match').val();
                         var robotColor = $("input:radio[name=robot]:checked").val();
                         var teamNum = $('#teamnumber').val();
-                        var noShow = $('#noshow').checked();
+                        var noShow = $('#noshow').checked;
 
                         var location = $("input:radio[name=location]:checked").val();
                         var autoUpperCone = $('#auto_upper_cone').val();
@@ -26,8 +26,8 @@
                         var autoUpperCube = $('#auto_upper_cube').val();
                         var autoMiddleCube = $('#auto_middle_cube').val();
                         var autoLowerCube = $('#auto_lower_cube').val();
-                        var mobility = $('#mobility').checked();
-                        var autoPickup = $('#auto_pickup').checked();
+                        var mobility = $('#mobility').checked;
+                        var autoPickup = $('#auto_pickup').checked;
                         var autoDock = $("input:radio[name=auto_dock_engage]:checked").val();
 
                         var upperCone = $('#teleop_upper_cone').val();
@@ -36,8 +36,8 @@
                         var upperCube = $('#teleop_upper_cube').val();
                         var middleCube = $('#teleop_middle_cube').val();
                         var lowerCube = $('#teleop_lower_cube').val();
-                        var substation = $('#substation').checked();
-                        var ground = $('#ground').checked();
+                        var substation = $('#substation').checked;
+                        var ground = $('#ground').checked;
                         var groudOrSub;
                         if (ground == 1 && substation == 1){
                                 groudOrSub = "BOTH";
@@ -49,7 +49,7 @@
                                 groudOrSub = "NONE";
                         }
                         var links = $('#links').val();
-                        var beforeEndgame = $('#early_endgame').checked();
+                        var beforeEndgame = $('#early_endgame').checked;
 
                         var teleDock = $("input:radio[name=endgame]:checked").val();
                         var numDock = $('#num_docked').val();
