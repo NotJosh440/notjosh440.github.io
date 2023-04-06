@@ -138,11 +138,9 @@
 
                                 // Set the value of the input field with the ID "myInput"
                                 // to the value of the element with the ID "myElement"
-                                while(!document.getElementById("names")){
-                                        if(document.getElementById("names")){
-                                                document.getElementById("names").value = scouterInitial;
-                                        }
-                                }
+                                setTimeout(function () {
+                                        document.getElementById("names").value = scouterInitial;
+                                }, 0);
                         }
                 </script>
         <style>
@@ -550,6 +548,7 @@
                                 <button type="reset" id="reset-button" style="display: inline-block;">
                                         <h2>Clear Data</h2>
                                 </button>
+                                <br><br>
 
                                 <img id='barcode' src="" style="display: none; margin:0 auto;" class="qrCode"/>
                         </div>
