@@ -165,6 +165,7 @@ function hideAllErrorMessages() {
                                         document.getElementById("names").value = scouterInitial;
 document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0"
 hideAllErrorMessages();
+scrollToElement(document.getElementById("scoutingPage"));
                                 }, 0);
                         }
                 </script>
@@ -179,7 +180,7 @@ hideAllErrorMessages();
 </head>
 
 <body>
-        <div class="scouting_form">
+        <div class="scouting_form" id="scoutingPage">
 
                 <div class="titleBox" id="top">
                         <p class="h1Font">Team 3181 Scouting</p>
