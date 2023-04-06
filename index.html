@@ -120,6 +120,19 @@
                         });
                 }
 
+function hideAllErrorMessages() {
+
+                        const form = document.getElementById('scoutingForm');
+                        const fields = form.querySelectorAll(':required');
+
+                        fields.forEach((field) => {
+                                        const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
+                                        errorMessage.style.display = 'none';
+
+                        });
+                }
+
+
                 function hideQR(){
                         QR.style.display = 'none';
                         $('#barcode').attr('src', "");
@@ -151,7 +164,7 @@
                                 setTimeout(function () {
                                         document.getElementById("names").value = scouterInitial;
 document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0"
-hideErrorMessages();
+hideAllErrorMessages();
                                 }, 0);
                         }
                 </script>
