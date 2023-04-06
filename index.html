@@ -70,11 +70,9 @@
                                 groundOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
                         var finalString = finalArray.join("|");
-                        document.getElementById("qrtext").style.display = "block";
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
                         $('#barcode').attr('src', url);
                         showQR();
-                        document.getElementById("qrtext").style.display = "none";
                 }
 
                 function showQR() {
@@ -580,6 +578,7 @@
 
                                 submitButton.addEventListener('click', (event) => {
                                         event.preventDefault(); // Prevent the form from submitting
+                                        document.getElementById("qrtext").style.display = "block";
                                         const screenWidth90 = window.innerWidth * 0.9;
                                         const screenHeight90 = window.innerHeight * 0.9;
                                         if(screenHeight90 < screenWidth90){
@@ -588,6 +587,7 @@
                                         document.getElementById("barcode").style.width = `${screenWidth90}px`;
                                         document.getElementById("barcode").style.height = `${screenWidth90}px`;
                                         generateQRCode();
+                                        document.getElementById("qrtext").style.display = "none";
                                 });
                         </script>
                         
