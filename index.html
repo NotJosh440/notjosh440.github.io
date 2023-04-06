@@ -172,7 +172,7 @@
                         <br>
 
                         <p><label for="match">Match Number:</label></p>
-                        <p><input type="number" id="match" name="match" value=0 class="BIG" required correspondingErrorId="errorMessageForMatchNum"></p>
+                        <p><input type="number" id="match" name="match" class="BIG" required correspondingErrorId="errorMessageForMatchNum"></p>
                         <p class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;" error>Please fill out this field.</p>
 
 
@@ -539,19 +539,22 @@
                                 const submitButton = document.getElementById('submit');
                                 const resetButton = document.getElementById('reset');
                                 const QR = document.getElementById('barcode');
+                                var scouterInitial;
 
                                 resetButton.addEventListener('click', (event) => {
                                         hideQR();
                                         document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
+                                        document.getElementById("names").innerHTML(scouterInitial);
                                 });
 
                                 submitButton.addEventListener('click', (event) => {
                                         event.preventDefault(); // Prevent the form from submitting
                                         const screenWidth90 = window.innerWidth * 0.9;
-const screenHeight90 = window.innerHeight * 0.9;
-if(screenHeight90 < screenWidth90){
-screenWidth90 = screenHeight90;
-}
+                                        const screenHeight90 = window.innerHeight * 0.9;
+                                        scouterInitial = document.getElementById("names").val();
+                                        if(screenHeight90 < screenWidth90){
+                                                screenWidth90 = screenHeight90;
+                                        }
                                         document.getElementById("barcode").style.width = `${screenWidth90}px`;
                                         document.getElementById("barcode").style.height = `${screenWidth90}px`;
                                         generateQRCode();
