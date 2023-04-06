@@ -560,7 +560,10 @@
                                 </button>
                                 <br><br>
 
-                                <p id="qrtext" class="qrtext" style="display: none">Please wait while your QR Code is loading...</p>
+                                <p id="qrtext" class="qrtext">Please wait while your QR Code is loading...</p>
+                                <script>
+                                        document.getElementById("qrtecxt").style.display = "none"
+                                </script>
                                 <img id='barcode' src="" style="display: none; margin:0 auto;" class="qrCode"/>
                         </div>
 
