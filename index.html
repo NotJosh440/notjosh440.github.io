@@ -138,7 +138,11 @@
 
                                 // Set the value of the input field with the ID "myInput"
                                 // to the value of the element with the ID "myElement"
-                                document.getElementById("names").value = scouterInitial;
+                                while(!document.getElementById("names")){
+                                        if(document.getElementById("names")){
+                                                document.getElementById("names").value = scouterInitial;
+                                        }
+                                }
                         }
                 </script>
         <style>
