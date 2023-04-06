@@ -544,7 +544,9 @@
                                 resetButton.addEventListener('click', (event) => {
                                         hideQR();
                                         document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
+                                        console.log(scouterInitial);
                                         document.getElementById("names").value = scouterInitial;
+                                        console.log(scouterInitial);
                                 });
 
                                 submitButton.addEventListener('click', (event) => {
