@@ -18,9 +18,6 @@
                         var robotColor = $("input:radio[name=robot]:checked").val();
                         var teamNum = $('#teamnumber').val();
                         var noShow = document.querySelector('#noshow:checked') !== null;
-                        if(noShow == ""){
-                                noShow = false;
-                        }
 
                         var location = $("input:radio[name=startingLocation]:checked").val();
                         var autoUpperCone = $('#auto_upper_cone').val();
@@ -29,8 +26,8 @@
                         var autoUpperCube = $('#auto_upper_cube').val();
                         var autoMiddleCube = $('#auto_middle_cube').val();
                         var autoLowerCube = $('#auto_lower_cube').val();
-                        var mobility = $('#mobility').checked;
-                        var autoPickup = $('#auto_pickup').checked;
+                        var mobility = document.querySelector('#mobility:checked') !== null;
+                        var autoPickup = document.querySelector('#auto_pickup:checked') !== null;
                         var autoDock = $("input:radio[name=auto_dock_engage]:checked").val();
 
                         var upperCone = $('#teleop_upper_cone').val();
@@ -39,20 +36,20 @@
                         var upperCube = $('#teleop_upper_cube').val();
                         var middleCube = $('#teleop_middle_cube').val();
                         var lowerCube = $('#teleop_lower_cube').val();
-                        var substation = $('#substation').checked;
-                        var ground = $('#ground').checked;
-                        var groudOrSub;
-                        if (ground == 1 && substation == 1){
-                                groudOrSub = "BOTH";
-                        } else if (ground == 1){
-                                groudOrSub = "GROUND";
-                        } else if (substation == 1) {
-                                groudOrSub = "SUBSTATION";
+                        var substation = document.querySelector('#substation:checked') !== null;
+                        var ground = document.querySelector('#ground:checked') !== null;
+                        var groundOrSub;
+                        if (ground && substation){
+                                groundOrSub = "BOTH";
+                        } else if (ground){
+                                groundOrSub = "GROUND";
+                        } else if (substation) {
+                                groundOrSub = "SUBSTATION";
                         } else{
-                                groudOrSub = "NONE";
+                                groundOrSub = "NONE";
                         }
                         var links = $('#links').val();
-                        var beforeEndgame = $('#early_endgame').checked;
+                        var beforeEndgame = document.querySelector('#early_endgame:checked') !== null;
 
                         var teleDock = $("input:radio[name=endgame]:checked").val();
                         var numDock = $('#num_docked').val();
@@ -70,7 +67,7 @@
                         var finalArray = [name, matchNum, robotColor, teamNum, noShow, location, autoUpperCone,
                                 autoMiddleCone, autoLowerCone, autoUpperCube, autoMiddleCube, autoLowerCube, mobility,
                                 autoPickup, autoDock, upperCone, middleCone, lowerCone, upperCube, middleCube, lowerCube,
-                                groudOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
+                                groundOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
                         var finalString = finalArray.join("|");
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
