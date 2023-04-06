@@ -17,7 +17,7 @@
                         var matchNum = $('#match').val();
                         var robotColor = $("input:radio[name=robot]:checked").val();
                         var teamNum = $('#teamnumber').val();
-                        var noShow = $('#noshow').val();
+                        var noShow = $('#noshow').checked();
 
                         var location = $("input:radio[name=location]:checked").val();
                         var autoUpperCone = $('#auto_upper_cone').val();
@@ -26,8 +26,8 @@
                         var autoUpperCube = $('#auto_upper_cube').val();
                         var autoMiddleCube = $('#auto_middle_cube').val();
                         var autoLowerCube = $('#auto_lower_cube').val();
-                        var mobility = $('#mobility').val();
-                        var autoPickup = $('#auto_pickup').val();
+                        var mobility = $('#mobility').checked();
+                        var autoPickup = $('#auto_pickup').checked();
                         var autoDock = $("input:radio[name=auto_dock_engage]:checked").val();
 
                         var upperCone = $('#teleop_upper_cone').val();
@@ -36,10 +36,20 @@
                         var upperCube = $('#teleop_upper_cube').val();
                         var middleCube = $('#teleop_middle_cube').val();
                         var lowerCube = $('#teleop_lower_cube').val();
-                        var substation = $('#substation').val();
-                        var ground = $('#ground').val();
+                        var substation = $('#substation').checked();
+                        var ground = $('#ground').checked();
+                        var groudOrSub;
+                        if (ground == 1 && substation == 1){
+                                groudOrSub = "BOTH";
+                        } else if (ground == 1){
+                                groudOrSub = "GROUND";
+                        } else if (substation == 1) {
+                                groudOrSub = "SUBSTATION";
+                        } else{
+                                groudOrSub = "NONE";
+                        }
                         var links = $('#links').val();
-                        var beforeEndgame = $('#early_endgame').val();
+                        var beforeEndgame = $('#early_endgame').checked();
 
                         var teleDock = $("input:radio[name=endgame]:checked").val();
                         var numDock = $('#num_docked').val();
@@ -57,7 +67,7 @@
                         var finalArray = [name, matchNum, robotColor, teamNum, noShow, location, autoUpperCone,
                                 autoMiddleCone, autoLowerCone, autoUpperCube, autoMiddleCube, autoLowerCube, mobility,
                                 autoPickup, autoDock, upperCone, middleCone, lowerCone, upperCube, middleCube, lowerCube,
-                                substation, ground, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
+                                substationOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
                         var finalString = finalArray.join("|");
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
@@ -160,7 +170,7 @@
                         <p class="h1Font">Team 3181 Scouting</p>
                 </div>
 
-<p><a href="https://storage.3.basecamp.com/3775962/blobs/d9d90e0c-d419-11ed-bbe5-aaa4f1cd8999/download/Scouting%20Instructions%20(Pittsburgh%202023).rtf">Refer here to the scouting guid.</a></p>
+<p><a href="NotJosh440.github.io/Instutions.txt">Refer here to the scouting guid.</a></p>
 
                 <!-- Simple JS to implement buttons -->
                 <script>
