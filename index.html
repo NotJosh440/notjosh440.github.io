@@ -18,8 +18,11 @@
                         var robotColor = $("input:radio[name=robot]:checked").val();
                         var teamNum = $('#teamnumber').val();
                         var noShow = $('#noshow').checked;
+                        if(noShow == ""){
+                                noShow = false;
+                        }
 
-                        var location = $("input:radio[name=location]:checked").val();
+                        var location = $("input:radio[class=startingLocation]:checked").val();
                         var autoUpperCone = $('#auto_upper_cone').val();
                         var autoMiddleCone = $('#auto_middle_cone').val();
                         var autoLowerCone = $('#auto_lower_cone').val();
@@ -246,11 +249,11 @@
 
 
                         <div class="radio-group">
-                                <input type="radio" id="left" class="radio-group">
+                                <input type="radio" id="left" class="startingLocation" n>
                                 <label for="left" class="rightMargin">Left</label>
-                                <input type="radio" id="middle" class="radio-group">
+                                <input type="radio" id="middle" class="startingLocation">
                                 <label for="middle" class="rightMargin">Middle</label>
-                                <input type="radio" id="right" class="radio-group">
+                                <input type="radio" id="right" class="startingLocation">
                                 <label for="right" class="rightMargin">Right</label>
                         </div>
                         <br>
