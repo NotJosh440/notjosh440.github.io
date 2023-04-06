@@ -17,7 +17,7 @@
                         var matchNum = $('#match').val();
                         var robotColor = $("input:radio[name=robot]:checked").val();
                         var teamNum = $('#teamnumber').val();
-                        var noShow = $('input[name="noshow"]:checked').value;
+                        var noShow = document.querySelector('#noshow:checked') !== null;
                         if(noShow == ""){
                                 noShow = false;
                         }
