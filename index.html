@@ -10,7 +10,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
         <script src="qrcode.min.js"></script>
         <script type="text/javascript">
-                var scouterInitial;
                 var url;
 
                 function generateQRCode() {
@@ -71,6 +70,7 @@
 
                         if (form.checkValidity()) {
                                 // Display the success image
+                                scouterInitial = $('#names').val();
                                 QR.style.display = 'block';
                                 scrollToElement(QR);
                                 hideErrorMessages();
@@ -129,11 +129,17 @@
                         });
                 }
 
-                function SetInitials() {
-                        if(document.getElementById("names").val == null){
+                function resetForm() {
+                                // Get the value of the element with the ID "myElement"
+                                var scouterInitial = document.getElementById("names").value;
+
+                                // Reset the form
+                                document.getElementById("scoutingForm").reset();
+
+                                // Set the value of the input field with the ID "myInput"
+                                // to the value of the element with the ID "myElement"
                                 document.getElementById("names").value = scouterInitial;
                         }
-                }
                 </script>
         <style>
                 
@@ -560,7 +566,6 @@
                                         event.preventDefault(); // Prevent the form from submitting
                                         const screenWidth90 = window.innerWidth * 0.9;
                                         const screenHeight90 = window.innerHeight * 0.9;
-                                        scouterInitial = $('#names').val();
                                         if(screenHeight90 < screenWidth90){
                                                 screenWidth90 = screenHeight90;
                                         }
