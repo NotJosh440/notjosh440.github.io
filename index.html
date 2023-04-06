@@ -22,7 +22,7 @@
                                 noShow = false;
                         }
 
-                        var location = $("input:radio[class=startingLocation]:checked").val();
+                        var location = $("input:radio[name=startingLocation]:checked").val();
                         var autoUpperCone = $('#auto_upper_cone').val();
                         var autoMiddleCone = $('#auto_middle_cone').val();
                         var autoLowerCone = $('#auto_lower_cone').val();
@@ -249,11 +249,11 @@
 
 
                         <div class="radio-group">
-                                <input type="radio" id="left" class="startingLocation" n>
+                                <input type="radio" id="left" name="startingLocation" n>
                                 <label for="left" class="rightMargin">Left</label>
-                                <input type="radio" id="middle" class="startingLocation">
+                                <input type="radio" id="middle" name="startingLocation">
                                 <label for="middle" class="rightMargin">Middle</label>
-                                <input type="radio" id="right" class="startingLocation">
+                                <input type="radio" id="right" name="startingLocation">
                                 <label for="right" class="rightMargin">Right</label>
                         </div>
                         <br>
