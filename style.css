@@ -31,7 +31,7 @@ body{
     color: rgb(0, 0, 0);
     text-align: center;
 }
-h1, h2, h3, h4, h6{
+h1:not(.scoutingInstructions), h2, h3, h4, h6{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(218, 53, 144);
     text-align:center;
@@ -84,4 +84,7 @@ input[type="text"].initials{
 }
 *{
     touch-action: manipulation;
+}
+.scoutingInstructions{
+    text-align: center;
 }
