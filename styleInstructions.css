@@ -3,6 +3,8 @@
     text-align: center;
 }
 body {
+    margin-left: .75in;
+    margin-right: .75in;
     padding: 0px;
     background-color: white;
 }
