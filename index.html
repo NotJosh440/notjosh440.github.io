@@ -57,15 +57,15 @@
                         var driveSkill = $('#skill').val();
                         var defenseSkill = $('#defense').val();
 
-                        var died = $('#died').val();
-                        var tipped = $('#tipped').val();
-                        var card = $('#card').val();
-                        var damage = $('#damage').val();
+                        var died = document.querySelector('#died:checked') !== null;
+                        var tipped = document.querySelector('#tipped:checked') !== null;
+                        var card = document.querySelector('#card:checked') !== null;
+                        var damage = document.querySelector('#damage:checked') !== null;
 
                         var comment = $('#comments').val();
 
-                        var finalArray = [name, matchNum, robotColor, teamNum, noShow, location, autoUpperCone,
-                                autoMiddleCone, autoLowerCone, autoUpperCube, autoMiddleCube, autoLowerCube, mobility,
+                        var finalArray = [name, matchNum, robotColor, teamNum, noShow, location, mobility, autoUpperCone,
+                                autoMiddleCone, autoLowerCone, autoUpperCube, autoMiddleCube, autoLowerCube,
                                 autoPickup, autoDock, upperCone, middleCone, lowerCone, upperCube, middleCube, lowerCube,
                                 groundOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
