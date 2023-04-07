@@ -12,6 +12,13 @@
         <script type="text/javascript">
                 var url;
 
+                var buttons = document.getElementsByTagName('button');
+                for (var i = 0; i < buttons.length; i++) {
+                        buttons[i].addEventListener('dblclick', function (e) {
+                                e.preventDefault();
+                        });
+                }
+
                 function generateQRCode() {
                         var name = $('#names').val();
                         var matchNum = $('#match').val();
@@ -163,9 +170,9 @@ function hideAllErrorMessages() {
                                 // to the value of the element with the ID "myElement"
                                 setTimeout(function () {
                                         document.getElementById("names").value = scouterInitial;
-document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0"
-hideAllErrorMessages();
-scrollToElement(document.getElementById("top"));
+                                        document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0"
+                                        hideAllErrorMessages();
+                                        scrollToElement(document.getElementById("top"));
                                 }, 0);
                         }
                 </script>
