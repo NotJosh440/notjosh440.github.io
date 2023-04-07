@@ -1,7 +1,8 @@
-.scoutingInstructions{
+.scoutingInstructions {
     color: black;
     text-align: center;
 }
+
 body {
     margin-left: .75in;
     margin-right: .75in;
@@ -9,6 +10,11 @@ body {
     padding: 0px;
     background-color: white;
 }
-.boldSameSize{
+
+.boldSameSize {
     color: black;
+}
+
+h6 {
+    display: inline;
 }
