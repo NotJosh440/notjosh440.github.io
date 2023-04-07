@@ -12,13 +12,6 @@
         <script type="text/javascript">
                 var url;
 
-                var buttons = document.getElementsByTagName('button');
-                for (var i = 0; i < buttons.length; i++) {
-                        buttons[i].addEventListener('dblclick', function (e) {
-                                e.preventDefault();
-                        });
-                }
-
                 function generateQRCode() {
                         var name = $('#names').val();
                         var matchNum = $('#match').val();

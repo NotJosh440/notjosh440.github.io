@@ -82,3 +82,6 @@ input[type="text"].initials{
     color: white;
     text-align: center;
 }
+*{
+    touch-action: manipulation;
+}
