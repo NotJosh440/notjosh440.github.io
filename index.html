@@ -12,6 +12,14 @@
         <script type="text/javascript">
                 var url;
 
+                //setInterval(function () {
+                if ($('#barcode').style.display == "none") {
+                        $('#QRText').style.display = "none";
+                } else if ($('#barcode').style.display == "block") {
+                        $('#QRText').style.display = "block";
+                }
+                //}, 0);
+
                 function generateQRCode() {
                         var name = $('#names').val();
                         var matchNum = $('#match').val();
@@ -39,13 +47,13 @@
                         var substation = document.querySelector('#substation:checked') !== null;
                         var ground = document.querySelector('#ground:checked') !== null;
                         var groundOrSub;
-                        if (ground && substation){
+                        if (ground && substation) {
                                 groundOrSub = "BOTH";
-                        } else if (ground){
+                        } else if (ground) {
                                 groundOrSub = "GROUND";
                         } else if (substation) {
                                 groundOrSub = "SUBSTATION";
-                        } else{
+                        } else {
                                 groundOrSub = "NONE";
                         }
                         var links = $('#links').val();
@@ -93,7 +101,7 @@
                                         if (!field.value) {
                                                 const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
                                                 errorMessage.style.display = 'block';
-                                        }else{
+                                        } else {
                                                 hideErrorMessages();
                                         }
                                 });
@@ -104,7 +112,7 @@
                                 scrollToElement(unfilledField);
 
                         }
-                        
+
                 }
 
                 function hideErrorMessages() {
@@ -113,27 +121,27 @@
                         const fields = form.querySelectorAll(':required');
 
                         fields.forEach((field) => {
-                                if (field.value){
+                                if (field.value) {
                                         const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
                                         errorMessage.style.display = 'none';
                                 }
                         });
                 }
 
-function hideAllErrorMessages() {
+                function hideAllErrorMessages() {
 
                         const form = document.getElementById('scoutingForm');
                         const fields = form.querySelectorAll(':required');
 
                         fields.forEach((field) => {
-                                        const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
-                                        errorMessage.style.display = 'none';
+                                const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
+                                errorMessage.style.display = 'none';
 
                         });
                 }
 
 
-                function hideQR(){
+                function hideQR() {
                         QR.style.display = 'none';
                         $('#barcode').attr('src', "");
                 }
@@ -153,29 +161,26 @@ function hideAllErrorMessages() {
                 }
 
                 function resetForm() {
-                                // Get the value of the element with the ID "myElement"
-                                var scouterInitial = document.getElementById("names").value;
+                        // Get the value of the element with the ID "myElement"
+                        var scouterInitial = document.getElementById("names").value;
 
-                                // Reset the form
-                                document.getElementById("scoutingForm").reset();
+                        // Reset the form
+                        document.getElementById("scoutingForm").reset();
 
-                                // Set the value of the input field with the ID "myInput"
-                                // to the value of the element with the ID "myElement"
-                                setTimeout(function () {
-                                        document.getElementById("names").value = scouterInitial;
-                                        document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0"
-                                        hideAllErrorMessages();
-                                        scrollToElement(document.getElementById("top"));
-                                }, 0);
-                        }
-                </script>
+                        // Set the value of the input field with the ID "myInput"
+                        // to the value of the element with the ID "myElement"
+                        setTimeout(function () {
+                                document.getElementById("names").value = scouterInitial;
+                                document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0"
+                                hideAllErrorMessages();
+                                scrollToElement(document.getElementById("top"));
+                        }, 0);
+                }
+        </script>
         <style>
-                
                 #barcode {
                         display: none;
                 }
-                
-
         </style>
 </head>
 
@@ -186,8 +191,6 @@ function hideAllErrorMessages() {
                         <p class="h1Font">Team 3181 Scouting</p>
                 </div>
 
-<p><a href="https://notjosh440.github.io/instructions.html">Refer here to the scouting guid.</a></p>
-
                 <!-- Simple JS to implement buttons -->
                 <script>
 
@@ -197,7 +200,7 @@ function hideAllErrorMessages() {
                         function decrement(id) {
                                 document.getElementById(id).stepDown();
                         }
-                        
+
                 </script>
 
                 <form action="" method="post" onsubmit="return checkForm()" id="scoutingForm" onreset="resetForm()">
@@ -210,13 +213,17 @@ function hideAllErrorMessages() {
 
 
                         <p><label for="names">Scouter's initials:</label></p>
-                        <p><input type="text" id="names" name="names" required correspondingErrorId="errorMessageForName" class="initials"></p>
-                        <p class="errorMessage" id="errorMessageForName" style="display: none; color: red;" error>Please fill out this field.</p>
+                        <p><input type="text" id="names" name="names" required
+                                        correspondingErrorId="errorMessageForName" class="initials"></p>
+                        <p class="errorMessage" id="errorMessageForName" style="display: none; color: red;" error>Please
+                                fill out this field.</p>
                         <br>
 
                         <p><label for="match">Match Number:</label></p>
-                        <p><input type="number" id="match" name="match" class="BIG" required correspondingErrorId="errorMessageForMatchNum"></p>
-                        <p class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;" error>Please fill out this field.</p>
+                        <p><input type="number" id="match" name="match" class="BIG" required
+                                        correspondingErrorId="errorMessageForMatchNum"></p>
+                        <p class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;" error>
+                                Please fill out this field.</p>
 
 
                         <h3>Robot:</h3>
@@ -243,8 +250,10 @@ function hideAllErrorMessages() {
 
 
                         <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
-                        <p><input type="number" id="teamnumber" name="teamnumber" required correspondingErrorId="errorMessageForTeam" class="BIG"></p>
-                        <p class="errorMessage" id="errorMessageForTeam" style="display: none; color: red;">Please fill out this field.</p>
+                        <p><input type="number" id="teamnumber" name="teamnumber" required
+                                        correspondingErrorId="errorMessageForTeam" class="BIG"></p>
+                        <p class="errorMessage" id="errorMessageForTeam" style="display: none; color: red;">Please fill
+                                out this field.</p>
 
 
                         <p><input type="checkbox" id="noshow" name="noshow" value="false">
@@ -503,12 +512,13 @@ function hideAllErrorMessages() {
                         <label for="num_docked">
                                 <h3 style="margin:0px;" id="textNumDocked">Number of Docked Robots: 0</h3>
                         </label>
-                        
+
 
                         <p>
-                                <input type="range" id="num_docked" name="num_docked" min="0" max="3" step="1" value="0">
-                                
-                                
+                                <input type="range" id="num_docked" name="num_docked" min="0" max="3" step="1"
+                                        value="0">
+
+
                                 <script>
                                         const slider = document.getElementById("num_docked");
                                         const paragraph = document.getElementById("textNumDocked");
@@ -562,9 +572,10 @@ function hideAllErrorMessages() {
                         <br> &emsp;
 
 
-                        <textarea id="comments" name="comments" cols="30" rows="10" required correspondingErrorId="errorMessageForComments" style="font-size: 16px"></textarea>
-                        
-                        <p class="errorMessage" id="errorMessageForComments" style="display: none; color: red; text-align: left;">Please fill out this field.</p>
+                        <textarea id="comments" name="comments" cols="30" rows="10" required
+                                correspondingErrorId="errorMessageForComments" style="font-size: 16px"></textarea>
+                        <p class="errorMessage" id="errorMessageForComments"
+                                style="display: none; color: red; text-align: left;">Please fill out this field.</p>
                         <br><br><br>
 
                         <div>
@@ -577,11 +588,14 @@ function hideAllErrorMessages() {
                                 </button>
                                 <br><br>
 
-                                <p id="qrtext" class="qrtext">Please wait while your QR Code is loading...</p>
+                                <p id="qrtext" class="qrtext">Please hit the Make QR Code botton again.</p>
                                 <script>
                                         document.getElementById("qrtext").style.display = "none";
                                 </script>
-                                <img id='barcode' src="" style="display: none; margin:0 auto;" class="qrCode"/>
+                                <img id='barcode' src="" style="display: none; margin:0 auto;" class="qrCode" />
+                                <p id="QRText"><b>Take a screenshot of this QR code and scan the photo on James's
+                                                computer after
+                                                your mnatches are done.</b></p>
                         </div>
 
                         <script>
@@ -601,7 +615,7 @@ function hideAllErrorMessages() {
                                         document.getElementById("qrtext").style.display = "block";
                                         const screenWidth90 = window.innerWidth * 0.9;
                                         const screenHeight90 = window.innerHeight * 0.9;
-                                        if(screenHeight90 < screenWidth90){
+                                        if (screenHeight90 < screenWidth90) {
                                                 screenWidth90 = screenHeight90;
                                         }
                                         document.getElementById("barcode").style.width = `${screenWidth90}px`;
@@ -610,9 +624,10 @@ function hideAllErrorMessages() {
                                         document.getElementById("qrtext").style.display = "none";
                                 });
                         </script>
-                        
+
                 </form>
 
         </div>
 </body>
+
 </html>
