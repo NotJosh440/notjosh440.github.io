@@ -7,19 +7,31 @@ button {
     padding: 10px;
 }
 
-.container {
-    border-radius: 5px;
-    overflow: hidden;
+.parent {
+    position: relative;
+    width: 300px;
+}
+
+.child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 100%;
+    /* Set the height to be equal to the width of the parent */
+    background-color: red;
+    /* Just for demonstration purposes */
 }
 
 table {
     border-collapse: separate;
     /* separate the borders of the cells */
     border-spacing: 2px;
-    /* set the space between the cells */
-    width: 50%;
-    height: 50%;
     margin: auto;
+    /* set the space between the cells */
+
+
 }
 
 td {
