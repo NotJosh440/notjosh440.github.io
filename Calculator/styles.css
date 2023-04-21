@@ -8,18 +8,23 @@ button {
 }
 
 .container {
-    border-radius: 20px;
+    border-radius: 5px;
     overflow: hidden;
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
+    border-collapse: separate;
+    /* separate the borders of the cells */
+    border-spacing: 2px;
+    /* set the space between the cells */
+    width: 50%;
+    height: 50%;
+    margin: auto;
 }
 
 td {
-    border: 1px solid black;
-    padding: 10px;
+    border: 1px solid transparent;
+    padding: 3px;
     position: relative;
 }
 
@@ -31,6 +36,6 @@ td::before {
     right: -1px;
     bottom: -1px;
     border: 1px solid black;
-    border-radius: 20px;
+    border-radius: 5px;
     z-index: -1;
 }
