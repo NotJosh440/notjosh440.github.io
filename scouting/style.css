@@ -113,3 +113,8 @@ input[type="text"].initials {
 * {
     touch-action: manipulation;
 }
+
+.sliderText{
+    width: 80%;
+    max-width: 500px;
+}
