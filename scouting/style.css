@@ -78,6 +78,7 @@ input[type="number"] {
 input[type="radio"],
 input[type="checkbox"] {
     align-items: center;
+    max-width: 500px;
 }
 
 input[type="number"].BIG {
