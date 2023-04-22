@@ -1,6 +1,0 @@
-title: idk
-baseurl: "/myproject"
-url: "notjosh440.github.io"
-markdown: kramdown
-theme: jekyll-theme-cayman
-exclude: [vendor]
