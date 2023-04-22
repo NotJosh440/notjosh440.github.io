@@ -1,7 +1,7 @@
 body {
     margin: 0px;
     padding: 0px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 
 .increment {
@@ -58,7 +58,7 @@ label {
     text-align: center;
 }
 
-h3 {
+h3 :not(.sliderText){
     margin-top: 32px;
     margin-bottom: 18px;
     font-size: x-large;
@@ -73,6 +73,7 @@ label {
 input[type="number"] {
     width: 8%;
     font-size: xx-large;
+    -moz-appearance: textfield;
 }
 
 input[type="radio"],
@@ -84,6 +85,7 @@ input[type="checkbox"] {
 input[type="number"].BIG {
     width: 175px;
     height: 50;
+    -moz-appearance: textfield;
 }
 
 input[type="range"] {
@@ -114,7 +116,48 @@ input[type="text"].initials {
     touch-action: manipulation;
 }
 
-.sliderText{
+.sliderText {
     width: 80%;
     max-width: 500px;
+    display: inline;
+}
+
+.table {
+    display: table;
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.tr {
+    display: table-row;
+}
+
+.leftAligned {
+    display: table-cell;
+    width: 25%;
+}
+
+.centerAligned {
+    display: table-cell;
+    text-align: center;
+    width: 50%;
+}
+
+.rightAligned {
+    display: table-cell;
+    text-align: right;
+    width: 25%;
+}
+
+table{
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
