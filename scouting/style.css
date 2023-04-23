@@ -212,24 +212,25 @@ input[type="radio"].autoThings {
 }
 
 input[type="radio"].autoThings:checked+label {
-    background-color: rgb(255, 175, 216);;
+    background-color: rgb(255, 175, 216);
+    ;
     color: #000000;
     font-weight: 900;
     transition: 0.3s;
 }
 
-.autoDockLabel{
+.autoDockLabel {
     font-family: "Open Sans", sans-serif;
-        font-size: 16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: inherit;
-        width: 80px;
-        height: 40px;
-        text-align: center;
-        border-radius: 9999px;
-        overflow: hidden;
-        transition: linear 0.3s;
-        color: #6e6e6edd;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    border-radius: 9999px;
+    overflow: hidden;
+    transition: linear 0.3s;
+    color: #6e6e6edd;
 }
