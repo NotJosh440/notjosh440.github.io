@@ -174,8 +174,12 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-h3.increment { 
-    text-align: center; 
+h3.increment {
+    text-align: center;
     line-height: 1;
 }
 
+button {
+    padding-left: 10px;
+    padding-right: 10px;
+}
