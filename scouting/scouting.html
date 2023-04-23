@@ -353,30 +353,15 @@
                                 <label for="auto_pickup">Picked up Cone or Cube in Auto?</label>
                         </p>
                         <br>
-
-                        <div class="table">
-                                <div class="tr">
-                                        <div class="leftAligned">
-                                                <p>
-                                                        <input type="radio" id="auto_none" name="auto_dock_engage"
-                                                                value="NONE" checked value="DOCK" style="display: none;">
-                                                        <label for="auto_none">None</label>
-                                                </p>
-                                        </div>
-                                        <div class="centerAligned">
-                                                <p>
-                                                        <input type="radio" id="auto_docked" name="auto_dock_engage"
-                                                                value="DOCK" value="DOCK" style="display: none;">
-                                                        <label for="auto_docked">Docked</label>
-                                                </p>
-                                        </div>
-                                        <div class="rightAligned">
-                                                <p>
-                                                        <input type="radio" id="auto_engaged" name="auto_dock_engage"
-                                                                value="DOCK ENGAGE" value="DOCK" style="display: none;">
-                                                        <label for="auto_engaged">Engaged</label>
-                                                </p>
-                                        </div>
+                        
+                        <div class="container">
+                                <div class="radio_container">
+                                        <input type="radio" name="auto_dock_engage" id="auto_none" checked class="autoThings" value="None">
+                                        <label for="auto_none" class="autoDockLabel">None</label>
+                                        <input type="radio" name="auto_dock_engage" id="auto_docked" class="autoThings" value="Docked">
+                                        <label for="auto_docked" class="autoDockLabel">Docked</label>
+                                        <input type="radio" name="auto_dock_engage" id="auto_engaged" class="autoThings" value="Engaged">
+                                        <label for="auto_engaged" class="autoDockLabel">Engaged</label>
                                 </div>
                         </div><br><br>
 
