@@ -58,7 +58,7 @@ label {
     text-align: center;
 }
 
-h3 :not(.sliderText){
+h3 :not(.sliderText) {
     margin-top: 32px;
     margin-bottom: 18px;
     font-size: x-large;
@@ -138,10 +138,22 @@ input[type="text"].initials {
     width: 25%;
 }
 
+.centerLeftAligned {
+    display: table-cell;
+    text-align: center;
+    width: 37.5%;
+}
+
 .centerAligned {
     display: table-cell;
     text-align: center;
     width: 50%;
+}
+
+.centerRightAligned {
+    display: table-cell;
+    text-align: center;
+    width: 37.5%;
 }
 
 .rightAligned {
@@ -150,7 +162,7 @@ input[type="text"].initials {
     width: 25%;
 }
 
-table{
+table {
     width: 80%;
     max-width: 500px;
     margin: auto;
@@ -161,3 +173,9 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+h3.increment { 
+    text-align: center; 
+    line-height: 1;
+}
+
