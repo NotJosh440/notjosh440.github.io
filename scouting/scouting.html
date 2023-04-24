@@ -11,14 +11,13 @@
         <script src="qrcode.min.js"></script>
         <script type="text/javascript">
                 var url;
+                var exitCommunity = document.querySelector('#mobility:checked') !== null;
 
-                //setInterval(function () {
                 if ($('#barcode').style.display == "none") {
                         $('#QRText').style.display = "none";
                 } else if ($('#barcode').style.display == "block") {
                         $('#QRText').style.display = "block";
                 }
-                //}, 0);
 
                 function generateQRCode() {
                         var name = $('#names').val();
@@ -343,7 +342,7 @@
 
 
                         <p>
-                                <input type="checkbox" id="mobility" name="mobility" value=1>
+                                <input type="checkbox" id="mobility" name="mobility" value=1 onchange="toggleCheck()">
                                 <label for="mobility">Exited Community?</label>
                         </p>
 
@@ -352,15 +351,18 @@
                                 <input type="checkbox" id="auto_pickup" name="auto_pickup" value=1>
                                 <label for="auto_pickup">Picked up Cone or Cube in Auto?</label>
                         </p>
-                        <br>
-                        
+
+                        <h3>Dock or Engaged in Auto</h3>
                         <div class="container">
                                 <div class="radio_container">
-                                        <input type="radio" name="auto_dock_engage" id="auto_none" checked class="autoThings" value="None">
+                                        <input type="radio" name="auto_dock_engage" id="auto_none" checked
+                                                class="autoThings" value="None">
                                         <label for="auto_none" class="autoDockLabel">None</label>
-                                        <input type="radio" name="auto_dock_engage" id="auto_docked" class="autoThings" value="Docked">
+                                        <input type="radio" name="auto_dock_engage" id="auto_docked" class="autoThings"
+                                                value="Docked">
                                         <label for="auto_docked" class="autoDockLabel">Docked</label>
-                                        <input type="radio" name="auto_dock_engage" id="auto_engaged" class="autoThings" value="Engaged">
+                                        <input type="radio" name="auto_dock_engage" id="auto_engaged" class="autoThings"
+                                                value="Engaged">
                                         <label for="auto_engaged" class="autoDockLabel">Engaged</label>
                                 </div>
                         </div><br><br>
@@ -590,23 +592,28 @@
                         <br>
 
 
-                        <textarea id="comments" name="comments" cols="30" rows="10" required="" correspondingerrorid="errorMessageForComments"
+                        <textarea id="comments" name="comments" cols="30" rows="10" required=""
+                                correspondingerrorid="errorMessageForComments"
                                 style="font-size: 16px; margin-left: 16px;"></textarea>
-                        <p class="errorMessage" id="errorMessageForComments" style="display: none; color: red; text-align: left;">Please fill
+                        <p class="errorMessage" id="errorMessageForComments"
+                                style="display: none; color: red; text-align: left;">Please fill
                                 out this field.</p>
                         <br><br><br>
 
                         <div>
-                                <button type="submit" class="endButtons" id="submit" style="display: inline-block; width: 123.133; height: 52.203;">
+                                <button type="submit" class="endButtons" id="submit"
+                                        style="display: inline-block; width: 123.133; height: 52.203;">
                                         <h2>Make QR Code</h2>
                                 </button>
-                        
-                                <button type="reset" class="endButtons" id="reset-button" style="display: inline-block;">
+
+                                <button type="reset" class="endButtons" id="reset-button"
+                                        style="display: inline-block;">
                                         <h2>Clear Data</h2>
                                 </button>
                                 <br><br>
-                        
-                                <p id="qrtext" class="qrtext" style="display: none;">Please hit the Make QR Code botton again.</p>
+
+                                <p id="qrtext" class="qrtext" style="display: none;">Please hit the Make QR Code botton
+                                        again.</p>
                                 <script>
                                         document.getElementById("qrtext").style.display = "none";
                                 </script>
