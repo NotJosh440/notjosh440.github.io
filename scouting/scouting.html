@@ -8,16 +8,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
-        <script src="qrcode.min.js"></script>
         <script type="text/javascript">
                 var url;
                 var exitCommunity = document.querySelector('#mobility:checked') !== null;
-
-                if ($('#barcode').style.display == "none") {
-                        $('#QRText').style.display = "none";
-                } else if ($('#barcode').style.display == "block") {
-                        $('#QRText').style.display = "block";
-                }
 
                 function generateQRCode() {
                         var name = $('#names').val();
@@ -89,7 +82,8 @@
                                 // Display the success image
                                 scouterInitial = $('#names').val();
                                 QR.style.display = 'block';
-                                scrollToElement(QR);
+                                document.getElementById("QRText").style.display = 'block';
+                                scrollToElement(document.getElementById("QRText"));
                                 hideErrorMessages();
 
                         } else {
@@ -142,6 +136,7 @@
 
                 function hideQR() {
                         QR.style.display = 'none';
+                        document.getElementById("QRText").style.display = "none"
                         $('#barcode').attr('src', "");
                 }
 
@@ -187,7 +182,7 @@
         <div class="scouting_form" id="scoutingPage">
 
                 <div class="titleBox" id="top">
-                        <p class="h1Font">Team 3181 Scouting</p>
+                        <img src="images/pittRoboticsPfp.png" alt="" style="width: 37px;" style="height: 37px;"><p class="h1Font">Team 3181 Scouting</p>
                 </div>
 
                 <!-- Simple JS to implement buttons -->
@@ -223,29 +218,42 @@
                                         correspondingErrorId="errorMessageForMatchNum"></p>
                         <p class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;" error>
                                 Please fill out this field.</p>
+                        <br>
 
 
                         <h3>Robot:</h3>
 
-
-                        <p>
-                                <input type="radio" id="red1" name="robot" value="red1">
-                                <label for="red1">Red 1</label>
-                                <input type="radio" id="blue1" name="robot" value="blue1">
-                                <label for="blue1">Blue 1</label>
-                        </p>
-                        <p>
-                                <input type="radio" id="red2" name="robot" value="red2">
-                                <label for="red2">Red 2</label>
-                                <input type="radio" id="blue2" name="robot" value="blue2">
-                                <label for="blue2">Blue 2</label>
-                        </p>
-                        <p>
-                                <input type="radio" id="red3" name="robot" value="red3">
-                                <label for="red3">Red 3</label>
-                                <input type="radio" id="blue3" name="robot" value="blue3">
-                                <label for="blue3">Blue 3</label>
-                        </p>
+                        <div class="table">
+                                <div class="tr">
+                                        <div class="centerLeftAligned">
+                                                <input type="radio" id="red1" name="robot" value="red1">
+                                                <label for="red1">Red 1</label>
+                                        </div>
+                                        <div class="centerRightAligned">
+                                                <input type="radio" id="blue1" name="robot" value="blue1">
+                                                <label for="blue1">Blue 1</label>
+                                        </div>
+                                </div>
+                                <div class="tr">
+                                        <div class="centerLeftAligned">
+                                                <input type="radio" id="red2" name="robot" value="red2">
+                                                <label for="red2">Red 2</label>
+                                        </div>
+                                        <div class="centerRightAligned">
+                                                <input type="radio" id="blue2" name="robot" value="blue2">
+                                                <label for="blue2">Blue 2</label>
+                                        </div>
+                                </div>
+                                <div class="tr">
+                                <div class="centerLeftAligned">
+                                        <input type="radio" id="red3" name="robot" value="red3">
+                                        <label for="red3">Red 3</label>
+                                </div>
+                                <div class="centerRightAligned">
+                                        <input type="radio" id="blue3" name="robot" value="blue3">
+                                        <label for="blue3">Blue 3</label>
+                                </div></div>
+                        </div>
 
 
                         <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
@@ -601,8 +609,7 @@
                         <br><br><br>
 
                         <div>
-                                <button type="submit" class="endButtons" id="submit"
-                                        style="display: inline-block; width: 123.133; height: 52.203;">
+                                <button type="submit" class="endButtons" id="submit" style="display: inline-block; width: 123.133; height: 52.203;">
                                         <h2>Make QR Code</h2>
                                 </button>
 
@@ -617,8 +624,8 @@
                                 <script>
                                         document.getElementById("qrtext").style.display = "none";
                                 </script>
-                                <img id="barcode" src="" style="display: none; margin:0 auto;" class="qrCode">
-                                <p id="QRText"><b>Take a screenshot of this QR code and scan the photo on James's
+                                <img id="barcode" style="display: none; margin:0 auto;" class="qrCode">
+                                <p id="QRText" style="display: none;"><b>Take a screenshot of this QR code and scan the photo on James's
                                                 computer after
                                                 your mnatches are done.</b></p>
                         </div>
@@ -631,22 +638,18 @@
                                 resetButton.addEventListener('click', (event) => {
                                         hideQR();
                                         document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
-                                        console.log(scouterInitial);
-                                        console.log(scouterInitial);
                                 });
 
                                 submitButton.addEventListener('click', (event) => {
                                         event.preventDefault(); // Prevent the form from submitting
-                                        document.getElementById("qrtext").style.display = "block";
-                                        const screenWidth90 = window.innerWidth * 0.9;
-                                        const screenHeight90 = window.innerHeight * 0.9;
+                                        var screenWidth90 = window.innerWidth * 0.9;
+                                        var screenHeight90 = window.innerHeight * 0.9;
                                         if (screenHeight90 < screenWidth90) {
                                                 screenWidth90 = screenHeight90;
                                         }
                                         document.getElementById("barcode").style.width = `${screenWidth90}px`;
                                         document.getElementById("barcode").style.height = `${screenWidth90}px`;
                                         generateQRCode();
-                                        document.getElementById("qrtext").style.display = "none";
                                 });
                         </script>
 
