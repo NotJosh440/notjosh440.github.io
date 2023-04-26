@@ -10,7 +10,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
                 var url;
-                var exitCommunity = document.querySelector('#mobility:checked') !== null;
 
                 function generateQRCode() {
                         var name = $('#names').val();
@@ -182,7 +181,8 @@
         <div class="scouting_form" id="scoutingPage">
 
                 <div class="titleBox" id="top">
-                        <img src="images/pittRoboticsPfp.png" alt="" style="width: 37px;" style="height: 37px;"><p class="h1Font">Team 3181 Scouting</p>
+                        <img src="images/pittRoboticsPfp.png" alt="" style="width: 37px;" style="height: 37px;">
+                        <p class="h1Font">Team 3181 Scouting</p>
                 </div>
 
                 <!-- Simple JS to implement buttons -->
@@ -245,14 +245,15 @@
                                         </div>
                                 </div>
                                 <div class="tr">
-                                <div class="centerLeftAligned">
-                                        <input type="radio" id="red3" name="robot" value="red3">
-                                        <label for="red3">Red 3</label>
+                                        <div class="centerLeftAligned">
+                                                <input type="radio" id="red3" name="robot" value="red3">
+                                                <label for="red3">Red 3</label>
+                                        </div>
+                                        <div class="centerRightAligned">
+                                                <input type="radio" id="blue3" name="robot" value="blue3">
+                                                <label for="blue3">Blue 3</label>
+                                        </div>
                                 </div>
-                                <div class="centerRightAligned">
-                                        <input type="radio" id="blue3" name="robot" value="blue3">
-                                        <label for="blue3">Blue 3</label>
-                                </div></div>
                         </div>
 
 
@@ -350,7 +351,7 @@
 
 
                         <p>
-                                <input type="checkbox" id="mobility" name="mobility" value=1 onchange="toggleCheck()">
+                                <input type="checkbox" id="mobility" name="mobility" value=1>
                                 <label for="mobility">Exited Community?</label>
                         </p>
 
@@ -359,6 +360,31 @@
                                 <input type="checkbox" id="auto_pickup" name="auto_pickup" value=1>
                                 <label for="auto_pickup">Picked up Cone or Cube in Auto?</label>
                         </p>
+
+                        <script>
+                                const mobilityCheckbox = document.getElementById('mobility');
+                                const autoPickupCheckbox = document.getElementById('auto_pickup');
+                                var autoPickupCheckboxStarting = false;
+
+                                // Listen for changes to autoPickupCheckbox
+                                autoPickupCheckbox.addEventListener('change', function () {
+                                        if (autoPickupCheckbox.checked) {
+                                                mobilityCheckbox.checked = true;
+                                        } else if (!autoPickupCheckbox.checked && mobilityCheckbox.checked && autoPickupCheckboxStarting) {
+                                                mobilityCheckbox.checked = true;
+                                        } else if (!autoPickupCheckbox.checked && mobilityCheckbox.checked && !autoPickupCheckboxStarting) {
+                                                mobilityCheckbox.checked = false;
+                                        }
+                                });
+
+                                // Listen for changes to mobilityCheckbox
+                                mobilityCheckbox.addEventListener('change', function () {
+                                        autoPickupCheckboxStarting = !autoPickupCheckboxStarting;
+                                        if (!mobilityCheckbox.checked && autoPickupCheckbox.checked) {
+                                                autoPickupCheckboxStarting = false;
+                                        }
+                                });
+                        </script>
 
                         <h3>Dock or Engaged in Auto</h3>
                         <div class="container">
@@ -609,7 +635,8 @@
                         <br><br><br>
 
                         <div>
-                                <button type="submit" class="endButtons" id="submit" style="display: inline-block; width: 123.133; height: 52.203;">
+                                <button type="submit" class="endButtons" id="submit"
+                                        style="display: inline-block; width: 123.133; height: 52.203;">
                                         <h2>Make QR Code</h2>
                                 </button>
 
@@ -625,7 +652,8 @@
                                         document.getElementById("qrtext").style.display = "none";
                                 </script>
                                 <img id="barcode" style="display: none; margin:0 auto;" class="qrCode">
-                                <p id="QRText" style="display: none;"><b>Take a screenshot of this QR code and scan the photo on James's
+                                <p id="QRText" style="display: none;"><b>Take a screenshot of this QR code and scan the
+                                                photo on James's
                                                 computer after
                                                 your mnatches are done.</b></p>
                         </div>
