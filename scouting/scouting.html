@@ -54,7 +54,25 @@
                         var numDock = $('#num_docked').val();
 
                         var driveSkill = $('#skill').val();
+                        if (driveSkill == 1) {
+                                driveSkill = "Bad";
+                        }
+                        if (driveSkill == 2) {
+                                driveSkill = "Average";
+                        }
+                        if (driveSkill == 3) {
+                                driveSkill = "Good";
+                        }
                         var defenseSkill = $('#defense').val();
+                        if (defenseSkill == 1) {
+                                defenseSkill = "Bad";
+                        }
+                        if (defenseSkill == 2) {
+                                defenseSkill = "Average";
+                        }
+                        if (defenseSkill == 3) {
+                                defenseSkill = "Good";
+                        }
 
                         var died = document.querySelector('#died:checked') !== null;
                         var tipped = document.querySelector('#tipped:checked') !== null;
@@ -207,7 +225,7 @@
 
 
                         <p><label for="names">Scouter's initials:</label></p>
-                        <p><input type="text" id="names" name="names" required
+                        <p><input type="input" id="names" name="names" required
                                         correspondingErrorId="errorMessageForName" class="initials"></p>
                         <p class="errorMessage" id="errorMessageForName" style="display: none; color: red;" error>Please
                                 fill out this field.</p>
@@ -589,10 +607,10 @@
                         <br>
 
 
-                        <p><label for="defense">Defense Capabilities</label></p>
+                        <p><label for="defenseLabel">Defense Capabilities</label></p>
 
 
-                        <div class="table" id="defense">
+                        <div class="table" id="defenseLabel">
                                 <div class="tr">
                                         <div class="leftAligned">
                                                 <h3 class="sliderText">Bad</h3>

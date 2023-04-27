@@ -12,7 +12,7 @@ body {
 .titleBox {
     height: 75px;
     width: 100%;
-    background-color: rgb(218, 53, 144);
+    background-color: rgb(255.0, 77.0, 155.0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@ body {
     margin: 0 auto;
     height: 75;
     width: 275px;
-    background-color: rgb(218, 53, 144);
+    background-color: rgb(255.0, 77.0, 155.0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,7 +45,7 @@ h3,
 h4,
 h6 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgb(218, 53, 144);
+    color: rgb(255.0, 77.0, 155.0);
     text-align: center;
 
 }
