@@ -57,17 +57,21 @@
                         var defenseSkill = $('#defense').val();
                         if (driveSkill == 1) {
                                 driveSkill = "Bad";
-                        }else if (driveSkill == 2) {
+                        } else if (driveSkill == 2) {
                                 driveSkill = "Average";
-                        }else if (driveSkill == 3) {
+                        } else if (driveSkill == 3) {
                                 driveSkill = "Good";
+                        } else {
+                                driveSkill = "Error";
                         }
                         if (defenseSkill == 1) {
                                 defenseSkill = "Bad";
-                        }else if (defenseSkill == 2) {
+                        } else if (defenseSkill == 2) {
                                 defenseSkill = "Average";
-                        }else if (defenseSkill == 3) {
+                        } else if (defenseSkill == 3) {
                                 defenseSkill = "Good";
+                        } else {
+                                defenseSkill = "Error";
                         }
 
                         var died = document.querySelector('#died:checked') !== null;
