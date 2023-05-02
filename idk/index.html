@@ -10,8 +10,33 @@
     <title>idk</title>
 </head>
 <body style="margin: 0%;">
-    <div id="sideBarDiv" class="sideBar" style="width: 60px; height: 655px; border: 1px solid #000;">
-        
+    <div class="body">
+        <div class="tabs">
+            <input type="radio" class="tabType" name="tabAtTop" value="1" id="codeTab" checked />
+            <label for="codeTab">Code</label>
+            <input type="radio" class="tabType" name="tabAtTop" value="2" id="soundTab" />
+            <label for="soundTab">Sounds</label>
+        </div>
+
+        <div id="codeSideBarDiv" class="codeSideBarDiv"
+            style="width: 60px; height: 655px; border: 1px solid rgb(217, 217, 217); float: left; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;">
+            <div class="circle-container">
+                <span for="motion" class="circle blue"></span>
+                <input type="radio" name="color" id="motion" checked class="codeSideBar">
+                <label for="motion" class="circle-radio">Motion
+                </label>
+                <span for="looks" class="circle purple"></span>
+                <input type="radio" name="color" id="looks" class="codeSideBar">
+                <label for="looks" class="circle-radio">Looks
+                </label>
+                <input type="radio" name="color" id="sounds" class="codeSideBar">
+                <span for="sounds" class="circle pink"></span>
+                <label for="sounds" class="circle-radio">Sound
+                </label>
+            </div>
+        </div>
+        <div id="codeAreaDiv" class="codeArea" style="width: 600px; height: 655px; border: 1px solid rgb(217, 217, 217); float: left;">
+        </div>
     </div>
 </body>
 </html>

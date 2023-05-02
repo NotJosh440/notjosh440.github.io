@@ -1,0 +1,112 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.tabs {
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    position: 1;
+}
+
+input.tabType {
+    position: absolute;
+    left: -99999em;
+    top: -99999em;
+    opacity: 1;
+    z-index: 1;
+}
+
+input.tabType+label {
+    cursor: pointer;
+    float: left;
+    border: 1px solid rgb(201, 210, 224);
+    background-color: lightgray;
+    margin-right: -1px;
+    padding: .5em 1em;
+    position: relative;
+}
+
+[type=radio].tabType:checked+label {
+    color: blue;
+    background-color: #ffffff;
+    border-bottom: 0px;
+    z-index: -1;
+}
+
+input.tabType+label:hover {
+    background-color: #eee;
+}
+
+.body {
+    position: relative;
+    top: 40px;
+}
+
+.circle-container {
+    text-align: center;
+}
+
+.circle-radio {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    /* margin-right: 5px; */
+
+}
+
+.blue {
+    background-color: blue;
+}
+
+.purple {
+    background-color: purple;
+}
+
+.pink {
+    background-color: pink;
+}
+
+input[type="radio"] {
+    /* display: none; */
+}
+
+input[type="radio"]:checked+.circle::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: blue;
+    /* Change this to the desired fill color */
+}
+
+.label {
+    display: inline-block;
+    line-height: 24px;
+}
