@@ -285,7 +285,7 @@
 
                         <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
                         <p><input type="number" id="teamnumber" name="teamnumber" required
-                                        correspondingErrorId="errorMessageForTeam" class="BIG"></p>
+                                        correspondingErrorId="errorMessageForTeam" class="BIG" onkeypress="return isNumberKey(event)"></p>
                         <p class="errorMessage" id="errorMessageForTeam" style="display: none; color: red;">Please fill
                                 out this field.</p>
 
@@ -319,7 +319,7 @@
                                 <button type="button" onclick="decrement('auto_upper_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_upper_cone" name="auto_upper_cone" value=0 min=0>
+                                <input type="number" id="auto_upper_cone" name="auto_upper_cone" value=0 min=0 onkeypress="return isNumberKey(event)" onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_upper_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -329,7 +329,7 @@
                                 <button type="button" onclick="decrement('auto_middle_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_middle_cone" name="auto_middle_cone" value=0 min=0>
+                                <input type="number" id="auto_middle_cone" name="auto_middle_cone" value=0 min=0 onkeypress="return isNumberKey(event)" onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_middle_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -339,7 +339,7 @@
                                 <button type="button" onclick="decrement('auto_lower_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_lower_cone" name="auto_lower_cone" value=0 min=0>
+                                <input type="number" id="auto_lower_cone" name="auto_lower_cone" value=0 min=0 onkeypress="return isNumberKey(event)" onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_lower_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -349,7 +349,7 @@
                                 <button type="button" onclick="decrement('auto_upper_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_upper_cube" name="auto_upper_cube" value=0 min=0>
+                                <input type="number" id="auto_upper_cube" name="auto_upper_cube" value=0 min=0 onkeypress="return isNumberKey(event)" onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_upper_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -359,7 +359,7 @@
                                 <button type="button" onclick="decrement('auto_middle_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_middle_cube" name="auto_middle_cube" value=0 min=0>
+                                <input type="number" id="auto_middle_cube" name="auto_middle_cube" value=0 min=0 onkeypress="return isNumberKey(event)" onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_middle_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -369,7 +369,7 @@
                                 <button type="button" onclick="decrement('auto_lower_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_lower_cube" name="auto_lower_cube" value=0 min=0>
+                                <input type="number" id="auto_lower_cube" name="auto_lower_cube" value=0 min=0 onkeypress="return isNumberKey(event)" onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_lower_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -439,7 +439,7 @@
                                 <button type="button" onclick="decrement('teleop_upper_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_upper_cone" name="teleop_upper_cone" value=0 min=0>
+                                <input type="number" id="teleop_upper_cone" name="teleop_upper_cone" value=0 min=0 onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_upper_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -449,7 +449,7 @@
                                 <button type="button" onclick="decrement('teleop_middle_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_middle_cone" name="teleop_middle_cone" value=0 min=0>
+                                <input type="number" id="teleop_middle_cone" name="teleop_middle_cone" value=0 min=0 onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_middle_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -459,7 +459,7 @@
                                 <button type="button" onclick="decrement('teleop_lower_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_lower_cone" name="teleop_lower_cone" value=0 min=0>
+                                <input type="number" id="teleop_lower_cone" name="teleop_lower_cone" value=0 min=0 onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_lower_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -469,7 +469,7 @@
                                 <button type="button" onclick="decrement('teleop_upper_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_upper_cube" name="teleop_upper_cube" value=0 min=0>
+                                <input type="number" id="teleop_upper_cube" name="teleop_upper_cube" value=0 min=0 onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_upper_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -479,7 +479,7 @@
                                 <button type="button" onclick="decrement('teleop_middle_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_middle_cube" name="teleop_middle_cube" value=0 min=0>
+                                <input type="number" id="teleop_middle_cube" name="teleop_middle_cube" value=0 min=0 onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_middle_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -489,7 +489,7 @@
                                 <button type="button" onclick="decrement('teleop_lower_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_lower_cube" name="teleop_lower_cube" value=0 min=0>
+                                <input type="number" id="teleop_lower_cube" name="teleop_lower_cube" value=0 min=0 onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_lower_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -519,7 +519,7 @@
                                 <button type="button" onclick="decrement('links')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="links" name="links" value=0 min=0>
+                                <input type="number" id="links" name="links" value=0 min=0 onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('links')">
                                         <h3 class="increment" style="text-align: center; line-height: 1;">+</h3>
                                 </button>
