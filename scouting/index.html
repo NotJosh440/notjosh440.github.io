@@ -187,6 +187,14 @@
                                 scrollToElement(document.getElementById("top"));
                         }, 0);
                 }
+
+                function isNumberKey(evt) {
+                        var charCode = (evt.which) ? evt.which : event.keyCode;
+                        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                                return false;
+                        }
+                        return true;
+                }
         </script>
         <style>
                 #barcode {
@@ -233,7 +241,7 @@
 
                         <p><label for="match">Match Number:</label></p>
                         <p><input type="number" id="match" name="match" class="BIG" required
-                                        correspondingErrorId="errorMessageForMatchNum"></p>
+                                        correspondingErrorId="errorMessageForMatchNum" onkeypress="return isNumberKey(event)"></p>
                         <p class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;" error>
                                 Please fill out this field.</p>
                         <br>

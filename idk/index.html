@@ -21,18 +21,54 @@
         <div id="codeSideBarDiv" class="codeSideBarDiv"
             style="width: 60px; height: 655px; border: 1px solid rgb(217, 217, 217); float: left; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;">
             <div class="circle-container">
-                <span for="motion" class="circle blue"></span>
-                <input type="radio" name="color" id="motion" checked class="codeSideBar">
-                <label for="motion" class="circle-radio">Motion
-                </label>
-                <span for="looks" class="circle purple"></span>
-                <input type="radio" name="color" id="looks" class="codeSideBar">
-                <label for="looks" class="circle-radio">Looks
-                </label>
-                <input type="radio" name="color" id="sounds" class="codeSideBar">
-                <span for="sounds" class="circle pink"></span>
-                <label for="sounds" class="circle-radio">Sound
-                </label>
+                <div class="motion codeSideBarIndividualDiv codeModeSelected" for="motion">
+                    <span for="motion" class="circle blue"></span>
+                    <label for="motion" class="circle-radio">Motion
+                    </label>
+                </div><br>
+                <div class="looks codeSideBarIndividualDiv" for="looks">
+                    <span for="looks" class="circle purple"></span>
+                    <label for="looks" class="circle-radio">Looks
+                    </label>
+                </div><br>
+                <div class="sounds codeSideBarIndividualDiv" for="sounds">
+                    <span for="sounds" class="circle pink"></span>
+                    <label for="sounds" class="circle-radio">Sound
+                    </label>
+                </div>
+                <script>
+                    const circles = document.querySelectorAll('.codeSideBarIndividualDiv');
+
+                    circles.forEach(circle => {
+                        circle.addEventListener('click', () => {
+                            const parent = circle.parentNode;
+                            var event = new Event('change');
+                            parent.dispatchEvent(event);
+                        });
+                    });
+                    
+                    document.querySelector('.codeSideBarDiv').addEventListener('change', (evt) => {
+                        // evt.currentTarget is the .radiogroup element
+                        // and we search for all elements with the active class
+                        evt.currentTarget
+                            .querySelectorAll('.codeModeSelected')
+                            .forEach(element => {
+                                // remove the active class from those elements
+                                element.classList.remove('codeModeSelected')
+                            })
+
+
+                        // in this simple case evt.target is the radio button 
+                        // that became active for more complex event delegation you
+                        // need to check what evt.target is.
+                        // search for the ascendant with the class posicao
+                        // and add the active class to it
+                        evt.target
+                            .closest('.codeSideBarIndividualDiv')
+                            .classList.add('codeModeSelected');
+                        }, true);
+
+                </script>
             </div>
         </div>
         <div id="codeAreaDiv" class="codeArea" style="width: 600px; height: 655px; border: 1px solid rgb(217, 217, 217); float: left;">

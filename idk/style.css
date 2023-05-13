@@ -60,53 +60,45 @@ input.tabType+label:hover {
     text-align: center;
 }
 
-.circle-radio {
-    display: inline-block;
-    margin-right: 10px;
-    vertical-align: middle;
-}
-
 .circle {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
+    /* display: inline-block; */
+    display: table;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     border: 2px solid #ccc;
     cursor: pointer;
-    /* margin-right: 5px; */
-
+    margin: auto;
 }
 
 .blue {
-    background-color: blue;
+    background-color: rgb(77, 151, 251);
 }
 
 .purple {
-    background-color: purple;
+    background-color: rgb(153, 102, 250);
 }
 
 .pink {
-    background-color: pink;
-}
-
-input[type="radio"] {
-    /* display: none; */
-}
-
-input[type="radio"]:checked+.circle::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background-color: blue;
-    /* Change this to the desired fill color */
+    background-color: rgb(250, 99, 204);
 }
 
 .label {
     display: inline-block;
-    line-height: 24px;
+    line-height: 16px;
+}
+
+.codeSideBarIndividualDiv {
+    display: inline-block;
+    background: white;
+}
+
+.codeModeSelected {
+    background-color: lightgrey;
+}
+
+.codeSideBarIndividualDiv{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
 }
