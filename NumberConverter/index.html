@@ -2,18 +2,271 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="index.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Converter</title>
+
+    <script async src="/lib/tagmng8.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/lib/rapid02.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/lib/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/lib/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/lib/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/lib/favicon/manifest.json">
+    <link rel="mask-icon" href="/lib/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/lib/favicon/favicon.ico">
+    <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>Binary to Decimal Converter</title>
+    <meta name="description" content="Binary to decimal number conversion calculator and how to convert.">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style>
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+        }
+
+        #wrapper td {
+            padding: .75rem;
+        }
+
+        #calcform {
+            max-width: 500px;
+            padding: 20px;
+            background: #f0eedc;
+            border: 1px solid #e0e0e0;
+            border-radius: 7px;
+        }
+
+        #calcform button img {
+            filter: invert(100%);
+        }
+
+        #calcform .input-group sub {
+            font-size: large;
+        }
+
+        .btn span {
+            font-weight: bold;
+            font-size: large;
+        }
+
+        .ntable tr td {
+            width: 90px;
+            line-height: 0.5 !important;
+        }
+
+        .ntable thead {
+            position: sticky;
+            top: 0;
+            background: #f0f0f0;
+        }
+    </style>
+
 </head>
 
 <body>
-    <label for="numbToConvert">Number to Convert</label>
-    <br>
-    <input type="number" placeholder="Enter a Number Here" name="numbToConvert" id="inputBox" onkeypress="return isNumberKey(event)">
+    <div id="wrapper">
+        <div id="lcol">
+            <div id="doc">
+
+                <h1>Binary to Decimal converter</h1>
+                <form id="calcform" name="calcform" autocomplete="off">
+                    <div id="unitnav" class="form-row">
+                        <div class="form-group col">
+                            <label for="unit1">From</label>
+                            <select id="unit1" class="form-control">
+                                <option value="binary" selected>Binary</option>
+                                <option value="decimal">Decimal</option>
+                                <option value="octal">Octal</option>
+                                <option value="hex">Hexadecimal</option>
+                                <option value="ascii">Text</option>
+                            </select>
+                        </div>
+                        <div class="form-group col">
+                            <label for="unit2">To</label>
+                            <select id="unit2" class="form-control">
+                                <option value="binary">Binary</option>
+                                <option value="decimal" selected>Decimal</option>
+                                <option value="octal">Octal</option>
+                                <option value="hex">Hexadecimal</option>
+                                <option value="ascii">Text</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="x">Enter binary number</label>
+                        <div class="input-group">
+                            <input type="number" step="any" id="x" name="x" class="form-control form-control-lg"
+                                required autofocus>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><sub>2</sub></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" title="Convert" class="btn btn-success" onclick="convert()"><span>=</span>
+                            Convert</button>
+
+                        <button type="reset" title="Reset" class="btn btn-secondary"><span>&times;</span> Reset</button>
+                        <button type="button" title="Swap conversion" class="btn btn-secondary"
+                            onclick="location.href='decimal-to-binary.html';"><span></span><span>&#8645;</span>
+                            Swap</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="y" id="ylabel">Decimal number</label>
+                        <div class="input-group">
+                            <textarea rows="2" id="y" class="form-control form-control-lg" readonly></textarea>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><sub>10</sub></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="y2" id="y2label">Decimal from signed 2's complement</label>
+                        <div class="input-group">
+                            <textarea rows="2" id="y2" class="form-control form-control-lg" readonly></textarea>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><sub>10</sub></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="y3" id="y3label">Hex number</label>
+                        <div class="input-group">
+                            <textarea rows="2" id="y3" class="form-control" readonly></textarea>
+                            <div class="input-group-append">
+                                <span class="input-group-text"><sub>10</sub></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="y4">Decimal calculation steps</label>
+                        <textarea rows="3" id="y4" class="form-control form-control-lg" readonly></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var xelem = document.getElementById("x");
+        var yelem = document.getElementById("y");
+        var y2elem = document.getElementById("y2");
+        var y3elem = document.getElementById("y3");
+        window.addEventListener("DOMContentLoaded", function () {
+            var params = GetURLParams();
+            //if( Object.keys(params).length>0 && params.x!="" ) {
+            if (typeof params.x != "undefined") {
+                document.title = params.x + " binary to decimal conversion";
+                SetLinks(params.x);
+                xelem.value = params.x;
+                convert();
+            }
+        });
+        function SetLinks(x) {
+            var p1 = document.getElementById("p1");
+            var p2 = document.createElement('p');
+            var p3 = document.createElement('p');
+            var x = new BigNumber(x, 2);
+            var x1 = x.minus(1).toString(2);
+            var x2 = x.plus(1).toString(2);
+            p2.innerHTML = "<a href='binary-to-decimal.html?x=" + x1 + "'>" + x1 + " binary to decimal &#9658;</a>";
+            p3.innerHTML = "<a href='binary-to-decimal.html?x=" + x2 + "'>" + x2 + " binary to decimal &#9658;</a>";
+            p1.parentNode.insertBefore(p2, p1);
+            p1.parentNode.insertBefore(p3, p1);
+        }
+        function GetURLParams() {
+            var url = window.location.href;
+            var regex = /[?&]([^=#]+)=([^&#]*)/g,
+                //url = "www.domain.com/?v=123&p=hello",
+                params = {},
+                match;
+            while (match = regex.exec(url)) {
+                params[match[1]] = match[2];
+            }
+            return params;
+        }
+        function convert() {
+            var bin = document.calcform.x.value;
+            try {
+                var x = new BigNumber(bin, 2);
+                xelem.style.backgroundColor = "white";
+            }
+            catch (err) {
+                xelem.style.backgroundColor = "#fff0f0";
+                return;
+            }
+            var xx = x.toString(10);
+            yelem.value = xx;
+            y3elem.value = x.toString(16).toUpperCase();
+            var t1 = new BigNumber("8000000000000000", 16);
+            var t2 = new BigNumber("10000000000000000", 16);
+            if (x.isInt() && x.gte(0)) {
+                if (bin.length == 8 && x.gte("80", 16)) x = x.minus("100", 16);
+                if (bin.length == 16 && x.gte("8000", 16)) x = x.minus("10000", 16);
+                if (bin.length == 32 && x.gte("80000000", 16)) x = x.minus("100000000", 16);
+                if (bin.length == 64 && x.gte(t1)) { x = x.minus(t2); }
+                if (bin.length == 8 || bin.length == 16 || bin.length == 32 || bin.length == 64)
+                    y2elem.value = x.toString(10);
+                else
+                    y2elem.value = "N/A";
+            }
+            else
+                y2elem.value = "N/A";
+            var yd = yelem.value.match(/\d/g);
+            var y2d = y2elem.value.match(/\d/g);
+            var y3d = y3elem.value.match(/[\da-fA-F]/g);
+            var ylabel = "Decimal number";
+            var y2label = "Decimal from signed 2's complement";
+            var y3label = "Hex number";
+            if (yd != null) ylabel += " (" + yd.length + ((yd.length == 1) ? " digit)" : " digits)");
+            if (y2d != null) y2label += " (" + y2d.length + ((y2d.length == 1) ? " digit)" : " digits)");
+            if (y3d != null && y3elem.value != "N/A") y3label += " (" + y3d.length + ((y3d.length == 1) ? " digit)" : " digits)");
+            document.getElementById("ylabel").innerHTML = ylabel;
+            document.getElementById("y2label").innerHTML = y2label;
+            document.getElementById("y3label").innerHTML = y3label;
+            var txt = "(" + bin + ")\u2082 = ";
+            var d, e, minus = false;
+            var len = bin.length;
+            if (bin[0] == "-") { txt += "-["; bin = bin.substr(1); len--; minus = true; }
+            var idot = bin.indexOf(".");
+            if (idot >= 0) { bin = bin.substring(0, idot) + bin.substring(idot + 1, len); len--; }
+            else idot = len;
+            etbl = ["\u2070", "\u00B9", "\u00B2", "\u00B3", "\u2074", "\u2075", "\u2076", "\u2077", "\u2078", "\u2079"];
+            for (var i = 0; i < len; i++) {
+                d = bin.charCodeAt(i);
+                if (d < 58) d -= 48;
+                else if (d > 64) d -= 55;
+                //e = len-i-1;
+                e = idot - i - 1;
+                e = e.toString();
+                txt += "(" + d + " \u00D7 2";
+                for (var k = 0; k < e.length; k++)
+                    if (e[k] == "-")
+                        txt += "\u207B";
+                    else
+                        txt += etbl[e[k]];
+                txt += ")";
+                if (i < len - 1) txt += " + ";
+            }
+            if (minus) txt += "]";
+            txt += " = (" + xx + ")\u2081\u2080";
+            document.getElementById("y4").value = txt;
+            //SetLinks(bin);
+        }
+    </script>
+
+
 </body>
 
 </html>

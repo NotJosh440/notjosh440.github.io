@@ -3,12 +3,15 @@
 
 <head>
         <title>Team 3181 Scouting</title>
-        <link rel="stylesheet" href="style.css">
+        <!-- <link rel="stylesheet" href="style.css"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script src="server.js"></script> -->
 
         <script type="text/javascript">
                 var url;
+                var finalString;
+                var textFileUrl = null;
 
                 function generateQRCode() {
                         var name = $('#names').val();
@@ -85,7 +88,7 @@
                                 autoPickup, autoDock, upperCone, middleCone, lowerCone, upperCube, middleCube, lowerCube,
                                 groundOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
-                        var finalString = finalArray.join("|");
+                        finalString = finalArray.join("|");
                         console.log(finalString);
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
                         $('#barcode').attr('src', url);
@@ -102,6 +105,7 @@
                                 document.getElementById("QRText").style.display = 'block';
                                 scrollToElement(document.getElementById("QRText"));
                                 hideErrorMessages();
+                                submitForm();
 
                         } else {
                                 // Show error messages for the unfilled fields
@@ -195,6 +199,30 @@
                         }
                         return true;
                 }
+
+                function submitForm() {
+                        var data = {
+                                data: finalString
+                        };
+
+                        fetch('/submit', {
+                                method: 'POST',
+                                headers: {
+                                        'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data)
+                        })
+                                .then(function (response) {
+                                        if (response.ok) {
+                                                console.log('Data submitted successfully!');
+                                        } else {
+                                                console.error('Error submitting data.');
+                                        }
+                                })
+                                .catch(function (error) {
+                                        console.error('An error occurred:', error);
+                                });
+                }
         </script>
         <style>
                 #barcode {
@@ -241,7 +269,8 @@
 
                         <p><label for="match">Match Number:</label></p>
                         <p><input type="number" id="match" name="match" class="BIG" required
-                                        correspondingErrorId="errorMessageForMatchNum" onkeypress="return isNumberKey(event)"></p>
+                                        correspondingErrorId="errorMessageForMatchNum"
+                                        onkeypress="return isNumberKey(event)"></p>
                         <p class="errorMessage" id="errorMessageForMatchNum" style="display: none; color: red;" error>
                                 Please fill out this field.</p>
                         <br>
@@ -285,7 +314,8 @@
 
                         <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
                         <p><input type="number" id="teamnumber" name="teamnumber" required
-                                        correspondingErrorId="errorMessageForTeam" class="BIG" onkeypress="return isNumberKey(event)"></p>
+                                        correspondingErrorId="errorMessageForTeam" class="BIG"
+                                        onkeypress="return isNumberKey(event)"></p>
                         <p class="errorMessage" id="errorMessageForTeam" style="display: none; color: red;">Please fill
                                 out this field.</p>
 
@@ -319,7 +349,8 @@
                                 <button type="button" onclick="decrement('auto_upper_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_upper_cone" name="auto_upper_cone" value=0 min=0 onkeypress="return isNumberKey(event)" >
+                                <input type="number" id="auto_upper_cone" name="auto_upper_cone" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_upper_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -329,7 +360,8 @@
                                 <button type="button" onclick="decrement('auto_middle_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_middle_cone" name="auto_middle_cone" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="auto_middle_cone" name="auto_middle_cone" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_middle_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -339,7 +371,8 @@
                                 <button type="button" onclick="decrement('auto_lower_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_lower_cone" name="auto_lower_cone" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="auto_lower_cone" name="auto_lower_cone" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_lower_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -349,7 +382,8 @@
                                 <button type="button" onclick="decrement('auto_upper_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_upper_cube" name="auto_upper_cube" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="auto_upper_cube" name="auto_upper_cube" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_upper_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -359,7 +393,8 @@
                                 <button type="button" onclick="decrement('auto_middle_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_middle_cube" name="auto_middle_cube" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="auto_middle_cube" name="auto_middle_cube" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_middle_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -369,7 +404,8 @@
                                 <button type="button" onclick="decrement('auto_lower_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="auto_lower_cube" name="auto_lower_cube" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="auto_lower_cube" name="auto_lower_cube" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('auto_lower_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -439,7 +475,8 @@
                                 <button type="button" onclick="decrement('teleop_upper_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_upper_cone" name="teleop_upper_cone" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="teleop_upper_cone" name="teleop_upper_cone" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_upper_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -449,7 +486,8 @@
                                 <button type="button" onclick="decrement('teleop_middle_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_middle_cone" name="teleop_middle_cone" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="teleop_middle_cone" name="teleop_middle_cone" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_middle_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -459,7 +497,8 @@
                                 <button type="button" onclick="decrement('teleop_lower_cone')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_lower_cone" name="teleop_lower_cone" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="teleop_lower_cone" name="teleop_lower_cone" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_lower_cone')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -469,7 +508,8 @@
                                 <button type="button" onclick="decrement('teleop_upper_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_upper_cube" name="teleop_upper_cube" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="teleop_upper_cube" name="teleop_upper_cube" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_upper_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -479,7 +519,8 @@
                                 <button type="button" onclick="decrement('teleop_middle_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_middle_cube" name="teleop_middle_cube" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="teleop_middle_cube" name="teleop_middle_cube" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_middle_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -489,7 +530,8 @@
                                 <button type="button" onclick="decrement('teleop_lower_cube')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="teleop_lower_cube" name="teleop_lower_cube" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="teleop_lower_cube" name="teleop_lower_cube" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('teleop_lower_cube')">
                                         <h3 class="increment">+</h3>
                                 </button>
@@ -519,7 +561,8 @@
                                 <button type="button" onclick="decrement('links')">
                                         <h3 class="increment">-</h3>
                                 </button>
-                                <input type="number" id="links" name="links" value=0 min=0 onkeypress="return isNumberKey(event)">
+                                <input type="number" id="links" name="links" value=0 min=0
+                                        onkeypress="return isNumberKey(event)">
                                 <button type="button" onclick="increment('links')">
                                         <h3 class="increment" style="text-align: center; line-height: 1;">+</h3>
                                 </button>
@@ -672,12 +715,9 @@
                                 </button>
                                 <br><br>
 
-                                <p id="qrtext" class="qrtext" style="display: none;">Please hit the Make QR Code botton
-                                        again.</p>
-                                <script>
-                                        document.getElementById("qrtext").style.display = "none";
-                                </script>
                                 <img id="barcode" style="display: none; margin:0 auto;" class="qrCode">
+                                <p id="qrtext" class="qrtext" style="display: none;">Something Went Wrong. Try Again.
+                                </p>
                                 <p id="QRText" style="display: none;"><b>Take a screenshot of this QR code and scan the
                                                 photo on James's
                                                 computer after
