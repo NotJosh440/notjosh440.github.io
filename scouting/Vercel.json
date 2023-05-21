@@ -1,4 +1,8 @@
 {
+    "dependencies": {
+        "express": "^4.18.2",
+        "fs": "^0.0.2"
+    },
     "functions": {
         "api/**/*.js": {
             "runtime": "vercel-node@14"
