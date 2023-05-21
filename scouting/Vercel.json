@@ -1,13 +1,17 @@
 {
     "functions": {
-        "api/**/*.js": {
+        "api/app.js": {
             "runtime": "vercel-node@14"
         }
     },
     "routes": [
         {
-            "src": "/submit",
-            "dest": "/api/submit.js"
+            "src": "/api/submit",
+            "dest": "/api/app.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/app.js"
         }
     ]
 }
