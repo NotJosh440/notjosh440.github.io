@@ -3,7 +3,7 @@
 
 <head>
         <title>Team 3181 Scouting</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -88,7 +88,7 @@
                                 card, damage, comment];
                         finalString = finalArray.join("|");
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
-                        $('#barcode').attr('src', url);
+                        
                         showQR();
                 }
 
@@ -98,9 +98,6 @@
                         if (form.checkValidity()) {
                                 // Display the success image
                                 scouterInitial = $('#names').val();
-                                QR.style.display = 'block';
-                                document.getElementById("QRText").style.display = 'block';
-                                scrollToElement(document.getElementById("QRText"));
                                 hideErrorMessages();
                                 submitForm(finalString);
 
@@ -182,7 +179,8 @@
                         // to the value of the element with the ID "myElement"
                         setTimeout(function () {
                                 document.getElementById("names").value = scouterInitial;
-                                document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0"
+                                document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0";
+                                document.getElementById("responseMessage").style.display = "none";
                                 hideAllErrorMessages();
                                 scrollToElement(document.getElementById("top"));
                         }, 0);
@@ -197,7 +195,9 @@
                 }
 
                 function submitForm(finalString) {
+
                         // Send the form data to your Railway backend
+                        console.log("1");
                         fetch('https://scouting-api-production.up.railway.app/api/submit', {
                                 method: 'POST',
                                 headers: {
@@ -205,23 +205,42 @@
                                 },
                                 body: finalString
                         })
-                                .then(response => {
-                                        if (response.ok) {
-                                                // Form submission successful, show a success message or redirect
-                                                return response.text();
-                                        } else {
-                                                // Form submission failed, handle the error
-                                                throw new Error('Form submission failed');
-                                        }
-                                })
-                                .then(message => {
-                                        // Use the response content to update the UI or show a success message
-                                        console.log('Response:', message);
-                                })
-                                .catch(error => {
-                                        // Handle any network or other errors
-                                        console.error('An error occurred:', error);
-                                });
+                        .then(response => {
+                                console.log("2");
+                                if (response.ok) {
+                                        // Form submission successful, get the response content as text
+                                        console.log("3");
+                                        return response.text();
+                                } else {
+                                        // Form submission failed, handle the error
+                                        console.log("4");
+                                        throw new Error('Form submission failed');
+                                }
+                        })
+                        .then(message => {
+                                console.log("5");
+                                // Update the HTML element with the response message
+                                document.getElementById('responseMessage').innerText = message;
+                                resetForm();
+                        })
+                        .catch(error => {
+                                console.log("6");
+                                // Handle any network or other errors
+                                console.warn('An error occurred:', error);
+                                DebugError(error);
+                                //console.log("Check server status");
+                                document.getElementById('responseMessage').innerText = 'Something went wrong. Please scan this QR Code when you can and alert your scout masters about this issue.';
+                                $('#barcode').attr('src', url);
+                                QR.style.display = "block";
+                                scrollToElement(QR);
+                        });
+                }
+
+                function DebugError(error){
+                        if(error == "TypeError: Failed to fetch"){
+                                console.warn("Check server status");
+                                return;
+                        }
                 }
         </script>
         <style>
@@ -235,7 +254,7 @@
         <div class="scouting_form" id="scoutingPage">
 
                 <div class="titleBox" id="top">
-                        <img src="images/pittRoboticsPfp.png" alt="" style="width: 37px;" style="height: 37px;">
+                        <img src="https://raw.githubusercontent.com/NotJosh440/Scouting3181/main/scouting/images/pittRoboticsPfp.png" alt="" style="width: 37px;" style="height: 37px;">
                         <p class="h1Font">Team 3181 Scouting</p>
                 </div>
 
@@ -715,13 +734,8 @@
                                 </button>
                                 <br><br>
 
+                                <p id="responseMessage"></p>
                                 <img id="barcode" style="display: none; margin:0 auto;" class="qrCode">
-                                <p id="qrtext" class="qrtext" style="display: none;">Something Went Wrong. Try Again.
-                                </p>
-                                <p id="QRText" style="display: none;"><b>Take a screenshot of this QR code and scan the
-                                                photo on James's
-                                                computer after
-                                                your mnatches are done.</b></p>
                         </div>
 
                         <script>
