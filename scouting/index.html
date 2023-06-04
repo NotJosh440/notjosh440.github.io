@@ -6,12 +6,10 @@
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="app.js"></script>
 
         <script type="text/javascript">
                 var url;
                 var finalString;
-                var textFileUrl = null;
 
                 function generateQRCode() {
                         var name = $('#names').val();
@@ -89,7 +87,6 @@
                                 groundOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
                         finalString = finalArray.join("|");
-                        console.log(finalString);
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
                         $('#barcode').attr('src', url);
                         showQR();
@@ -154,7 +151,6 @@
                         });
                 }
 
-
                 function hideQR() {
                         QR.style.display = 'none';
                         document.getElementById("QRText").style.display = "none"
@@ -212,14 +208,11 @@
                                 .then(response => {
                                         if (response.ok) {
                                                 // Form submission successful, show a success message or redirect
-                                                console.log("yayyyyyy", finalString);
                                         } else {
-                                                console.log("noooooooooooo");
                                                 // Form submission failed, handle the error
                                         }
                                 })
                                 .catch(error => {
-                                        console.log("fail");
                                         // Handle any network or other errors
                                 });
                 }
