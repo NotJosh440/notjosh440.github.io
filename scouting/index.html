@@ -201,28 +201,28 @@
                 }
 
                 function submitForm() {
-                        // Retrieve the form data
-                        const formData = finalString;
+                                // Retrieve the form data
+                                const formData = finalString;
 
-                        // Send the form data to your Railway backend
-                        fetch('https://scouting-api-production.up.railway.app/api/submit', {
-                                method: 'POST',
-                                headers: {
-                                        'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify(finalString)
-                        })
-                                .then(response => {
-                                        if (response.ok) {
-                                                // Form submission successful, show a success message or redirect
-                                        } else {
-                                                // Form submission failed, handle the error
-                                        }
+                                // Send the form data to your Railway backend
+                                fetch('https://scouting-api-production.up.railway.app/api/submit', {
+                                        method: 'POST',
+                                        headers: {
+                                                'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify(formData)
                                 })
-                                .catch(error => {
-                                        // Handle any network or other errors
-                                });
-                }
+                                        .then(response => {
+                                                if (response.ok) {
+                                                        // Form submission successful, show a success message or redirect
+                                                } else {
+                                                        // Form submission failed, handle the error
+                                                }
+                                        })
+                                        .catch(error => {
+                                                // Handle any network or other errors
+                                        });
+                        }
         </script>
         <style>
                 #barcode {
