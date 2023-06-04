@@ -202,13 +202,10 @@
 
                 function submitForm() {
                         // Retrieve the form data
-                        const formData = new FormData(event.target);
-
-                        // Convert the form data to an object
-                        const formDataObject = Object.fromEntries(formData.entries());
+                        const formData = finalString;
 
                         // Send the form data to your Railway backend
-                        fetch('https://notjosh440githubio-scouting3181.up.railway.app/', {
+                        fetch('https://scouting-api-production.up.railway.app/api/submit', {
                                 method: 'POST',
                                 headers: {
                                         'Content-Type': 'application/json'
