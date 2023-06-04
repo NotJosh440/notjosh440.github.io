@@ -1,18 +1,36 @@
-const fs = require('fs');
+const express = require('express');
+const bodyParser = require('body-parser');
+const { createConnection } = require('mysql2');
 
-module.exports = async (req, res) => {
-    const name = req.body.data;
-    const data = `${name}\n\n`;
+const app = express();
+app.use(bodyParser.json());
 
-    const file = 'scouting/data.txt';
+// Endpoint to handle the form submission
+app.post('/api/endpoint', (req, res) => {
+    const formData = req.body; // Access the form data sent from the GitHub Pages website
 
-    fs.appendFile(file, data, 'utf8', (err) => {
-        if (err) {
-            console.error(err);
-            res.status(500).json({ error: 'An error occurred.' });
-        } else {
-            console.log('Data appended to file successfully.');
-            res.status(200).json({ message: 'Data submitted successfully!' });
-        }
+    // Store the form data in your MySQL table
+    const connection = createConnection({
+        host: 'containers-us-west-191.railway.app',
+        user: 'root',
+        password: 'EXL5IXg81PerRNfGIFUe',
+        database: 'railway'
     });
-};
+
+    connection.query('INSERT INTO your_table SET ?', formData, (error, results) => {
+        if (error) {
+            // Handle the error
+            console.error(error);
+            res.status(500).send('An error occurred');
+        } else {
+            // Form data inserted successfully
+            res.sendStatus(200);
+        }
+
+        connection.end();
+    });
+});
+
+app.listen(3000, () => {
+    console.log('Server is running');
+});

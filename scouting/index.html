@@ -201,26 +201,29 @@
                 }
 
                 function submitForm() {
-                        var data = {
-                                data: finalString
-                        };
+                        // Retrieve the form data
+                        const formData = new FormData(event.target);
 
-                        fetch('/submit', {
+                        // Convert the form data to an object
+                        const formDataObject = Object.fromEntries(formData.entries());
+
+                        // Send the form data to your Railway backend
+                        fetch('https://notjosh440githubio-scouting3181.up.railway.app/', {
                                 method: 'POST',
                                 headers: {
                                         'Content-Type': 'application/json'
                                 },
-                                body: JSON.stringify(data)
+                                body: JSON.stringify(formDataObject)
                         })
-                                .then(function (response) {
+                                .then(response => {
                                         if (response.ok) {
-                                                console.log('Data submitted successfully!');
+                                                // Form submission successful, show a success message or redirect
                                         } else {
-                                                console.error('Error submitting data.');
+                                                // Form submission failed, handle the error
                                         }
                                 })
-                                .catch(function (error) {
-                                        console.error('An error occurred:', error);
+                                .catch(error => {
+                                        // Handle any network or other errors
                                 });
                 }
         </script>
