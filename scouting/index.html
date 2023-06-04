@@ -207,7 +207,7 @@
                                 headers: {
                                         'Content-Type': 'application/json'
                                 },
-                                body: JSON.stringify(JSON.parse(finalString))
+                                body: finalString
                         })
                                 .then(response => {
                                         if (response.ok) {
@@ -219,7 +219,7 @@
                                         }
                                 })
                                 .catch(error => {
-                                        console.log("fail")
+                                        console.log("fail");
                                         // Handle any network or other errors
                                 });
                 }
