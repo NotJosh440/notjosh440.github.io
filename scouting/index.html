@@ -208,12 +208,19 @@
                                 .then(response => {
                                         if (response.ok) {
                                                 // Form submission successful, show a success message or redirect
+                                                return response.text();
                                         } else {
                                                 // Form submission failed, handle the error
+                                                throw new Error('Form submission failed');
                                         }
+                                })
+                                .then(message => {
+                                        // Use the response content to update the UI or show a success message
+                                        console.log('Response:', message);
                                 })
                                 .catch(error => {
                                         // Handle any network or other errors
+                                        console.error('An error occurred:', error);
                                 });
                 }
         </script>
