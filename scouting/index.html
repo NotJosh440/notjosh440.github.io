@@ -214,10 +214,12 @@
                                                 // Form submission successful, show a success message or redirect
                                                 console.log("yayyyyyy", finalString);
                                         } else {
+                                                console.log("noooooooooooo");
                                                 // Form submission failed, handle the error
                                         }
                                 })
                                 .catch(error => {
+                                        console.log("fail")
                                         // Handle any network or other errors
                                 });
                 }
