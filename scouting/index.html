@@ -10,6 +10,7 @@
         <script type="text/javascript">
                 var url;
                 var finalString;
+                var iserror = false;
 
                 function generateQRCode() {
                         var name = $('#names').val();
@@ -88,7 +89,7 @@
                                 card, damage, comment];
                         finalString = finalArray.join("|");
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
-                        
+
                         showQR();
                 }
 
@@ -150,8 +151,7 @@
 
                 function hideQR() {
                         QR.style.display = 'none';
-                        document.getElementById("QRText").style.display = "none"
-                        $('#barcode').attr('src', "");
+                        document.getElementById("barcode").scr = "";
                 }
 
                 function scrollToElement(element) {
@@ -195,9 +195,8 @@
                 }
 
                 function submitForm(finalString) {
-
+                        iserror = false;
                         // Send the form data to your Railway backend
-                        console.log("1");
                         fetch('https://scouting-api-production.up.railway.app/api/submit', {
                                 method: 'POST',
                                 headers: {
@@ -205,43 +204,52 @@
                                 },
                                 body: finalString
                         })
-                        .then(response => {
-                                console.log("2");
-                                if (response.ok) {
-                                        // Form submission successful, get the response content as text
-                                        console.log("3");
-                                        return response.text();
-                                } else {
-                                        // Form submission failed, handle the error
-                                        console.log("4");
-                                        throw new Error('Form submission failed');
-                                }
-                        })
-                        .then(message => {
-                                console.log("5");
-                                // Update the HTML element with the response message
-                                document.getElementById('responseMessage').innerText = message;
-                                resetForm();
-                        })
-                        .catch(error => {
-                                console.log("6");
-                                // Handle any network or other errors
-                                console.warn('An error occurred:', error);
-                                DebugError(error);
-                                //console.log("Check server status");
-                                document.getElementById('responseMessage').innerText = 'Something went wrong. Please scan this QR Code when you can and alert your scout masters about this issue.';
-                                $('#barcode').attr('src', url);
-                                QR.style.display = "block";
-                                scrollToElement(QR);
-                        });
+                                .then(response => {
+                                        if (response.ok) {
+                                                // Form submission successful, get the response content as text
+                                                return response.text();
+                                        } else {
+                                                // Form submission failed, handle the error
+                                                iserror = true;
+                                                DebugError("Form submission failed");
+                                        }
+                                })
+                                .then(message => {
+                                        // Update the HTML element with the response message
+                                        document.getElementById('responseMessage').innerText = message;
+                                        resetForm();
+                                        myPopup.classList.add("show");
+                                        setTimeout(() => myPopup.classList.remove("show"), 3000);
+                                })
+                                .catch(error => {
+                                        // Handle any network or other errors
+                                        iserror = true;
+                                        DebugError(error);
+                                        //console.log("Check server status");
+                                });
                 }
 
-                function DebugError(error){
-                        if(error == "TypeError: Failed to fetch"){
+                function DebugError(error) {
+                        console.warn('An error occurred:', error);
+                        if (error == "TypeError: Failed to fetch") {
                                 console.warn("Check server status");
-                                return;
+                        } else if (error == "Form submittion failed") {
+                                console.warn("it has never failed to submit");
+                        } else {
+                                console.warn("undefined error: ", error);
                         }
+                        document.getElementById('responseMessage').innerText = 'Something went wrong. Please scan this QR Code when you can and alert your scout masters about this issue.';
+                        document.getElementById('barcode').src = url;
+                        //.attr('src', url);
+                        QR.style.display = "block";
+                        scrollToElement(QR);
                 }
+
+                window.addEventListener("click", function (event) {
+                        if (event.target == myPopup) {
+                                myPopup.classList.remove("show");
+                        }
+                });
         </script>
         <style>
                 #barcode {
@@ -251,10 +259,11 @@
 </head>
 
 <body>
-        <div class="scouting_form" id="scoutingPage">
+        <div class="scouting_form" data-style="smooth" id="scoutingPage">
 
                 <div class="titleBox" id="top">
-                        <img src="https://raw.githubusercontent.com/NotJosh440/Scouting3181/main/scouting/images/pittRoboticsPfp.png" alt="" style="width: 37px;" style="height: 37px;">
+                        <img src="https://raw.githubusercontent.com/NotJosh440/Scouting3181/main/scouting/images/pittRoboticsPfp.png"
+                                alt="" style="width: 37px;" style="height: 37px;">
                         <p class="h1Font">Team 3181 Scouting</p>
                 </div>
 
@@ -763,6 +772,19 @@
 
                 </form>
 
+        </div>
+
+        <div id="myPopup" class="popup">
+                <div class="popup-content">
+                        <div class="round-time-bar" data-style="smooth" style="--duration: 3;">
+                                <div></div>
+                        </div>
+                        <h3>
+                                Form Submitted!
+                        </h3>
+                        <p>Thank you for submitting the form.</p>
+                        <p>Click anywhere to close this.</p>
+                </div>
         </div>
 </body>
 
