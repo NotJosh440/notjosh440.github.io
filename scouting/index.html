@@ -219,7 +219,7 @@
                                         document.getElementById('responseMessage').innerText = message;
                                         resetForm();
                                         myPopup.classList.add("show");
-                                        setTimeout(() => myPopup.classList.remove("show"), 3000);
+                                        setTimeout(() => myPopup.classList.remove("show"), 5000);
                                 })
                                 .catch(error => {
                                         // Handle any network or other errors
@@ -263,7 +263,7 @@
 
                 <div class="titleBox" id="top">
                         <img src="https://raw.githubusercontent.com/NotJosh440/Scouting3181/main/scouting/images/pittRoboticsPfp.png"
-                                alt="" style="width: 37px;" style="height: 37px;">
+                                alt="" style="width: 37px;" style="height: 37px;" draggable="false">
                         <p class="h1Font">Team 3181 Scouting</p>
                 </div>
 
@@ -776,14 +776,13 @@
 
         <div id="myPopup" class="popup">
                 <div class="popup-content">
-                        <div class="round-time-bar" data-style="smooth" style="--duration: 3;">
-                                <div></div>
-                        </div>
-                        <h3>
-                                Form Submitted!
-                        </h3>
+                        <h3>Form Submitted!</h3>
                         <p>Thank you for submitting the form.</p>
                         <p>Click anywhere to close this.</p>
+
+                        <div class="round-time-bar" data-style="smooth" style="--duration: 5;">
+                                <div></div>
+                        </div>
                 </div>
         </div>
 </body>

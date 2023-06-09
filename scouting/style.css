@@ -251,7 +251,7 @@ input[type="radio"].autoThings:checked+label {
 .popup-content {
     background-color: white;
     margin: 50% auto;
-    padding: 20px;
+    padding: 2px;
     border: 1px solid #888888;
     width: 50%;
     font-weight: bolder;
@@ -279,8 +279,13 @@ input[type="radio"].autoThings:checked+label {
 }
 
 @keyframes roundtime {
-    to {
-        /* More performant than `width` */
+    0% {
+        transform: scaleX(1);
+        transform-origin: center;
+    }
+
+    100% {
         transform: scaleX(0);
+        transform-origin: center;
     }
 }
