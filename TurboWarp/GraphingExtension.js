@@ -23,13 +23,13 @@ class GraphingExtension {
     a)/a,Math.ceil(this.im*a)/a)},floor:function(a){a=Math.pow(10,a||0);return new d(Math.floor(this.re*a)/a,Math.floor(this.im*a)/a)},round:function(a){a=Math.pow(10,a||0);return new d(Math.round(this.re*a)/a,Math.round(this.im*a)/a)},equals:function(a,b){var c=new d(a,b);return Math.abs(c.re-this.re)<=d.EPSILON&&Math.abs(c.im-this.im)<=d.EPSILON},clone:function(){return new d(this.re,this.im)},toString:function(){var a=this.re,b=this.im,c="";if(this.isNaN())return"NaN";if(this.isInfinite())return"Infinity";
     Math.abs(a)<d.EPSILON&&(a=0);Math.abs(b)<d.EPSILON&&(b=0);if(0===b)return c+a;0!==a?(c=c+a+" ",0>b?(b=-b,c+="-"):c+="+",c+=" "):0>b&&(b=-b,c+="-");1!==b&&(c+=b);return c+"i"},toVector:function(){return[this.re,this.im]},valueOf:function(){return 0===this.im?this.re:null},isNaN:function(){return isNaN(this.re)||isNaN(this.im)},isZero:function(){return 0===this.im&&0===this.re},isFinite:function(){return isFinite(this.re)&&isFinite(this.im)},isInfinite:function(){return!(this.isNaN()||this.isFinite())}};
     d.ZERO=new d(0,0);d.ONE=new d(1,0);d.I=new d(0,1);d.PI=new d(Math.PI,0);d.E=new d(Math.E,0);d.INFINITY=new d(Infinity,Infinity);d.NAN=new d(NaN,NaN);d.EPSILON=1E-15;"function"===typeof define&&define.amd?define([],function(){return d}):"object"===typeof exports?(Object.defineProperty(d,"__esModule",{value:!0}),d["default"]=d,d.Complex=d,module.exports=d):q.Complex=d})(this);}
-    static ZERO = new Complex(0, 0);
-    static ONE = new Complex(1, 0);
-    static I = new Complex(0, 1);
-    static PI = new Complex(Math.PI, 0);
-    static E = new Complex(Math.E, 0);
-    static INFINITY = new Complex(Infinity, Infinity);
-    static NAN = new Complex(NaN, NaN);
+    static ZERO = new GraphingExtension(0, 0);
+    static ONE = new GraphingExtension(1, 0);
+    static I = new GraphingExtension(0, 1);
+    static PI = new GraphingExtension(Math.PI, 0);
+    static E = new GraphingExtension(Math.E, 0);
+    static INFINITY = new GraphingExtension(Infinity, Infinity);
+    static NAN = new GraphingExtension(NaN, NaN);
     static EPSILON = 1E-15;
     
     getInfo() {
