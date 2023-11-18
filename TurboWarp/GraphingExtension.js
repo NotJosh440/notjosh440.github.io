@@ -3,7 +3,7 @@ async function loadExtension() {
         let complex = await import('complex.js');
         // Use the 'complex' functionality here or within the context where it's needed
         // For instance:
-        const result = complex.someFunction();
+        const result = complex(0, 1).pow(0, 1);
         console.log(result);
     } catch (error) {
         console.error('Error loading extension:', error);
