@@ -155,6 +155,7 @@ class GraphingExtension {
         const formattedResult = `${result.re} + ${result.im}i`;
         return formattedResult;
     }
+    
 }
 
 Scratch.extensions.register(new GraphingExtension());  
