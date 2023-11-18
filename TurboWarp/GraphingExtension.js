@@ -151,7 +151,7 @@ class GraphingExtension {
     }
 
     ComplexAdd(args){
-        const result = new Complex(args.RONE, args.IONE).add(args.RTWO, args.ITWO);
+        const result = new Complex(args.RONE, args.IONE);
         const formattedResult = `${result.re} + ${result.im}i`;
         return formattedResult;
     }
