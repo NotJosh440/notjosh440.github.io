@@ -1,4 +1,17 @@
-let complex = await import('complex.js');
+async function loadExtension() {
+    try {
+        let complex = await import('complex.js');
+        // Use the 'complex' functionality here or within the context where it's needed
+        // For instance:
+        const result = complex.someFunction();
+        console.log(result);
+    } catch (error) {
+        console.error('Error loading extension:', error);
+    }
+}
+
+// Call the asynchronous function to load the extension
+loadExtension();
 
 class GraphingExtension {
     getInfo() {
