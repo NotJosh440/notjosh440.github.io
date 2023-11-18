@@ -151,10 +151,51 @@ class GraphingExtension {
     }
 
     ComplexAdd(args){
-        const result = new Complex(args.RONE, args.IONE);
-        console.log(Complex(1, 1));
-        const formattedResult = `${result.re} + ${result.im}i`;
-        return formattedResult;
+        /**
+         * @constructor
+         * @returns {Complex}
+         */
+        function Complex(a, b) {
+    
+            if (!(this instanceof Complex)) {
+                return new Complex(a, b);
+            }
+        
+            var z = parse(a, b);
+        
+            this['re'] = z['re'];
+            this['im'] = z['im'];
+        }/**
+         * Adds two complex numbers
+         *
+         * @returns {Complex}
+         */Complex.prototype = {
+        
+            're': 0,
+            'im': 0,
+        
+            'add': function(a, b) {
+        
+                var z = new Complex(a, b);
+        
+                // Infinity + Infinity = NaN
+                if (this['isInfinite']() && z['isInfinite']()) {
+                return Complex['NAN'];
+                }
+        
+                // Infinity + z = Infinity { where z != Infinity }
+                if (this['isInfinite']() || z['isInfinite']()) {
+                return Complex['INFINITY'];
+                }
+        
+                return new Complex(
+                this['re'] + z['re'],
+                this['im'] + z['im']);
+                var result = new Complex(args.RONE, args.IONE);
+                const formattedResult = `${result.re} + ${result.im}i`;
+                return formattedResult;
+            }
+        }
     }
 
 }
