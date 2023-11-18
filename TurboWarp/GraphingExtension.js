@@ -148,7 +148,6 @@ class GraphingExtension {
             k2 = temp;
             b = 1 / (b - a);
         } while (Math.abs(x - h1 / k1) > x * tolerance);
-    
         return `${sign}${h1}/${k1}`;
     }
 
@@ -159,7 +158,7 @@ class GraphingExtension {
     }
 
     ComplexAdd(args){
-        const result = new GraphingExtension.Complex(args.RONE, args.IONE).add(args.RTWO, args.ITWO);
+        const result = new GraphingExtension(args.RONE, args.IONE).add(args.RTWO, args.ITWO);
         const formattedResult = `${result.re} + ${result.im}i`;
         return formattedResult;
     }
