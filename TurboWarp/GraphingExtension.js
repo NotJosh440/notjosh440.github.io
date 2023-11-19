@@ -79,7 +79,7 @@ class GraphingExtension {
     }
 
     FloatToFraction(args) {
-        x = args.NUM;
+        var x = args.NUM;
         const tolerance = 1.0E-9;
         let sign = '';
         if (x < 0) {
