@@ -70,8 +70,8 @@ class GraphingExtension {
         };
     }
 
-    FindAmount(VAR, char) {
-        return char.toString().match(new RegExp(VAR, 'g'));
+    FindAmount(args) {
+        return args.CHAR.toString().match(new RegExp(args.VAR, 'g'));
     }
 
     Power(args){
