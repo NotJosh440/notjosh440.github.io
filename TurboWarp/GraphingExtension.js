@@ -72,6 +72,7 @@ class GraphingExtension {
 
     FindAmount(args) {
         return args.VAR.toString().match(new RegExp(args.CHAR, 'g')).length;
+        
     }
 
     Power(args){
