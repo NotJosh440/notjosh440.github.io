@@ -110,9 +110,13 @@ class GraphingExtension {
         var a = args.a;
         var sign = args.sign;
         var b = args.b;
-        
+
         if(isFinite(+a&&+b)){
-            return eval(a + sign + b);
+            if(sign != "^"){
+                return eval(a + sign + b);
+            }else{
+                return Math.pow(a, b);
+            }
         }
     }
 }
