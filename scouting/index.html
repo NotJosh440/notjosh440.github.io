@@ -88,10 +88,10 @@
                                 groundOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
                         finalString = finalArray.join("|");
-                                        document.getElementById('responseMessage').innerText = message;
-                                        resetForm();
-                                        myPopup.classList.add("show");
-                                        setTimeout(() => myPopup.classList.remove("show"), 5000);
+                        document.getElementById('responseMessage').innerText = message;
+                        resetForm();
+                        myPopup.classList.add("show");
+                        setTimeout(() => myPopup.classList.remove("show"), 5000);
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
 
                         showQR();
@@ -174,7 +174,7 @@
 
                 function resetForm() {
                         // Get the value of the element with the ID "myElement"
-                        var scouterInitial = document.getElementById("names").value;
+                       
 
                         // Reset the form
                         document.getElementById("scoutingForm").reset();
@@ -182,10 +182,8 @@
                         // Set the value of the input field with the ID "myInput"
                         // to the value of the element with the ID "myElement"
                         setTimeout(function () {
-                                document.getElementById("names").value = scouterInitial;
                                 document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0";
                                 document.getElementById("responseMessage").style.display = "none";
-                                hideAllErrorMessages();
                                 scrollToElement(document.getElementById("top"));
                         }, 0);
                 }
