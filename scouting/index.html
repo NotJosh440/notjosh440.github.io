@@ -89,6 +89,7 @@
                                 card, damage, comment];
                         finalString = finalArray.join("|");
                         myPopup.classList.add("show");
+                        scrollToElement(document.getElementById("top"));
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
 
                         showQR();
