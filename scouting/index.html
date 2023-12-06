@@ -88,8 +88,10 @@
                                 groundOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
                                 card, damage, comment];
                         finalString = finalArray.join("|");
-                        myPopup.classList.add("show");
-                        scrollToElement(document.getElementById("top"));
+                                        document.getElementById('responseMessage').innerText = message;
+                                        resetForm();
+                                        myPopup.classList.add("show");
+                                        setTimeout(() => myPopup.classList.remove("show"), 5000);
                         url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
 
                         showQR();
