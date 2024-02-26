@@ -1,0 +1,4 @@
+Purpose: To make a website for the Pittsford Robotics Team
+Audience: Members of the team and other teams in FRC
+Content: Images and text showing off our robot and team
+Structure: 
