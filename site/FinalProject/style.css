@@ -1,0 +1,346 @@
+body{
+    --homePageBodyTextWidth: 35%;
+    --homePageBodyCenterMargins: 1%;
+    background-color: #E616A1;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*                                                                              Home Page */
+.header a:link, .header a:visited, .header a:hover, .header a:active{
+    color: black;
+}
+
+.header{
+    min-height: 99.88px;
+}
+
+.headerText, .headerImage{
+    display: inline;
+    float: left;
+}
+
+.headerText{
+    padding-left: 25px;
+}
+
+.headerImage{
+    width: 65px;
+    padding-left: 40px;
+    margin-top: 7.44px;
+}
+
+.headerTextAndPhoto{
+    text-align: center;
+}
+
+.headerToolBar{
+    text-align: right;
+    position: absolute;
+    right: 0;
+    padding-right: 50px;
+}
+
+.pipeSymbol{
+    font-size: 32px;
+    transform: scaleY(2);
+}
+
+.headerSponsors, .pipeSymbol, .headerPhotos, .aboutUs{
+    display: inline;
+    text-align: right;
+}
+
+.hamburgerMenu{
+    width: 50px;
+    height: 50px;
+    background-color: #cccccc;
+    right: 0;
+    position: absolute;
+    margin-right: 50px;
+    display: none;
+    border-radius: 5px;
+}
+
+.firstHamLine, .secondHamLine, .thirdHamLine{
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 40px;
+    height: 5px;
+    background-color: #000000;
+    border-radius: 2.5px;
+}
+
+.firstHamLine{
+    margin-top: 7.5px;
+}
+
+.header{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #E616A1;
+    box-shadow: 0px 1px 20px #000000;
+}
+
+.h1Font{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.h1Body{
+    text-align: center;
+    font-size: 4em;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.body{
+    max-width: 1000px;
+}
+
+.pBody{
+    text-align: center;
+    font-size: 1.75em;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.pBodyBreak{
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-top: 0px;
+    max-width: 45%;
+    margin-left: 27.5%;
+}
+
+
+                                                        /* STEM DIV */
+.stem{
+    text-align: left;
+    width: var(--homePageBodyTextWidth);
+    margin-left: calc(50% + var(--homePageBodyCenterMargins));
+    font-size: 1.1em;
+}
+
+.stemTitle{
+    font-size: 2em;
+    font-weight: 800;
+    transform: scaleY(1.1);
+    font-family: Arial;
+    margin-bottom: 0px;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+}
+
+.stemBody{
+    font-weight: bold;
+    line-height: 200%;
+}
+
+
+                                                        /* BUSINESS DIV */
+.business{
+    text-align: left;
+    width: var(--homePageBodyTextWidth);
+    margin-left: calc(100% - 50% - var(--homePageBodyCenterMargins) - var(--homePageBodyTextWidth));
+    margin-right: 51%;
+    left: 0;
+    font-size: 1.1em;
+}
+
+.businessTitle{
+    font-size: 2em;
+    font-weight: 800;
+    transform: scaleY(1.1);
+    font-family: Arial;
+    margin-bottom: 0px;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+}
+
+.businessBody{
+    font-weight: bold;
+    line-height: 200%;
+}
+
+
+                                                        /* ART AND MEDIA DIV */
+.aAM{
+    text-align: left;
+    width: var(--homePageBodyTextWidth);
+    margin-left: calc(50% + var(--homePageBodyCenterMargins));
+    font-size: 1.1em;
+}
+
+.aAMTitle{
+    font-size: 2em;
+    font-weight: 800;
+    transform: scaleY(1.1);
+    font-family: Arial;
+    margin-bottom: 0px;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+}
+
+.aAMBody{
+    font-weight: bold;
+    line-height: 200%;
+}
+
+
+
+.footerSocials{
+    text-align: center;
+}
+
+.footerLocation{
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 1.45em;
+}
+
+.footerSocialsImages{
+    margin-bottom: 20px;
+}
+
+.footerCopyright{
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.footerSponsors{
+    text-align: center;
+}
+
+.xeroxImage{
+    width: 50%;
+}
+
+.pittsfordSchoolsImage{
+    margin-left: 4%;
+    width: 40%;
+}
+
+.xeroxImage, .pittsfordSchoolsImage{
+    vertical-align: middle;
+}
+
+.xeroxAndSchool{
+    animation: footerSponsorsOut 7.5s cubic-bezier(0, 0.02, 0.28, 0.98) 1s 1 normal forwards;
+    animation-range-start: 80%;
+    position: absolute;
+    margin-left: 23%;
+    text-align: center;
+    width: 50%;
+    min-height: 105px;
+}
+
+.laBellaImage{
+    margin-left: 4%;
+}
+
+.wackyButtonsImage, .laBellaImage{
+    width: 50%;
+    vertical-align: middle;
+}
+
+.wackyButtonsAndLaBella{
+    animation: footerSponsorsOut 7.5s cubic-bezier(0, 0.02, 0.28, 0.98) 1s 1s normal forwards;
+    position: absolute;
+    margin-left: 23%;
+    opacity: 0%;
+    width: 50%;
+    min-height: 105px;
+}
+
+.xeroxAndSchool, .wackyButtonsAndLaBella{
+    text-wrap: nowrap;
+}
+
+.footerInfo{
+    top: calc(20vw);
+    position: relative;
+}
+
+
+@keyframes footerSponsorsOut {
+    0%{scale: 100%; opacity: 100%; transform: translate3d(0px, 0px, 2px); position: absolute;}
+    20%{scale: 0%; opacity: 0%; transform: translate3d(-1100px, 0px, 1px); position: absolute;}
+    80%{scale: 0%; opacity: 0%; transform: translate3d(1100px, 0px, 1px); position: absolute;}
+    100%{scale: 100%; opacity: 100%; transform: translate3d(0px, 0px, 2px); position: absolute;}
+}
+
+
+
+@media only screen and (min-width: 1000px) {
+    .body{
+        margin-left: calc(50vw - 500px);
+    }
+}
+
+@media only screen and (max-width: 890px) {
+    .headerTextSpan{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    .headerText{
+        display: none;
+    }
+    .headerImage{
+        margin-top: 0px;
+    }
+}
+
+@media only screen and (max-width: 440px){
+    .headerText{
+        display: none;
+    }
+    .headerImage{
+        margin-top: 0px;
+    }
+    .headerToolBar{
+        display: none;
+    }
+    .hamburgerMenu{
+        display: block;
+    }
+    .header{
+        min-height: 0px;
+        height: 75px;
+    }
+}
+
+
+
+
+
+/*                                                                                  Sponsor Page */
+
+.sponsorsBody{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.xeroxSponsorPageText, .xeroxSponsorPageImage{
+    display: inline-block;
+}
+
+.xeroxSponsorPageTextText, .xeroxSponsorPageImage{
+    vertical-align: baseline;
+
+}
+
+.xeroxSponsorPageText{
+    width: 50%;
+}
+
+.xeroxSponsorPageImage img{
+    width: 100%;
+}
