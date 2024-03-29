@@ -4,6 +4,7 @@ body{
     background-color: #E616A1;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
+    min-width: 300px;
 }
 
 /*                                                                              Home Page */
@@ -54,7 +55,7 @@ body{
 .hamburgerMenu{
     width: 50px;
     height: 50px;
-    background-color: #cccccc;
+    
     right: 0;
     position: absolute;
     margin-right: 50px;
@@ -231,11 +232,9 @@ body{
 }
 
 .xeroxAndSchool{
-    animation: footerSponsorsOut 7.5s cubic-bezier(0, 0.02, 0.28, 0.98) 1s 1 normal forwards;
-    animation-range-start: 80%;
+    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) 0s infinite normal forwards;
     position: absolute;
     margin-left: 23%;
-    text-align: center;
     width: 50%;
     min-height: 105px;
 }
@@ -250,28 +249,79 @@ body{
 }
 
 .wackyButtonsAndLaBella{
-    animation: footerSponsorsOut 7.5s cubic-bezier(0, 0.02, 0.28, 0.98) 1s 1s normal forwards;
+    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -24s infinite normal forwards;
     position: absolute;
     margin-left: 23%;
-    opacity: 0%;
     width: 50%;
     min-height: 105px;
 }
 
-.xeroxAndSchool, .wackyButtonsAndLaBella{
+.luzCoImage{
+    margin-left: 4%;
+}
+
+.pFCImage, .luzCoImage{
+    width: 50%;
+    vertical-align: middle;
+}
+
+.pFCAndLuxCo{
+    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -18s infinite normal forwards;
+    position: absolute;
+    margin-left: 23%;
+    width: 50%;
+    min-height: 105px;
+}
+
+.wegmansImage{
+    margin-left: 4%;
+}
+
+.corningImage, .wegmansImage{
+    width: 50%;
+    vertical-align: middle;
+}
+
+.corningAndWegmans{
+    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -12s infinite normal forwards;
+    position: absolute;
+    margin-left: 23%;
+    width: 50%;
+    min-height: 105px;
+}
+
+.nameSpons2Img{
+    margin-left: 4%;
+}
+
+.nameSponsImg, .nameSpons2Img{
+    width: 50%;
+    vertical-align: middle;
+}
+
+.nameSponsors{
+    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -6s infinite normal forwards;
+    position: absolute;
+    margin-left: 23%;
+    width: 50%;
+    min-height: 105px;
+}
+
+.animationSponsors{
     text-wrap: nowrap;
 }
 
 .footerInfo{
-    top: calc(20vw);
+    top: 20vw;
     position: relative;
 }
 
 
 @keyframes footerSponsorsOut {
     0%{scale: 100%; opacity: 100%; transform: translate3d(0px, 0px, 2px); position: absolute;}
+    16.667%{scale: 100%; opacity: 100%; transform: translate3d(0, 0px, 2px); position: absolute;}
     20%{scale: 0%; opacity: 0%; transform: translate3d(-1100px, 0px, 1px); position: absolute;}
-    80%{scale: 0%; opacity: 0%; transform: translate3d(1100px, 0px, 1px); position: absolute;}
+    96.667%{scale: 0%; opacity: 0%; transform: translate3d(1100px, 0px, 1px); position: absolute;}
     100%{scale: 100%; opacity: 100%; transform: translate3d(0px, 0px, 2px); position: absolute;}
 }
 
@@ -304,12 +354,15 @@ body{
     }
     .headerImage{
         margin-top: 0px;
+        padding-left: 2%;
     }
     .headerToolBar{
         display: none;
     }
     .hamburgerMenu{
         display: block;
+        margin-right: 0%;
+        padding-right: 2%;
     }
     .header{
         min-height: 0px;

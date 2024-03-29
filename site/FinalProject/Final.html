@@ -6,17 +6,6 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/x-icon" href="Images/GearPanther.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script>
-        function reset_animation() {
-            var el = document.getElementsByClassName("animationSponsors");
-            for(var i=0; i<el.length; i++){
-                el[i].style.animation = 'none';
-                el[i].offsetHeight; /* trigger reflow */
-                el[i].style.animation = null; 
-            }
-        }
-    </script>
-
     <title>Pittsford Robotics</title>
 </head>
 <body>
@@ -33,6 +22,11 @@
             <a class="headerPhotos" href="./Photos.html">Team Photos</a>
             <p class="pipeSymbol">|</p>
             <a class="aboutUs" href="./AboutUs.html">About Us</a>
+        </div>
+        <div class="hamburgerMenu">
+            <div class="firstHamLine"></div>
+            <div class="secondHamLine"></div>
+            <div class="thirdHamLine"></div>
         </div>
     </div>
     <div class="body">
@@ -68,6 +62,18 @@
             <div class="wackyButtonsAndLaBella animationSponsors">
                 <img src="Images/WackyButtons.png" alt="" class="wackyButtonsImage">
                 <img src="Images/LaBella.png" alt="" class="laBellaImage">
+            </div>
+            <div class="pFCAndLuxCo animationSponsors">
+                <img src="Images/CreditUnion.png" alt="" class="pFCImage">
+                <img src="Images/LuzCo.png" alt="" class="luzCoImage">
+            </div>
+            <div class="corningAndWegmans animationSponsors">
+                <img src="Images/Corning.png" alt="" class="corningImage">
+                <img src="Images/Wegmans.png" alt="" class="wegmansImage">
+            </div>
+            <div class="nameSponsors animationSponsors">
+                <img src="Images/NameSpons.png" alt="" class="nameSponsImg">
+                <img src="Images/NameSpons2.png" alt="" class="nameSpons2Img">
             </div>
         </div>
         <div class="footerInfo">
