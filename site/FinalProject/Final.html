@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/x-icon" href="Images/GearPanther.png">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Pittsford Robotics</title>
 </head>
 <body>
@@ -37,44 +37,147 @@
         <div class="stem">
             <p class="stemTitle">STEM</p>
             <br><br>
+            <img src="Images/Placeholder.png" alt="" class="stemImage">
             <p class="stemBody">Our team strives to promote STEM education in our community. Students gain hands on experiences in mechanical, electical, and software engineering by building a life-size and fully functioning robot that completes a series of tasks for each season's competition. Each year, we host outreach events such as robot demonstrations at local places and contribute to a recycling drive for metal and electronics.</p>
+            <img src="Images/Placeholder.png" alt="" class="stemImage2">
         </div>
 
         <div class="business">
             <p class="businessTitle">BUSINESS</p>
             <br><br>
+            <img src="Images/Placeholder.png" alt="" class="businessImage">
             <p class="businessBody">Being a non-profit organization, our student-ran business team oversees funding, sponsor relations, resource allocations, and community outreach. Each year, the team manages thousands of dollars needed to build the robot and enter competitions around the nation. Students who are interested in finance, marketing, and management explore the intersection between busniess and STEM through our team.</p>
+            <img src="Images/Placeholder.png" alt="" class="businessImage2">
         </div>
 
         <div class="aAM">
             <p class="aAMTitle">Art & Media</p>
             <br><br>
+            <img src="Images/Placeholder.png" alt="" class="aAMImage">
             <p class="aAMBody">Pittsford Robotics give aspiring artists an oppertunity to apply their creativity and skills in real-word applications. Art and media tackle projects like designing team apparel, adding content to social media pages, and making a safety video of the safety award each year.</p>
+            <img src="Images/Placeholder.png" alt="" class="aAMImage2">
         </div>
     </div>
-    <br><br>
+    
+    <br>
+    
     <div class="footer">
         <div class="footerSponsors">
-            <div class="xeroxAndSchool animationSponsors">
-                <img src="Images/XEROX.png" alt="" class="xeroxImage">
-                <img src="Images/PittsfordSchool.png" alt="" class="pittsfordSchoolsImage">
-            </div>
-            <div class="wackyButtonsAndLaBella animationSponsors">
-                <img src="Images/WackyButtons.png" alt="" class="wackyButtonsImage">
-                <img src="Images/LaBella.png" alt="" class="laBellaImage">
-            </div>
-            <div class="pFCAndLuxCo animationSponsors">
-                <img src="Images/CreditUnion.png" alt="" class="pFCImage">
-                <img src="Images/LuzCo.png" alt="" class="luzCoImage">
-            </div>
-            <div class="corningAndWegmans animationSponsors">
-                <img src="Images/Corning.png" alt="" class="corningImage">
-                <img src="Images/Wegmans.png" alt="" class="wegmansImage">
-            </div>
-            <div class="nameSponsors animationSponsors">
-                <img src="Images/NameSpons.png" alt="" class="nameSponsImg">
-                <img src="Images/NameSpons2.png" alt="" class="nameSpons2Img">
-            </div>
+            <table class="xeroxAndSchool animationSponsors">
+                <tr>
+                    <td class="sponsorLeft">
+                        <img src="Images/XEROX.png" alt="" class="xeroxImage sponsor">
+                    </td>
+                    <td class="sponsorRight">
+                        <img src="Images/pittsfordschool-logo.png" alt="" class="pittsfordSchoolsImage sponsor">
+                    </td>
+                </tr>
+            </table>
+            <table class="wackyButtonsAndLaBella animationSponsors">
+                <tr>
+                    <td class="sponsorLeft">
+                        <img src="Images/WackyButtons.png" alt="" class="wackyButtonsImage sponsor">
+                    </td>
+                    <td class="sponsorRight">
+                        <img src="Images/LaBella.png" alt="" class="laBellaImage sponsor">
+                    </td>
+                </tr>
+            </table>
+            <table class="pFCAndLuzCo animationSponsors">
+                <tr>
+                    <td class="sponsorLeft">
+                        <img src="Images/CreditUnion.png" alt="" class="pFCImage sponsor">
+                    </td>
+                    <td class="sponsorRight">
+                        <img src="Images/LuzCo.png" alt="" class="luzCoImage sponsor">
+                    </td>
+                </tr>
+            </table>
+            <table class="corningAndWegmans animationSponsors">
+                <tr>
+                    <td class="sponsorLeft">
+                        <img src="Images/Corning.png" alt="" class="corningImage sponsor">
+                    </td>
+                    <td class="sponsorRight">
+                        <img src="Images/Wegmans.png" alt="" class="wegmansImage sponsor">
+                    </td>
+                </tr>
+            </table>
+            <table class="nameSponsors animationSponsors">
+                <tr>
+                    <td class="sponsorLeft">
+                        <img src="Images/NameSpons.png" alt="" class="nameSponsImg sponsor">
+                        
+                    </td>
+                    <td class="sponsorRight">
+                        <img src="Images/NameSpons2.png" alt="" class="nameSpons2Img sponsor">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <script>
+             $(document).ready(function(){
+                t = document.getElementsByClassName("animationSponsors");
+                var tallestHeight = 0;
+                Object.entries(t).forEach(([table]) => {
+                    if(t[table].clientHeight > tallestHeight){
+                        tallestHeight = t[table].clientHeight;
+                    }
+                });
+                $(".footerSponsors").height(tallestHeight + "px");
+            });
+        </script>
+        <div class="footerSponsorsSmall">
+            <table class="xeroxAndSchoolSmall` animationSponsorsSmall">
+                <tr>
+                    <td class="sponsorLeftSmall">
+                        <img src="Images/XEROX.png" alt="" class="xeroxImageSmall sponsorSmall">
+                    </td>
+                    <td class="sponsorRightSmall">
+                        <img src="Images/PittsfordSchool.png" alt="" class="pittsfordSchoolsImageSmall sponsorSmall">
+                    </td>
+                </tr>
+            </table>
+            <table class="wackyButtonsAndLaBellaSmall animationSponsorsSmall">
+                <tr>
+                    <td class="sponsorLeftSmall">
+                        <img src="Images/WackyButtons.png" alt="" class="wackyButtonsImageSmall sponsorSmall">
+                    </td>
+                    <td class="sponsorRightSmall">
+                        <img src="Images/LaBella.png" alt="" class="laBellaImageSmall sponsorSmall">
+                    </td>
+                </tr>
+            </table>
+            <table class="pFCAndLuzCoSmall animationSponsorsSmall">
+                <tr>
+                    <td class="sponsorLeftSmall">
+                        <img src="Images/CreditUnion.png" alt="" class="pFCImageSmall sponsorSmall">
+                    </td>
+                    <td class="sponsorRightSmall">
+                        <img src="Images/LuzCo.png" alt="" class="luzCoImageSmall sponsorSmall">
+                    </td>
+                </tr>
+            </table>
+            <table class="corningAndWegmansSmall animationSponsorsSmall">
+                <tr>
+                    <td class="sponsorLeftSmall">
+                        <img src="Images/Corning.png" alt="" class="corningImageSmall sponsorSmall">
+                    </td>
+                    <td class="sponsorRightSmall">
+                        <img src="Images/Wegmans.png" alt="" class="wegmansImageSmall sponsorSmall">
+                    </td>
+                </tr>
+            </table>
+            <table class="nameSponsorsSmall animationSponsorsSmall">
+                <tr>
+                    <td class="sponsorLeftSmall">
+                        <img src="Images/NameSpons.png" alt="" class="nameSponsImgSmall sponsorSmall">
+                    </td>
+                    <td class="sponsorRightSmall">
+                        <img src="Images/NameSpons2.png" alt="" class="nameSpons2ImgSmal sponsorSmall">
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="footerInfo">
             <p class="footerLocation">Pittsford, New York</p>
