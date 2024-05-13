@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/x-icon" href="Images/GearPanther.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Pittsford Robotics</title>
+    <script class="resizeSponsorFunction">
+        $(document).ready(function(){
+            var className = "animationSponsors"
+            t = document.getElementsByClassName(className);
+            var tallestHeight = 0;
+            var widthest = 0;
+            Object.entries(t).forEach(([table]) => {
+                if(t[table].clientHeight > tallestHeight){
+                    tallestHeight = t[table].clientHeight;
+                }
+            });
+            Object.entries(t).forEach(([table]) => {
+                if(t[table].clientWidth > widthest){
+                    widthest = t[table].clientWidth;
+                }
+            });
+            $(".footerSponsors").height(tallestHeight + "px");
+            $(".footerSponsors").css("margin-left", ($(window).width()/2)-(widthest/2) + "px");
+            window.addEventListener("resize", function (){
+                var className = "animationSponsors"
+                t = document.getElementsByClassName(className);
+                var tallestHeight = 0;
+                var widthest = 0;
+                Object.entries(t).forEach(([table]) => {
+                    if(t[table].clientHeight > tallestHeight){
+                        tallestHeight = t[table].clientHeight;
+                    }
+                });
+                Object.entries(t).forEach(([table]) => {
+                    if(t[table].clientWidth > widthest){
+                        widthest = t[table].clientWidth;
+                    }
+                });
+                $(".footerSponsors").height(tallestHeight + "px");
+                $(".footerSponsors").css("margin-left", ($(window).width()/2)-(widthest/2) + "px");
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            var visible = true;
+            $("#hamburgerMenu").hover(function(){
+                $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "12.656px"})
+                $("#hamburgerMenuPages").css("display", "block");
+                $("#hMPSpacer").css("display", "block");
+                $("#firstHamLine").css({"rotate": "-45deg", "scale": "1.09 1 1"});
+                $("#secondHamLine").css("display", "none");
+                $("#thirdHamLine").css({"rotate": "45deg", "scale": "1.09 1 1", "margin-top": "25px"});
+                visible = false;
+            },function(){
+                $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "0px"})
+                $("#hamburgerMenuPages").css("display", "none");
+                $("#hMPSpacer").css("display", "none");
+                $("#firstHamLine").css({"rotate": "0deg", "scale": "1 1 1"});
+                $("#secondHamLine").css("display", "block");
+                $("#thirdHamLine").css({"rotate": "0deg", "scale": "1 1 1", "margin-top": "10px"});
+                visible = true;
+            });
+            $("#hamburgerMenu").click(function(){
+                if(visible){
+                    $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "12.656px"})
+                    $("#hamburgerMenuPages").css("display", "block");
+                    $("#hMPSpacer").css("display", "block");
+                    $("#firstHamLine").css({"rotate": "-45deg", "scale": "1.09 1 1"});
+                    $("#secondHamLine").css("display", "none");
+                    $("#thirdHamLine").css({"rotate": "45deg", "scale": "1.09 1 1", "margin-top": "25px"});
+                    visible = false;
+                }else{
+                    $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "0px"})
+                    $("#hamburgerMenuPages").css("display", "none");
+                    $("#hMPSpacer").css("display", "none");
+                    $("#firstHamLine").css({"rotate": "0deg", "scale": "1 1 1"});
+                    $("#secondHamLine").css("display", "block");
+                    $("#thirdHamLine").css({"rotate": "0deg", "scale": "1 1 1", "margin-top": "10px"});
+                    visible = true;
+                }
+            });
+            $("#hamburgerMenuPages").hover(function(){
+                $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "12.656px"})
+                $("#hamburgerMenuPages").css("display", "block");
+                $("#hMPSpacer").css("display", "block");
+                $("#firstHamLine").css({"rotate": "-45deg", "scale": "1.09 1 1"});
+                $("#secondHamLine").css("display", "none");
+                $("#thirdHamLine").css({"rotate": "45deg", "scale": "1.09 1 1", "margin-top": "25px"});
+                visible = false;
+            },function(){
+                $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "0px"})
+                $("#hamburgerMenuPages").css("display", "none");
+                $("#hMPSpacer").css("display", "none");
+                $("#firstHamLine").css({"rotate": "0deg", "scale": "1 1 1"});
+                $("#secondHamLine").css("display", "block");
+                $("#thirdHamLine").css({"rotate": "0deg", "scale": "1 1 1", "margin-top": "10px"});
+                visible = true;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header" id="header">
+        <a href="./Final.html">
+            <div class="headerTextAndPhoto">
+                <img src="Images/GearPanther.png" alt="" class="headerImage">
+                <h1 class="headerText">Pittsford Robotics<span class="headerTextSpan"> Team 3181</span></h1>
+            </div>
+        </a>
+        <div class="headerToolBar">
+            <a class="headerSponsors" href="./Sponsors.html">Sponsors</a>
+            <p class="pipeSymbol">|</p>
+            <a class="headerPhotos" href="./Photos.html">Team Photos</a>
+            <p class="pipeSymbol">|</p>
+            <a class="aboutUs" href="./AboutUs.html">About Us</a>
+        </div>
+        <div class="hamburgerMenu" id="hamburgerMenu">
+            <div class="firstHamLine"></div>
+            <div class="secondHamLine"></div>
+            <div class="thirdHamLine"></div>
+        </div>
+        <div class="hamburgerMenuPages" id="hamburgerMenuPages">
+            <div class="hMPSpacer" id="hMPSpacer"></div>
+            <div class="hamburgerMenuPagesSites">
+                <a class="hamPhots" href="./Photo.html">Photos</a>
+                <br><br>
+                <a class="hamCal" href="./Calendar.html">Calendar</a>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="bodyHeader">
+            <h1 class="h1Body">We Are Pittsford Robotics</h1>
+            <p class="pBody">A FIRST Team #3181 based in Pittsford, New York.
+            <p class="pBodyBreak">We give students the opportunity to explore STEM, Art & Media, and Business with hands-on experiences and competitions.</p>
+        </div>
+        <table class="pBodyImages">
+            <tr>
+                <td class="pBodyImagesTd">
+                    <img src="Images/Placeholder.png" alt="">
+                </td>
+                <td class="pBodyImagesTd">
+                    <img src="Images/Placeholder.png" alt="">
+                </td>
+                <td class="pBodyImagesTd">
+                    <img src="Images/Placeholder.png" alt="">
+                </td>
+            </tr>
+        </table>
+        <div class="stem">
+            <p class="stemTitle">STEM</p>
+            <br><br>
+            <img src="Images/Placeholder.png" alt="" class="stemImage">
+            <p class="stemBody">Our team strives to promote STEM education in our community. Students gain hands on experiences in mechanical, electical, and software engineering by building a life-size and fully functioning robot that completes a series of tasks for each season's competition. Each year, we host outreach events such as robot demonstrations at local places and contribute to a recycling drive for metal and electronics.</p>
+            <img src="Images/Placeholder.png" alt="" class="stemImage2">
+        </div>
+
+        <div class="business">
+            <p class="businessTitle">BUSINESS</p>
+            <br><br>
+            <img src="Images/Placeholder.png" alt="" class="businessImage">
+            <p class="businessBody">Being a non-profit organization, our student-ran business team oversees funding, sponsor relations, resource allocations, and community outreach. Each year, the team manages thousands of dollars needed to build the robot and enter competitions around the nation. Students who are interested in finance, marketing, and management explore the intersection between busniess and STEM through our team.</p>
+            <img src="Images/Placeholder.png" alt="" class="businessImage2">
+        </div>
+
+        <div class="aAM">
+            <p class="aAMTitle">Art & Media</p>
+            <br><br>
+            <img src="Images/Placeholder.png" alt="" class="aAMImage">
+            <p class="aAMBody">Pittsford Robotics give aspiring artists an oppertunity to apply their creativity and skills in real-word applications. Art and media tackle projects like designing team apparel, adding content to social media pages, and making a safety video of the safety award each year.</p>
+            <img src="Images/Placeholder.png" alt="" class="aAMImage2">
+        </div>
+    </div>
+    
+    <br>
+    
+    <div class="footer">
+        <div class="footerSponsors">
+            <table class="xeroxAndSchool animationSponsors">
+                <tr>
+                    <td class="sponsorLeft">
+                        <img src="Images/XEROX.png" alt="" class="xeroxImage sponsor">
+                    </td>
+                    <td class="sponsorRight">
+                        <img src="Images/pittsfordschool-logo.png" alt="" class="pittsfordSchoolsImage sponsor">
+                    </td>
+                </tr>
+            </table>
+            <table class="wackyButtonsAndLaBella animationSponsors">
+                <tr>
+                    <td class="sponsorLeft">
+                        <img src="Images/WackyButtons.png" alt="" class="wackyButtonsImage sponsor">
+                    </td>
+                    <td class="sponsorRight">
+                        <img src="Images/LaBella.png" alt="" class="laBellaImage sponsor">
+                    </td>
+                </tr>
+            </table>
+            <table class="pFCAndLuzCo animationSponsors">
+                <tr>
+                    <td class="sponsorLeft">
+                        <img src="Images/CreditUnion.png" alt="" class="pFCImage sponsor">
+                    </td>
+                    <td class="sponsorRight">
+                        <img src="Images/LuzCo.png" alt="" class="luzCoImage sponsor">
+                    </td>
+                </tr>
+            </table>
+            <table class="corningAndWegmans animationSponsors">
+                <tr>
+                    <td class="sponsorLeft">
+                        <img src="Images/Corning.png" alt="" class="corningImage sponsor">
+                    </td>
+                    <td class="sponsorRight">
+                        <img src="Images/Wegmans.png" alt="" class="wegmansImage sponsor">
+                    </td>
+                </tr>
+            </table>
+            <table class="nameSponsors animationSponsors">
+                <tr>
+                    <td class="sponsorLeft">
+                        <img src="Images/NameSpons.png" alt="" class="nameSponsImg sponsor">
+                        
+                    </td>
+                    <td class="sponsorRight">
+                        <img src="Images/NameSpons2.png" alt="" class="nameSpons2Img sponsor">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="footerInfo">
+            <p class="footerLocation">Pittsford, New York</p>
+            <div class="footerSocials">
+                <a href="https://www.youtube.com/channel/UCFLDuOKezZchjGaA2rMZKcQ/featured"><img src="Images/YouTubeLogo.png" alt="" class="footerSocialsImages"></a>
+                <a href="https://twitter.com/frcteam3181"><img src="Images/TwitterLogo.png" alt="" class="footerSocialsImages"></a>
+                <a href="https://www.facebook.com/frcteam3181"><img src="Images/FaceBookLogo.png" alt="" class="footerSocialsImages"></a>
+                <a href="https://www.instagram.com/frcteam3181/"><img src="Images/InstagramLogo.png" alt="" class="footerSocialsImages"></a>
+            </div>
+            <div class="footerCopyright">© 2023 Pittsford Panthers Robotics<br>Contact us at pittsfordrobotics3181@gmail.com</div>
+        </div>
+    </div>
+    <br><br><br><br><br>
+</body>
+</html>

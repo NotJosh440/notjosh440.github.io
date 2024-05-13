@@ -48,14 +48,19 @@ body{
     text-align: right;
 }
 
-.hamburgerMenu{
+.hamburgerMenu, .hamburgerMenuPages, .hMPSpacer{
     width: 50px;
-    height: 50px;
+    /* height: 50px; */
     right: 0;
     position: absolute;
-    margin-right: 50px;
     display: none;
     border-radius: 5px;
+}
+.hamburgerMenuPages{
+    z-index: -2;
+    width: 60px;
+    box-shadow: 0px 1px 20px #000000;
+    /* clip-path: rectangle(0px -20px -20px 0px);; */
 }
 
 .firstHamLine, .secondHamLine, .thirdHamLine{
@@ -85,6 +90,11 @@ body{
     font-weight: bold;
 }
 
+.body{
+    max-width: 1000px;
+
+}
+
 .h1Body{
     text-align: center;
     font-size: 4em;
@@ -92,9 +102,9 @@ body{
     margin-bottom: 10px;
 }
 
-.body{
-    max-width: 1000px;
-
+.bodyHeader{
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 .pBody{
@@ -112,6 +122,20 @@ body{
     margin-top: 0px;
     max-width: 45%;
     margin-left: 27.5%;
+}
+
+
+.pBodyImages{
+    width: 100%;
+}
+
+.pBodyImagesTd{
+    width: calc(100vw / 3);
+}
+
+.pBodyImagesTd img{
+    max-width: 100%;
+    max-height: 250px;
 }
 
 
@@ -225,6 +249,10 @@ body{
 
 
 
+.footer{
+    text-align: center;
+}
+
 .footerSocials{
     text-align: center;
 }
@@ -245,37 +273,40 @@ body{
     padding-bottom: 1000px;
 }
 
+
+
 .footerSponsors{
-    text-align: center;
     position: relative;
-    height: auto;
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 
-.footerSponsorsSmall{
-    display: none;
+.animationSponsors td{
+    height: 150px;
+    vertical-align: middle;
 }
 
+.animationSponsors{
+    text-wrap: nowrap;
+    position: absolute;
+    max-width: calc(2 * var(--homePageBodyCenterMargins) + 2 * var(--homePageBodyTextWidth));
+    /* width: 100%; */
+}
 
 .xeroxAndSchool{
     animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) 0s infinite normal forwards;
 }
 
-
 .wackyButtonsAndLaBella{
     animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -24s infinite normal forwards;
 }
-
 
 .pFCAndLuzCo{
     animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -18s infinite normal forwards;
 }
 
-
 .corningAndWegmans{
     animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -12s infinite normal forwards;
 }
-
 
 .nameSponsors{
     animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -6s infinite normal forwards;
@@ -283,44 +314,32 @@ body{
 }
 
 .sponsor{
-    max-width: 100%;
     max-height: 100%;
+    max-width: 100%;
 }
 
-.animationSponsors td{
-    height: 150px;
-    vertical-align: middle;
-    max-width: 50%;
-    border: 1 solid #000000;
-}
-
-.sponsorLeft, .nameSponsImg{
+.sponsorLeft{
     text-align: right;
     font-size: x-large;
     padding-right: calc(3 * var(--homePageBodyCenterMargins));
+    width: 300px;
 }
 
-.sponsorRight, .nameSpons2Img{
+.sponsorRight{
     text-align: left;
     font-size: x-large;
     padding-left: calc(3 * var(--homePageBodyCenterMargins));
+    width: 300px;
 }
 
-.animationSponsors{
-    text-wrap: nowrap;
-    position: absolute;
-    max-width: calc(2 * var(--homePageBodyCenterMargins) + 2 * var(--homePageBodyTextWidth));
-    width: 100%;
-    margin-left: calc(50% - var(--homePageBodyTextWidth));
-}
 
 
 
 @keyframes footerSponsorsOut {
     0%{scale: 100%; opacity: 100%; transform: translate3d(0px, 0px, 2px);}
     16.667%{scale: 100%; opacity: 100%; transform: translate3d(0, 0px, 2px);}
-    20%{scale: 0%; opacity: 0%; transform: translate3d(-80%, 0px, 1px);}
-    96.667%{scale: 0%; opacity: 0%; transform: translate3d(80%, 0px, 1px);}
+    20%{scale: 0%; opacity: 0%; transform: translate3d(-100vw, 0px, 1px);}
+    96.667%{scale: 0%; opacity: 0%; transform: translate3d(100vw, 0px, 1px);}
     100%{scale: 100%; opacity: 100%; transform: translate3d(0px, 0px, 2px);}
 }
 
@@ -377,6 +396,12 @@ body{
     }
 }
 
+@media only screen and (max-width: 530px){
+    .h1Body{
+        font-size: 3.5em;
+    }
+}
+
 @media only screen and (max-width: 400px){
     .header{
         padding-left: 10px;
@@ -394,9 +419,35 @@ body{
         display: none;
     }
     .hamburgerMenu{
+        z-index: 2;
         display: inline;
         margin-right: 0%;
+        padding-right: 5px;
+    }
+    .header{
+        min-height: 0px;
+        height: 75px;
+    }
+    .hMPSpacer{
+        background-color: #E616A1;
+        top: calc(0px - 95px + 68.74px);
+        height: calc(95px - 68.74px);
+        border-radius: 0px;
+        width: 87.688px;
+    }
+    .hamburgerMenuPages{
+        background-color: #E616A1;
+        top: 0px;
+        z-index: 0;
+        margin-top: 95px;
+        border-radius: 0px;
+        text-align: right;
         padding-right: 2%;
+        width: 80px;
+    }
+    .hamPhots, .hamCal{
+        position: static;
+        border-bottom: 10px;
     }
     .header{
         min-height: 0px;
