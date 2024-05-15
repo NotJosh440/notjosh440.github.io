@@ -1,0 +1,709 @@
+body{
+    --homePageBodyTextWidth: 45%;
+    --homePageBodyCenterMargins: 1%;
+    background-color: #E616A1;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 300px;
+}
+
+
+/* 
+
+
+#     #                                    
+#     # ######   ##   #####  ###### #####  
+#     # #       #  #  #    # #      #    # 
+####### #####  #    # #    # #####  #    # 
+#     # #      ###### #    # #      #####  
+#     # #      #    # #    # #      #   #  
+#     # ###### #    # #####  ###### #    # 
+
+
+*/
+
+
+.header a:link, .header a:visited, .header a:hover, .header a:active{
+    color: black;
+}
+
+.headerText, .headerImage{
+    display: inline;
+    float: left;
+}
+
+.headerText{
+    padding-left: 25px;
+}
+
+.headerImage{
+    width: 65px;
+    padding-left: 40px;
+    margin-top: 7.44px;
+}
+
+.headerTextAndPhoto{
+    text-align: center;
+}
+
+.headerToolBar{
+    text-align: right;
+    position: absolute;
+    right: 0px;
+    padding-right: 50px;
+}
+
+.pipeSymbol{
+    font-size: 32px;
+    transform: scaleY(2);
+}
+
+.headerSponsors, .pipeSymbol, .headerPhotos, .aboutUs{
+    display: inline;
+    text-align: right;
+}
+
+.hamburgerMenu, .hamburgerMenuPages, .hMPSpacer{
+    right: 0;
+    position: absolute;
+    display: none;
+}
+.hamburgerMenu{
+    width: 50px;
+    z-index: 2;
+    margin-right: 0px;
+    border-radius: 5px;
+    padding-right: 5px;
+}
+.hMPSpacer{
+    background-color: #E616A1;
+    top: calc(0px - 95px + 68.74px);
+    height: calc(95px - 68.74px);
+    width: 106.92px;
+}
+.hamburgerMenuPages{
+    background-color: #E616A1;
+    top: 0px;
+    z-index: 0;
+    box-shadow: 0px 1px 20px #000000;
+    margin-top: 95px;
+    padding-left: 6.766px;
+    padding-right: 6.766px;
+    text-align: right;
+}
+
+.firstHamLine, .secondHamLine, .thirdHamLine{
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 40px;
+    height: 5px;
+    background-color: #000000;
+    border-radius: 2.5px;
+}
+
+.firstHamLine{
+    margin-top: 7.5px;
+}
+
+.header{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #E616A1;
+    box-shadow: 0px 1px 20px #000000;
+}
+
+
+/* 
+
+
+#     #                         ######                       
+#     #  ####  #    # ######    #     #   ##    ####  ###### 
+#     # #    # ##  ## #         #     #  #  #  #    # #      
+####### #    # # ## # #####     ######  #    # #      #####  
+#     # #    # #    # #         #       ###### #  ### #      
+#     # #    # #    # #         #       #    # #    # #      
+#     #  ####  #    # ######    #       #    #  ####  ###### 
+
+
+_|_|_|              _|                                _|                        _|      _|                      
+  _|    _|_|_|    _|_|_|_|  _|  _|_|    _|_|      _|_|_|  _|    _|    _|_|_|  _|_|_|_|        _|_|    _|_|_|    
+  _|    _|    _|    _|      _|_|      _|    _|  _|    _|  _|    _|  _|          _|      _|  _|    _|  _|    _|  
+  _|    _|    _|    _|      _|        _|    _|  _|    _|  _|    _|  _|          _|      _|  _|    _|  _|    _|  
+_|_|_|  _|    _|      _|_|  _|          _|_|      _|_|_|    _|_|_|    _|_|_|      _|_|  _|    _|_|    _|    _| 
+Introduction
+*/
+
+
+.h1Font{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.body{
+    max-width: 1000px;
+}
+
+.h1Body{
+    text-align: center;
+    font-size: 4em;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.bodyHeader{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.pBody{
+    text-align: center;
+    font-size: 1.75em;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.pBodyBreak{
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-top: 0px;
+    max-width: 45%;
+    margin-left: 27.5%;
+}
+
+
+.pBodyImages{
+    width: 100%;
+}
+
+.pBodyImagesTd{
+    width: calc(100vw / 3);
+}
+
+.pBodyImagesTd img{
+    max-width: 100%;
+    max-height: 250px;
+}
+
+
+/* 
+
+
+  _|_|_|  _|_|_|_|_|  _|_|_|_|  _|      _|  
+_|            _|      _|        _|_|  _|_|  
+  _|_|        _|      _|_|_|    _|  _|  _|  
+      _|      _|      _|        _|      _|  
+_|_|_|        _|      _|_|_|_|  _|      _|  
+
+Stem
+*/
+
+
+.stem{
+    width: var(--homePageBodyTextWidth);
+    margin-left: calc(50% + var(--homePageBodyCenterMargins));
+    font-size: 1.1em;
+}
+
+.stemTitle{
+
+    font-size: 2em;
+    font-weight: 800;
+    transform: scaleY(1.1);
+    font-family: Arial;
+    margin-bottom: 0px;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+}
+
+.stemBody{
+    font-weight: bold;
+    line-height: 200%;
+}
+
+.stemImage{
+    right: calc(50% + var(--homePageBodyCenterMargins));
+    position: absolute;
+    max-width: var(--homePageBodyTextWidth);
+    max-height: 330px;
+}
+
+.stemImage2{
+    display: none;
+}
+
+
+/* 
+
+                                                                      
+_|_|_|                        _|                                          
+_|    _|  _|    _|    _|_|_|      _|_|_|      _|_|      _|_|_|    _|_|_|  
+_|_|_|    _|    _|  _|_|      _|  _|    _|  _|_|_|_|  _|_|      _|_|      
+_|    _|  _|    _|      _|_|  _|  _|    _|  _|            _|_|      _|_|  
+_|_|_|      _|_|_|  _|_|_|    _|  _|    _|    _|_|_|  _|_|_|    _|_|_|  
+
+Business
+*/
+
+
+.business{
+    text-align: left;
+    width: var(--homePageBodyTextWidth);
+    margin-left: calc(50% - var(--homePageBodyCenterMargins) - var(--homePageBodyTextWidth));
+    left: 0;
+    font-size: 1.1em;
+}
+
+.businessTitle{
+    font-size: 2em;
+    font-weight: 800;
+    transform: scaleY(1.1);
+    font-family: Arial;
+    margin-bottom: 0px;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+}
+
+.businessBody{
+    font-weight: bold;
+    line-height: 200%;
+}
+
+.businessImage{
+    left: calc(50% + var(--homePageBodyCenterMargins));
+    position: absolute;
+    max-width: var(--homePageBodyTextWidth);
+    max-height: 330px;
+}
+
+.businessImage2{
+    display: none;
+}
+
+
+/* 
+
+
+  _|_|                _|            _|            _|      _|                  _|  _|            
+_|    _|  _|  _|_|  _|_|_|_|      _|  _|          _|_|  _|_|    _|_|      _|_|_|        _|_|_|  
+_|_|_|_|  _|_|        _|            _|_|  _|      _|  _|  _|  _|_|_|_|  _|    _|  _|  _|    _|  
+_|    _|  _|          _|          _|    _|        _|      _|  _|        _|    _|  _|  _|    _|  
+_|    _|  _|            _|_|        _|_|  _|      _|      _|    _|_|_|    _|_|_|  _|    _|_|_|  
+
+𝗔𝗿𝘁 𝗮𝗻𝗱 𝗠𝗲𝗱𝗶𝗮
+*/
+
+
+.aAM{
+    text-align: left;
+    width: var(--homePageBodyTextWidth);
+    margin-left: calc(50% + var(--homePageBodyCenterMargins));
+    font-size: 1.1em;
+}
+
+.aAMTitle{
+    font-size: 2em;
+    font-weight: 800;
+    transform: scaleY(1.1);
+    font-family: Arial;
+    margin-bottom: 0px;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+}
+
+.aAMBody{
+    font-weight: bold;
+    line-height: 200%;
+    height: 316px;
+}
+
+.aAMImage{
+    right: calc(50% + var(--homePageBodyCenterMargins));
+    position: absolute;
+    max-width: var(--homePageBodyTextWidth);
+    max-height: 330px;
+}
+
+.aAMImage2{
+    display: none;
+}
+
+
+/* 
+
+
+_|_|_|_|                      _|                          
+_|        _|_|      _|_|    _|_|_|_|    _|_|    _|  _|_|  
+_|_|_|  _|    _|  _|    _|    _|      _|_|_|_|  _|_|      
+_|      _|    _|  _|    _|    _|      _|        _|        
+_|        _|_|      _|_|        _|_|    _|_|_|  _|       
+
+
+*/
+
+
+.footer{
+    text-align: center;
+}
+
+.footerSocials{
+    text-align: center;
+}
+
+.footerLocation{
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 1.45em;
+}
+
+.footerSocialsImages{
+    margin-bottom: 20px;
+}
+
+.footerCopyright{
+    text-align: center;
+    color: #FFFFFF;
+    padding-bottom: 10px;
+}
+
+.footerSponsors{
+    position: relative;
+    /* max-width: 100%; */
+}
+
+.animationSponsors td{
+    height: 150px;
+    vertical-align: middle;
+}
+
+.animationSponsors{
+    text-wrap: nowrap;
+    position: absolute;
+    max-width: calc(2 * var(--homePageBodyCenterMargins) + 2 * var(--homePageBodyTextWidth));
+    /* width: 100%; */
+}
+
+.xeroxAndSchool{
+    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) 0s infinite normal forwards;
+}
+
+.wackyButtonsAndLaBella{
+    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -24s infinite normal forwards;
+}
+
+.pFCAndLuzCo{
+    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -18s infinite normal forwards;
+}
+
+.corningAndWegmans{
+    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -12s infinite normal forwards;
+}
+
+.nameSponsors{
+    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -6s infinite normal forwards;
+    line-height: 0%;
+}
+
+.sponsor{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.sponsorLeft{
+    text-align: right;
+    font-size: x-large;
+    padding-right: calc(3 * var(--homePageBodyCenterMargins));
+    width: 300px;
+}
+
+.sponsorRight{
+    text-align: left;
+    font-size: x-large;
+    padding-left: calc(3 * var(--homePageBodyCenterMargins));
+    width: 300px;
+}
+
+
+/* 
+
+
+#     #                         ######                           #####                                              
+#     #  ####  #    # ######    #     #   ##    ####  ######    #     # #####  ######  ####  #   ##   #       ####  
+#     # #    # ##  ## #         #     #  #  #  #    # #         #       #    # #      #    # #  #  #  #      #      
+####### #    # # ## # #####     ######  #    # #      #####      #####  #    # #####  #      # #    # #       ####  
+#     # #    # #    # #         #       ###### #  ### #               # #####  #      #      # ###### #           # 
+#     # #    # #    # #         #       #    # #    # #         #     # #      #      #    # # #    # #      #    # 
+#     #  ####  #    # ######    #       #    #  ####  ######     #####  #      ######  ####  # #    # ######  ####  
+
+
+  _|_|              _|                              _|      _|                      
+_|    _|  _|_|_|        _|_|_|  _|_|      _|_|_|  _|_|_|_|        _|_|    _|_|_|      _|_|_|
+_|_|_|_|  _|    _|  _|  _|    _|    _|  _|    _|    _|      _|  _|    _|  _|    _|  _|_|
+_|    _|  _|    _|  _|  _|    _|    _|  _|    _|    _|      _|  _|    _|  _|    _|      _|_|
+_|    _|  _|    _|  _|  _|    _|    _|    _|_|_|      _|_|  _|    _|_|    _|    _|  _|_|_|
+
+Animations
+*/
+
+
+@keyframes footerSponsorsOut {
+    0%{scale: 100%; opacity: 100%; transform: translate3d(0px, 0px, 2px);}
+    16.667%{scale: 100%; opacity: 100%; transform: translate3d(0, 0px, 2px);}
+    20%{scale: 0%; opacity: 0%; transform: translate3d(-100vw, 0px, 1px);}
+    96.667%{scale: 0%; opacity: 0%; transform: translate3d(100vw, 0px, 1px);}
+    100%{scale: 100%; opacity: 100%; transform: translate3d(0px, 0px, 2px);}
+}
+
+
+/* 
+
+
+  _|_|_|  _|                                                        
+_|        _|    _|_|      _|_|_|  _|_|_|        _|    _|  _|_|_|    
+_|        _|  _|_|_|_|  _|    _|  _|    _|      _|    _|  _|    _|  
+_|        _|  _|        _|    _|  _|    _|      _|    _|  _|    _|  
+  _|_|_|  _|    _|_|_|    _|_|_|  _|    _|        _|_|_|  _|_|_|    
+                                                          _|        
+                                                          _|  
+
+Clean Up
+*/
+
+
+@media only screen and (min-width: 1000px) {
+    .body{
+        margin-left: calc(50vw - 500px);
+    }
+}
+
+@media only screen and (min-width: 937px){
+    .stemBody, .businessBody{
+        height: 316px;
+    }
+}
+
+/* 
+
+
+_|_|_|_|_|  _|    _|      _|                  _|  
+    _|          _|_|_|_|  _|    _|_|        _|_|  
+    _|      _|    _|      _|  _|_|_|_|        _|  
+    _|      _|    _|      _|  _|              _|  
+    _|      _|      _|_|  _|    _|_|_|        _|  
+
+Title 1
+*/
+
+
+@media only screen and (max-width: 930px) {
+    .headerTextSpan{
+        display: none;
+    }
+}
+
+
+/* 
+
+
+_|_|_|_|_|  _|    _|      _|                  _|_|    
+    _|          _|_|_|_|  _|    _|_|        _|    _|  
+    _|      _|    _|      _|  _|_|_|_|          _|    
+    _|      _|    _|      _|  _|              _|      
+    _|      _|      _|_|  _|    _|_|_|      _|_|_|_|
+
+Title 2
+*/
+
+
+@media only screen and (max-width: 760px) {
+    .headerText{
+        display: none;
+    }
+    .headerImage{
+        margin-top: 0px;
+        padding-left: 20px;
+    }
+    .headerToolBar{
+        padding-right: 20px;
+    }
+}
+
+
+/* 
+
+
+_|_|_|_|                                                _|            _|  
+_|        _|_|    _|  _|_|  _|_|_|  _|_|      _|_|_|  _|_|_|_|      _|_|  
+_|_|_|  _|    _|  _|_|      _|    _|    _|  _|    _|    _|            _|  
+_|      _|    _|  _|        _|    _|    _|  _|    _|    _|            _|  
+_|        _|_|    _|        _|    _|    _|    _|_|_|      _|_|        _|  
+
+Format 1
+*/
+
+
+@media only screen and (max-width: 650px){
+    .stem, .business, .aAM{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .stemBody, .businessBody, .aAMBody{
+        margin-top: -15px;
+        font-weight: normal;
+        line-height: normal;
+        height: auto;
+    }
+    .stemImage, .businessImage, .aAMImage{
+        display: none;
+    }
+    .stemImage2, .businessImage2, .aAMImage2{
+        display: block;
+        width: 100%;
+    }
+}
+
+
+/* 
+
+
+_|_|_|_|                                                _|            _|_|    
+_|        _|_|    _|  _|_|  _|_|_|  _|_|      _|_|_|  _|_|_|_|      _|    _|  
+_|_|_|  _|    _|  _|_|      _|    _|    _|  _|    _|    _|              _|    
+_|      _|    _|  _|        _|    _|    _|  _|    _|    _|            _|      
+_|        _|_|    _|        _|    _|    _|    _|_|_|      _|_|      _|_|_|_|  
+
+Format 2
+*/
+
+
+@media only screen and (max-width: 530px){
+    .h1Body{
+        font-size: 3.5em;
+    }
+    .pBodyBreak{
+        margin-left: 50px;
+        max-width: calc(100% - 100px);
+        width: calc(100% - 100px);
+    }
+}
+
+
+/* 
+
+
+_|    _|                            _|                                                          
+_|    _|    _|_|_|  _|_|_|  _|_|    _|_|_|    _|    _|  _|  _|_|    _|_|_|    _|_|    _|  _|_|  
+_|_|_|_|  _|    _|  _|    _|    _|  _|    _|  _|    _|  _|_|      _|    _|  _|_|_|_|  _|_|      
+_|    _|  _|    _|  _|    _|    _|  _|    _|  _|    _|  _|        _|    _|  _|        _|        
+_|    _|    _|_|_|  _|    _|    _|  _|_|_|      _|_|_|  _|          _|_|_|    _|_|_|  _|        
+                                                                        _|                      
+                                                                    _|_|    
+
+Hamburger
+*/
+
+
+@media only screen and (max-width: 425px){
+    .header{
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 100px;
+    }
+    .headerText{
+        display: none;
+    }
+    .headerImage{
+        margin-top: 0px;
+        padding-left: 2%;
+    }
+    .headerToolBar{
+        display: none;
+    }
+    .hamburgerMenu{
+        display: block;
+    }
+    .header{
+        min-height: 0px;
+        height: 75px;
+    }
+    .hamPhots, .hamCal, .hamSponsors{
+        position: static;
+        border-bottom: 10px;
+    }
+    .header{
+        min-height: 0px;
+        height: 75px;
+    }
+}
+
+
+/*
+
+
+ #####                                               ######                       
+#     # #####   ####  #    #  ####   ####  #####     #     #   ##    ####  ###### 
+#       #    # #    # ##   # #      #    # #    #    #     #  #  #  #    # #      
+ #####  #    # #    # # #  #  ####  #    # #    #    ######  #    # #      #####  
+      # #####  #    # #  # #      # #    # #####     #       ###### #  ### #      
+#     # #      #    # #   ## #    # #    # #   #     #       #    # #    # #      
+ #####  #       ####  #    #  ####   ####  #    #    #       #    #  ####  ###### 
+
+
+*/
+
+
+.sponsorsBody{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.sponsorsH1{
+    font-size: 3em;
+}
+
+
+.xeroxSponsorPageText p{
+    font-size: large;
+
+}
+
+.xeroxSponsorPageImageBig img{
+    width: 100%;
+}
+
+.xeroxSponsorPageImageBigTd{
+    width: 50%;
+}
+
+.xeroxSponsorPageImageSmall{
+    display: none;
+}
+
+
+/* 
+
+
+  _|_|              _|                              _|      _|                      
+_|    _|  _|_|_|        _|_|_|  _|_|      _|_|_|  _|_|_|_|        _|_|    _|_|_|      _|_|_|
+_|_|_|_|  _|    _|  _|  _|    _|    _|  _|    _|    _|      _|  _|    _|  _|    _|  _|_|
+_|    _|  _|    _|  _|  _|    _|    _|  _|    _|    _|      _|  _|    _|  _|    _|      _|_|
+_|    _|  _|    _|  _|  _|    _|    _|    _|_|_|      _|_|  _|    _|_|    _|    _|  _|_|_|
+
+Animations
+*/
+
+
+@media only screen and (max-width: 760px){
+    .xeroxSponsorPageImageBig{
+        display: none;
+    }
+    .xeroxSponsorPageImageSmall{
+        display: block;
+    }
+    .xeroxSponsorPageImageBigTd{
+        width: 0px
+    }
+}

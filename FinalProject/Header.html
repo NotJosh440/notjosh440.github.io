@@ -1,0 +1,69 @@
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div class="header" id="header"> 
+    <a href="./">
+        <div class="headerTextAndPhoto">
+            <img src="Images/GearPanther.png" alt="" class="headerImage">
+            <h1 class="headerText">Pittsford Robotics<span class="headerTextSpan"> Team 3181</span></h1>
+        </div>
+    </a>
+    <div class="headerToolBar">
+        <a class="headerSponsors" href="./Sponsors.html">Sponsors</a>
+        <p class="pipeSymbol">|</p>
+        <a class="headerPhotos" href="./Photos.html">Team Photos</a>
+        <p class="pipeSymbol">|</p>
+        <a class="aboutUs" href="./AboutUs.html">About Us</a>
+    </div>
+    <div class="hamburgerMenu" id="hamburgerMenu">
+        <div class="firstHamLine"></div>
+        <div class="secondHamLine"></div>
+        <div class="thirdHamLine"></div>
+    </div>
+    <div class="hamburgerMenuPages" id="hamburgerMenuPages">
+        <div class="hMPSpacer" id="hMPSpacer"></div>
+        <div class="hamburgerMenuPagesSites">
+            <a class="hamSponsors" href="./Sponsors.html">Sponsors</a>
+            <br><br>
+            <a class="hamPhots" href="./Photos.html">Team Photos</a>
+            <br><br>
+            <a class="hamCal" href="./AboutUs.html">About Us</a>
+            <br><br>
+        </div>
+    </div>
+    <script>        //Script for the hover/click on Hamburger menu
+        $(document).ready(function(){
+            var visible = true;
+            $("#hamburgerMenu").hover(function(){
+                Show();
+            },function(){
+                Hide();
+            });
+            $("#hamburgerMenu").click(function(){
+                if(visible){
+                    Show();
+                }else{
+                    Hide();
+                }
+            });
+            $("#hamburgerMenuPages").hover(function(){
+                Show();
+            },function(){
+                Hide();
+            });
+
+
+            function Show(){
+                $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "40px", "padding-top": "15px", "margin-top": "-15px"})
+                $("#hMPSpacer").css("display", "block");
+                $("#hamburgerMenuPages").css("display", "block");
+                visible = false;
+            }
+            function Hide(){
+                $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "0px", "padding-top": "0px", "margin-top": "0px"})
+                $("#hMPSpacer").css("display", "none");
+                $("#hamburgerMenuPages").css("display", "none");
+                visible = true;
+            }
+        });
+    </script>
