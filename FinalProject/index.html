@@ -8,42 +8,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Pittsford Robotics</title>
     <script> //resize function
-        $(document).ready(function(){
-            var className = "animationSponsors"
-            t = document.getElementsByClassName(className);
-            var tallestHeight = 0;
-            var widthest = 0;
-            Object.entries(t).forEach(([table]) => {
-                if(t[table].clientHeight > tallestHeight){
-                    tallestHeight = t[table].clientHeight;
-                }
-            });
-            Object.entries(t).forEach(([table]) => {
-                if(t[table].clientWidth > widthest){
-                    widthest = t[table].clientWidth;
-                }
-            });
-            $(".footerSponsors").height(tallestHeight + "px");
-            $(".footerSponsors").css("margin-left", ($(window).width()/2)-(widthest/2) + "px");
-            window.addEventListener("resize", function (){
-                var className = "animationSponsors"
-                t = document.getElementsByClassName(className);
-                var tallestHeight = 0;
-                var widthest = 0;
-                Object.entries(t).forEach(([table]) => {
-                    if(t[table].clientHeight > tallestHeight){
-                        tallestHeight = t[table].clientHeight;
-                    }
-                });
-                Object.entries(t).forEach(([table]) => {
-                    if(t[table].clientWidth > widthest){
-                        widthest = t[table].clientWidth;
-                    }
-                });
-                $(".footerSponsors").height(tallestHeight + "px");
-                $(".footerSponsors").css("margin-left", ($(window).width()/2)-(widthest/2) + "px");
-            });
+        $(window).on("load", function() {
+            SetImageSize();
         });
+        window.addEventListener("resize", function (){
+            SetImageSize();
+        });
+        function SetImageSize(){
+            var tallestHeight = 0;
+            $(".animationSponsors").each(function() {
+                var thisHeight = $(this).height();
+                if (thisHeight > tallestHeight) {
+                    tallestHeight = thisHeight;
+                }
+            });
+            $("#footerSponsors").height(tallestHeight);
+        }
     </script>
     
 </head>
@@ -162,11 +142,11 @@
     <br>
     
     <div class="footer">
-        <div class="footerSponsors">
+        <div class="footerSponsors" id="footerSponsors">
             <table class="xeroxAndSchool animationSponsors">
                 <tr>
                     <td class="sponsorLeft">
-                        <img src="Images/XEROX.png" alt="" class="xeroxImage sponsor">
+                        <img src="Images/Corning.png" alt="" class="xeroxImage sponsor">
                     </td>
                     <td class="sponsorRight">
                         <img src="Images/pittsfordschool-logo.png" alt="" class="pittsfordSchoolsImage sponsor">
@@ -176,7 +156,7 @@
             <table class="wackyButtonsAndLaBella animationSponsors">
                 <tr>
                     <td class="sponsorLeft">
-                        <img src="Images/WackyButtons.png" alt="" class="wackyButtonsImage sponsor">
+                        <img src="Images/Wegmans.png" alt="" class="wackyButtonsImage sponsor">
                     </td>
                     <td class="sponsorRight">
                         <img src="Images/LaBella.png" alt="" class="laBellaImage sponsor">
@@ -186,7 +166,7 @@
             <table class="pFCAndLuzCo animationSponsors">
                 <tr>
                     <td class="sponsorLeft">
-                        <img src="Images/CreditUnion.png" alt="" class="pFCImage sponsor">
+                        <img src="Images/XEROX.png" alt="" class="pFCImage sponsor">
                     </td>
                     <td class="sponsorRight">
                         <img src="Images/LuzCo.png" alt="" class="luzCoImage sponsor">
@@ -196,21 +176,18 @@
             <table class="corningAndWegmans animationSponsors">
                 <tr>
                     <td class="sponsorLeft">
-                        <img src="Images/Corning.png" alt="" class="corningImage sponsor">
+                        <img src="Images/WackyButtons.png" alt="" class="corningImage sponsor">
                     </td>
                     <td class="sponsorRight">
-                        <img src="Images/Wegmans.png" alt="" class="wegmansImage sponsor">
+                        <img src="Images/CreditUnion.png" alt="" class="wegmansImage sponsor">
                     </td>
                 </tr>
             </table>
             <table class="nameSponsors animationSponsors">
                 <tr>
-                    <td class="sponsorLeft">
-                        <img src="Images/NameSpons.png" alt="" class="nameSponsImg sponsor">
+                    <td>
+                        <img src="Images/FullSponosrs1.png" alt="" class="nameSponsImg sponsor">
                         
-                    </td>
-                    <td class="sponsorRight">
-                        <img src="Images/NameSpons2.png" alt="" class="nameSpons2Img sponsor">
                     </td>
                 </tr>
             </table>

@@ -371,19 +371,25 @@ _|        _|_|      _|_|        _|_|    _|_|_|  _|
 
 .footerSponsors{
     position: relative;
-    /* max-width: 100%; */
+    max-width: 100%;
+    min-width: 300px;
 }
 
 .animationSponsors td{
-    height: 150px;
-    vertical-align: middle;
+    max-height: 150px;
 }
+
 
 .animationSponsors{
     text-wrap: nowrap;
     position: absolute;
-    max-width: calc(2 * var(--homePageBodyCenterMargins) + 2 * var(--homePageBodyTextWidth));
-    /* width: 100%; */
+    /* max-width: calc(2 * var(--homePageBodyCenterMargins) + 2 * var(--homePageBodyTextWidth)); */
+    min-width: 300px;
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
 .xeroxAndSchool{
@@ -590,6 +596,12 @@ Format 2
     }
 }
 
+/* @media only screen and (max-width: 315px) {
+    .animationSponsors{
+        left: 0;
+    }
+} */
+
 
 /* 
 
@@ -656,30 +668,42 @@ Hamburger
 
 
 .sponsorsBody{
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .sponsorsH1{
     font-size: 3em;
 }
 
-
-.xeroxSponsorPageText p{
-    font-size: large;
-
-}
-
-.xeroxSponsorPageImageBig img{
+.sponsorsTitleTable{
     width: 100%;
 }
 
-.xeroxSponsorPageImageBigTd{
-    width: 50%;
+.xeroxSponsorPageText p{
+    font-size: large;
 }
 
-.xeroxSponsorPageImageSmall{
-    display: none;
+.sponsorsTitleTr{
+    max-width: 100%;
+    width: 100%;
+}
+
+.xeroxSponsorPageImage a{
+    margin-left: auto;
+    display: block;
+    max-height: 118px;
+    width: 100%;
+    max-width: max-content;
+}
+.xeroxSponsorPageImage a img{
+    display: block;
+    max-width: 100%;
+}
+
+.sponsorNameFont{
+    font-size: 2.5em;
+    margin-top: 0px;
 }
 
 
@@ -695,15 +719,3 @@ _|    _|  _|    _|  _|  _|    _|    _|    _|_|_|      _|_|  _|    _|_|    _|    
 Animations
 */
 
-
-@media only screen and (max-width: 760px){
-    .xeroxSponsorPageImageBig{
-        display: none;
-    }
-    .xeroxSponsorPageImageSmall{
-        display: block;
-    }
-    .xeroxSponsorPageImageBigTd{
-        width: 0px
-    }
-}
