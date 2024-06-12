@@ -9,39 +9,338 @@
     <title>Pittsford Robotics</title>
 </head>
 <body>
-    <script> //Load the header preset
-        $(function(){
-            $("#headerContent").load("Header.html");
-        });
-    </script>
-    <div id="headerContent"></div>
+    <div class="header" id="header"> 
+        <a href="./">
+            <div class="headerTextAndPhoto">
+                <img src="Images/GearPanther.png" alt="" class="headerImage">
+                <h1 class="headerText">Pittsford Robotics<span class="headerTextSpan"> Team 3181</span></h1>
+            </div>
+        </a>
+        <div class="headerToolBar">
+            <a class="headerSponsors" href="./Sponsors.html">Sponsors</a>
+            <p class="pipeSymbol">|</p>
+            <a class="headerPhotos" href="./Photos.html">Team Photos</a>
+            <p class="pipeSymbol">|</p>
+            <a class="aboutUs" href="./AboutUs.html">About Us</a>
+        </div>
+        <div class="hamburgerMenu" id="hamburgerMenu">
+            <div class="firstHamLine"></div>
+            <div class="secondHamLine"></div>
+            <div class="thirdHamLine"></div>
+        </div>
+        <div class="hamburgerMenuPages" id="hamburgerMenuPages">
+            <div class="hMPSpacer" id="hMPSpacer"></div>
+            <div class="hamburgerMenuPagesSites">
+                <a class="hamSponsors" href="./Sponsors.html">Sponsors</a>
+                <br><br>
+                <a class="hamPhots" href="./Photos.html">Team Photos</a>
+                <br><br>
+                <a class="hamCal" href="./AboutUs.html">About Us</a>
+                <br><br>
+            </div>
+        </div>
+        <script>        //Script for the hover/click on Hamburger menu
+            $(document).ready(function(){
+                var visible = true;
+                $("#hamburgerMenu").hover(function(){
+                    Show();
+                },function(){
+                    Hide();
+                });
+                $("#hamburgerMenu").click(function(){
+                    if(visible){
+                        Show();
+                    }else{
+                        Hide();
+                    }
+                });
+                $("#hamburgerMenuPages").hover(function(){
+                    Show();
+                },function(){
+                    Hide();
+                });
+    
+    
+                function Show(){
+                    $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "40px", "padding-top": "15px", "margin-top": "-15px"})
+                    $("#hMPSpacer").css("display", "block");
+                    $("#hamburgerMenuPages").css("display", "block");
+                    visible = false;
+                }
+                function Hide(){
+                    $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "0px", "padding-top": "0px", "margin-top": "0px"})
+                    $("#hMPSpacer").css("display", "none");
+                    $("#hamburgerMenuPages").css("display", "none");
+                    visible = true;
+                }
+            });
+        </script>
+    </div>
 
-    <div class="body">
+    <div class="body sponsorsDescription">
+        <h1 class="sponsorsH1">Sponsors</h1>
+        <p>As a non-profit robotics organization and team, we rely on sponsors and donation to keep us running. Your support helps us build our robot, compete in events, and hold STEM and outreach programs.</p>
+        <p><b>Thank you to our generous sponsors for supporting and donation to our team</b></p>
+        <br><br><br>
+        
         <div class="sponsorsBody">
-            <h1 class="sponsorsH1">Sponsors</h1>
-            <p>As a non-profit robotics organization and team, we rely on sponsors and donation to keep us running. Your support helps us build our robot, compete in events, and hold STEM and outreach programs.</p>
-            <p><b>Thank you to our generous sponsors for supporting and donation to our team</b></p>
-            <br><br><br>
-            <div class="xeroxSponsorPage">
+            <div class="sponsorPage COPYABLE XEROX">
                 <table class="sponsorsTitleTable">
                     <tr class="sponsorsTitleTr">
                         <td class="sponsorsTitle">
-                            <h1 class="sponsorNameFont">Xerox</h1>
+                            <h1 class="sponsorNameFont xeroxNameFont">Xerox</h1>
                             <h3><i>Partner</i></h3>
                         </td>
-                        <td class="xeroxSponsorPageImage">
+                        <td class="sponsorPageImage">
                             <a href="https://www.xerox.com" target="_blank"><img src="Images/XeroxSponsor.png" alt=""></a>
+                        </td>
+                        <td class="sponsorRightType">
+                            <h3><i>Partner</i></h3>
                         </td>
                     </tr>
                 </table>
-                <div class="xeroxSponsorPageText">
-                    <p class="xeroxSponsorPageTextText">Headquartered in Norwalk, CT, and with 136,000 employees in 160 countries, they're never far from your business. As a $22 billion company, they are the world's leading enterprise for business process and document management. They provide true end-to-end solutions, from back-office support to the printed page, to help you operate your business and manage information.<br> © 1999-2016 XEROX CORPORATION. All rights reserved.</p>
+                <div class="sponsorPageText">
+                    <p class="sponsorPageTextText">Headquartered in Norwalk, CT, and with 136,000 employees in 160 countries, they're never far from your business. As a $22 billion company, they are the world's leading enterprise for business process and document management. They provide true end-to-end solutions, from back-office support to the printed page, to help you operate your business and manage information.<br> © 1999-2016 XEROX CORPORATION. All rights reserved.</p>
                     <p>161 Chestnut St, Rochester, NY 14604</p>
-                    <a href="https://www.xerox.com/" target="_blank">https://www.xerox.com/</a>
+                    <a href="https://www.xerox.com/" target="_blank">xerox.com/</a>
                 </div>
+                <br><br><br><br><br>
             </div>
-            <br><br><br><br><br>
+            <div class="sponsorPage COPYABLE PCSD"> 
+                <table class="sponsorsTitleTable">
+                    <tr class="sponsorsTitleTr">
+                        <td class="sponsorsTitle">
+                            <h1 class="sponsorNameFont pCSDNameFont">Pittsford <span class="sponsorNameFontShow">Central<br>School</span><span class="sponsorNameFontHidden">Schools</span> <span class="sponsorNameFontShow">District</span></h1>
+                            <h3><i>Partner</i></h3>
+                        </td>
+                        <td class="sponsorPageImage">
+                            <a href="https://www.pittsfordschools.org/" target="_blank"><img src="Images/pittsfordschool-logoBW.png" alt=""></a>
+                        </td>
+                        <td class="sponsorRightType">
+                            <h3><i>Partner</i></h3>
+                        </td>
+                    </tr>
+                </table>
+                <div class="sponsorPageText">
+                    <p class="sponsorPageTextText">Centralized in 1946, the Pittsford Central School District is one of the top school districts in the county, the state and the nation. The 30 square miles that comprise the school district include portions of the towns of Pittsford, Perinton, Penfield, Victor, Mendon and Brighton. The district's programs, staff and curriculum are considered among the best available in schools anywhere. More than 1,150 employees including teachers, administrators, and support staff provide quality services for an enrollment of over 5,500 students in nine school buildings.</p>
+                    <p>75 Barker Road District Office, East Wing, Pittsford, NY 14534</p>
+                    <a href="https://www.pittsfordschools.org/" target="_blank">pittsfordschools.org</a>
+                </div>
+                <br><br><br><br><br>
+            </div>
+            <div class="sponsorPage COPYABLE CORNING"> 
+                <table class="sponsorsTitleTable">
+                    <tr class="sponsorsTitleTr">
+                        <td class="sponsorsTitle">
+                            <h1 class="sponsorNameFont corningNameFont">Corning</h1>
+                            <h3><i>Gold Sponsor</i></h3>
+                        </td>
+                        <td class="sponsorPageImage">
+                            <a href="https://www.corning.com/" target="_blank"><img src="Images/Corning.png" alt=""></a>
+                        </td>
+                        <td class="sponsorRightType">
+                            <h3><i>Gold</i></h3>
+                        </td>
+                    </tr>
+                </table>
+                <div class="sponsorPageText">
+                    <p class="sponsorPageTextText">Corning is vital to progress - in the industries we shape and in the world we share. We invent life-changing technologies using materials science. Our scientific and manufacturing expertise, boundless curiosity, and commitment to purposeful invention place us at the center of the way the world interacts, works, learns, and lives. Our sustained investment in research, development, and invention means we're always ready to solve the toughest challenges alongside our customers. Corning's businesses are ever evolving to best serve our customers, industries, and consumers. Today, we accelerate and transform life sciences, mobile consumer electronics, optical communications, display, and automotive markets. We are changing the world with trusted products that accelerate drug discovery, development, and delivery to save lives; damage-resistant cover glass to enhance the devices that keep us connected; optical fiber, wireless technologies, and connectivity solutions to carry information and ideas at the speed of life; precision glass for advanced displays to deliver richer experiences; and auto glass and ceramics to drive cleaner, safer, and smarter transportation.</p>
+                    <!-- <p>75 Barker Road District Office, East Wing, Pittsford, NY 14534</p> -->
+                    <a href="https://www.corning.com/" target="_blank">corning.com</a>
+                </div>
+                <br><br><br><br><br>
+            </div>
+            <div class="sponsorPage COPYABLE PFCU"> 
+                <table class="sponsorsTitleTable">
+                    <tr class="sponsorsTitleTr">
+                        <td class="sponsorsTitle">
+                            <h1 class="sponsorNameFont pFCUNameFont">Pittsford <span class="sponsorNameFontShow">Federal</span><br> Credit Union</h1>
+                            <h3><i>Gold Sponsor</i></h3>
+                        </td>
+                        <td class="sponsorPageImage">
+                            <a href="https://www.pittsfordfcu.org/" target="_blank"><img src="Images/CreditUnion.png" alt=""></a>
+                        </td>
+                        <td class="sponsorRightType">
+                            <h3><i>Gold</i></h3>
+                        </td>
+                    </tr>
+                </table>
+                <div class="sponsorPageText">
+                    <p class="sponsorPageTextText">Pittsford Federal Credit Union is a non-profit financial cooperative owned entirely by their members and operates exclusively for the benefit of members and the communities they serve. Pittsford FCU offers simple, focused products that are easy to understand and are designed to help members meet their needs and reach their financial goals.</p>
+                    <p class="creditUnionListPlace">Pittsford Branch</p>
+                    <ul class="creditUnionList">
+                        <li>20 Tobey Village Road, Pittsford, NY 14534-0346</li>
+                        <li>P.O. Box 346</li>
+                    </ul>
+                    <p class="creditUnionListPlace">Mendon Branch</p>
+                    <ul class="creditUnionList">
+                        <li>1321 Pittsford Mendon Road, Mendon, NY 14506-0726</li>
+                        <li>P.O. Box 726</li>
+                    </ul>
+                    <a href="https://www.pittsfordfcu.org/" target="_blank">pittsfordfcu.org</a>
+                </div>
+                <br><br><br><br><br>
+            </div>
+            <div class="sponsorPage COPYABLE LUZCO"> 
+                <table class="sponsorsTitleTable">
+                    <tr class="sponsorsTitleTr">
+                        <td class="sponsorsTitle">
+                            <h1 class="sponsorNameFont luzcoNameFont">LUZCO <br><span class="sponsorNameFontShow">Technologies</span></h1>
+                            <h3><i>Gold Sponsor</i></h3>
+                        </td>
+                        <td class="sponsorPageImage">
+                            <a href="https://www.luzco.com/" target="_blank"><img src="Images/LuzCo.png" alt=""></a>
+                        </td>
+                        <td class="sponsorRightType">
+                            <h3><i>Gold</i></h3>
+                        </td>
+                    </tr>
+                </table>
+                <div class="sponsorPageText">
+                    <p class="sponsorPageTextText">LUZCO Founder and CEO Lusnail Haberberger understood and recognized these daunting tribulations firsthand as a minority female engineer. That is why she decided to create her own boutique engineering firm. Lus wanted to cultivate an environment for herself and others that encourages a work-life balance, supports unique and individual goals, and emboldens underrepresented minorities to enter the STEM field. LUZCO's enthusiastic support of work VISA assistance; pregnancy, infant, and childcare; and unique life demands has attracted a diverse applicant pool to new positions.</p>
+                    <p>90 Linden Oaks, Suite 250, Rochester, NY 14625</p>
+                    <a href="https://www.luzco.com/" target="_blank">luzco.com</a>
+                </div>
+                <br><br><br><br><br>
+            </div>
+            <div class="sponsorPage COPYABLE WACKYBUTTONS"> 
+                <table class="sponsorsTitleTable">
+                    <tr class="sponsorsTitleTr">
+                        <td class="sponsorsTitle">
+                            <h1 class="sponsorNameFont wackyBottomsNameFont">Wacky Buttons</h1>
+                            <h3><i>Silver Sponsor</i></h3>
+                        </td>
+                        <td class="sponsorPageImage">
+                            <a href="https://www.wackybuttons.com/" target="_blank"><img src="Images/WackyButtons.png" alt=""></a>
+                        </td>
+                        <td class="sponsorRightType">
+                            <h3><i>Silver</i></h3>
+                        </td>
+                    </tr>
+                </table>
+                <div class="sponsorPageText">
+                    <p class="sponsorPageTextText">You can count on ordering 500 buttons or less and having them ship the very next business day after you order. Not only can you get your buttons really fast, but we help with everything along the way to make the whole experience as easy and stress free as possible. We have a dedicated staff answering phones, emails and online chats, from 9-5 m-f to help our customers design their buttons free of charge. You can design the buttons yourself on our website or just tell us what you want on your button by phone or email and a professional artist will design your button for you. There are no setup charges or graphic design service fees. We want you to make sure you absolutely love how your buttons will look before you spend any money on us.</p>
+                    <p>101 Lincoln Parkway Suite A East Rochester, Ny 14445</p>
+                    <a href="https://www.wackybuttons.com/" target="_blank">wackybuttons.com</a>
+                </div>
+                <br><br><br><br><br>
+            </div>
+            <div class="sponsorPage COPYABLE WEGMANS"> 
+                <table class="sponsorsTitleTable">
+                    <tr class="sponsorsTitleTr">
+                        <td class="sponsorsTitle">
+                            <h1 class="sponsorNameFont wegmansNameFont">Wegmans</h1>
+                            <h3><i>Bronze Sponsor</i></h3>
+                        </td>
+                        <td class="sponsorPageImage">
+                            <a href="https://www.wegmans.com/" target="_blank"><img src="Images/Wegmans.png" alt=""></a>
+                        </td>
+                        <td class="sponsorRightType">
+                            <h3><i>Bronze</i></h3>
+                        </td>
+                    </tr>
+                </table>
+                <div class="sponsorPageText">
+                    <p class="sponsorPageTextText">Our mission, helping people live healthier, better lives through exceptional food.  The delicious meals from our chefs, and the freshest ingredients possible. By offering choice, quality, and value in every aisle, we hope to make your shopping experience a genuine pleasure. Building relationships and helping people are at the core of what we do. Good people, working toward a common goal, can accomplish anything they set out to do. Our goal is to be the very best at serving the needs of our customers, and every action we take is made with this in mind. But this goal only happens if we fulfill the needs of our own people. That's why we pledge continuous improvement to our customers and our people, and we make the unwavering commitment: Every Day You Get Our Best.</p>
+                    <p>3195 Monroe Ave</p>
+                    <a href="https://www.wegmans.com/" target="_blank">wegmans.com</a>
+                </div>
+                <br><br><br><br><br>
+            </div>
+            <div class="sponsorPage COPYABLE LABELLA"> 
+                <table class="sponsorsTitleTable">
+                    <tr class="sponsorsTitleTr">
+                        <td class="sponsorsTitle">
+                            <h1 class="sponsorNameFont labellaNameFont">LaBella</h1>
+                            <h3><i>Bronze Sponsor</i></h3>
+                        </td>
+                        <td class="sponsorPageImage">
+                            <a href="https://www.labellapc.com/" target="_blank"><img src="Images/LaBella.png" alt=""></a>
+                        </td>
+                        <td class="sponsorRightType">
+                            <h3><i>Bronze</i></h3>
+                        </td>
+                    </tr>
+                </table>
+                <div class="sponsorPageText">
+                    <p class="sponsorPageTextText">Across the breadth of LaBella's disciplines and services, a legacy of exceptional quality and value are the common threads. Those outcomes are made possible by something even more foundational to our company and our culture—an enduring commitment to client partnership. Buildings, energy, infrastructure, and environmental are what our teams are built for, but as a full-service engineering firm, being able to solve any challenge that's put in front of us is what LaBella is known for. But we're characterized by more than our expertise: we win awards not just for our talent, but also for our ethics, employee culture, and growth.</p>
+                    <p>101 Lincoln Parkway Suite A East Rochester, Ny 1444</p>
+                    <a href="https://www.labellapccom/" target="_blank">labellapc.com</a>
+                </div>
+                <br><br><br><br><br>
+            </div>
+
         </div>
     </div>
+    <div class="becomeSponsor">
+        <h1>Become a sponsor</h1>
+        <br>
+        <table class="becomeSponsorTable">
+            <tr>
+                <td class="firstColOfTable"></td>
+                <td>Partner</td>
+                <td>Platinum</td>
+                <td>Gold</td>
+                <td>Sliver</td>
+                <td>Bronze</td>
+                <td>Iron</td>
+            </tr>
+            <tr>
+                <td class="firstColOfTable">Amount</td>
+                <td>$6,000</td>
+                <td>$3,000</td>
+                <td>$1,000</td>
+                <td>$800</td>
+                <td>$400</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td class="firstColOfTable">
+                    Included on our website and social medias<br><br>
+                    Invitation to visit our team during the build season
+                </td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td class="firstColOfTable">Name on banner</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td class="firstColOfTable">Name on t-shirt</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td class="firstColOfTable">Name on Silde Show during Compititions</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td class="firstColOfTable">Plaque of appreciation or name of robot</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td class="firstColOfTable">Plaque of appreciation</td>
+                <td>-</td>
+            </tr>
+        </table>
+        <br><br><br><br><br>
+    </div>
+
+
+    <a href="#top"><div class="backToTop"><p>^</p></div></a>
 </body>
 </html>

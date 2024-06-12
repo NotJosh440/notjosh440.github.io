@@ -8,13 +8,120 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <title>Pittsford Robotics</title>
     </head>
-    <body>
-    <script> //Load the header preset
-        $(function(){
-            $("#headerContent").load("Header.html");
-            $(document).scroll("#top");
-        });
-    </script>
-    <div id="headerContent"></div>
+    <body class="aboutUsBody">
+        <div class="header" id="header"> 
+            <a href="./">
+                <div class="headerTextAndPhoto">
+                    <img src="Images/GearPanther.png" alt="" class="headerImage">
+                    <h1 class="headerText">Pittsford Robotics<span class="headerTextSpan"> Team 3181</span></h1>
+                </div>
+            </a>
+            <div class="headerToolBar">
+                <a class="headerSponsors" href="./Sponsors.html">Sponsors</a>
+                <p class="pipeSymbol">|</p >
+                <a class="headerPhotos" href="./Photos.html">Team Photos</a>
+                <p class="pipeSymbol">|</p >
+                <a class="aboutUs" href="./AboutUs.html">About Us</a>
+            </div>
+            <div class="hamburgerMenu" id="hamburgerMenu">
+                <div class="firstHamLine"></div>
+                <div class="secondHamLine"></div>
+                <div class="thirdHamLine"></div>
+            </div>
+            <div class="hamburgerMenuPages" id="hamburgerMenuPages">
+                <div class="hMPSpacer" id="hMPSpacer"></div>
+                <div class="hamburgerMenuPagesSites">
+                    <a class="hamSponsors" href="./Sponsors.html">Sponsors</a>
+                    <br><br>
+                    <a class="hamPhots" href="./Photos.html">Team Photos</a>
+                    <br><br>
+                    <a class="hamCal" href="./AboutUs.html">About Us</a>
+                    <br><br>
+                </div>
+            </div>
+            <script>        //Script for the hover/click on Hamburger menu
+                $(document).ready(function(){
+                    var visible = true;
+                    $("#hamburgerMenu").hover(function(){
+                        Show();
+                    },function(){
+                        Hide();
+                    });
+                    $("#hamburgerMenu").click(function(){
+                        if(visible){
+                            Show();
+                        }else{
+                            Hide();
+                        }
+                    });
+                    $("#hamburgerMenuPages").hover(function(){
+                        Show();
+                    },function(){
+                        Hide();
+                    });
+        
+        
+                    function Show(){
+                        $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "40px", "padding-top": "15px", "margin-top": "-15px"})
+                        $("#hMPSpacer").css("display", "block");
+                        $("#hamburgerMenuPages").css("display", "block");
+                        visible = false;
+                    }
+                    function Hide(){
+                        $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "0px", "padding-top": "0px", "margin-top": "0px"})
+                        $("#hMPSpacer").css("display", "none");
+                        $("#hamburgerMenuPages").css("display", "none");
+                        visible = true;
+                    }
+                });
+            </script>
+        </div>
+
+        <div class="aUBody">
+            <br><br><br>
+            <h1>About Us</h1>
+            <div class="aUDiv">
+                <img src="Images/Team-photo-rit2024.png" alt="" class="aUImg">
+                <p>We are members of the FIRST Robotics Organization. FIRST gives students the opportunity to not only learn a lot about engineering, but provide them with positive experiences in a competitive setting. We offer programs for all grade levels, from elementary to high school and we are currently working on making a lego league team in the middle schools
+                    <br><br>
+                    The Pittsford Panthers Robotics, Team 3181, was founded by Brian Holliday, a teacher at Pittsford Sutherland H.S. in 2010 and is one of the many mentors on our team. Through the years, our team has grown in size and experience and we wouldn't be able to do this without the amazing people on our team or the full effort they put into this operation.
+                    <br><br>
+                    When thinking of a robotics team, many assume it's full of engineering students and mathematicians. While these roles are essential to the team, they don't paint the entire picture. A robotics team is as much a team as it is a company with very specific goals. To achieve these goals, we have an incredibly diverse team of people ranging from art students, to business students, to English students. We need all these people to run our website, write our posts, create our logos and banners, and so on.
+                    <br><br>
+                    Of course, we need a robot too, and for that we need engineers. The engineering component of our team includes mechanical, electrical, and software. Each of these sub-teams has a specific role in creating the robot. The mechanical sub-team focuses on the structure of the robot. They do this by using CAD (computer aided design) to make the parts, as well as to build the robot's chassis. Electrical dessigns and makes the electrical board and sets up the wiring of the robot. They're the bridge between software and hardware. That's where the programming team comes in. They write the code to direct the robot to make it do the nessicary tasts fot the season. Every one of these parts is vital to the success of the robot. For everything to go smoothly teamwork is key.
+                </p>
+            </div>
+
+            <br><br><br>
+            <div class="aUDiv">
+                <h1>Our Values</h1>
+                <img src="Images/Team-with-sign.png" alt="" class="aUImg">
+                <p>At Pittsford Robotics, we strive to create a diverse team where all people are valued and feel safe to express their ideas and themselves. We help individuals find their talent and further develop their skills whether it's in a STEM field or or designing and buisness. We hope in the future to better support our school and local community.</p>
+            </div>
+            
+            <br><br><br>
+
+            <h1>Our Coach</h1>
+            <div class="aUDiv">
+                <img src="Images/Holliday.png" alt="" class="aUImg">
+                <p>Head Coach: Mr Holliday (Founder 2010-present) 
+                    <br><br>
+                    Mr. Holliday is the team coach for the Pittsford Robotics team. He oversees all of aspects of the team and helps to ensure our success. Mr. Holliday is currently a teacher at Sutherland high school.</p>
+            </div>
+            
+            <br><br><br>
+
+            <div class="aUDiv">
+                <h1>Volunteers</h1>
+                <img src="Images/2023-robo-au.png" alt="" class="aUImg">
+                <p>A HUGE thank you to all people and parents who help support our team. When it comes to assisting with the build, bringing food, transportation, and giving insight, it is always appreciated. We couldn't do any of this without their support.</p>
+            </div>
+            
+            <br><br><br>
+        </div>
     </body>
 </html>
+
+
+<img src="" alt="" class="img1 left">
+<img src="" alt="" class="img1 right">

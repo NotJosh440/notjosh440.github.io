@@ -7,14 +7,189 @@
         <link rel="icon" type="image/x-icon" href="Images/GearPanther.png">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <title>Pittsford Robotics</title>
+        <script>
+            $(document).ready(function(){
+                var year;
+                var btn;
+                $("button").click(function(){
+                    $(this).text("Loading...");
+                    btn = $(this)
+                    year = $("#"+this.id.substring(0,4));
+                    year.fadeIn(750, function(){
+                        btn.text("See All");
+                    });
+                    $(".photoFullBody").css({"overflow-y": "hidden"})
+                    year.css({"overflow-y": "scroll"})
+                });
+                
+                $(".photoLightbox").click(function(){
+                    btn.text("See All");
+                    $(".photoFullBody").css({"overflow-y": "scroll"})
+                    $("#"+this.id).css({"overflow-y": "hidden"})
+                    $("#"+this.id).fadeOut(750);
+                });
+            });
+        </script>
     </head>
-<body>
-    <script> //Load the header preset
-        $(function(){
-            $("#headerContent").load("Header.html");
-            $(document).scroll("#top");
-        });
-    </script>
-    <div id="headerContent"></div>
+<body class="photoFullBody">
+    <div class="header" id="header"> 
+        <a href="./">
+            <div class="headerTextAndPhoto">
+                <img src="Images/GearPanther.png" alt="" class="headerImage">
+                <h1 class="headerText">Pittsford Robotics<span class="headerTextSpan"> Team 3181</span></h1>
+            </div>
+        </a>
+        <div class="headerToolBar">
+            <a class="headerSponsors" href="./Sponsors.html">Sponsors</a>
+            <p class="pipeSymbol">|</p>
+            <a class="headerPhotos" href="./Photos.html">Team Photos</a>
+            <p class="pipeSymbol">|</p>
+            <a class="aboutUs" href="./AboutUs.html">About Us</a>
+        </div>
+        <div class="hamburgerMenu" id="hamburgerMenu">
+            <div class="firstHamLine"></div>
+            <div class="secondHamLine"></div>
+            <div class="thirdHamLine"></div>
+        </div>
+        <div class="hamburgerMenuPages" id="hamburgerMenuPages">
+            <div class="hMPSpacer" id="hMPSpacer"></div>
+            <div class="hamburgerMenuPagesSites">
+                <a class="hamSponsors" href="./Sponsors.html">Sponsors</a>
+                <br><br>
+                <a class="hamPhots" href="./Photos.html">Team Photos</a>
+                <br><br>
+                <a class="hamCal" href="./AboutUs.html">About Us</a>
+                <br><br>
+            </div>
+        </div>
+        <script>        //Script for the hover/click on Hamburger menu
+            $(document).ready(function(){
+                var visible = true;
+                $("#hamburgerMenu").hover(function(){
+                    Show();
+                },function(){
+                    Hide();
+                });
+                $("#hamburgerMenu").click(function(){
+                    if(visible){
+                        Show();
+                    }else{
+                        Hide();
+                    }
+                });
+                $("#hamburgerMenuPages").hover(function(){
+                    Show();
+                },function(){
+                    Hide();
+                });
+    
+    
+                function Show(){
+                    $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "40px", "padding-top": "15px", "margin-top": "-15px"})
+                    $("#hMPSpacer").css("display", "block");
+                    $("#hamburgerMenuPages").css("display", "block");
+                    visible = false;
+                }
+                function Hide(){
+                    $("#hamburgerMenu").css({"padding-right": "5px", "padding-left": "0px", "padding-top": "0px", "margin-top": "0px"})
+                    $("#hMPSpacer").css("display", "none");
+                    $("#hamburgerMenuPages").css("display", "none");
+                    visible = true;
+                }
+            });
+        </script>
+    </div>
+
+
+
+
+    <div class="body photoBody">
+        <div class="photoRow">
+            <div class="colHalf"></div>
+            <div class="photoPrev col11">
+                <h1>2024</h1>
+                <img src="Images/2024/TPPR (1).jpeg" alt="" class="col4">
+                <img src="Images/2024/TPPR (1)1.jpg" alt="" class="col4">
+                <img src="Images/2024/TPPR (1)2.png" alt="" class="col4">
+                <button class="photoSeeAll" id="2024Button" map="2024">See All</button>
+            </div>
+            <div class="colHalf"></div>
+        </div>
+        <br><br><br>
+
+        <div class="photoRow">
+            <div class="colHalf"></div>
+
+            <div class="photoPrev col11">
+                <h1>2023</h1>
+                <img src="Images/2023/2023 (1).png" alt="" class="col4">
+                <img src="Images/2023/2023 (2).png" alt="" class="col4">
+                <img src="Images/2023/2023 (3).png" alt="" class="col4">
+                <button class="photoSeeAll" id="2023Button" map="2023">See All</button>
+            </div>
+
+            <div class="colHalf"></div>
+        </div>
+        <br><br><br>
+
+        <div class="photoLightbox" id="2024">
+            <div class="photosYear2024">
+                <div class="col4">
+                    <img src="Images/2024/TPPR (1).jpeg" alt="" class="aboutUsPhoto">
+                </div>
+                <div class="col4">
+                    <img src="Images/2024/TPPR (1)1.jpg" alt="" class="aboutUsPhoto">
+                </div>
+                <div class="col4">
+                    <img src="Images/2024/TPPR (1)2.png" alt="" class="aboutUsPhoto">
+                </div>
+            </div>
+            <div class="photosYear2024">
+                <div class="col4">
+                    <img src="Images/2024/TPPR (2).jpg" alt="" class="aboutUsPhoto">
+                </div>
+                <div class="col4">
+                    <img src="Images/2024/TPPR (2)2.png" alt="" class="aboutUsPhoto">
+                </div>
+                <div class="col4">
+                    <img src="Images/2024/TPPR (3).jpg" alt="" class="aboutUsPhoto">
+                </div>
+            </div>
+        </div>
+        
+        <div class="photoLightbox" id="2023">
+            <div class="photosYear2023">
+                <div class="col4">
+                    <img src="Images/2023/2023 (1).png" alt="" class="aboutUsPhoto">
+                </div>
+                <div class="col4">
+                    <img src="Images/2023/2023 (2).png" alt="" class="aboutUsPhoto">
+                </div>
+                <div class="col4">
+                    <img src="Images/2023/2023 (3).png" alt="" class="aboutUsPhoto">
+                </div>
+            </div>
+            <div class="photosYear2023">
+                <div class="col4">
+                    <img src="Images/2023/2023 (4).png" alt="" class="aboutUsPhoto">
+                </div>
+                <div class="col4">
+                    <img src="Images/2023/2023 (5).png" alt="" class="aboutUsPhoto">
+                </div>
+                <div class="col4">
+                    <img src="Images/2023/2023 (6).png" alt="" class="aboutUsPhoto">
+                </div>
+            </div>
+            <div class="photosYear2023">
+                <div class="col6">
+                    <img src="Images\2023\2023 (7).png" alt="" class="aboutUsPhoto">
+                </div>
+                <div class="col6">
+                    <img src="Images/2023/2023 (8).png" alt="" class="aboutUsPhoto">
+                </div>
+            </div>
+            <br><br><br><br><br><br>
+        </div>
+    </div>  
 </body>
 </html>

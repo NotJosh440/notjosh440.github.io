@@ -1,12 +1,11 @@
 body{
     --homePageBodyTextWidth: 45%;
     --homePageBodyCenterMargins: 1%;
-    background-color: #E616A1;
-    margin: 0px;
+    --curve: cubic-bezier(.5, 0, 0, 1);
+    background-color: #db34a3;
     font-family: Arial, Helvetica, sans-serif;
     min-width: 300px;
 }
-
 
 /* 
 
@@ -22,6 +21,9 @@ body{
 
 */
 
+.header, .footer{
+    margin: -8px;
+}
 
 .header a:link, .header a:visited, .header a:hover, .header a:active{
     color: black;
@@ -70,19 +72,19 @@ body{
 }
 .hamburgerMenu{
     width: 50px;
-    z-index: 2;
+    z-index: 0;
     margin-right: 0px;
     border-radius: 5px;
     padding-right: 5px;
 }
 .hMPSpacer{
-    background-color: #E616A1;
+    background-color: #e023a1;
     top: calc(0px - 95px + 68.74px);
     height: calc(95px - 68.74px);
     width: 106.92px;
 }
 .hamburgerMenuPages{
-    background-color: #E616A1;
+    background-color: #e023a1;
     top: 0px;
     z-index: 0;
     box-shadow: 0px 1px 20px #000000;
@@ -110,10 +112,9 @@ body{
     padding-bottom: 10px;
     display: flex;
     align-items: center;
-    background-color: #E616A1;
+    background-color: #e023a1;
     box-shadow: 0px 1px 20px #000000;
 }
-
 
 /* 
 
@@ -177,15 +178,14 @@ Introduction
 
 .pBodyImages{
     width: 100%;
+    min-height: 1px;
 }
 
-.pBodyImagesTd{
-    width: calc(100vw / 3);
-}
-
-.pBodyImagesTd img{
+.pBodyImages div div img{
     max-width: 100%;
-    max-height: 250px;
+    height: 250px;
+    aspect-ratio: 4/3;
+    object-fit: cover;
 }
 
 
@@ -213,7 +213,6 @@ Stem
     font-size: 2em;
     font-weight: 800;
     transform: scaleY(1.1);
-    font-family: Arial;
     margin-bottom: 0px;
     text-decoration: underline;
     text-decoration-thickness: 5px;
@@ -261,7 +260,6 @@ Business
     font-size: 2em;
     font-weight: 800;
     transform: scaleY(1.1);
-    font-family: Arial;
     margin-bottom: 0px;
     text-decoration: underline;
     text-decoration-thickness: 5px;
@@ -308,7 +306,6 @@ _|    _|  _|            _|_|        _|_|  _|      _|      _|    _|_|_|    _|_|_|
     font-size: 2em;
     font-weight: 800;
     transform: scaleY(1.1);
-    font-family: Arial;
     margin-bottom: 0px;
     text-decoration: underline;
     text-decoration-thickness: 5px;
@@ -346,6 +343,10 @@ _|        _|_|      _|_|        _|_|    _|_|_|  _|
 
 
 .footer{
+    box-shadow: 0px -1px 20px #000000;
+    /* border-top: 5px dotted #000; */
+    background-color: #e023a1;
+    color: #000000;
     text-align: center;
 }
 
@@ -354,8 +355,11 @@ _|        _|_|      _|_|        _|_|    _|_|_|  _|
 }
 
 .footerLocation{
-    text-align: center;
-    color: #FFFFFF;
+    text-decoration: overline solid black 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: fit-content;
     font-size: 1.45em;
 }
 
@@ -365,7 +369,7 @@ _|        _|_|      _|_|        _|_|    _|_|_|  _|
 
 .footerCopyright{
     text-align: center;
-    color: #FFFFFF;
+    /* color: #FFFFFF; */
     padding-bottom: 10px;
 }
 
@@ -393,23 +397,23 @@ _|        _|_|      _|_|        _|_|    _|_|_|  _|
 }
 
 .xeroxAndSchool{
-    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) 0s infinite normal forwards;
+    animation: footerSponsorsOut 30s var(--curve) 0s infinite normal forwards;
 }
 
 .wackyButtonsAndLaBella{
-    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -24s infinite normal forwards;
+    animation: footerSponsorsOut 30s var(--curve) -24s infinite normal forwards;
 }
 
 .pFCAndLuzCo{
-    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -18s infinite normal forwards;
+    animation: footerSponsorsOut 30s var(--curve) -18s infinite normal forwards;
 }
 
 .corningAndWegmans{
-    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -12s infinite normal forwards;
+    animation: footerSponsorsOut 30s var(--curve) -12s infinite normal forwards;
 }
 
 .nameSponsors{
-    animation: footerSponsorsOut 30s cubic-bezier(0, 0.02, 0.28, 0.98) -6s infinite normal forwards;
+    animation: footerSponsorsOut 30s var(--curve) -6s infinite normal forwards;
     line-height: 0%;
 }
 
@@ -422,6 +426,7 @@ _|        _|_|      _|_|        _|_|    _|_|_|  _|
     text-align: right;
     font-size: x-large;
     padding-right: calc(3 * var(--homePageBodyCenterMargins));
+    padding-left: calc(3 * var(--homePageBodyCenterMargins));
     width: 300px;
 }
 
@@ -429,6 +434,7 @@ _|        _|_|      _|_|        _|_|    _|_|_|  _|
     text-align: left;
     font-size: x-large;
     padding-left: calc(3 * var(--homePageBodyCenterMargins));
+    padding-right: calc(3 * var(--homePageBodyCenterMargins));
     width: 300px;
 }
 
@@ -456,11 +462,11 @@ Animations
 
 
 @keyframes footerSponsorsOut {
-    0%{scale: 100%; opacity: 100%; transform: translate3d(0px, 0px, 2px);}
-    16.667%{scale: 100%; opacity: 100%; transform: translate3d(0, 0px, 2px);}
-    20%{scale: 0%; opacity: 0%; transform: translate3d(-100vw, 0px, 1px);}
-    96.667%{scale: 0%; opacity: 0%; transform: translate3d(100vw, 0px, 1px);}
-    100%{scale: 100%; opacity: 100%; transform: translate3d(0px, 0px, 2px);}
+    0%{scale: 100%; opacity: 100%;}
+    16.667%{scale: 100%; opacity: 100%}
+    20%{scale: 0%; opacity: 0%;}
+    96.667%{scale: 0%; opacity: 0%;}
+    100%{scale: 100%; opacity: 100%;}
 }
 
 
@@ -596,12 +602,6 @@ Format 2
     }
 }
 
-/* @media only screen and (max-width: 315px) {
-    .animationSponsors{
-        left: 0;
-    }
-} */
-
 
 /* 
 
@@ -666,6 +666,10 @@ Hamburger
 
 */
 
+.sponsorsDescription{
+    margin-left: 5%;
+    margin-right: 5%;
+}
 
 .sponsorsBody{
     margin-left: 5%;
@@ -680,7 +684,7 @@ Hamburger
     width: 100%;
 }
 
-.xeroxSponsorPageText p{
+.sponsorPageText p{
     font-size: large;
 }
 
@@ -689,23 +693,102 @@ Hamburger
     width: 100%;
 }
 
-.xeroxSponsorPageImage a{
-    margin-left: auto;
-    display: block;
-    max-height: 118px;
-    width: 100%;
-    max-width: max-content;
+.sponsorsTitle{
+    max-width: 300px;
+    width: fit-content;
 }
-.xeroxSponsorPageImage a img{
-    display: block;
+
+.sponsorPageImage{
+    float: right;
+    vertical-align: top;
+    padding-left: 40px;
+}
+
+.sponsorPageImage a{
+    display: table-cell;
+    max-width: max-content;
+    /* height: 100%; */
+
+}
+.sponsorPageImage a img{
+    display: table-cell;
     max-width: 100%;
 }
 
 .sponsorNameFont{
     font-size: 2.5em;
     margin-top: 0px;
+    width: max-content;
+    min-width: 150px;
 }
 
+.pFCUNameFont{
+    width: fit-content;
+}
+
+.sponsorNameFontHidden{
+    display: none;
+}
+
+.sponsorRightType{
+    display: none;
+    vertical-align: bottom;
+}
+.sponsorRightType h3{
+    text-decoration-thickness: 5px;
+    text-decoration-line: underline;
+}
+
+.creditUnionListPlace{
+    margin-bottom: 5px;
+}
+
+.creditUnionList{
+    margin-top: 5px;
+}
+
+
+.becomeSponsor{
+    text-align: center;
+}
+.becomeSponsorTable{
+    margin: auto;
+    width: 75%;
+    text-align: center;
+    border: 3px solid black;
+    border-collapse: collapse;
+    font-size: 2vw;
+}
+.becomeSponsorTable tr td:not(.firstColOfTable){
+    border: 3px solid black;
+    border-collapse: collapse;
+    width: 9.166%;
+    padding: 4px;
+}
+.firstColOfTable{
+    border: 3px solid black;
+    border-collapse: collapse;
+    text-align: right;
+    width: 45%;
+    padding: 4px;
+}
+
+.backToTop{
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    text-align: center;
+    vertical-align: middle;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50px;
+    color: white;
+}
+.backToTop p{
+    padding-top: 3px;
+    transform: scale3d(3, 1.5, 1);
+}
 
 /* 
 
@@ -719,3 +802,173 @@ _|    _|  _|    _|  _|  _|    _|    _|    _|_|_|      _|_|  _|    _|_|    _|    
 Animations
 */
 
+@media only screen and (max-width: 735px) {
+    .sponsorNameFontShow{
+        display: none;
+    }
+    .sponsorNameFontHidden{
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 725px) {
+    .sponsorPageImage a img{
+        min-width: 147px;
+    }
+}
+
+@media only screen and (max-width: 559px) {
+    .wackyBottomsNameFont{
+        width: min-content;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .sponsorsTitle{
+        display: none;
+    }
+    .sponsorRightType{
+        display: table-cell;
+    }
+    .sponsorPageImage{
+        padding-left: 0px;
+        padding-right: 40px;
+        text-align: left;
+        float: left;
+        vertical-align: bottom;
+    }
+}
+
+
+.photoBody{
+    text-align: center;
+}
+
+.teamPhotos2024{
+    border: 3px solid black;
+    width: 75%;
+    align-self: center;
+    margin: auto;
+}
+
+.aboutUsPhoto{
+    width: 100%;
+}
+
+.photoLightbox{
+    z-index: 1;
+    display: none;
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: rgba(0, 0, 0, .5);
+    overflow-y: scroll;
+}
+
+[class*="photosYear"]{
+    z-index: 2;
+    position: relative;
+    margin: auto;
+    width: 90%;
+    max-width: 1000px;
+    min-width: 315px;
+    overflow: auto;
+    background-color: rgba(0, 0, 0);
+    align-items: center;
+    display: flex;
+}
+[class*="photosYear"]::after, [class*="photoRow"]::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+[class*="col"]{
+    float: left;
+    min-height: 1px;
+    box-sizing: border-box;
+    vertical-align: middle;
+    padding: 1%;
+}
+
+[class*="photosYear"] div img{
+    aspect-ratio: 4/3;
+    object-fit: cover;
+}
+.photoPrev img{
+    aspect-ratio: 4/3;
+    object-fit: cover;
+}
+
+.photo1Col{
+    /* display: none; */
+    display: block;
+}
+.photo2Col{
+    display: none;
+}
+
+.colHalf{width: 4.165%;}
+.col1{width: 8.33%;}
+.col2{width: 16.66%;}
+.col3{width: 25%;}
+.col4{width: 33.33%;}
+.col5{width: 41.66%;}
+.col6{width: 50%;}
+.col7{width: 58.33%;}
+.col8{width: 66.66%;}
+.col9{width: 75%;}
+.col10{width: 83.33%;}
+.col11{width: 91.66%;}
+.col12{width: 100%;}
+
+.photoPrev{
+    text-align: center;
+}
+
+.photoSeeAll{
+    color: #FFFFFF;
+    background-color: #000000;
+    border: 0px none;
+    width: 25%;
+    height: 25px;
+    margin-top: 10px;
+    min-width: max-content;
+}
+
+
+
+
+@media only screen and (max-width: 465px){
+    .photo2Col{
+        display: none;
+    }
+    .photo1Col{
+        display: block;
+    }
+}
+
+
+.aUImg{
+    float: left;
+    width: 50%;
+    max-width: 225px;
+    padding-right: 20px;
+}
+
+.aUDiv::after{
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.aUBody{
+    width: 90%;
+    margin: auto;
+}
