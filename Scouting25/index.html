@@ -5,7 +5,7 @@ Amazon Fire HD 10 800x1280 1.6-->
 <html>
 <head>
     <title>Team 3181 Scouting(Fully Contained Offline Client)</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
         <script type="text/javascript">
         // alignment pattern
         adelta = [
@@ -744,12 +744,12 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(d.inputs.noshow.checked);
             inputs_list.push(d.inputs.location.value);
             inputs_list.push(d.inputs.mobility.checked); //make sure mobility goes here, database hates me
-            inputs_list.push(d.inputs.auto_upper_cone.value);
-            inputs_list.push(d.inputs.auto_middle_cone.value);
-            inputs_list.push(d.inputs.auto_lower_cone.value);
-            inputs_list.push(d.inputs.auto_upper_cube.value);
-            inputs_list.push(d.inputs.auto_middle_cube.value);
-            inputs_list.push(d.inputs.auto_lower_cube.value);
+            inputs_list.push(d.inputs.autoLevelOneCoral.value);
+            inputs_list.push(d.inputs.autoLevelTwoCoral.value);
+            inputs_list.push(d.inputs.autoLevelThreeCoral.value);
+            inputs_list.push(d.inputs.autoLevelFourCoral.value);
+            inputs_list.push(d.inputs.autoUpperAlgae.value);
+            inputs_list.push(d.inputs.autoLowerAlgae.value);
             inputs_list.push(d.inputs.auto_pickup.checked);
             inputs_list.push(d.inputs.auto_dock_engage.value);
             inputs_list.push(d.inputs.levelOneCoral.value);
@@ -771,6 +771,7 @@ Amazon Fire HD 10 800x1280 1.6-->
                     inputs_list.push("NONE")
                 }
             }
+
             if(d.inputs.aglaeGround.checked == 1 && d.inputs.algaeReef.checked == 1){
                 inputs_list.push("BOTH");
             }else{
@@ -862,12 +863,11 @@ h3{
 h1{
     margin-bottom:36px;
     color: #000000;
-    /* background-color: #f4d; */
+    background-color: #f4d;
     margin-right: auto;
     margin-left: auto;
     padding: 10px;
     /* width: 200px; */
-    background-image: linear-gradient(to right, #381331 2%, #ff44dd 20%,  #ff44dd 80%, #381331 98%);
 
 }
 .title{
@@ -885,23 +885,81 @@ h1{
 .preMatch{
     margin-top: 0px;
 }
-input, label{
-    text-align: center;
-    font-size:larger;
-}
-input[type="number"]{
-    width:8%;
-    font-size:xx-large;
-}
-input[type="radio"], input[type="checkbox"]{
+.titleBox {
+    height: 75px;
+    width: 100%;
+    background-color: #ff44dd;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
-input[type="number"].BIG{
-    width:30%;
+
+table {
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
 }
-input[type="range"]{
-    width: 330.188px;
+.table {
+    display: table;
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
 }
+.tr {
+    display: table-row;
+}
+.leftAligned {
+    display: table-cell;
+    width: 25%;
+}
+.centerLeftAligned {
+    text-align: right;
+    padding-right: 50px;
+    display: table-cell;
+    width: 37.5%;
+}
+.centerAligned {
+    display: table-cell;
+    text-align: center;
+    width: 25%;
+}
+.centerRightAligned {
+    text-align: left;
+    padding-left: 50px;
+    display: table-cell;
+    width: 37.5%;
+}
+.rightAligned {
+    display: table-cell;
+    text-align: right;
+    width: 25%;
+}
+
+input, label {
+    text-align: center;
+    font-size: larger;
+}
+input[type="number"] {
+    width: 8%;
+    font-size: xx-large;
+}
+input[type="radio"], input[type="checkbox"] {
+    align-items: center;
+    max-width: 500px;
+}
+input[type="number"].BIG {
+    width: 175px;
+    height: 50;
+}
+input[type="range"] {
+    width: 80%;
+    max-width: 500px;
+}
+input[type="text"].initials {
+    width: 75px;
+    height: 50;
+}
+
 .qrdiv{
     text-align:center;
     margin:auto;
@@ -918,7 +976,9 @@ input[type="range"]{
 </head>
 <body onload="setupqr()">
     <div class="scouting_form">
-        <h1 class="title">Team 3181 Scouting</h1>
+        <div class="titleBox" id="top">
+            <h1 style="margin: 0px;">Team 3181 Scouting</h1>
+        </div>
     <!-- Simple JS to implement buttons -->
     <script>
     function increment(id) {
@@ -939,101 +999,120 @@ input[type="range"]{
         <p><input type="text" id="names" name="names" required></p><br>
         <p><label for="match">Match Number:</label></p>
         <p><input type="number" id="match" name="match" class="BIG"></p>
-        
-        <h3>Robot:</h3>
-        <p>
-        <input type="radio" id="red1" name="robot" value="red1">
-        <label for="red1">Red 1</label>
-        <input type="radio" id="blue1" name="robot" value="blue1">
-        <label for="blue1">Blue 1</label>
-        </p>
-        <p>
-        <input type="radio" id="red2" name="robot" value="red2">
-        <label for="red2">Red 2</label>
-        <input type="radio" id="blue2" name="robot" value="blue2">
-        <label for="blue2">Blue 2</label>
-        </p>
-        <p>
-        <input type="radio" id="red3" name="robot" value="red3">
-        <label for="red3">Red 3</label>
-        <input type="radio" id="blue3" name="robot" value="blue3">
-        <label for="blue3">Blue 3</label>
-        </p>
-
         <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
         <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG"></p>
+
+        <h3>Robot:</h3>
+        <div class="table">
+            <div class="tr">
+                    <div class="centerLeftAligned">
+                            <input type="radio" id="red1" name="robot" value="red1">
+                            <label for="red1">Red 1</label>
+                    </div>
+                    <div class="centerRightAligned">
+                            <input type="radio" id="blue1" name="robot" value="blue1">
+                            <label for="blue1">Blue 1</label>
+                    </div>
+            </div>
+            <div class="tr">
+                    <div class="centerLeftAligned">
+                            <input type="radio" id="red2" name="robot" value="red2">
+                            <label for="red2">Red 2</label>
+                    </div>
+                    <div class="centerRightAligned">
+                            <input type="radio" id="blue2" name="robot" value="blue2">
+                            <label for="blue2">Blue 2</label>
+                    </div>
+            </div>
+            <div class="tr">
+                    <div class="centerLeftAligned">
+                            <input type="radio" id="red3" name="robot" value="red3">
+                            <label for="red3">Red 3</label>
+                    </div>
+                    <div class="centerRightAligned">
+                            <input type="radio" id="blue3" name="robot" value="blue3">
+                            <label for="blue3">Blue 3</label>
+                    </div>
+            </div>
+    </div>
+        <br>
+        <h3 style="margin-bottom: 5px;">Starting Location:</h3>
+        <table>
+            <tr>
+                <td class="leftAligned">
+                    <p>
+                    <input type="radio" id="left" name="location" value="left">
+                    <label for="left">Left</label>
+                </p>
+                </td>
+                <td class="centerAligned">
+                    <p>
+                    <input type="radio" id="middle" name="location" value="middle">
+                    <label for="middle">Middle</label>
+                    </p>
+                </td>
+                <td class="rightAligned">
+                    <p>
+                        <input type="radio" id="right" name="location" value="right">
+                    <label for="right">Right</label>
+                </p>
+                </td>
+            </tr>
+        </table>
+        <br><br>
         <p><input type="checkbox" id="noshow" name="noshow" value=1>
         <label for="noshow">No show</label></p>
+        <br>
 
 
 
-        <br><br><br>
         <h1>Autonomous</h1>
-
-        <h3>Starting Location:</h3>
-        <table style="width:100%">
-            <tr>
-        <td style="width:30%">
-        <p>
-        <input type="radio" id="left" name="location" value="left">
-        <label for="left">Left</label>
-        </p>
-        </td>
-        <td style="width:30%">
-        <p>
-        <input type="radio" id="middle" name="location" value="middle">
-        <label for="middle">Middle</label>
-        </p>
-        </td>
-        <td style="width:30%">
-        <p>
-        <input type="radio" id="right" name="location" value="right">
-        <label for="right">Right</label>
-        </p>
-        </td>
-            </tr>
-        </table><br>
-        <p><label for="auto_upper_cone">Upper Cone Scored:</label><br>
-        <button type="button" onclick="decrement('auto_upper_cone')"><h3 class="increment">&emsp;-&emsp;</h3></button>
-        <input type="number" id="auto_upper_cone" name="auto_upper_cone" value=0 min=0>
-        <button type="button" onclick="increment('auto_upper_cone')"><h3 class="increment">&emsp;+&emsp;</h3></button>
-        </p>
-        <p>
-        <label for="auto_middle_cone">Middle Cone Scored:</label><br>
-        <button type="button" onclick="decrement('auto_middle_cone')"><h3 class="increment">&emsp;-&emsp;</h3></button>
-        <input type="number" id="auto_middle_cone" name="auto_middle_cone" value=0 min=0>
-        <button type="button" onclick="increment('auto_middle_cone')"><h3 class="increment">&emsp;+&emsp;</h3></button>
-        </p>
-        <p>
-        <label for="auto_lower_cone">Lower Cone Scored:</label><br>
-        <button type="button" onclick="decrement('auto_lower_cone')"><h3 class="increment">&emsp;-&emsp;</h3></button>
-        <input type="number" id="auto_lower_cone" name="auto_lower_cone" value=0 min=0>
-        <button type="button" onclick="increment('auto_lower_cone')"><h3 class="increment">&emsp;+&emsp;</h3></button>
-        </p>
-        <p>
-        <label for="auto_upper_cube">Upper Cube Scored:</label><br>
-        <button type="button" onclick="decrement('auto_upper_cube')"><h3 class="increment">&emsp;-&emsp;</h3></button>
-        <input type="number" id="auto_upper_cube" name="auto_upper_cube" value=0 min=0>
-        <button type="button" onclick="increment('auto_upper_cube')"><h3 class="increment">&emsp;+&emsp;</h3></button>
-        </p>
-        <p>
-        <label for="auto_middle_cube">Middle Cube Scored:</label><br>
-        <button type="button" onclick="decrement('auto_middle_cube')"><h3 class="increment">&emsp;-&emsp;</h3></button>
-        <input type="number" id="auto_middle_cube" name="auto_middle_cube" value=0 min=0>
-        <button type="button" onclick="increment('auto_middle_cube')"><h3 class="increment">&emsp;+&emsp;</h3></button>
-        </p>
-        <p>
-        <label for="auto_lower_cube">Lower Cube Scored:</label><br>
-        <button type="button" onclick="decrement('auto_lower_cube')"><h3 class="increment">&emsp;-&emsp;</h3></button>
-        <input type="number" id="auto_lower_cube" name="auto_lower_cube" value=0 min=0>
-        <button type="button" onclick="increment('auto_lower_cube')"><h3 class="increment">&emsp;+&emsp;</h3></button>
-        </p><br>
         <p>
         <input type="checkbox" id="mobility" name="mobility" value=1>
         <label for="mobility">Exited Community?</label></p>
+        <h3>Coral:</h3>
+        <p>
+        <label for="autoLevelOneCoral">Trough</label><br>
+        <button type="button" onclick="decrement('autoLevelOneCoral')"><h3 class="increment">&emsp;-&emsp;</h3></button>
+        <input type="number" id="autoLevelOneCoral" name="autoLevelOneCoral" value=0 min=0>
+        <button type="button" onclick="increment('autoLevelOneCoral')"><h3 class="increment">&emsp;+&emsp;</h3></button>
+        </p>
+        <p>
+        <label for="autoLevelTwoCoral">Level Two:</label><br>
+        <button type="button" onclick="decrement('autoLevelTwoCoral')"><h3 class="increment">&emsp;-&emsp;</h3></button>
+        <input type="number" id="autoLevelTwoCoral" name="autoLevelTwoCoral" value=0 min=0>
+        <button type="button" onclick="increment('autoLevelTwoCoral')"><h3 class="increment">&emsp;+&emsp;</h3></button>
+        </p>
+        <p>
+        <label for="autoLevelThreeCoral">Level Three:</label><br>
+        <button type="button" onclick="decrement('autoLevelThreeCoral')"><h3 class="increment">&emsp;-&emsp;</h3></button>
+        <input type="number" id="autoLevelThreeCoral" name="autoLevelThreeCoral" value=0 min=0>
+        <button type="button" onclick="increment('autoLevelThreeCoral')"><h3 class="increment">&emsp;+&emsp;</h3></button>
+        </p>
+        <p>
+        <label for="autoLevelFourCoral">Level Four:</label><br>
+        <button type="button" onclick="decrement('autoLevelFourCoral')"><h3 class="increment">&emsp;-&emsp;</h3></button>
+        <input type="number" id="autoLevelFourCoral" name="autoLevelFourCoral" value=0 min=0>
+        <button type="button" onclick="increment('autoLevelFourCoral')"><h3 class="increment">&emsp;+&emsp;</h3></button>
+        </p>
+        <br>
+        <h3>Algae</h3>
+        <p>
+        <label for="autoUpperAlgae">Upper Algae Removed:</label><br>
+        <button type="button" onclick="decrement('autoUpperAlgae')"><h3 class="increment">&emsp;-&emsp;</h3></button>
+        <input type="number" id="autoUpperAlgae" name="autoUpperAlgae" value=0 min=0>
+        <button type="button" onclick="increment('autoUpperAlgae')"><h3 class="increment">&emsp;+&emsp;</h3></button>
+        </p>
+        <p>
+        <label for="autoLowerAlgae">Lower Algae Removed:</label><br>
+        <button type="button" onclick="decrement('autoLowerAlgae')"><h3 class="increment">&emsp;-&emsp;</h3></button>
+        <input type="number" id="autoLowerAlgae" name="autoLowerAlgae" value=0 min=0>
+        <button type="button" onclick="increment('autoLowerAlgae')"><h3 class="increment">&emsp;+&emsp;</h3></button>
+        </p>
+        <br>
         <p>
         <input type="checkbox" id="auto_pickup" name="auto_pickup" value=1>
-        <label for="auto_pickup">Picked up Cone or Cube in Auto?</label></p>
+        <label for="auto_pickup">Picked up Coral or Algae?</label></p>
         
         <table style="width:100%">
             <tr>
@@ -1102,12 +1181,12 @@ input[type="range"]{
         <table style="width:100%;">
         <tr>
             <td>
-        <p><input type="checkbox" id="coralGround" name="coralGround" value=1>
-        <label for="coralGround">Ground</label></p>
+        <p><input type="checkbox" id="aglaeGround" name="aglaeGround" value=1>
+        <label for="aglaeGround">Ground</label></p>
             </td>
             <td>
-        <p><input type="checkbox" id="coralSubstation" name="coralSubstation" value=1>
-        <label for="coralSubstation">Substation</label></p>
+        <p><input type="checkbox" id="algaeReef" name="algaeReef" value=1>
+        <label for="algaeReef">Reef</label></p>
             </td>
         </tr>
         </table>
@@ -1122,35 +1201,39 @@ input[type="range"]{
         <button type="button" onclick="decrement('lowerAlgae')"><h3 class="increment">&emsp;-&emsp;</h3></button>
         <input type="number" id="lowerAlgae" name="lowerAlgae" value=0 min=0>
         <button type="button" onclick="increment('lowerAlgae')"><h3 class="increment">&emsp;+&emsp;</h3></button>
-        </p><br>
+        </p>
         
-        <p>
+        <!-- <p>
         <label for="links">Links:</label><br>
         <button type="button" onclick="decrement('links')"><h3 class="increment">&emsp;-&emsp;</h3></button>
         <input type="number" id="links" name="links" value=0 min=0>
         <button type="button" onclick="increment('links')"><h3 class="increment">&emsp;+&emsp;</h3></button>
-        </p>
-        <br>
+        </p> -->
+        <br><br><br>
 
-        <h1>Endgame</h1>
-        <p>
-        <label for="early_endgame">Climbed Before Endgame?</label>
-        <input type="checkbox" id="early_endgame" name="early_endgame" value=1>
-        </p>
+        <h1>Endgame</h1><br>
         <h3>Hanging Position</h3>
         <p>
-        <input type="radio" id="no_endgame" name="endgame" value="NONE" checked>
-        <label for="no_endgame">None</label>
-        <input type="radio" id="parked" name="endgame" value="PARK">
-        <label for="parked">Parked</label>
+            <input type="radio" id="no_endgame" name="endgame" value="NONE" checked>
+            <label for="no_endgame">None</label>
+            <input type="radio" id="parked" name="endgame" value="PARK">
+            <label for="parked">Parked</label>
         </p>
         <p>
         <input type="radio" id="docked" name="endgame" value="LOWER CAGE">
         <label for="docked">Lower Cage</label>
         <input type="radio" id="engaged" name="endgame" value="UPPER CAGE">
         <label for="engaged">Upper Cage</label>
-        </p><br>
+        </p>
+        <br>
+        <p>
+        <label for="early_endgame">Climbed Before Endgame?</label>
+        <input type="checkbox" id="early_endgame" name="early_endgame" value=1>
+        </p>
+        
 
+
+        <br><br><br>
         <h1>Post-Match</h1>
         <p><label for="skill">Skill of Driver and Operator</label></p>
         <h3 style="margin: auto; width: fit-content;">Bad&emsp;&emsp;&emsp;&emsp;Average&emsp;&emsp;&emsp;&emsp;Good</h3>
