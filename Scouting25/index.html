@@ -5,7 +5,7 @@ Amazon Fire HD 10 800x1280 1.6-->
 <html>
 <head>
     <title>Team 3181 Scouting(Fully Contained Offline Client)</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, min-scale=1; max-scale=1; user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
         <script type="text/javascript">
         // alignment pattern
         adelta = [
@@ -713,8 +713,8 @@ Amazon Fire HD 10 800x1280 1.6-->
         var wd, ht, qrc;
         function setupqr(){
         //    window.scrollTo(0,1)
-            wd = window.innerWidth-20;
-            ht = window.innerHeight-10;
+            wd = window.innerWidth;
+            ht = window.innerWidth;
             mp = document.getElementById("mapcanv");
         
             qrd = document.getElementById("qrdiv");
@@ -811,13 +811,14 @@ Amazon Fire HD 10 800x1280 1.6-->
             px /= width+10;
             px=Math.round(px - 0.5);
             qrc.clearRect(0,0,wd,ht);
-            qrc.fillStyle = '#fff';
+            qrc.fillStyle = '#ffffff';
             qrc.fillRect(0,0,px*(width+8),px*(width+8));
-            qrc.fillStyle = '#000';
+            qrc.fillStyle = '#ff44dd';
             for( i = 0; i < width; i++ )
                 for( j = 0; j < width; j++ )
                     if( qf[j*width+i] )
                         qrc.fillRect(px*(4+i),px*(4+j),px,px)
+            document.getElementById("qrdiv").style.display = "block";
             document.getElementById("qrcanv").style.display = "block";
             return false;
         }
@@ -978,6 +979,14 @@ input[type="text"].initials {
 .qrdiv{
     text-align:center;
     margin:auto;
+    display: none;
+    height: fit-content;
+}
+.qrcanv{
+    margin:auto;
+    display: none;
+    height: fit-content;
+    width: fit-content;
 }
 .pickUpTitle{
     font-size: 20px;
@@ -1214,6 +1223,12 @@ input[type="text"].initials {
         <input type="number" id="processed" name="processed" value=0 min=0>
         <button type="button" onclick="increment('processed')"><h3 class="increment">&emsp;+&emsp;</h3></button>
         </p>
+        <p>
+        <label for="net">Algae Scored In Net:</label><br>
+        <button type="button" onclick="decrement('net')"><h3 class="increment">&emsp;-&emsp;</h3></button>
+        <input type="number" id="net" name="net" value=0 min=0>
+        <button type="button" onclick="increment('net')"><h3 class="increment">&emsp;+&emsp;</h3></button>
+        </p>
         
         <!-- <p>
         <label for="links">Links:</label><br>
@@ -1223,7 +1238,7 @@ input[type="text"].initials {
         </p> -->
         <br><br><br>
 
-        <h1>Endgame</h1><br>
+        <h1>Endgame</h1>
         <h3>Hanging Position</h3>
         <p> 
             <input type="radio" id="no_endgame" name="endgame" value="NONE" checked>
@@ -1237,7 +1252,7 @@ input[type="text"].initials {
         <input type="radio" id="engaged" name="endgame" value="UPPER CAGE">
         <label for="engaged">Upper Cage</label>
         </p>
-        <br>
+        <br><br>
         <p>
         <label for="early_endgame">Climbed Before Endgame?</label>
         <input type="checkbox" id="early_endgame" name="early_endgame" value=1>
@@ -1245,7 +1260,7 @@ input[type="text"].initials {
         
 
 
-        <br><br><br>
+        <br><br>
         <h1>Post-Match</h1>
         <br>
         <p><label for="skill">Skill of Driver and Operator</label></p>
