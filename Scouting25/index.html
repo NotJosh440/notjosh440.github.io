@@ -738,7 +738,9 @@ Amazon Fire HD 10 800x1280 1.6-->
             d = document;
             // if(!(d.inputs.names.value && d.inputs.match.value && d.inputs.robot.value && d.inputs.teamnumber.value && d.inputs.comments.value)){return;}
             inputs_list = [];
-            inputs_list.push(d.inputs.names.value);
+            inputs_list.push(d.inputs.names1.value);
+            inputs_list.push(d.inputs.names2.value);
+            inputs_list.push(d.inputs.names3.value);
             inputs_list.push(d.inputs.match.value);
             inputs_list.push(d.inputs.robot.value);
             inputs_list.push(d.inputs.teamnumber.value);
@@ -1009,7 +1011,9 @@ input[type="text"].initials {
         <h1 class="preMatch">Pre-match</h1>
 
         <p><label for="names">Scouter's Names</label></p>
-        <p style="width: 400px; margin: auto;"><input type="text" id="names" name="names1" required><input type="text" id="names" name="names2" required><input type="text" id="names" name="names3" required></p><br>
+        <p style="width: 400px; margin: auto;"><input type="text" id="names" name="names1" required></p>
+        <p><label for="names">Partners</label></p>
+        <p style="width: 400px; margin: auto;"><input type="text" id="names" name="names2" required><input type="text" id="names" name="names3" required></p><br><br>
         <p><label for="match">Match Number</label></p>
         <p><input type="number" id="match" name="match" class="BIG" required></p>
         <p style="margin-top:16px;"><label for="teamnumber">Team Number</label></p>
