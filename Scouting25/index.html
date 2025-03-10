@@ -792,11 +792,13 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(d.inputs.endgame.value);
 
             inputs_list.push(d.inputs.skill.value);
-            inputs_list.push(d.inputs.defense.value);
+            inputs_list.push(d.inputs.defense.checked);
+
             inputs_list.push(d.inputs.died.checked);
             inputs_list.push(d.inputs.tipped.checked);
             inputs_list.push(d.inputs.card.checked);
             inputs_list.push(d.inputs.damage.checked);
+
             inputs_list.push(d.inputs.comments.value);
             
             input = inputs_list.join("|");
@@ -1015,13 +1017,13 @@ input[type="text"].initials {
         <h1 class="preMatch">Pre-match</h1>
 
         <p><label for="names">Scouter's Names</label></p>
-        <p style="width: 400px; margin: auto;"><input type="text" id="names" name="names1" required></p>
+        <p style="width: 400px; margin: auto;"><input type="text" id="names" name="names1" required class="required"></p>
         <p><label for="names">Partners</label></p>
-        <p style="width: 400px; margin: auto;"><input type="text" id="names" name="names2" required><input type="text" id="names" name="names3" required></p><br><br>
+        <p style="width: 400px; margin: auto;"><input type="text" id="names" name="names2" required class="required"><input type="text" id="names" name="names3" required></p><br><br>
         <p><label for="match">Match Number</label></p>
-        <p><input type="number" id="match" name="match" class="BIG" required></p>
+        <p><input type="number" id="match" name="match" class="BIG required" required></p>
         <p style="margin-top:16px;"><label for="teamnumber">Team Number</label></p>
-        <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG"></p>
+        <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG required"></p>
 
         <h3>Robot</h3>
         <div class="table">
@@ -1234,23 +1236,33 @@ input[type="text"].initials {
         <br><br><br>
 
         <h1>Endgame</h1>
+
         <h3>Hanging Position</h3>
-        <p> 
-            <input type="radio" id="no_endgame" name="endgame" value="NONE" checked>
-            <label for="no_endgame">None</label>
-            <input type="radio" id="parked" name="endgame" value="PARK">
-            <label for="parked">Parked</label>
+
+        <div class="centerAligned">
+            <p style="display: inline;" class="centerLeftAligned">
+                <input type="radio" id="no_endgame" name="endgame" value="NONE" checked>
+                <label for="no_endgame">None</label>
+            </p>
+            <p style="display: inline;" class="centerRightAligned">
+                <input type="radio" id="parked" name="endgame" value="PARK">
+                <label for="parked">Parked</label>
+            </p>
+        </div><br>
+        <div class="centerAligned">
+        <p style="display: inline;" class="centerLeftAligned">
+            <input type="radio" id="docked" name="endgame" value="LOWER CAGE">
+            <label for="docked">Lower Cage</label>
         </p>
-        <p>
-        <input type="radio" id="docked" name="endgame" value="LOWER CAGE">
-        <label for="docked">Lower Cage</label>
-        <input type="radio" id="engaged" name="endgame" value="UPPER CAGE">
-        <label for="engaged">Upper Cage</label>
+        <p style="display: inline;" class="centerRightAligned">
+            <input type="radio" id="engaged" name="endgame" value="UPPER CAGE">
+            <label for="engaged">Upper Cage</label>
         </p>
+        </div>
         <br><br>
         <p>
+            <input type="checkbox" id="early_endgame" name="early_endgame" value=1>
         <label for="early_endgame">Climbed Before Endgame?</label>
-        <input type="checkbox" id="early_endgame" name="early_endgame" value=1>
         </p>
         
 
@@ -1261,9 +1273,10 @@ input[type="text"].initials {
         <p><label for="skill">Skill of Driver and Operator</label></p>
         <table style="width: 100%; margin-bottom: 0px;" class="BadAverageGood"><tr><td class="leftAligned"><h3>Bad</h3></td><td class="center"><h3>Average</h3></td><td class="rightAligned"><h3>Good</h3></td></tr></table>
         <p><input type="range" id="skill" name="skill"></p><br>
-        <p><label for="defense">Defense Capabilities</label></p>
-        <table style="width: 100%; margin-bottom: 0px;" class="BadAverageGood"><tr><td class="leftAligned"><h3>Bad</h3></td><td class="center"><h3>Average</h3></td><td class="rightAligned"><h3>Good</h3></td></tr></table>
-        <p><input type="range" id="defense" name="defense"></p><br>        
+        <p>
+        <input type="checkbox" id="defense" name="defense">
+        <label for="defense">Played Defense</label>
+        </p><br>
         <p>
         <input type="checkbox" id="died" name="died" value=1>
         <label for="died">Died</label><br>
@@ -1275,27 +1288,33 @@ input[type="text"].initials {
         <label for="damage">Damaged</label>
         </p>
 
-        <label for="comments">&emsp;Comments</label><br>
-        &emsp;<textarea id="comments" name="comments" cols="30" rows="5" required></textarea><br><br><br>
-        <button type="submit" onclick="doqr()"><h2>Make QR Code</h2></button>
+        <label for="comments" style="margin-left: 25px;">Comments</label><br>
+        <textarea id="comments" name="comments" cols="32" rows="8" class="required" required style="margin-left: 25px;"></textarea><br><br><br>
+        <button type="submit" id="submit" onclick="doqr()" style="margin-left: 25px;"><h2>Make QR Code</h2></button>
         <button type="reset" id="reset-button"><h2>Clear Data</h2></button></a>
 
         <script>
             document.getElementById('reset-button').addEventListener('click', (event) => {
-            event.preventDefault();
-            document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
-            hideqr();
-            color=document.inputs.robot.value;
-            names=[document.imputs.names1.value, document.inputs.names2.value, document.inputs.names3.value];
-            match = document.inputs.match.value;
+                event.preventDefault();
+                document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
+                hideqr();
+                console.log("Doing");
+                color=document.inputs.robot.value;
+                names=[document.inputs.names1.value, document.inputs.names2.value, document.inputs.names3.value];
+                match = parseInt(document.inputs.match.value);
 
-            document.getElementById("scoutingForm").reset();
-            document.inputs.names1.value = names[0];
-            document.inputs.names2.value = names[1];
-            document.inputs.names3.value = names[2];
-            document.inputs.match.value = match+1;
-            document.inputs.robot.value = color;
-        });
+                document.getElementById("scoutingForm").reset();
+                document.inputs.names1.value = names[0];
+                document.inputs.names2.value = names[1];
+                document.inputs.names3.value = names[2];
+                document.inputs.match.value = match+1;
+                document.inputs.robot.value = color;
+            });
+            document.getElementById('submit').addEventListener('click', (event) => {
+                event.preventDefault();
+                elements = document.getElementById("soutingForm").querySelector("required");
+                console.log(elements);
+            });
         </script>
         
     </form>
