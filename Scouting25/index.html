@@ -736,6 +736,7 @@ Amazon Fire HD 10 800x1280 1.6-->
         function doqr() {
             //setting up the data because James was lazy
             d = document;
+            // if(!(d.inputs.names.value && d.inputs.match.value && d.inputs.robot.value && d.inputs.teamnumber.value && d.inputs.comments.value)){return;}
             inputs_list = [];
             inputs_list.push(d.inputs.names.value);
             inputs_list.push(d.inputs.match.value);
@@ -743,6 +744,7 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(d.inputs.teamnumber.value);
             inputs_list.push(d.inputs.noshow.checked);
             inputs_list.push(d.inputs.location.value);
+
             inputs_list.push(d.inputs.mobility.checked); //make sure mobility goes here, database hates me
             inputs_list.push(d.inputs.autoLevelOneCoral.value);
             inputs_list.push(d.inputs.autoLevelTwoCoral.value);
@@ -750,43 +752,42 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(d.inputs.autoLevelFourCoral.value);
             inputs_list.push(d.inputs.autoUpperAlgae.value);
             inputs_list.push(d.inputs.autoLowerAlgae.value);
+            inputs_list.push(d.inputs.autoProcessed.value);
             inputs_list.push(d.inputs.auto_pickup.checked);
-            inputs_list.push(d.inputs.auto_dock_engage.value);
+
+            var ground = d.inputs.coralGround.checked;
+            var station = d.inputs.coralSubstation.checked;
+            if(ground && station){
+                inputs_list.push("BOTH");
+            }else if(ground){
+                    inputs_list.push("GROUND");
+            }else if(station){
+                    inputs_list.push("SUBSTATION");
+            }else{
+                inputs_list.push("NONE")
+            }
             inputs_list.push(d.inputs.levelOneCoral.value);
             inputs_list.push(d.inputs.levelTwoCoral.value);
             inputs_list.push(d.inputs.levelThreeCoral.value);
             inputs_list.push(d.inputs.leveFourCoral.value);
+            var ground = d.inputs.aglaeGround.checked;
+            var reef = d.inputs.algaeReef.checked;
+            if(ground && reef){
+                inputs_list.push("BOTH");
+            }else if(ground){
+                    inputs_list.push("GROUND");
+            }else if(reef){
+                    inputs_list.push("REEF");
+            }else{
+                inputs_list.push("NONE")
+            }
             inputs_list.push(d.inputs.upperAlgae.value);
             inputs_list.push(d.inputs.lowerAlgae.value);
-            if(d.inputs.coralGround.checked == 1 && d.inputs.coralSubstation.checked == 1){
-                inputs_list.push("BOTH");
-            }else{
-                if(d.inputs.coralGround.checked == 1){
-                    inputs_list.push("GROUND");
-                }
-                if(d.inputs.coralSubstation.checked == 1){
-                    inputs_list.push("SUBSTATION");
-                }
-                if(d.inputs.coralGround.checked == 0 && d.inputs.coralSubstation.checked == 0){
-                    inputs_list.push("NONE")
-                }
-            }
+            inputs_list.push(d.inputs.processed.value);
 
-            if(d.inputs.aglaeGround.checked == 1 && d.inputs.algaeReef.checked == 1){
-                inputs_list.push("BOTH");
-            }else{
-                if(d.inputs.aglaeGround.checked == 1){
-                    inputs_list.push("GROUND");
-                }
-                if(d.inputs.algaeReef.checked == 1){
-                    inputs_list.push("SUBSTATION");
-                }
-                if(d.inputs.aglaeGround.checked == 0 && d.inputs.coralSubstation.checked == 0){
-                    inputs_list.push("NONE")
-                }
-            }
             inputs_list.push(d.inputs.early_endgame.checked);
             inputs_list.push(d.inputs.endgame.value);
+
             inputs_list.push(d.inputs.skill.value);
             inputs_list.push(d.inputs.defense.value);
             inputs_list.push(d.inputs.died.checked);
@@ -918,6 +919,9 @@ table {
     display: table-cell;
     width: 37.5%;
 }
+.centerLeftAligned p{
+    text-align: right;
+}
 .centerAligned {
     display: table-cell;
     text-align: center;
@@ -928,6 +932,9 @@ table {
     padding-left: 50px;
     display: table-cell;
     width: 37.5%;
+}
+.centerRightAligned p{
+    text-align: left;
 }
 .rightAligned {
     display: table-cell;
@@ -958,6 +965,12 @@ input[type="range"] {
 input[type="text"].initials {
     width: 75px;
     height: 50;
+}
+#names{
+    width: calc((400px - 24px)/3);
+}
+.BadAverageGood tr td h3{
+    margin: 0px;
 }
 
 .qrdiv{
@@ -995,14 +1008,14 @@ input[type="text"].initials {
         <br><br>
         <h1 class="preMatch">Pre-match</h1>
 
-        <p><label for="names">Scouter's initials:</label></p>
-        <p><input type="text" id="names" name="names" required></p><br>
-        <p><label for="match">Match Number:</label></p>
-        <p><input type="number" id="match" name="match" class="BIG"></p>
-        <p style="margin-top:16px;"><label for="teamnumber">Team Number:</label></p>
+        <p><label for="names">Scouter's Names</label></p>
+        <p style="width: 400px; margin: auto;"><input type="text" id="names" name="names1" required><input type="text" id="names" name="names2" required><input type="text" id="names" name="names3" required></p><br>
+        <p><label for="match">Match Number</label></p>
+        <p><input type="number" id="match" name="match" class="BIG" required></p>
+        <p style="margin-top:16px;"><label for="teamnumber">Team Number</label></p>
         <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG"></p>
 
-        <h3>Robot:</h3>
+        <h3>Robot</h3>
         <div class="table">
             <div class="tr">
                     <div class="centerLeftAligned">
@@ -1036,8 +1049,8 @@ input[type="text"].initials {
             </div>
     </div>
         <br>
-        <h3 style="margin-bottom: 5px;">Starting Location:</h3>
-        <table>
+        <h3 style="margin-bottom: 5px;">Starting Location</h3>
+        <table style="width: 400px;">
             <tr>
                 <td class="leftAligned">
                     <p>
@@ -1109,27 +1122,16 @@ input[type="text"].initials {
         <input type="number" id="autoLowerAlgae" name="autoLowerAlgae" value=0 min=0>
         <button type="button" onclick="increment('autoLowerAlgae')"><h3 class="increment">&emsp;+&emsp;</h3></button>
         </p>
+        <p>
+        <label for="autoProcessed">Algae Processed:</label><br>
+        <button type="button" onclick="decrement('autoProcessed')"><h3 class="increment">&emsp;-&emsp;</h3></button>
+        <input type="number" id="autoProcessed" name="autoProcessed" value=0 min=0>
+        <button type="button" onclick="increment('autoProcessed')"><h3 class="increment">&emsp;+&emsp;</h3></button>
+        </p>
         <br>
         <p>
         <input type="checkbox" id="auto_pickup" name="auto_pickup" value=1>
         <label for="auto_pickup">Picked up Coral or Algae?</label></p>
-        
-        <table style="width:100%">
-            <tr>
-            <td style="width:30%"><p>
-        <input type="radio" id="auto_none" name="auto_dock_engage" value="NONE" checked>
-        <label for="auto_none">None</label>
-        </p></td>
-        <td style="width:30%"><p>
-        <input type="radio" id="auto_docked" name="auto_dock_engage" value="DOCK">
-        <label for="auto_docked">Docked</label>
-        </p></td>
-        <td style="width:30%"><p>
-        <input type="radio" id="auto_engaged" name="auto_dock_engage" value="DOCK ENGAGE">
-        <label for="auto_engaged">Engaged</label>
-        </p></td>
-            </tr>
-        </table><br>
 
 
 
@@ -1140,11 +1142,11 @@ input[type="text"].initials {
         <p class="pickUpTitle">Can pick up from:</p>
         <table style="width:100%;">
         <tr>
-            <td>
+            <td class="centerLeftAligned">
         <p><input type="checkbox" id="coralGround" name="coralGround" value=1>
         <label for="coralGround">Ground</label></p>
             </td>
-            <td>
+            <td class="centerRightAligned">
         <p><input type="checkbox" id="coralSubstation" name="coralSubstation" value=1>
         <label for="coralSubstation">Substation</label></p>
             </td>
@@ -1180,11 +1182,11 @@ input[type="text"].initials {
         <p class="pickUpTitle">Can pick up from:</p>
         <table style="width:100%;">
         <tr>
-            <td>
+            <td class="centerLeftAligned">
         <p><input type="checkbox" id="aglaeGround" name="aglaeGround" value=1>
         <label for="aglaeGround">Ground</label></p>
             </td>
-            <td>
+            <td class="centerRightAligned">
         <p><input type="checkbox" id="algaeReef" name="algaeReef" value=1>
         <label for="algaeReef">Reef</label></p>
             </td>
@@ -1201,6 +1203,12 @@ input[type="text"].initials {
         <button type="button" onclick="decrement('lowerAlgae')"><h3 class="increment">&emsp;-&emsp;</h3></button>
         <input type="number" id="lowerAlgae" name="lowerAlgae" value=0 min=0>
         <button type="button" onclick="increment('lowerAlgae')"><h3 class="increment">&emsp;+&emsp;</h3></button>
+        </p>
+        <p>
+        <label for="processed">Algae Processed:</label><br>
+        <button type="button" onclick="decrement('processed')"><h3 class="increment">&emsp;-&emsp;</h3></button>
+        <input type="number" id="processed" name="processed" value=0 min=0>
+        <button type="button" onclick="increment('processed')"><h3 class="increment">&emsp;+&emsp;</h3></button>
         </p>
         
         <!-- <p>
@@ -1235,13 +1243,13 @@ input[type="text"].initials {
 
         <br><br><br>
         <h1>Post-Match</h1>
+        <br>
         <p><label for="skill">Skill of Driver and Operator</label></p>
-        <h3 style="margin: auto; width: fit-content;">Bad&emsp;&emsp;&emsp;&emsp;Average&emsp;&emsp;&emsp;&emsp;Good</h3>
-        <p><input type="range" id="skill" name="skill" min="1" max="3"></p>
+        <table style="width: 100%; margin-bottom: 0px;" class="BadAverageGood"><tr><td class="leftAligned"><h3>Bad</h3></td><td class="center"><h3>Average</h3></td><td class="rightAligned"><h3>Good</h3></td></tr></table>
+        <p><input type="range" id="skill" name="skill"></p><br>
         <p><label for="defense">Defense Capabilities</label></p>
-        <h3 style="margin: auto; width: fit-content;">Bad&emsp;&emsp;&emsp;&emsp;Average&emsp;&emsp;&emsp;&emsp;Good</h3>
-        <p><input type="range" id="defense" name="defense" min="1" max="3"></p>
-        
+        <table style="width: 100%; margin-bottom: 0px;" class="BadAverageGood"><tr><td class="leftAligned"><h3>Bad</h3></td><td class="center"><h3>Average</h3></td><td class="rightAligned"><h3>Good</h3></td></tr></table>
+        <p><input type="range" id="defense" name="defense"></p><br>        
         <p>
         <input type="checkbox" id="died" name="died" value=1>
         <label for="died">Died</label><br>
