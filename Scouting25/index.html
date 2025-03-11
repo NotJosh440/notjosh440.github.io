@@ -7,6 +7,7 @@ Amazon Fire HD 10 800x1280 1.6-->
     <title>Team 3181 Scouting(Fully Contained Offline Client)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <script type="text/javascript">
+        hasBeenMade = false;
         // alignment pattern
         adelta = [
           0, 11, 15, 19, 23, 27, 31, // force 1 pat
@@ -735,9 +736,9 @@ Amazon Fire HD 10 800x1280 1.6-->
         }
         
         function doqr() {
-                        //setting up the data because James was lazy
+            hasBeenMade = true;
+            //setting up the data because James was lazy
             d = document;
-            // if(!(d.inputs.names.value && d.inputs.match.value && d.inputs.robot.value && d.inputs.teamnumber.value && d.inputs.comments.value)){return;}
             inputs_list = [];
             inputs_list.push(d.inputs.names1.value);
             inputs_list.push(d.inputs.names2.value);
@@ -827,6 +828,12 @@ Amazon Fire HD 10 800x1280 1.6-->
         }
         function hideqr(){
             document.getElementById("qrcanv").style.display = "none";
+        }
+        function showPrevious(){
+            if(hasBeenMade){
+                document.getElementById("qrdiv").style.display = "block";
+                document.getElementById("qrcanv").style.display = "block";
+            }
         }
         </script>
         <style>
@@ -941,6 +948,9 @@ table {
     text-align: right;
     width: 25%;
 }
+.error{
+    outline: 2px solid red;
+}
 
 input, label {
     text-align: center;
@@ -1016,14 +1026,125 @@ input[type="text"].initials {
         <br><br>
         <h1 class="preMatch">Pre-match</h1>
 
-        <p><label for="names">Scouter's Names</label></p>
-        <p style="width: 400px; margin: auto;"><input type="text" id="names" name="names1" required class="required"></p>
+        <p><label for="names">Scouter Name</label></p>
+        <p style="width: 400px; margin: auto;"><select type="select" id="names" name="names1" class="required" value="">
+            <option value="">--Your name--</option>
+            <option value="Alejandra O.">Alejandra O.</option>
+            <option value="Alex L.">Alex L.</option>
+            <option value="Anthony L.">Anthony L.</option>
+            <option value="Catherine L.">Catherine L.</option>
+            <option value="Crystal Y.">Crystal Y.</option>
+            <option value="Darren L.">Darren L.</option>
+            <option value="Elijah K.">Elijah K.</option>
+            <option value="Ethan S.">Ethan S.</option>
+            <option value="Finnan M.">Finnan M.</option>
+            <option value="Jacob M.">Jacob M.</option>
+            <option value="Jennifer X.">Jennifer X.</option>
+            <option value="Jeremiah X.">Jeremiah X.</option>
+            <option value="Joshua G.C.">Joshua G.C.</option>
+            <option value="Josie H.">Josie H.</option>
+            <option value="Justin L.">Justin L.</option>
+            <option value="Liam G.">Liam G.</option>
+            <option value="Libby D.">Libby D.</option>
+            <option value="Luka K.">Luka K.</option>
+            <option value="Melike C.">Melike C.</option>
+            <option value="Nathan M.">Nathan M.</option>
+            <option value="Peiheng L.">Peiheng L.</option>
+            <option value="Robert B.">Robert B.</option>
+            <option value="Rocco C.">Rocco C.</option>
+            <option value="Sinem G.">Sinem G.</option>
+            <option value="Sophia S.">Sophia S.</option>
+            <option value="Sophie A.">Sophie A.</option>
+            <option value="William L.">William L.</option>
+            <option value="William Y.">William Y.</option>
+            <option value="Xiaohan L.">Xiaohan L.</option>
+            <option value="Yang Z.">Yang Z.</option>
+            
+            <option value="Josh A.">Josh A.</option>
+            <option value="Hannah X.">Hannah X.</option>
+            <option value="Maria R.G.">Maria R.G.</option>
+        </select></p>
         <p><label for="names">Partners</label></p>
-        <p style="width: 400px; margin: auto;"><input type="text" id="names" name="names2" required class="required"><input type="text" id="names" name="names3" required></p><br><br>
+        <p style="width: 400px; margin: auto;">
+            <select type="text" id="names" name="names2" class="required" value="">
+                <option value="">--Partner 1--</option>
+                <option value="Alejandra O.">Alejandra O.</option>
+                <option value="Alex L.">Alex L.</option>
+                <option value="Anthony L.">Anthony L.</option>
+                <option value="Catherine L.">Catherine L.</option>
+                <option value="Crystal Y.">Crystal Y.</option>
+                <option value="Darren L.">Darren L.</option>
+                <option value="Elijah K.">Elijah K.</option>
+                <option value="Ethan S.">Ethan S.</option>
+                <option value="Finnan M.">Finnan M.</option>
+                <option value="Jacob M.">Jacob M.</option>
+                <option value="Jennifer X.">Jennifer X.</option>
+                <option value="Jeremiah X.">Jeremiah X.</option>
+                <option value="Joshua G.C.">Joshua G.C.</option>
+                <option value="Josie H.">Josie H.</option>
+                <option value="Justin L.">Justin L.</option>
+                <option value="Liam G.">Liam G.</option>
+                <option value="Libby D.">Libby D.</option>
+                <option value="Luka K.">Luka K.</option>
+                <option value="Melike C.">Melike C.</option>
+                <option value="Nathan M.">Nathan M.</option>
+                <option value="Peiheng L.">Peiheng L.</option>
+                <option value="Robert B.">Robert B.</option>
+                <option value="Rocco C.">Rocco C.</option>
+                <option value="Sinem G.">Sinem G.</option>
+                <option value="Sophia S.">Sophia S.</option>
+                <option value="Sophie A.">Sophie A.</option>
+                <option value="William L.">William L.</option>
+                <option value="William Y.">William Y.</option>
+                <option value="Xiaohan L.">Xiaohan L.</option>
+                <option value="Yang Z.">Yang Z.</option>
+                
+                <option value="Josh A.">Josh A.</option>
+                <option value="Hannah X.">Hannah X.</option>
+                <option value="Maria R.G.">Maria R.G.</option>
+            </select>
+            <select type="text" id="names" name="names3" class="required" value="">
+                <option value="">--Partner 2--</option>
+                <option value="Alejandra O.">Alejandra O.</option>
+                <option value="Alex L.">Alex L.</option>
+                <option value="Anthony L.">Anthony L.</option>
+                <option value="Catherine L.">Catherine L.</option>
+                <option value="Crystal Y.">Crystal Y.</option>
+                <option value="Darren L.">Darren L.</option>
+                <option value="Elijah K.">Elijah K.</option>
+                <option value="Ethan S.">Ethan S.</option>
+                <option value="Finnan M.">Finnan M.</option>
+                <option value="Jacob M.">Jacob M.</option>
+                <option value="Jennifer X.">Jennifer X.</option>
+                <option value="Jeremiah X.">Jeremiah X.</option>
+                <option value="Joshua G.C.">Joshua G.C.</option>
+                <option value="Josie H.">Josie H.</option>
+                <option value="Justin L.">Justin L.</option>
+                <option value="Liam G.">Liam G.</option>
+                <option value="Libby D.">Libby D.</option>
+                <option value="Luka K.">Luka K.</option>
+                <option value="Melike C.">Melike C.</option>
+                <option value="Nathan M.">Nathan M.</option>
+                <option value="Peiheng L.">Peiheng L.</option>
+                <option value="Robert B.">Robert B.</option>
+                <option value="Rocco C.">Rocco C.</option>
+                <option value="Sinem G.">Sinem G.</option>
+                <option value="Sophia S.">Sophia S.</option>
+                <option value="Sophie A.">Sophie A.</option>
+                <option value="William L.">William L.</option>
+                <option value="William Y.">William Y.</option>
+                <option value="Xiaohan L.">Xiaohan L.</option>
+                <option value="Yang Z.">Yang Z.</option>
+                
+                <option value="Josh A.">Josh A.</option>
+                <option value="Hannah X.">Hannah X.</option>
+                <option value="Maria R.G.">Maria R.G.</option>
+            </select>
+        </p><br><br>
         <p><label for="match">Match Number</label></p>
-        <p><input type="number" id="match" name="match" class="BIG required" required></p>
+        <p><input type="number" id="match" name="match" class="BIG required" value=""></p>
         <p style="margin-top:16px;"><label for="teamnumber">Team Number</label></p>
-        <p><input type="number" id="teamnumber" name="teamnumber" required class="BIG required"></p>
+        <p><input type="number" id="teamnumber" name="teamnumber" class="BIG required" value=""></p>
 
         <h3>Robot</h3>
         <div class="table">
@@ -1289,9 +1410,10 @@ input[type="text"].initials {
         </p>
 
         <label for="comments" style="margin-left: 25px;">Comments</label><br>
-        <textarea id="comments" name="comments" cols="32" rows="8" class="required" required style="margin-left: 25px;"></textarea><br><br><br>
-        <button type="submit" id="submit" onclick="doqr()" style="margin-left: 25px;"><h2>Make QR Code</h2></button>
+        <textarea id="comments" name="comments" cols="32" rows="8" class="required" style="margin-left: 25px;" value=""></textarea><br><br><br>
+        <button type="submit" id="submit" style="margin-left: 25px;"><h2>Make QR Code</h2></button>
         <button type="reset" id="reset-button"><h2>Clear Data</h2></button></a>
+        <button type="previous" id="previous" onclick="showPrevious()"><h2>Show Previous QR Code</h2></button></a>
 
         <script>
             document.getElementById('reset-button').addEventListener('click', (event) => {
@@ -1309,11 +1431,25 @@ input[type="text"].initials {
                 document.inputs.names3.value = names[2];
                 document.inputs.match.value = match+1;
                 document.inputs.robot.value = color;
+                document.inputs.comments.value = "";
             });
             document.getElementById('submit').addEventListener('click', (event) => {
                 event.preventDefault();
-                elements = document.getElementById("soutingForm").querySelector("required");
-                console.log(elements);
+                elements = document.querySelectorAll(".required");
+                qr = true;
+                for(i=0; i<elements.length; i++){
+                    if(elements[i].value == ""){
+                        elements[i].scrollIntoView({ behavior: 'smooth', block: "center"});
+                        elements[i].classList.add('error');
+                        qr = false;
+                    }else{
+                        elements[i].classList.remove("error");
+                    }
+                }
+                if(qr){
+                    doqr();
+                    document.getElementById("qrcanv").scrollIntoView({ behavior: 'smooth', block: "center"});
+                }
             });
         </script>
         
