@@ -711,7 +711,7 @@ Amazon Fire HD 10 800x1280 1.6-->
             return qrframe;
         }
         
-        var wd, ht, qrc;
+        var wd, ht, qrc, qf;
         function setupqr(){
         //    window.scrollTo(0,1)
             wd = window.innerWidth-20;
@@ -788,6 +788,7 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(d.inputs.upperAlgae.value);
             inputs_list.push(d.inputs.lowerAlgae.value);
             inputs_list.push(d.inputs.processed.value);
+            inputs_list.push(d.inputs.net.value);
 
             inputs_list.push(d.inputs.early_endgame.checked);
             inputs_list.push(d.inputs.endgame.value);
@@ -801,6 +802,7 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(d.inputs.damage.checked);
 
             inputs_list.push(d.inputs.comments.value);
+            inputs_list.push(Date.now());
             
             input = inputs_list.join("|");
         
@@ -829,10 +831,18 @@ Amazon Fire HD 10 800x1280 1.6-->
         function hideqr(){
             document.getElementById("qrcanv").style.display = "none";
         }
+        var showingPrev = false;
         function showPrevious(){
-            if(hasBeenMade){
+            if(hasBeenMade && !showingPrev){
+                showingPrev = true;
+                document.getElementById("submit").classList.add("unavalable");
                 document.getElementById("qrdiv").style.display = "block";
                 document.getElementById("qrcanv").style.display = "block";
+            }else if(showingPrev){
+                showingPrev = false;
+                document.getElementById("submit").classList.remove("unavalable");
+                document.getElementById("qrdiv").style.display = "none";
+                document.getElementById("qrcanv").style.display = "none";
             }
         }
         </script>
@@ -951,6 +961,12 @@ table {
 .error{
     outline: 2px solid red;
 }
+.unavalable h2{
+    color: grey;
+}
+.unavalable{
+    color: grey;
+}
 
 input, label {
     text-align: center;
@@ -978,6 +994,7 @@ input[type="text"].initials {
 }
 #names{
     width: calc((400px - 24px)/3);
+    height: 25px;
 }
 .BadAverageGood tr td h3{
     margin: 0px;
@@ -995,6 +1012,37 @@ input[type="text"].initials {
     height: fit-content;
     width: fit-content;
 }
+.popup {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+}
+.show {
+    display: block;
+}
+.popup-content {
+    background-color: white;
+    margin: 50% auto;
+    padding: 2px;
+    border: 1px solid #888888;
+    width: 50%;
+    font-weight: bolder;
+}
+.popup-content button {
+    display: block;
+    margin: 0 auto;
+}
+#prevQR{
+    width: 200px;
+    height: 200px;
+}
+
 .pickUpTitle{
     font-size: 20px;
 }
@@ -1005,7 +1053,7 @@ input[type="text"].initials {
 }
         </style>
 </head>
-<body onload="setupqr()">
+<body onload="setupqr(), showPrevious()">
     <div class="scouting_form">
         <div class="titleBox" id="top">
             <h1 style="margin: 0px;">Team 3181 Scouting</h1>
@@ -1150,31 +1198,31 @@ input[type="text"].initials {
         <div class="table">
             <div class="tr">
                     <div class="centerLeftAligned">
-                            <input type="radio" id="red1" name="robot" value="red1">
+                            <input type="radio" id="red1" name="robot" value="Red 1">
                             <label for="red1">Red 1</label>
                     </div>
                     <div class="centerRightAligned">
-                            <input type="radio" id="blue1" name="robot" value="blue1">
+                            <input type="radio" id="blue1" name="robot" value="Blue 1">
                             <label for="blue1">Blue 1</label>
                     </div>
             </div>
             <div class="tr">
                     <div class="centerLeftAligned">
-                            <input type="radio" id="red2" name="robot" value="red2">
+                            <input type="radio" id="red2" name="robot" value="Red 2">
                             <label for="red2">Red 2</label>
                     </div>
                     <div class="centerRightAligned">
-                            <input type="radio" id="blue2" name="robot" value="blue2">
+                            <input type="radio" id="blue2" name="robot" value="Blue 2">
                             <label for="blue2">Blue 2</label>
                     </div>
             </div>
             <div class="tr">
                     <div class="centerLeftAligned">
-                            <input type="radio" id="red3" name="robot" value="red3">
+                            <input type="radio" id="red3" name="robot" value="Red 3">
                             <label for="red3">Red 3</label>
                     </div>
                     <div class="centerRightAligned">
-                            <input type="radio" id="blue3" name="robot" value="blue3">
+                            <input type="radio" id="blue3" name="robot" value="Blue S3">
                             <label for="blue3">Blue 3</label>
                     </div>
             </div>
@@ -1420,7 +1468,6 @@ input[type="text"].initials {
                 event.preventDefault();
                 document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
                 hideqr();
-                console.log("Doing");
                 color=document.inputs.robot.value;
                 names=[document.inputs.names1.value, document.inputs.names2.value, document.inputs.names3.value];
                 match = parseInt(document.inputs.match.value);
@@ -1432,6 +1479,9 @@ input[type="text"].initials {
                 document.inputs.match.value = match+1;
                 document.inputs.robot.value = color;
                 document.inputs.comments.value = "";
+                if(showingPrev){
+                    showPrevious();
+                }
             });
             document.getElementById('submit').addEventListener('click', (event) => {
                 event.preventDefault();
@@ -1446,7 +1496,7 @@ input[type="text"].initials {
                         elements[i].classList.remove("error");
                     }
                 }
-                if(qr){
+                if(qr && !showingPrev){
                     doqr();
                     document.getElementById("qrcanv").scrollIntoView({ behavior: 'smooth', block: "center"});
                 }
@@ -1460,6 +1510,13 @@ input[type="text"].initials {
 </form>
 <div id="qrdiv" class="qrdiv" style="width:90%">
     <canvas id="qrcanv" class="qrcode"></canvas>
+</div>
+
+<div id="myPopup" class="popup">
+    <div class="popup-content">
+            <h3>Previous QR Code</h3>
+            <canvas id="prevQR"></canvas>
+    </div>
 </div>
 </body>
 </html>
