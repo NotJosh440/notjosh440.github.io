@@ -729,7 +729,6 @@ Amazon Fire HD 10 800x1280 1.6-->
             qrc = elem.getContext('2d');
             qrc.canvas.width = wd;
             qrc.canvas.height = ht;
-            console.log(wd, ht);
             qrc.fillStyle = '#eee';
             qrc.fillRect(0,0,wd,ht);
             document.getElementById("qrcanv").style.display = "none";
@@ -797,11 +796,8 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(d.inputs.defense.checked);
 
             inputs_list.push(d.inputs.died.checked);
-            inputs_list.push(d.inputs.tipped.checked);
-            inputs_list.push(d.inputs.card.checked);
-            inputs_list.push(d.inputs.damage.checked);
-
-            inputs_list.push(d.inputs.comments.value);
+            
+            inputs_list.push(d.inputs.comments.value.split('\n').join(" - "));
             inputs_list.push(Date.now());
             
             input = inputs_list.join("|");
@@ -817,13 +813,13 @@ Amazon Fire HD 10 800x1280 1.6-->
             px /= width+10;
             px=Math.round(px - 0.5);
             qrc.clearRect(0,0,wd,ht);
-            qrc.fillStyle = '#ffffff';
-            qrc.fillRect(0,0,px*(width+8),px*(width+8));
             qrc.fillStyle = '#ff44dd';
+            qrc.fillRect(0,0,px*(width+2),px*(width+2));
+            qrc.fillStyle = '#000000';
             for( i = 0; i < width; i++ )
                 for( j = 0; j < width; j++ )
                     if( qf[j*width+i] )
-                        qrc.fillRect(px*(4+i),px*(4+j),px,px)
+                        qrc.fillRect(px*(i+1),px*(j+1),px,px)
             document.getElementById("qrdiv").style.display = "block";
             document.getElementById("qrcanv").style.display = "block";
             return false;
@@ -1375,13 +1371,7 @@ input[type="text"].initials {
         <input type="number" id="net" name="net" value=0 min=0>
         <button type="button" onclick="increment('net')"><h3 class="increment">&emsp;+&emsp;</h3></button>
         </p>
-        
-        <!-- <p>
-        <label for="links">Links:</label><br>
-        <button type="button" onclick="decrement('links')"><h3 class="increment">&emsp;-&emsp;</h3></button>
-        <input type="number" id="links" name="links" value=0 min=0>
-        <button type="button" onclick="increment('links')"><h3 class="increment">&emsp;+&emsp;</h3></button>
-        </p> -->
+
         <br><br><br>
 
         <h1>Endgame</h1>
@@ -1428,13 +1418,7 @@ input[type="text"].initials {
         </p><br>
         <p>
         <input type="checkbox" id="died" name="died" value=1>
-        <label for="died">Died</label><br>
-        <input type="checkbox" id="tipped" name="tipped" value=1>
-        <label for="tipped">Tipped Over</label><br>
-        <input type="checkbox" id="card" name="card" value=1>
-        <label for="card">Got Yellow/Red Card</label><br>
-        <input type="checkbox" id="damage" name="damage" value=1>
-        <label for="damage">Damaged</label>
+        <label for="died">Died, Tipped, or Dammaged</label><br>
         </p>
 
         <label for="comments" style="margin-left: 25px;">Comments</label><br>
@@ -1467,15 +1451,15 @@ input[type="text"].initials {
                 event.preventDefault();
                 elements = document.querySelectorAll(".required");
                 qr = true;
-                for(i=0; i<elements.length; i++){
-                    if(elements[i].value == ""){
-                        elements[i].scrollIntoView({ behavior: 'smooth', block: "center"});
-                        elements[i].classList.add('error');
-                        qr = false;
-                    }else{
-                        elements[i].classList.remove("error");
-                    }
-                }
+                // for(i=0; i<elements.length; i++){
+                //     if(elements[i].value == ""){
+                //         elements[i].scrollIntoView({ behavior: 'smooth', block: "center"});
+                //         elements[i].classList.add('error');
+                //         qr = false;
+                //     }else{
+                //         elements[i].classList.remove("error");
+                //     }
+                // }
                 if(qr && !showingPrev){
                     doqr();
                     document.getElementById("qrcanv").scrollIntoView({ behavior: 'smooth', block: "center"});
@@ -1498,5 +1482,6 @@ input[type="text"].initials {
             <canvas id="prevQR"></canvas>
     </div>
 </div>
+
 </body>
 </html>
