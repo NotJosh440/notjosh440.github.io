@@ -1426,7 +1426,7 @@ input[type="text"].initials {
         <label for="comments" style="margin-left: 25px;">Comments</label><br>
         <textarea id="comments" name="comments" cols="32" rows="8" class="required" style="margin-left: 25px;" value=""></textarea><br><br><br>
         <button type="submit" id="submit" style="margin-left: 25px;"><h2>Make QR Code</h2></button>
-        <button type="reset" id="reset-button"><h2>Clear Data</h2></button></a>
+        <button id="reset-button"><h2>Clear Data</h2></button></a>
         <button type="previous" id="previous" onclick="showPrevious()"><h2>Show Previous QR Code</h2></button></a>
 
         
@@ -1446,18 +1446,19 @@ input[type="text"].initials {
     </div>
 </div>
 
-<div id="backGround" style="background-color: grey; opacity: 80%; width: 100%; height: 100%; position: fixed; top: 0px; display: none;"></div>
+<div id="backGround" style="background-color: grey; opacity: 80%; width: 100%; height: 100%; position: fixed; top: 0px;"></div>
 <div id="clear" style="background-color: whitesmoke; width: 60%; margin: auto; position: fixed; top: calc(50% - 65px); opacity: 100%; left: 20%; display: none;">
     <h3>Are You Sure You Want To Clear?</h3>
-    <p style="color: #ffafd8;">Data entered before scanning the QR Code<br>will be lost <b>forever</b></p><br>
+    <p style="color: #000000;">Data entered before scanning the QR Code<br>will be lost <b>forever</b></p><br>
     <button type="reset" id="confirm-button" style="width: 30%; margin-left: 13.3%; background-color: whitesmoke;"><h2>Clear</h2></button>
-    <button type="reset" id="cancel-button" style="width: 30%; margin-left: 13.4%; background-color: whitesmoke;"><h2>Cancel</h2></button>
+    <button id="cancel-button" class="cancel-button" onclick="removePopup()" style="width: 30%; margin-left: 13.4%; background-color: whitesmoke;"><h2>Cancel</h2></button>
     <br><br>
 </div>
-<!-- <div id="switch" style="background-color: whitesmoke; width: 60%; margin: auto; position: fixed; top: calc(50% - 65px); opacity: 100%; height: 130px; left: 20%;">
+<div id="switch" style="background-color: whitesmoke; width: 60%; margin: auto; position: fixed; top: calc(50% - 200px); opacity: 100%; left: 20%;">
     <h3>Time to Switch!</h3>
-    <p style="color: #ffafd8;">Please switch your tablet with the next person in line.</p>
-</div> -->
+    <p style="color: #000000;">Please hand this tablet to the scouter to the right of your name.</p><br><br>
+    <button type="reset" id="ok-button" class="cancel-button" onclick="removePopup()" style="width: 30%; margin-left: 35%; background-color: whitesmoke;"><h2>Ok</h2></button><br><br>
+</div>
 
 
 
@@ -1467,13 +1468,16 @@ input[type="text"].initials {
         document.getElementById('backGround').style.display = "block";
     });
 
-    document.getElementById('cancel-button').addEventListener('click', (event) => {
+    function removePopup() {
         document.getElementById('clear').style.display = "none";
+        document.getElementById('switch').style.display = "none";
         document.getElementById('backGround').style.display = "none";
-    });
+    };
     
     document.getElementById('confirm-button').addEventListener('click', (event) => {
         event.preventDefault();
+        document.getElementById('clear').style.display = "none";
+        document.getElementById('backGround').style.display = "none";
         document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
         hideqr();
         color=document.inputs.robot.value;
@@ -1487,12 +1491,13 @@ input[type="text"].initials {
         document.inputs.match.value = match+1;
         document.inputs.robot.value = color;
         document.inputs.comments.value = "";
+        if((document.inputs.match.value-1) % 3 == 0){
+            document.getElementById('switch').style.display = "block";
+            document.getElementById('backGround').style.display = "block";
+        }
         if(showingPrev){
             showPrevious();
         }
-
-        document.getElementById('clear').style.display = "none";
-        document.getElementById('backGround').style.display = "none";
     });
     
     document.getElementById('submit').addEventListener('click', (event) => {
