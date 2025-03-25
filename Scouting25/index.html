@@ -810,9 +810,10 @@ Amazon Fire HD 10 800x1280 1.6-->
             px = wd;
             if( ht < wd )
                 px = ht;
-            px /= width+10;
-            px=Math.round(px - 0.5);
+            px /= width+2;
+            px=Math.round(px);
             qrc.clearRect(0,0,wd,ht);
+            console.log(wd)
             qrc.fillStyle = '#ff44dd';
             qrc.fillRect(0,0,px*(width+2),px*(width+2));
             qrc.fillStyle = '#000000';
@@ -834,6 +835,7 @@ Amazon Fire HD 10 800x1280 1.6-->
                 document.getElementById("submit").classList.add("unavalable");
                 document.getElementById("qrdiv").style.display = "block";
                 document.getElementById("qrcanv").style.display = "block";
+                document.getElementById("qrcanv").scrollIntoView({ behavior: 'smooth' });
             }else if(showingPrev){
                 showingPrev = false;
                 document.getElementById("submit").classList.remove("unavalable");
@@ -1084,7 +1086,7 @@ input[type="text"].initials {
             <option value="Finnan M.">Finnan M.</option>
             <option value="Jacob M.">Jacob M.</option>
             <option value="Jennifer X.">Jennifer X.</option>
-            <option value="Jeremiah X.">Jeremiah X.</option>
+            <option value="Jeremiah Y.">Jeremiah X.</option>
             <option value="Joshua G.C.">Joshua G.C.</option>
             <option value="Josie H.">Josie H.</option>
             <option value="Justin L.">Justin L.</option>
@@ -1123,7 +1125,7 @@ input[type="text"].initials {
                 <option value="Finnan M.">Finnan M.</option>
                 <option value="Jacob M.">Jacob M.</option>
                 <option value="Jennifer X.">Jennifer X.</option>
-                <option value="Jeremiah X.">Jeremiah X.</option>
+                <option value="Jeremiah Y.">Jeremiah X.</option>
                 <option value="Joshua G.C.">Joshua G.C.</option>
                 <option value="Josie H.">Josie H.</option>
                 <option value="Justin L.">Justin L.</option>
@@ -1160,7 +1162,7 @@ input[type="text"].initials {
                 <option value="Finnan M.">Finnan M.</option>
                 <option value="Jacob M.">Jacob M.</option>
                 <option value="Jennifer X.">Jennifer X.</option>
-                <option value="Jeremiah X.">Jeremiah X.</option>
+                <option value="Jeremiah Y.">Jeremiah X.</option>
                 <option value="Joshua G.C.">Joshua G.C.</option>
                 <option value="Josie H.">Josie H.</option>
                 <option value="Justin L.">Justin L.</option>
@@ -1415,11 +1417,11 @@ input[type="text"].initials {
         <p>
         <input type="checkbox" id="defense" name="defense">
         <label for="defense">Played Defense</label>
-        </p><br>
+        </p>
         <p>
         <input type="checkbox" id="died" name="died" value=1>
         <label for="died">Died, Tipped, or Dammaged</label><br>
-        </p>
+        </p><br>
 
         <label for="comments" style="margin-left: 25px;">Comments</label><br>
         <textarea id="comments" name="comments" cols="32" rows="8" class="required" style="margin-left: 25px;" value=""></textarea><br><br><br>
