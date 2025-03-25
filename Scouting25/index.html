@@ -1429,45 +1429,6 @@ input[type="text"].initials {
         <button type="reset" id="reset-button"><h2>Clear Data</h2></button></a>
         <button type="previous" id="previous" onclick="showPrevious()"><h2>Show Previous QR Code</h2></button></a>
 
-        <script>
-            document.getElementById('reset-button').addEventListener('click', (event) => {
-                event.preventDefault();
-                document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
-                hideqr();
-                color=document.inputs.robot.value;
-                names=[document.inputs.names1.value, document.inputs.names2.value, document.inputs.names3.value];
-                match = parseInt(document.inputs.match.value);
-
-                document.getElementById("scoutingForm").reset();
-                document.inputs.names1.value = names[0];
-                document.inputs.names2.value = names[1];
-                document.inputs.names3.value = names[2];
-                document.inputs.match.value = match+1;
-                document.inputs.robot.value = color;
-                document.inputs.comments.value = "";
-                if(showingPrev){
-                    showPrevious();
-                }
-            });
-            document.getElementById('submit').addEventListener('click', (event) => {
-                event.preventDefault();
-                elements = document.querySelectorAll(".required");
-                qr = true;
-                // for(i=0; i<elements.length; i++){
-                //     if(elements[i].value == ""){
-                //         elements[i].scrollIntoView({ behavior: 'smooth', block: "center"});
-                //         elements[i].classList.add('error');
-                //         qr = false;
-                //     }else{
-                //         elements[i].classList.remove("error");
-                //     }
-                // }
-                if(qr && !showingPrev){
-                    doqr();
-                    document.getElementById("qrcanv").scrollIntoView({ behavior: 'smooth', block: "center"});
-                }
-            });
-        </script>
         
     </form>
 </div>
@@ -1485,5 +1446,73 @@ input[type="text"].initials {
     </div>
 </div>
 
+<div id="backGround" style="background-color: grey; opacity: 80%; width: 100%; height: 100%; position: fixed; top: 0px; display: none;"></div>
+<div id="clear" style="background-color: whitesmoke; width: 60%; margin: auto; position: fixed; top: calc(50% - 65px); opacity: 100%; left: 20%; display: none;">
+    <h3>Are You Sure You Want To Clear?</h3>
+    <p style="color: #ffafd8;">Data entered before scanning the QR Code<br>will be lost <b>forever</b></p><br>
+    <button type="reset" id="confirm-button" style="width: 30%; margin-left: 13.3%; background-color: whitesmoke;"><h2>Clear</h2></button>
+    <button type="reset" id="cancel-button" style="width: 30%; margin-left: 13.4%; background-color: whitesmoke;"><h2>Cancel</h2></button>
+    <br><br>
+</div>
+<!-- <div id="switch" style="background-color: whitesmoke; width: 60%; margin: auto; position: fixed; top: calc(50% - 65px); opacity: 100%; height: 130px; left: 20%;">
+    <h3>Time to Switch!</h3>
+    <p style="color: #ffafd8;">Please switch your tablet with the next person in line.</p>
+</div> -->
+
+
+
+<script>
+    document.getElementById('reset-button').addEventListener('click', (event) => {
+        document.getElementById('clear').style.display = "block";
+        document.getElementById('backGround').style.display = "block";
+    });
+
+    document.getElementById('cancel-button').addEventListener('click', (event) => {
+        document.getElementById('clear').style.display = "none";
+        document.getElementById('backGround').style.display = "none";
+    });
+    
+    document.getElementById('confirm-button').addEventListener('click', (event) => {
+        event.preventDefault();
+        document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
+        hideqr();
+        color=document.inputs.robot.value;
+        names=[document.inputs.names1.value, document.inputs.names2.value, document.inputs.names3.value];
+        match = parseInt(document.inputs.match.value);
+
+        document.getElementById("scoutingForm").reset();
+        document.inputs.names1.value = names[0];
+        document.inputs.names2.value = names[1];
+        document.inputs.names3.value = names[2];
+        document.inputs.match.value = match+1;
+        document.inputs.robot.value = color;
+        document.inputs.comments.value = "";
+        if(showingPrev){
+            showPrevious();
+        }
+
+        document.getElementById('clear').style.display = "none";
+        document.getElementById('backGround').style.display = "none";
+    });
+    
+    document.getElementById('submit').addEventListener('click', (event) => {
+        event.preventDefault();
+        elements = document.querySelectorAll(".required");
+        qr = true;
+        // for(i=0; i<elements.length; i++){
+        //     if(elements[i].value == ""){
+        //         elements[i].scrollIntoView({ behavior: 'smooth', block: "center"});
+        //         elements[i].classList.add('error');
+        //         qr = false;
+        //     }else{
+        //         elements[i].classList.remove("error");
+        //     }
+        // }
+        if(qr && !showingPrev){
+            doqr();
+            document.getElementById("qrcanv").scrollIntoView({ behavior: 'smooth', block: "center"});
+        }
+    });
+</script>
 </body>
 </html>
