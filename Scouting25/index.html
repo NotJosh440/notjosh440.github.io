@@ -741,7 +741,7 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list = [];
             inputs_list.push(d.inputs.names1.value);
             inputs_list.push(d.inputs.names2.value);
-            inputs_list.push(d.inputs.names3.value);
+            // inputs_list.push(d.inputs.names3.value);
             inputs_list.push(d.inputs.match.value);
             inputs_list.push(d.inputs.robot.value);
             inputs_list.push(d.inputs.teamnumber.value);
@@ -813,7 +813,6 @@ Amazon Fire HD 10 800x1280 1.6-->
             px /= width+2;
             px=Math.round(px);
             qrc.clearRect(0,0,wd,ht);
-            console.log(wd)
             qrc.fillStyle = '#ff44dd';
             qrc.fillRect(0,0,px*(width+2),px*(width+2));
             qrc.fillStyle = '#000000';
@@ -1075,117 +1074,93 @@ input[type="text"].initials {
         <p><label for="names">Scouter Name</label></p>
         <p style="width: 400px; margin: auto;"><select type="select" id="names" name="names1" class="required" value="">
             <option value="">--Your name--</option>
-            <option value="Alejandra O.">Alejandra O.</option>
-            <option value="Alex L.">Alex L.</option>
-            <option value="Anthony L.">Anthony L.</option>
-            <option value="Catherine L.">Catherine L.</option>
-            <option value="Crystal Y.">Crystal Y.</option>
-            <option value="Darren L.">Darren L.</option>
-            <option value="Elijah K.">Elijah K.</option>
-            <option value="Ethan S.">Ethan S.</option>
-            <option value="Finnan M.">Finnan M.</option>
-            <option value="Jacob M.">Jacob M.</option>
-            <option value="Jennifer X.">Jennifer X.</option>
-            <option value="Jeremiah Y.">Jeremiah X.</option>
-            <option value="Joshua G.C.">Joshua G.C.</option>
-            <option value="Josie H.">Josie H.</option>
-            <option value="Justin L.">Justin L.</option>
-            <option value="Liam G.">Liam G.</option>
-            <option value="Libby D.">Libby D.</option>
-            <option value="Luka K.">Luka K.</option>
-            <option value="Melike C.">Melike C.</option>
-            <option value="Nathan M.">Nathan M.</option>
-            <option value="Peiheng L.">Peiheng L.</option>
-            <option value="Robert B.">Robert B.</option>
-            <option value="Rocco C.">Rocco C.</option>
-            <option value="Sinem G.">Sinem G.</option>
-            <option value="Sophia S.">Sophia S.</option>
-            <option value="Sophie A.">Sophie A.</option>
-            <option value="William L.">William L.</option>
-            <option value="William Y.">William Y.</option>
-            <option value="Xiaohan L.">Xiaohan L.</option>
-            <option value="Yang Z.">Yang Z.</option>
-            
-            <option value="Josh A.">Josh A.</option>
-            <option value="Hannah X.">Hannah X.</option>
-            <option value="Maria R.G.">Maria R.G.</option>
+            <option value="Alex">Alex</option>
+            <option value="Anthony">Anthony</option>
+            <option value="Crystal">Crystal</option>
+            <option value="Darren">Darren</option>
+            <option value="Elijah">Elijah</option>
+            <option value="Finnan">Finnan</option>
+            <option value="Jacob">Jacob</option>
+            <option value="Jennifer">Jennifer</option>
+            <option value="Jeremiah">Jeremiah</option>
+            <option value="Joshua">Joshua</option>
+            <option value="Liam">Liam</option>
+            <option value="Libby">Libby</option>
+            <option value="Luka">Luka</option>
+            <option value="Melike">Melike</option>
+            <option value="Nathan">Nathan</option>
+            <option value="Robert">Robert</option>
+            <option value="Rocco">Rocco</option>
+            <option value="Sophia">Sophia</option>
+            <option value="Sophie">Sophie</option>
+            <option value="William">William</option>
+            <option value="Xiaohan">Xiaohan</option>
+            <option value="Other">Other (Comments)</option>
         </select></p>
         <p><label for="names">Partners</label></p>
         <p style="width: 400px; margin: auto;">
             <select type="text" id="names" name="names2" class="required" value="">
-                <option value="">--Partner 1--</option>
-                <option value="Alejandra O.">Alejandra O.</option>
-                <option value="Alex L.">Alex L.</option>
-                <option value="Anthony L.">Anthony L.</option>
-                <option value="Catherine L.">Catherine L.</option>
-                <option value="Crystal Y.">Crystal Y.</option>
-                <option value="Darren L.">Darren L.</option>
-                <option value="Elijah K.">Elijah K.</option>
-                <option value="Ethan S.">Ethan S.</option>
-                <option value="Finnan M.">Finnan M.</option>
-                <option value="Jacob M.">Jacob M.</option>
-                <option value="Jennifer X.">Jennifer X.</option>
-                <option value="Jeremiah Y.">Jeremiah X.</option>
-                <option value="Joshua G.C.">Joshua G.C.</option>
-                <option value="Josie H.">Josie H.</option>
-                <option value="Justin L.">Justin L.</option>
-                <option value="Liam G.">Liam G.</option>
-                <option value="Libby D.">Libby D.</option>
-                <option value="Luka K.">Luka K.</option>
-                <option value="Melike C.">Melike C.</option>
-                <option value="Nathan M.">Nathan M.</option>
-                <option value="Peiheng L.">Peiheng L.</option>
-                <option value="Robert B.">Robert B.</option>
-                <option value="Rocco C.">Rocco C.</option>
-                <option value="Sinem G.">Sinem G.</option>
-                <option value="Sophia S.">Sophia S.</option>
-                <option value="Sophie A.">Sophie A.</option>
-                <option value="William L.">William L.</option>
-                <option value="William Y.">William Y.</option>
-                <option value="Xiaohan L.">Xiaohan L.</option>
-                <option value="Yang Z.">Yang Z.</option>
-                
-                <option value="Josh A.">Josh A.</option>
-                <option value="Hannah X.">Hannah X.</option>
-                <option value="Maria R.G.">Maria R.G.</option>
+                <option value="">--Partner name--</option>
+                <option value="Alex">Alex</option>
+                <option value="Anthony">Anthony</option>
+                <option value="Crystal">Crystal</option>
+                <option value="Darren">Darren</option>
+                <option value="Elijah">Elijah</option>
+                <option value="Finnan">Finnan</option>
+                <option value="Jacob">Jacob</option>
+                <option value="Jennifer">Jennifer</option>
+                <option value="Jeremiah">Jeremiah</option>
+                <option value="Joshua">Joshua</option>
+                <option value="Liam">Liam</option>
+                <option value="Libby">Libby</option>
+                <option value="Luka">Luka</option>
+                <option value="Melike">Melike</option>
+                <option value="Nathan">Nathan</option>
+                <option value="Robert">Robert</option>
+                <option value="Rocco">Rocco</option>
+                <option value="Sophia">Sophia</option>
+                <option value="Sophie">Sophie</option>
+                <option value="William">William</option>
+                <option value="Xiaohan">Xiaohan</option>
+                <option value="Other">Other (Comments)</option>
             </select>
-            <select type="text" id="names" name="names3" class="required" value="">
+            <!-- <select type="text" id="names" name="names3" class="required" value="">
                 <option value="">--Partner 2--</option>
-                <option value="Alejandra O.">Alejandra O.</option>
-                <option value="Alex L.">Alex L.</option>
-                <option value="Anthony L.">Anthony L.</option>
-                <option value="Catherine L.">Catherine L.</option>
-                <option value="Crystal Y.">Crystal Y.</option>
-                <option value="Darren L.">Darren L.</option>
-                <option value="Elijah K.">Elijah K.</option>
-                <option value="Ethan S.">Ethan S.</option>
-                <option value="Finnan M.">Finnan M.</option>
-                <option value="Jacob M.">Jacob M.</option>
-                <option value="Jennifer X.">Jennifer X.</option>
-                <option value="Jeremiah Y.">Jeremiah X.</option>
+                <option value="Alejandra">Alejandra</option>
+                <option value="Alex">Alex</option>
+                <option value="Anthony">Anthony</option>
+                <option value="Catherine">Catherine</option>
+                <option value="Crystal">Crystal</option>
+                <option value="Darren">Darren</option>
+                <option value="Elijah">Elijah</option>
+                <option value="Ethan">Ethan</option>
+                <option value="Finnan">Finnan</option>
+                <option value="Jacob">Jacob</option>
+                <option value="Jennifer">Jennifer</option>
+                <option value="Jeremiah">Jeremiah</option>
                 <option value="Joshua G.C.">Joshua G.C.</option>
-                <option value="Josie H.">Josie H.</option>
-                <option value="Justin L.">Justin L.</option>
-                <option value="Liam G.">Liam G.</option>
-                <option value="Libby D.">Libby D.</option>
-                <option value="Luka K.">Luka K.</option>
-                <option value="Melike C.">Melike C.</option>
-                <option value="Nathan M.">Nathan M.</option>
-                <option value="Peiheng L.">Peiheng L.</option>
-                <option value="Robert B.">Robert B.</option>
-                <option value="Rocco C.">Rocco C.</option>
-                <option value="Sinem G.">Sinem G.</option>
-                <option value="Sophia S.">Sophia S.</option>
-                <option value="Sophie A.">Sophie A.</option>
-                <option value="William L.">William L.</option>
-                <option value="William Y.">William Y.</option>
-                <option value="Xiaohan L.">Xiaohan L.</option>
-                <option value="Yang Z.">Yang Z.</option>
+                <option value="Josie">Josie</option>
+                <option value="Justin">Justin</option>
+                <option value="Liam">Liam</option>
+                <option value="Libby">Libby</option>
+                <option value="Luka">Luka</option>
+                <option value="Melike">Melike</option>
+                <option value="Nathan">Nathan</option>
+                <option value="Peiheng">Peiheng</option>
+                <option value="Robert">Robert</option>
+                <option value="Rocco">Rocco</option>
+                <option value="Sinem">Sinem</option>
+                <option value="Sophia">Sophia</option>
+                <option value="Sophie">Sophie</option>
+                <option value="William">William</option>
+                <option value="William">William</option>
+                <option value="Xiaohan">Xiaohan</option>
+                <option value="Yang">Yang</option>
                 
-                <option value="Josh A.">Josh A.</option>
-                <option value="Hannah X.">Hannah X.</option>
+                <option value="Josh">Josh</option>
+                <option value="Hannah">Hannah</option>
                 <option value="Maria R.G.">Maria R.G.</option>
-            </select>
+            </select> -->
         </p><br><br>
         <p><label for="match">Match Number</label></p>
         <p><input type="number" id="match" name="match" class="BIG required" value=""></p>
@@ -1413,7 +1388,7 @@ input[type="text"].initials {
         <br>
         <p><label for="skill">Skill of Driver and Operator</label></p>
         <table style="width: 100%; margin-bottom: 0px;" class="BadAverageGood"><tr><td class="leftAligned"><h3>Bad</h3></td><td class="center"><h3>Average</h3></td><td class="rightAligned"><h3>Good</h3></td></tr></table>
-        <p><input type="range" id="skill" name="skill"></p><br>
+        <p><input type="range" id="skill" name="skill" min=0 value=0 max=100></p><br>
         <p>
         <input type="checkbox" id="defense" name="defense">
         <label for="defense">Played Defense</label>
@@ -1446,7 +1421,7 @@ input[type="text"].initials {
     </div>
 </div>
 
-<div id="backGround" style="background-color: grey; opacity: 80%; width: 100%; height: 100%; position: fixed; top: 0px;"></div>
+<div id="backGround" style="background-color: grey; opacity: 80%; width: 100%; height: 100%; position: fixed; top: 0px; display: none;"></div>
 <div id="clear" style="background-color: whitesmoke; width: 60%; margin: auto; position: fixed; top: calc(50% - 65px); opacity: 100%; left: 20%; display: none;">
     <h3>Are You Sure You Want To Clear?</h3>
     <p style="color: #000000;">Data entered before scanning the QR Code<br>will be lost <b>forever</b></p><br>
@@ -1454,7 +1429,7 @@ input[type="text"].initials {
     <button id="cancel-button" class="cancel-button" onclick="removePopup()" style="width: 30%; margin-left: 13.4%; background-color: whitesmoke;"><h2>Cancel</h2></button>
     <br><br>
 </div>
-<div id="switch" style="background-color: whitesmoke; width: 60%; margin: auto; position: fixed; top: calc(50% - 200px); opacity: 100%; left: 20%;">
+<div id="switch" style="background-color: whitesmoke; width: 60%; margin: auto; position: fixed; top: calc(50% - 200px); opacity: 100%; left: 20%; display: none;">
     <h3>Time to Switch!</h3>
     <p style="color: #000000;">Please hand this tablet to the scouter to the right of your name.</p><br><br>
     <button type="reset" id="ok-button" class="cancel-button" onclick="removePopup()" style="width: 30%; margin-left: 35%; background-color: whitesmoke;"><h2>Ok</h2></button><br><br>
@@ -1481,13 +1456,13 @@ input[type="text"].initials {
         document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
         hideqr();
         color=document.inputs.robot.value;
-        names=[document.inputs.names1.value, document.inputs.names2.value, document.inputs.names3.value];
+        names=[document.inputs.names1.value, document.inputs.names2.value/*, document.inputs.names3.value*/];
         match = parseInt(document.inputs.match.value);
 
         document.getElementById("scoutingForm").reset();
         document.inputs.names1.value = names[0];
         document.inputs.names2.value = names[1];
-        document.inputs.names3.value = names[2];
+        // document.inputs.names3.value = names[2];
         document.inputs.match.value = match+1;
         document.inputs.robot.value = color;
         document.inputs.comments.value = "";
@@ -1502,20 +1477,22 @@ input[type="text"].initials {
     
     document.getElementById('submit').addEventListener('click', (event) => {
         event.preventDefault();
-        elements = document.querySelectorAll(".required");
-        qr = true;
-        // for(i=0; i<elements.length; i++){
-        //     if(elements[i].value == ""){
-        //         elements[i].scrollIntoView({ behavior: 'smooth', block: "center"});
-        //         elements[i].classList.add('error');
-        //         qr = false;
-        //     }else{
-        //         elements[i].classList.remove("error");
-        //     }
-        // }
-        if(qr && !showingPrev){
-            doqr();
-            document.getElementById("qrcanv").scrollIntoView({ behavior: 'smooth', block: "center"});
+        if(!showingPrev){
+            elements = document.querySelectorAll(".required");
+            qr = true;
+            for(i=0; i<elements.length; i++){
+                if(elements[i].value == ""){
+                    elements[i].scrollIntoView({ behavior: 'smooth', block: "center"});
+                    elements[i].classList.add('error');
+                    qr = false;
+                }else{
+                    elements[i].classList.remove("error");
+                }
+            }
+            if(qr){
+                doqr();
+                document.getElementById("qrcanv").scrollIntoView({ behavior: 'smooth', block: "center"});
+            }
         }
     });
 </script>
