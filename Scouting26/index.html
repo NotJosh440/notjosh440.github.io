@@ -1254,6 +1254,21 @@ input[type="text"].initials {
         <label for="noshow">No show</label></p>
         <br>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--TELE OP-->
         <h1>Match</h1>
         <h3 id="telePeriodText" for="telePeriodText">Autonomous</h3>
@@ -1291,15 +1306,15 @@ input[type="text"].initials {
         <table style="width:100%;">
         <tr>
             <td class="leftAligned">
-        <p><input type="checkbox" id="depotFuel" name="depotFuel" value=1>
+        <p><input type="checkbox" id="depotFuel" name="depotFuel" value=1 onchange="pickUpChange()">
         <label for="depotFuel">Depot</label></p>
             </td>
             <td class="centerAligned">
-        <p><input type="checkbox" id="substionFuel" name="substionFuel" value=1>
+        <p><input type="checkbox" id="substionFuel" name="substionFuel" value=1 onchange="pickUpChange()">
         <label for="substionFuel">Substation</label></p>
             </td>
             <td class="rightAligned">
-        <p><input type="checkbox" id="nuetralFuel" name="nuetralFuel" value=1>
+        <p><input type="checkbox" id="nuetralFuel" name="nuetralFuel" value=1 onchange="pickUpChange()">
         <label for="nuetralFuel">Nuetral Zone</label></p>
             </td>
         </tr>
@@ -1326,23 +1341,23 @@ input[type="text"].initials {
                 <p>0%<input type="range" id="defense" name="defense" min=0 value=0 max=100>100%</p>
             </div>
             
-            <!-- This is the active sub-period -->
+            <!-- This is the inactive sub-period -->
             <div style="width: 50%; float: right;" class="periods" id="inactiveTelePeriod">
                 <h3 class="pickUpTitle">Inactive</h3>
                 <br>
                 <p>
-                    <label for="inctive1Defense">Played Defense</label>
-                    <input type="checkbox" name="inctive1Defense" id="inctive1Defense">
+                    <label for="inctiveDefense">Played Defense</label>
+                    <input type="checkbox" name="inctiveDefense" id="inctiveDefense" onchange="inactiveChange()">
                 </p>
                 <br>
                 <p>
-                    <label for="inctive1Relaoded">Picked Up Fuel</label>
-                    <input type="checkbox" name="inctive1Relaoded" id="inctive1Relaoded">
+                    <label for="inctiveRelaoded">Picked Up Fuel</label>
+                    <input type="checkbox" name="inctiveRelaoded" id="inctiveRelaoded" onchange="inactiveChange()">
                 </p>
                 <br>
                 <p>
-                    <label for="inctive1Outpost">Pushed into Outpost</label>
-                    <input type="checkbox" name="inctive1Outpost" id="inctive1Outpost">
+                    <label for="inctiveOutpost">Pushed into Outpost</label>
+                    <input type="checkbox" name="inctiveOutpost" id="inctiveOutpost" onchange="inactiveChange()">
                 </p>
             </div>
 
@@ -1374,20 +1389,27 @@ input[type="text"].initials {
         <br>
         <div style="clear: both;"></div>
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!--POST MATCH-->
         <h1>Post-Match</h1>
         <br>
-        <p>
-        <input type="checkbox" id="fit_under_trough" name="fit_under_trough">
-        <label for="fit_under_trough">Fit Under Trench</label>
-        </p>
-        <br>
-        <p><label for="skill">Skill of Driver and Operator</label></p>
-        <table style="width: 100%; margin-bottom: 0px;" class="BadAverageGood"><tr><td class="leftAligned"><h3>Bad</h3></td><td class="center"><h3>Average</h3></td><td class="rightAligned"><h3>Good</h3></td></tr></table>
-        <p><input type="range" id="skill" name="skill" min=0 value=0 max=100></p><br>
-        <p><label for="skill">Defense of Driver and Operator</label></p>
-        <table style="width: 100%; margin-bottom: 0px;" class="BadAverageGood"><tr><td class="leftAligned"><h3>Bad</h3></td><td class="center"><h3>Average</h3></td><td class="rightAligned"><h3>Good</h3></td></tr></table>
-        <p><input type="range" id="defense" name="defense" min=0 value=0 max=100></p><br>
+        <h3><label for="skill">Skill of Driver and Operator</label></h3>
+        <table style="width: 100%; margin-bottom: 0px;" class="BadAverageGood"><tr><td class="leftAligned"><p style="margin-bottom: 0px;">Bad</p></td><td class="center"><p style="margin-bottom: 0px;">Average</p></td><td class="rightAligned"><p style="margin-bottom: 0px;">Good</p></td></tr></table>
+        <p><input type="range" id="skill" name="skill" min=0 value=0 max=100 style="margin-top: 0px;"></p><br>
+        <h3><label for="defense">Defense of Driver and Operator</label></h3>
+        <table style="width: 100%; margin-bottom: 0px;" class="BadAverageGood"><tr><td class="leftAligned"><h4 style="margin-bottom: 0px;">Bad</h4></td><td class="center"><p style="margin-bottom: 0px;">Average</p></td><td class="rightAligned"><p style="margin-bottom: 0px;">Good</p></td></tr></table>
+        <p><input type="range" id="defense" name="defense" min=0 value=0 max=100 style="margin-top: 0px;"></p><br>
         <p>
         <input type="checkbox" id="died" name="died" value=1>
         <label for="died">Died, Tipped, or Dammaged</label><br>
@@ -1501,6 +1523,15 @@ input[type="text"].initials {
     
     let autoClimb = "None";
     let endClimb = "None";
+
+    let autoPickup = [false, false, false];
+    let transPickup = [false, false, false];
+    let p1Pickup = [false, false, false];
+    let p2Pickup = [false, false, false];
+    let endPickup = [false, false, false];
+
+    let inative1 = [false, false, false];
+    let inative2 = [false, false, false];
     
     document.addEventListener('DOMContentLoaded', () => {
         let period = "Autonomous";
@@ -1647,6 +1678,7 @@ input[type="text"].initials {
     function periodChange(period){
         period = findPeriod(period);
         document.getElementById("telePeriodText").textContent = period;
+        document.inputs.depotFuel.checked = findPickup(period)[0]; document.inputs.substionFuel.checked = findPickup(period)[1]; document.inputs.nuetralFuel.checked = findPickup(period)[2];
         if(period == "Autonomous"){
             document.getElementById("activeTelePeriod").style.width = "50%";
             document.getElementById("inactiveTelePeriod").style.display = "none";
@@ -1683,6 +1715,7 @@ input[type="text"].initials {
             document.getElementById("grid-overlayE").style.display = "none";
             document.getElementById("periods").value = 2;
             document.getElementById("periods").selectedIndex = 2;
+            document.inputs.inctiveDefense.checked = findInactive(period)[0]; document.inputs.inctiveRelaoded.checked = findInactive(period)[1]; document.inputs.inctiveOutpost.checked = findInactive(period)[2];
         }
         if(period == "Period Two"){
             document.getElementById("activeTelePeriod").style.width = "50%";
@@ -1695,6 +1728,7 @@ input[type="text"].initials {
             document.getElementById("grid-overlayE").style.display = "none";
             document.getElementById("periods").value = 3;
             document.getElementById("periods").selectedIndex = 3;
+            document.inputs.inctiveDefense.checked = findInactive(period)[0]; document.inputs.inctiveRelaoded.checked = findInactive(period)[1]; document.inputs.inctiveOutpost.checked = findInactive(period)[2];
         }
         if(period == "Endgame"){
             document.getElementById("activeTelePeriod").style.width = "50%";
@@ -1727,6 +1761,57 @@ input[type="text"].initials {
         }
         if(findJ(period)==4){
             endClimb = document.inputs.endgame.value;
+        }
+    }
+    function pickUpChange(){
+        switch (findJ(document.getElementById("telePeriodText").textContent)){
+            case 0:
+                autoPickup = [document.inputs.depotFuel.checked, document.inputs.substionFuel.checked, document.inputs.nuetralFuel.checked];
+
+                return;
+            case 1:
+                transPickup = [document.inputs.depotFuel.checked, document.inputs.substionFuel.checked, document.inputs.nuetralFuel.checked];
+                return;
+            case 2:
+                p1Pickup = [document.inputs.depotFuel.checked, document.inputs.substionFuel.checked, document.inputs.nuetralFuel.checked];
+                return;
+            case 3:
+                p2Pickup = [document.inputs.depotFuel.checked, document.inputs.substionFuel.checked, document.inputs.nuetralFuel.checked];
+                return;
+            case 4:
+                endPickup = [document.inputs.depotFuel.checked, document.inputs.substionFuel.checked, document.inputs.nuetralFuel.checked];
+                return;
+        }
+    }
+    function inactiveChange(){
+        period = document.getElementById("telePeriodText").textContent;
+        if(findJ(period)==2){
+            inative1 = [document.inputs.inctiveDefense.checked, document.inputs.inctiveRelaoded.checked, document.inputs.inctiveOutpost.checked];
+        }
+        if(findJ(period)==3){
+            inative2 = [document.inputs.inctiveDefense.checked, document.inputs.inctiveRelaoded.checked, document.inputs.inctiveOutpost.checked];
+        }
+    }
+    function findPickup(period){
+        switch (findJ(period)){
+            case 0:
+                return autoPickup;
+            case 1:
+                return transPickup;
+            case 2:
+                return p1Pickup;
+            case 3:
+                return p2Pickup;
+            case 4:
+                return endPickup;
+        }
+    }
+    function findInactive(period){
+        switch (findJ(period)){
+            case 2:
+                return inative1;
+            case 3:
+                return inative2;
         }
     }
 </script>
