@@ -749,52 +749,23 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(d.inputs.noshow.checked);
             inputs_list.push(d.inputs.location.value);
 
-            inputs_list.push(d.inputs.mobility.checked); //make sure mobility goes here, database hates me
-            inputs_list.push(d.inputs.autoLevelOneCoral.value);
-            inputs_list.push(d.inputs.autoLevelTwoCoral.value);
-            inputs_list.push(d.inputs.autoLevelThreeCoral.value);
-            inputs_list.push(d.inputs.autoLevelFourCoral.value);
-            inputs_list.push(d.inputs.autoUpperAlgae.value);
-            inputs_list.push(d.inputs.autoLowerAlgae.value);
-            inputs_list.push(d.inputs.autoProcessed.value);
-            inputs_list.push(d.inputs.auto_pickup.checked);
-
-            var ground = d.inputs.coralGround.checked;
-            var station = d.inputs.coralSubstation.checked;
-            if(ground && station){
-                inputs_list.push("BOTH");
-            }else if(ground){
-                    inputs_list.push("GROUND");
-            }else if(station){
-                    inputs_list.push("SUBSTATION");
-            }else{
-                inputs_list.push("NONE")
-            }
-            inputs_list.push(d.inputs.levelOneCoral.value);
-            inputs_list.push(d.inputs.levelTwoCoral.value);
-            inputs_list.push(d.inputs.levelThreeCoral.value);
-            inputs_list.push(d.inputs.leveFourCoral.value);
-            var ground = d.inputs.aglaeGround.checked;
-            var reef = d.inputs.algaeReef.checked;
-            if(ground && reef){
-                inputs_list.push("BOTH");
-            }else if(ground){
-                    inputs_list.push("GROUND");
-            }else if(reef){
-                    inputs_list.push("REEF");
-            }else{
-                inputs_list.push("NONE")
-            }
-            inputs_list.push(d.inputs.upperAlgae.value);
-            inputs_list.push(d.inputs.lowerAlgae.value);
-            inputs_list.push(d.inputs.processed.value);
-            inputs_list.push(d.inputs.net.value);
-
-            inputs_list.push(d.inputs.early_endgame.checked);
-            inputs_list.push(d.inputs.endgame.value);
+            inputs_list.push(shotPlacesA);
+            inputs_list.push(autoPickup);
+            inputs_list.push(autoClimb);
+            inputs_list.push(shotPlacesC);
+            inputs_list.push(transPickup);
+            inputs_list.push(shotPlaces1);
+            inputs_list.push(p1Pickup);
+            inputs_list.push(inactive1);
+            inputs_list.push(shotPlaces2);
+            inputs_list.push(p2Pickup);
+            inputs_list.push(inactive2);
+            inputs_list.push(shotPlacesE);
+            inputs_list.push(endPickup);
+            inputs_list.push(endClimb);
 
             inputs_list.push(d.inputs.skill.value);
-            inputs_list.push(d.inputs.defense.checked);
+            inputs_list.push(d.inputs.defense.value);
 
             inputs_list.push(d.inputs.died.checked);
             
@@ -1324,8 +1295,8 @@ input[type="text"].initials {
             <div style="width: 50%; float: left;" class="periods" id="activeTelePeriod">
                 <h3 class="pickUpTitle">Active</h3>
                 <p>
-                    <input type="checkbox" id="outpost1" name="outpost1" value=1>
-                    <label for="autoOutpost1">Pushed in Outpost?</label></p>
+                    <input type="checkbox" id="outpost" name="outpost" value=1>
+                    <label for="outpost">Pushed in Outpost?</label></p>
                     <p>
                         <label for="fuel1">Total Shots</label><br>
                     <button type="button" onclick="decrement('fuel1')"><h3 class="increment">&emsp;-&emsp;</h3></button>
@@ -1338,7 +1309,7 @@ input[type="text"].initials {
                     <input type="number" id="fuelFail1" name="fuelFail1" value=0 min=0>
                     <button type="button" onclick="increment('fuelFail1')"><h3 class="increment">&emsp;+&emsp;</h3></button>
                 </p>
-                <p>0%<input type="range" id="defense" name="defense" min=0 value=0 max=100>100%</p>
+                <p>0%<input type="range" id="percentMiss" name="percentMiss" min=0 value=0 max=100>100%</p>
             </div>
             
             <!-- This is the inactive sub-period -->
@@ -1388,10 +1359,6 @@ input[type="text"].initials {
         </div>
         <br>
         <div style="clear: both;"></div>
-<svg style='width: 200px; height: 200px;'>
-    <line x1="0" y1="200" x2="200" y2="0"
-        style="stroke:rgb(255,0,0);stroke-width:2"/>
-</svg>
 
 
 
@@ -1458,6 +1425,27 @@ input[type="text"].initials {
 
 
 <script>
+    let isShooting = false;
+    let shotStart;
+    
+    let autoClimb = "None";
+    let endClimb = "None";
+
+    let shotPlacesA = [];
+    let shotPlacesC = [];
+    let shotPlaces1 = [];
+    let shotPlaces2 = [];
+    let shotPlacesE = [];
+
+    let autoPickup = [false, false, false];
+    let transPickup = [false, false, false];
+    let p1Pickup = [false, false, false];
+    let p2Pickup = [false, false, false];
+    let endPickup = [false, false, false];
+
+    let inactive1 = [false, false, false];
+    let inactive2 = [false, false, false];
+    
     document.getElementById('reset-button').addEventListener('click', (event) => {
         document.getElementById('clear').style.display = "block";
         document.getElementById('backGround').style.display = "block";
@@ -1490,10 +1478,29 @@ input[type="text"].initials {
             document.getElementById('switch').style.display = "block";
             document.getElementById('backGround').style.display = "block";
         }
+        
+        shotPlacesA = [];
+        shotPlacesC = [];
+        shotPlaces1 = [];
+        shotPlaces2 = [];
+        shotPlacesE = [];
+        resetGrid();
+
         if(showingPrev){
             showPrevious();
         }
     });
+
+    function resetGrid(){
+        const gridOverlays = document.getElementsByClassName('grid-overlay');
+        for(let j = 0; j<gridOverlays.length; j++){
+            for (let i = 0; i < gridOverlays[j].children.length; i++) {
+                const cell = gridOverlays[j].children[i];
+                cell.classList.remove('touched-cell-temp');
+                cell.classList.remove('touched-cell-perm');
+            }
+        }
+    }
     
     document.getElementById('submit').addEventListener('click', (event) => {
         event.preventDefault();
@@ -1523,27 +1530,10 @@ input[type="text"].initials {
         if(period == "Period Two"){return 3;}
         if(period == "Endgame"){return 4;}
     }
-    
-    let autoClimb = "None";
-    let endClimb = "None";
 
-    let autoPickup = [false, false, false];
-    let transPickup = [false, false, false];
-    let p1Pickup = [false, false, false];
-    let p2Pickup = [false, false, false];
-    let endPickup = [false, false, false];
-
-    let inative1 = [false, false, false];
-    let inative2 = [false, false, false];
-    
     document.addEventListener('DOMContentLoaded', () => {
         let period = "Autonomous";
         periodChange(period);
-        let shotPlacesA = [];
-        let shotPlacesC = [];
-        let shotPlaces1 = [];
-        let shotPlaces2 = [];
-        let shotPlacesE = [];
 
         function findShotPlaces(period){
             period = findPeriod(period);
@@ -1565,9 +1555,7 @@ input[type="text"].initials {
         const undo = document.getElementById('undo-grid');
         const rows = 25;
         const cols = 25;
-        const DURATION_MS = 3000; // 5 seconds duration
         // A map to keep track of active timeout IDs for each cell
-        const activeTimers = new Map(); 
 
         // 1. Generate the grid cells (this part stays the same)
         for(let j = 0; j<gridOverlays.length; j++){
@@ -1594,56 +1582,36 @@ input[type="text"].initials {
 
             const cellId = targetCell.id;
 
-            if(targetCell.classList.contains("touched-cell-perm")){
-                const rgbaMatch = window.getComputedStyle(targetCell).backgroundColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),\s*?([\d\.]+)?\)/);
-                targetCell.style.backgroundColor = null;
-                targetCell.classList.add('touched-cell-temp'); // Revert color
-                findShotPlaces(period).push(targetCell.id);
-                // Set up a new timer and store its ID in our Map
-                const timerId = setTimeout(() => {
-                    targetCell.classList.remove('touched-cell-temp'); // Revert color
-                    targetCell.classList.add('touched-cell-perm'); // Revert color
-                    if (rgbaMatch) {
-                        const r = rgbaMatch[1];
-                        const g = rgbaMatch[2];
-                        const b = rgbaMatch[3];
-                        let currentAlpha = rgbaMatch[4] ? parseFloat(rgbaMatch[4]) : 1.0;
-                        let newAlpha = currentAlpha + .1;
-                        targetCell.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${(currentAlpha < .8)?newAlpha:currentAlpha})`;
-                    }
-                    activeTimers.delete(cellId);               // Clean up the timer reference
-                }, DURATION_MS);
-                
-                activeTimers.set(cellId, timerId);
-            }else if (targetCell.classList.contains('touched-cell-temp')) {
+            if (isShooting) {
             // --- Logic to handle re-clicking within the 5 seconds ---
                 // If it's already active, clear the existing timer and revert immediately
-                clearTimeout(activeTimers.get(cellId)); // Stop the pending 5-second timeout
-                activeTimers.delete(cellId);           // Remove the timer reference
+                if(shotStart!=null){
+                    shotStart.classList.add('touched-cell-perm'); // Revert color
+                    shotStart.classList.remove("touched-cell-temp");
+                }
                 targetCell.classList.remove('touched-cell-temp'); // Revert the color
-                findShotPlaces(period).splice(findShotPlaces(period).indexOf(targetCell.id), 1);
+                targetCell.classList.add('touched-cell-perm'); // Revert color
+                findShotPlaces(period).push([targetCell.id, Date.now()]);
+                console.log(findShotPlaces(period));
+                isShooting = false;
+                shotStart = null;
             } else {
                 // --- Logic for the first click ---
-                findShotPlaces(period).push(targetCell.id);
+                shotStart = targetCell;
+                findShotPlaces(period).push([shotStart.id, Date.now()]);
                 targetCell.classList.add('touched-cell-temp'); // Change color immediately
-                // Set up a new timer and store its ID in our Map
-                const timerId = setTimeout(() => {
-                    targetCell.classList.remove('touched-cell-temp'); // Revert color
-                    targetCell.classList.add('touched-cell-perm'); // Revert color
-                    activeTimers.delete(cellId);               // Clean up the timer reference
-                }, DURATION_MS);
-
-                activeTimers.set(cellId, timerId);
+                isShooting = true;
+                // targetCell.classList.add('touched-cell-perm'); // Revert color
             }
         }
 
         function remove(){
             let period = document.getElementById("telePeriodText").textContent;
             if(findShotPlaces(period).length==0){return;}
-            let removed = document.getElementById(findShotPlaces(period)[findShotPlaces(period).length-1]);
+            if(!isShooting){isShooting=true; remove();}
+            let removed = document.getElementById(findShotPlaces(period)[findShotPlaces(period).length-1][0]);
             if(removed.classList.contains("touched-cell-temp")){
                 removed.classList.remove('touched-cell-temp'); // Revert color
-                clearTimeout(activeTimers.get(removed.id));
             }
             if(removed.classList.contains("touched-cell-perm")){
                 const rgbaMatch = window.getComputedStyle(removed).backgroundColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),\s*?([\d\.]+)?\)/);
@@ -1661,6 +1629,7 @@ input[type="text"].initials {
                     }
                 }
             }
+            isShooting = false;
             findShotPlaces(period).pop();
         }
     });
@@ -1679,6 +1648,7 @@ input[type="text"].initials {
         if(period == "Endgame" || period == 4){return 4;}
     }
     function periodChange(period){
+        if(isShooting){return;}
         period = findPeriod(period);
         document.getElementById("telePeriodText").textContent = period;
         document.inputs.depotFuel.checked = findPickup(period)[0]; document.inputs.substionFuel.checked = findPickup(period)[1]; document.inputs.nuetralFuel.checked = findPickup(period)[2];
@@ -1789,10 +1759,10 @@ input[type="text"].initials {
     function inactiveChange(){
         period = document.getElementById("telePeriodText").textContent;
         if(findJ(period)==2){
-            inative1 = [document.inputs.inctiveDefense.checked, document.inputs.inctiveRelaoded.checked, document.inputs.inctiveOutpost.checked];
+            inactive1 = [document.inputs.inctiveDefense.checked, document.inputs.inctiveRelaoded.checked, document.inputs.inctiveOutpost.checked];
         }
         if(findJ(period)==3){
-            inative2 = [document.inputs.inctiveDefense.checked, document.inputs.inctiveRelaoded.checked, document.inputs.inctiveOutpost.checked];
+            inactive2 = [document.inputs.inctiveDefense.checked, document.inputs.inctiveRelaoded.checked, document.inputs.inctiveOutpost.checked];
         }
     }
     function findPickup(period){
@@ -1812,12 +1782,11 @@ input[type="text"].initials {
     function findInactive(period){
         switch (findJ(period)){
             case 2:
-                return inative1;
+                return inactive1;
             case 3:
-                return inative2;
+                return inactive2;
         }
     }
 </script>
 </body>
 </html>
-
