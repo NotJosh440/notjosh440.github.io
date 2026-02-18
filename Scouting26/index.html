@@ -722,9 +722,8 @@ Amazon Fire HD 10 800x1280 1.6-->
             qrd.style.width = "100%";
             // qrd.style.height = ht + "px";
         
-            console.log(px)
-            wd = 700+px;
-            ht = 700+px;
+            wd = 700;
+            ht = 700;
         
             var elem = document.getElementById('qrcanv');
             qrc = elem.getContext('2d');
@@ -777,18 +776,18 @@ Amazon Fire HD 10 800x1280 1.6-->
         
             ecclevel = 1;
             qf = genframe(input);
-            qrc.lineWidth=0;
         
             var i,j;
-            px = wd;
-            if( ht < wd )
-                px = ht;
-            px /= width;
-            px=Math.round(px);
+            px = 640;
             console.log(px)
-            qrc.clearRect(0,0,wd+px,ht+px);
+            console.log(width)
+            console.log(wd)
+            console.log(version)
+
+            px /= width;
+            qrc.clearRect(0,0,wd,ht);
             qrc.fillStyle = '#ff44dd';
-            qrc.fillRect(0,0,wd+px,wd+px);
+            qrc.fillRect(0,0,wd,wd);
             qrc.fillStyle = '#000000';
             for( i = 0; i < width; i++ )
                 for( j = 0; j < width; j++ )
