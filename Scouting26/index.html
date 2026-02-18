@@ -996,8 +996,8 @@ input[type="text"].initials {
 .qrcanv{
     margin:auto;
     display: none;
-    height: fit-content;
-    width: fit-content;
+    height: 110%;
+    width: 110%;
 }
 .popup {
     position: fixed;
@@ -1394,9 +1394,7 @@ input[type="text"].initials {
         
     </form>
 </div>
-<form id="qrinp">
 
-</form>
 <div id="qrdiv" class="qrdiv" style="width:90%">
     <canvas id="qrcanv" class="qrcode"></canvas>
 </div>
@@ -1479,11 +1477,27 @@ input[type="text"].initials {
             document.getElementById('backGround').style.display = "block";
         }
         
+        isShooting = false;
+        shotStart;
+        
+        autoClimb = "None";
+        endClimb = "None";
+
         shotPlacesA = [];
         shotPlacesC = [];
         shotPlaces1 = [];
         shotPlaces2 = [];
         shotPlacesE = [];
+
+        autoPickup = [false, false, false];
+        transPickup = [false, false, false];
+        p1Pickup = [false, false, false];
+        p2Pickup = [false, false, false];
+        endPickup = [false, false, false];
+
+        inactive1 = [false, false, false];
+        inactive2 = [false, false, false];
+
         resetGrid();
 
         if(showingPrev){
@@ -1563,7 +1577,7 @@ input[type="text"].initials {
                 const cell = document.createElement('div');
                 cell.classList.add('grid-cell');
                 cell.classList.add('grid-cell'+j);
-                cell.id = `cell${j}-${i}`;
+                cell.id = `${i}`;
                 gridOverlays[j].appendChild(cell);
             }
             gridOverlays[j].addEventListener('click', handleInteraction);
@@ -1591,14 +1605,14 @@ input[type="text"].initials {
                 }
                 targetCell.classList.remove('touched-cell-temp'); // Revert the color
                 targetCell.classList.add('touched-cell-perm'); // Revert color
-                findShotPlaces(period).push([targetCell.id, Date.now()]);
+                findShotPlaces(period).push([targetCell.id, findShotPlaces(period)[findShotPlaces(period).length-1][1]-Date.now() % 1000000]);
                 console.log(findShotPlaces(period));
                 isShooting = false;
                 shotStart = null;
             } else {
                 // --- Logic for the first click ---
                 shotStart = targetCell;
-                findShotPlaces(period).push([shotStart.id, Date.now()]);
+                findShotPlaces(period).push([shotStart.id, Date.now() % 1000000]);
                 targetCell.classList.add('touched-cell-temp'); // Change color immediately
                 isShooting = true;
                 // targetCell.classList.add('touched-cell-perm'); // Revert color
