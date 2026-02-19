@@ -714,13 +714,8 @@ Amazon Fire HD 10 800x1280 1.6-->
         var wd, ht, qrc, qf;
         function setupqr(){
         //    window.scrollTo(0,1)
-            wd = window.innerWidth-20;
-            ht = window.innerHeight-10;
             mp = document.getElementById("mapcanv");
-        
             qrd = document.getElementById("qrdiv");
-            qrd.style.width = wd + "px";
-            // qrd.style.height = ht + "px";
         
             wd = 700;
             ht = 700;
@@ -746,28 +741,30 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(d.inputs.match.value);
             inputs_list.push(d.inputs.robot.value);
             inputs_list.push(d.inputs.teamnumber.value);
-            inputs_list.push(d.inputs.noshow.checked);
+            inputs_list.push(d.inputs.noshow.checked+0);
             inputs_list.push(d.inputs.location.value);
 
             inputs_list.push(shotPlacesA);
-            inputs_list.push(autoPickup);
+            inputs_list.push(((autoPickup[0]+0)<<2) + ((autoPickup[1]+0)<<1) + (autoPickup[2]+0));
+            autoClimb = (autoClimb=="None"?0:(autoClimb=="Level1"?1:(autoClimb=="Level2"?2:autoClimb=="Level3"?3:4)));
             inputs_list.push(autoClimb);
             inputs_list.push(shotPlacesC);
-            inputs_list.push(transPickup);
+            inputs_list.push(((transPickup[0]+0)<<2) + ((transPickup[1]+0)<<1) + (transPickup[2]+0));
             inputs_list.push(shotPlaces1);
-            inputs_list.push(p1Pickup);
-            inputs_list.push(inactive1);
+            inputs_list.push(((p1Pickup[0]+0)<<2) + ((p1Pickup[1]+0)<<1) + (p1Pickup[2]+0));
+            inputs_list.push(((inactive1[0]+0)<<2) + ((inactive1[1]+0)<<1) + (inactive1[2]+0));
             inputs_list.push(shotPlaces2);
-            inputs_list.push(p2Pickup);
-            inputs_list.push(inactive2);
+            inputs_list.push(((p2Pickup[0]+0)<<2) + ((p2Pickup[1]+0)<<1) + (p2Pickup[2]+0));
+            inputs_list.push(((inactive2[0]+0)<<2) + ((inactive2[1]+0)<<1) + (inactive2[2]+0));
             inputs_list.push(shotPlacesE);
-            inputs_list.push(endPickup);
+            inputs_list.push(((endPickup[0]+0)<<2) + ((endPickup[1]+0)<<1) + (endPickup[2]+0));
+            endClimb = (endClimb=="None"?0:(endClimb=="Level1"?1:(endClimb=="Level2"?2:endClimb=="Level3"?3:4)));
             inputs_list.push(endClimb);
 
             inputs_list.push(d.inputs.skill.value);
             inputs_list.push(d.inputs.defense.value);
 
-            inputs_list.push(d.inputs.died.checked);
+            inputs_list.push(d.inputs.died.checked+0);
             
             inputs_list.push(d.inputs.comments.value.split('\n').join(" - "));
             inputs_list.push(Date.now());
@@ -783,7 +780,7 @@ Amazon Fire HD 10 800x1280 1.6-->
             if( ht < wd )
                 px = ht;
             px /= width+2;
-            px=Math.round(px);
+            // px=Math.round(px);
             qrc.clearRect(0,0,wd,ht);
             qrc.fillStyle = '#ff44dd';
             qrc.fillRect(0,0,px*(width+2),px*(width+2));
@@ -996,8 +993,6 @@ input[type="text"].initials {
 .qrcanv{
     margin:auto;
     display: none;
-    height: 110%;
-    width: 110%;
 }
 .popup {
     position: fixed;
@@ -1104,92 +1099,80 @@ input[type="text"].initials {
         <p><label for="names">Scouter Name</label></p>
         <p style="width: 400px; margin: auto;"><select type="select" id="names" name="names1" class="required" value="">
             <option value="">--Your name--</option>
-            <option value="Alex">Alex</option>
-            <option value="Anthony">Anthony</option>
-            <option value="Crystal">Crystal</option>
-            <option value="Darren">Darren</option>
-            <option value="Elijah">Elijah</option>
-            <option value="Finnan">Finnan</option>
-            <option value="Jacob">Jacob</option>
-            <option value="Jennifer">Jennifer</option>
-            <option value="Jeremiah">Jeremiah</option>
-            <option value="Joshua">Joshua</option>
-            <option value="Liam">Liam</option>
-            <option value="Libby">Libby</option>
-            <option value="Luka">Luka</option>
-            <option value="Melike">Melike</option>
-            <option value="Nathan">Nathan</option>
-            <option value="Robert">Robert</option>
-            <option value="Rocco">Rocco</option>
-            <option value="Sophia">Sophia</option>
-            <option value="Sophie">Sophie</option>
-            <option value="William">William</option>
-            <option value="Xiaohan">Xiaohan</option>
-            <option value="Other">Other (Comments)</option>
+            <option value=0>Alex</option>
+            <option value=1>Anthony</option>
+            <option value=2>Crystal</option>
+            <option value=3>Darren</option>
+            <option value=4>Elijah</option>
+            <option value=5>Finnan</option>
+            <option value=6>Jacob</option>
+            <option value=7>Jennifer</option>
+            <option value=8>Jeremiah</option>
+            <option value=9>Joshua</option>
+            <option value=10>Liam</option>
+            <option value=11>Libby</option>
+            <option value=12>Luka</option>
+            <option value=13>Melike</option>
+            <option value=14>Nathan</option>
+            <option value=15>Robert</option>
+            <option value=16>Rocco</option>
+            <option value=17>Sophia</option>
+            <option value=18>Sophie</option>
+            <option value=19>William</option>
+            <option value=20>Xiaohan</option>
+            <option value=21>Other (Comments)</option>
         </select></p>
         <p><label for="names">Partners</label></p>
         <p style="width: 400px; margin: auto;">
             <select type="text" id="names" name="names2" class="required" value="">
-                <option value="">--Partner name--</option>
-                <option value="Alex">Alex</option>
-                <option value="Anthony">Anthony</option>
-                <option value="Crystal">Crystal</option>
-                <option value="Darren">Darren</option>
-                <option value="Elijah">Elijah</option>
-                <option value="Finnan">Finnan</option>
-                <option value="Jacob">Jacob</option>
-                <option value="Jennifer">Jennifer</option>
-                <option value="Jeremiah">Jeremiah</option>
-                <option value="Joshua">Joshua</option>
-                <option value="Liam">Liam</option>
-                <option value="Libby">Libby</option>
-                <option value="Luka">Luka</option>
-                <option value="Melike">Melike</option>
-                <option value="Nathan">Nathan</option>
-                <option value="Robert">Robert</option>
-                <option value="Rocco">Rocco</option>
-                <option value="Sophia">Sophia</option>
-                <option value="Sophie">Sophie</option>
-                <option value="William">William</option>
-                <option value="Xiaohan">Xiaohan</option>
-                <option value="Other">Other (Comments)</option>
+                <option value="">--Your name--</option>
+                <option value=0>Alex</option>
+                <option value=1>Anthony</option>
+                <option value=2>Crystal</option>
+                <option value=3>Darren</option>
+                <option value=4>Elijah</option>
+                <option value=5>Finnan</option>
+                <option value=6>Jacob</option>
+                <option value=7>Jennifer</option>
+                <option value=8>Jeremiah</option>
+                <option value=9>Joshua</option>
+                <option value=10>Liam</option>
+                <option value=11>Libby</option>
+                <option value=12>Luka</option>
+                <option value=13>Melike</option>
+                <option value=14>Nathan</option>
+                <option value=15>Robert</option>
+                <option value=16>Rocco</option>
+                <option value=17>Sophia</option>
+                <option value=18>Sophie</option>
+                <option value=19>William</option>
+                <option value=20>Xiaohan</option>
+                <option value=21>Other (Comments)</option>
             </select>
             <!-- <select type="text" id="names" name="names3" class="required" value="">
-                <option value="">--Partner 2--</option>
-                <option value="Alejandra">Alejandra</option>
-                <option value="Alex">Alex</option>
-                <option value="Anthony">Anthony</option>
-                <option value="Catherine">Catherine</option>
-                <option value="Crystal">Crystal</option>
-                <option value="Darren">Darren</option>
-                <option value="Elijah">Elijah</option>
-                <option value="Ethan">Ethan</option>
-                <option value="Finnan">Finnan</option>
-                <option value="Jacob">Jacob</option>
-                <option value="Jennifer">Jennifer</option>
-                <option value="Jeremiah">Jeremiah</option>
-                <option value="Joshua G.C.">Joshua G.C.</option>
-                <option value="Josie">Josie</option>
-                <option value="Justin">Justin</option>
-                <option value="Liam">Liam</option>
-                <option value="Libby">Libby</option>
-                <option value="Luka">Luka</option>
-                <option value="Melike">Melike</option>
-                <option value="Nathan">Nathan</option>
-                <option value="Peiheng">Peiheng</option>
-                <option value="Robert">Robert</option>
-                <option value="Rocco">Rocco</option>
-                <option value="Sinem">Sinem</option>
-                <option value="Sophia">Sophia</option>
-                <option value="Sophie">Sophie</option>
-                <option value="William">William</option>
-                <option value="William">William</option>
-                <option value="Xiaohan">Xiaohan</option>
-                <option value="Yang">Yang</option>
-                
-                <option value="Josh">Josh</option>
-                <option value="Hannah">Hannah</option>
-                <option value="Maria R.G.">Maria R.G.</option>
+                    <option value="">--Your name--</option>
+                    <option value=0>Alex</option>
+                    <option value=1>Anthony</option>
+                    <option value=2>Crystal</option>
+                    <option value=3>Darren</option>
+                    <option value=4>Elijah</option>
+                    <option value=5>Finnan</option>
+                    <option value=6>Jacob</option>
+                    <option value=7>Jennifer</option>
+                    <option value=8>Jeremiah</option>
+                    <option value=9>Joshua</option>
+                    <option value=10>Liam</option>
+                    <option value=11>Libby</option>
+                    <option value=12>Luka</option>
+                    <option value=13>Melike</option>
+                    <option value=14>Nathan</option>
+                    <option value=15>Robert</option>
+                    <option value=16>Rocco</option>
+                    <option value=17>Sophia</option>
+                    <option value=18>Sophie</option>
+                    <option value=19>William</option>
+                    <option value=20>Xiaohan</option>
+                <option value=21>Other (Comments)</option>
             </select> -->
         </p><br><br>
         <p><label for="match">Match Number</label></p>
@@ -1201,11 +1184,11 @@ input[type="text"].initials {
         <div class="table">
             <div class="tr">
                     <div class="centerLeftAligned">
-                            <input type="radio" id="red1" name="robot" value="Red 1">
+                            <input type="radio" id="red1" name="robot" value=0>
                             <label for="red1">Red Team</label>
                     </div>
                     <div class="centerRightAligned">
-                            <input type="radio" id="blue1" name="robot" value="Blue 1">
+                            <input type="radio" id="blue1" name="robot" value=0>
                             <label for="blue1">Blue Team</label>
                     </div>
             </div>
@@ -1395,7 +1378,7 @@ input[type="text"].initials {
     </form>
 </div>
 
-<div id="qrdiv" class="qrdiv" style="width:90%">
+<div id="qrdiv" class="qrdiv">
     <canvas id="qrcanv" class="qrcode"></canvas>
 </div>
 
