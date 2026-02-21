@@ -736,11 +736,11 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list = [];
             inputs_list.push(d.inputs.names1.value+d.inputs.names2.value);
             // inputs_list.push(d.inputs.names3.value);
-            inputs_list.push(Number(d.inputs.match.value).toString(36));
-            inputs_list.push(Number(d.inputs.teamnumber.value).toString(36));
-            inputs_list.push(d.inputs.robot.value==""?3:d.inputs.robot.value+0);
+            inputs_list.push(Number(d.inputs.match.value).toString(36).padStart(2, 0));
+            inputs_list.push(Number(d.inputs.teamnumber.value).toString(36).padStart(3, 0));
+            inputs_list.push(d.inputs.robot.value==""?3:d.inputs.robot.value);
             inputs_list.push(d.inputs.noshow.checked+0);
-            inputs_list.push(d.inputs.location.value);
+            inputs_list.push(d.inputs.location.value.padStart(2, 0));
             
             inputs_list.push(((autoPickup[0]+0)<<2) + ((autoPickup[1]+0)<<1) + (autoPickup[2]+0));
             autoClimb = parseInt(autoClimb=="None"?0:(autoClimb=="Level1"?1:(autoClimb=="Level2"?2:autoClimb=="Level3"?3:4)));
@@ -753,8 +753,8 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(parseInt(((endPickup[0]+0)<<2) + ((endPickup[1]+0)<<1) + (endPickup[2]+0)));
             endClimb = parseInt(endClimb=="None"?0:(endClimb=="Level1"?1:(endClimb=="Level2"?2:endClimb=="Level3"?3:4)));
             inputs_list.push(endClimb);
-            inputs_list.push(parseInt(d.inputs.skill.value));
-            inputs_list.push(parseInt(d.inputs.defense.value));
+            inputs_list.push(d.inputs.skill.value.padStart(2, 0));
+            inputs_list.push(d.inputs.defense.value.padStart(2, 0));
             inputs_list.push(parseInt(d.inputs.died.checked+0));
             inputs_list.push(Date.now().toString(36));
             inputs_list = [inputs_list.join("")];
@@ -1186,7 +1186,7 @@ input[type="text"].initials {
                             <label for="red1">Red Team</label>
                     </div>
                     <div class="centerRightAligned">
-                            <input type="radio" id="blue1" name="robot" value=0>
+                            <input type="radio" id="blue1" name="robot" value=1>
                             <label for="blue1">Blue Team</label>
                     </div>
             </div>
