@@ -738,34 +738,34 @@ Amazon Fire HD 10 800x1280 1.6-->
             // inputs_list.push(d.inputs.names3.value);
             inputs_list.push(Number(d.inputs.match.value).toString(36));
             inputs_list.push(Number(d.inputs.teamnumber.value).toString(36));
-            inputs_list.push(d.inputs.robot.value);
+            inputs_list.push(d.inputs.robot.value==""?3:d.inputs.robot.value+0);
             inputs_list.push(d.inputs.noshow.checked+0);
             inputs_list.push(d.inputs.location.value);
-
-            inputs_list.push(shotPlacesA.join(""));
+            
             inputs_list.push(((autoPickup[0]+0)<<2) + ((autoPickup[1]+0)<<1) + (autoPickup[2]+0));
             autoClimb = parseInt(autoClimb=="None"?0:(autoClimb=="Level1"?1:(autoClimb=="Level2"?2:autoClimb=="Level3"?3:4)));
             inputs_list.push(autoClimb);
-            inputs_list.push(shotPlacesC);
             inputs_list.push(parseInt(((transPickup[0]+0)<<2) + ((transPickup[1]+0)<<1) + (transPickup[2]+0)));
-            inputs_list.push(shotPlaces1);
             inputs_list.push(parseInt(((p1Pickup[0]+0)<<2) + ((p1Pickup[1]+0)<<1) + (p1Pickup[2]+0)));
             inputs_list.push(parseInt(((inactive1[0]+0)<<2) + ((inactive1[1]+0)<<1) + (inactive1[2]+0)));
-            inputs_list.push(shotPlaces2);
             inputs_list.push(parseInt(((p2Pickup[0]+0)<<2) + ((p2Pickup[1]+0)<<1) + (p2Pickup[2]+0)));
             inputs_list.push(parseInt(((inactive2[0]+0)<<2) + ((inactive2[1]+0)<<1) + (inactive2[2]+0)));
-            inputs_list.push(shotPlacesE);
             inputs_list.push(parseInt(((endPickup[0]+0)<<2) + ((endPickup[1]+0)<<1) + (endPickup[2]+0)));
             endClimb = parseInt(endClimb=="None"?0:(endClimb=="Level1"?1:(endClimb=="Level2"?2:endClimb=="Level3"?3:4)));
             inputs_list.push(endClimb);
-
             inputs_list.push(parseInt(d.inputs.skill.value));
             inputs_list.push(parseInt(d.inputs.defense.value));
-
             inputs_list.push(parseInt(d.inputs.died.checked+0));
-            
-            inputs_list.push(d.inputs.comments.value.split('\n').join(" - "));
             inputs_list.push(Date.now().toString(36));
+            inputs_list = [inputs_list.join("")];
+
+            inputs_list.push(shotPlacesA.join(""));
+            inputs_list.push(shotPlacesC.join(""));
+            inputs_list.push(shotPlaces1.join(""));
+            inputs_list.push(shotPlaces2.join(""));
+            inputs_list.push(shotPlacesE.join(""));
+
+            inputs_list.push(d.inputs.comments.value.split('\n').join(" - "));
             
             input = inputs_list.join("|");
         
