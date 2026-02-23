@@ -739,20 +739,18 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(Number(d.inputs.match.value).toString(36).padStart(2, 0));
             inputs_list.push(Number(d.inputs.teamnumber.value).toString(36).padStart(3, 0));
             inputs_list.push(d.inputs.robot.value==""?3:d.inputs.robot.value);
-            inputs_list.push(d.inputs.noshow.checked+0);
+            inputs_list.push(document.inputs.noshow.checked+0);
             inputs_list.push(d.inputs.location.value.padStart(2, 0));
             
             inputs_list.push(((autoPickup[0]+0)<<2) + ((autoPickup[1]+0)<<1) + (autoPickup[2]+0));
-            autoClimb = parseInt(autoClimb=="None"?0:(autoClimb=="Level1"?1:(autoClimb=="Level2"?2:autoClimb=="Level3"?3:4)));
-            inputs_list.push(autoClimb);
+            inputs_list.push(parseInt(autoClimb=="None"?0:(autoClimb=="Level1"?1:(autoClimb=="Level2"?2:autoClimb=="Level3"?3:4))));
             inputs_list.push(parseInt(((transPickup[0]+0)<<2) + ((transPickup[1]+0)<<1) + (transPickup[2]+0)));
             inputs_list.push(parseInt(((p1Pickup[0]+0)<<2) + ((p1Pickup[1]+0)<<1) + (p1Pickup[2]+0)));
             inputs_list.push(parseInt(((inactive1[0]+0)<<2) + ((inactive1[1]+0)<<1) + (inactive1[2]+0)));
             inputs_list.push(parseInt(((p2Pickup[0]+0)<<2) + ((p2Pickup[1]+0)<<1) + (p2Pickup[2]+0)));
             inputs_list.push(parseInt(((inactive2[0]+0)<<2) + ((inactive2[1]+0)<<1) + (inactive2[2]+0)));
             inputs_list.push(parseInt(((endPickup[0]+0)<<2) + ((endPickup[1]+0)<<1) + (endPickup[2]+0)));
-            endClimb = parseInt(endClimb=="None"?0:(endClimb=="Level1"?1:(endClimb=="Level2"?2:endClimb=="Level3"?3:4)));
-            inputs_list.push(endClimb);
+            inputs_list.push(parseInt(endClimb=="None"?0:(endClimb=="Level1"?1:(endClimb=="Level2"?2:endClimb=="Level3"?3:4))));
             inputs_list.push(d.inputs.skill.value.padStart(2, 0));
             inputs_list.push(d.inputs.defense.value.padStart(2, 0));
             inputs_list.push(parseInt(d.inputs.died.checked+0));
@@ -962,14 +960,20 @@ input[type="text"].initials {
 #locationP{
     position: relative;
     top: -85px;
-    right: 0px;
-    left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    left: 20%;
+    right: 20%;
+    width: 60%;
 }
 #location{
     -webkit-appearance: none; /* Remove default styling in Chrome/Safari */
     appearance: none;
     background: transparent;
     touch-action: none;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 #location::-webkit-slider-thumb{
     -webkit-appearance: none;
@@ -1201,7 +1205,7 @@ input[type="text"].initials {
             </tr>
             <tr><td class="leftAligned"><label style="color: #ffafd8; margin-bottom: 0px; text-align: left;">Depot Side</label></td><td style="text-align: center;"><label style="color: #ffafd8; margin-bottom: 0px; text-align: center;">Mid Field</label></td><td class="rightAligned"><label style="color: #ffafd8; margin-bottom: 0px; text-align: right;">Outpost Side</label></td></tr>
         </table>
-        <p id="locationP"><input type="range" id="location" name="location" min=0, max=99></p>
+        <p id="locationP"><input type="range" id="location" name="location" min=0, max=49></p>
         <p><input type="checkbox" id="noshow" name="noshow" value=1>
         <label for="noshow">No show</label></p>
         <br>
@@ -1493,6 +1497,7 @@ input[type="text"].initials {
                 const cell = gridOverlays[j].children[i];
                 cell.classList.remove('touched-cell-temp');
                 cell.classList.remove('touched-cell-perm');
+                cell.setAttribute("Data-Shots", 0);
             }
         }
     }
@@ -1559,6 +1564,7 @@ input[type="text"].initials {
                 cell.classList.add('grid-cell');
                 cell.classList.add('grid-cell'+j);
                 cell.id = (`${i+1}`).padStart(3, 0);
+                cell.classList.add('grid-cell'+j+cell.id);
                 gridOverlays[j].appendChild(cell);
             }
             gridOverlays[j].addEventListener('click', handleInteraction);
@@ -1575,7 +1581,6 @@ input[type="text"].initials {
                 return; // Exit if the clicked area isn't a grid cell
             }
 
-            const cellId = targetCell.id;
             findShotPlaces(period).push([Number(targetCell.id).toString(36).padStart(2, 0), (Date.now() % 1000000).toString(36).padStart(4, 0)].join(""));
 
             if (isShooting) {
@@ -1583,9 +1588,19 @@ input[type="text"].initials {
                 if(shotStart!=null){
                     shotStart.classList.add('touched-cell-perm'); // Revert color
                     shotStart.classList.remove("touched-cell-temp");
+                    if(shotStart.getAttribute("data-shots")==null){
+                        shotStart.setAttribute("data-shots", 1);
+                    }else{
+                        shotStart.setAttribute("data-shots", parseInt(shotStart.getAttribute("data-shots"))+1);
+                    }
                 }
                 targetCell.classList.remove('touched-cell-temp'); // Revert the color
                 targetCell.classList.add('touched-cell-perm'); // Revert color
+                if(targetCell.getAttribute("data-shots")==null){
+                    targetCell.setAttribute("data-shots", 1);
+                }else{
+                    targetCell.setAttribute("data-shots", parseInt(shotStart.getAttribute("data-shots"))+1);
+                }
                 console.log(findShotPlaces(period));
                 isShooting = false;
                 shotStart = null;
@@ -1602,24 +1617,15 @@ input[type="text"].initials {
             let period = document.getElementById("telePeriodText").textContent;
             if(findShotPlaces(period).length==0){return;}
             if(!isShooting){isShooting=true; remove();}
-            let removed = document.getElementById(parseInt(findShotPlaces(period)[findShotPlaces(period).length-1].slice(0, 2),36).toString().padStart(3, 0));
-            if(removed.classList.contains("touched-cell-temp")){
-                removed.classList.remove('touched-cell-temp'); // Revert color
-            }
+            let removed = document.getElementsByClassName("grid-cell"+findJ(period)+parseInt(findShotPlaces(period)[findShotPlaces(period).length-1].slice(0, 2),36).toString().padStart(3, 0))[0];
+            removed.classList.remove('touched-cell-temp'); // Revert color
             if(removed.classList.contains("touched-cell-perm")){
-                const rgbaMatch = window.getComputedStyle(removed).backgroundColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+),\s*?([\d\.]+)?\)/);
-                if (rgbaMatch) {
-                    const r = rgbaMatch[1];
-                    const g = rgbaMatch[2];
-                    const b = rgbaMatch[3];
-                    let currentAlpha = rgbaMatch[4] ? parseFloat(rgbaMatch[4]) : 1.0;
-                    let newAlpha = currentAlpha - .1;
-                    if(currentAlpha > .4){
-                        removed.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${newAlpha})`;
-                    }else{
-                        removed.style.backgroundColor = null;
-                        removed.classList.remove("touched-cell-perm");
-                    }
+                if(removed.getAttribute("data-shots")<=1){
+                    removed.style.backgroundColor = null;
+                    removed.classList.remove("touched-cell-perm");
+                    removed.setAttribute("data-shots", 0);
+                }else{
+                    removed.setAttribute("data-shots", parseInt(removed.getAttribute("data-shots"))-1);
                 }
             }
             isShooting = false;
