@@ -744,18 +744,18 @@ Amazon Fire HD 10 800x1280 1.6-->
 
             inputs_list.push((((outposts[4]+0)<<4) + ((outposts[3]+0)<<3) + ((outposts[2]+0)<<2) + ((outposts[1]+0)<<1) + (outposts[0]+0)).toString(36).padStart(1,0));
             inputs_list.push(((autoPickup[0]+0)<<2) + ((autoPickup[1]+0)<<1) + (autoPickup[2]+0));
-            inputs_list.push(percents[0].toString(36).padStart(2,0));
+            inputs_list.push(percents[0].padStart(2,0));
             inputs_list.push(parseInt(autoClimb=="None"?0:(autoClimb=="Level1"?1:(autoClimb=="Level2"?2:autoClimb=="Level3"?3:4))));
             inputs_list.push(parseInt(((transPickup[0]+0)<<2) + ((transPickup[1]+0)<<1) + (transPickup[2]+0)));
-            inputs_list.push(percents[1].toString(36).padStart(2,0));
+            inputs_list.push(percents[1].padStart(2,0));
             inputs_list.push(parseInt(((p1Pickup[0]+0)<<2) + ((p1Pickup[1]+0)<<1) + (p1Pickup[2]+0)));
-            inputs_list.push(percents[2].toString(36).padStart(2,0));
+            inputs_list.push(percents[2].padStart(2,0));
             inputs_list.push(parseInt(((inactive1[0]+0)<<2) + ((inactive1[1]+0)<<1) + (inactive1[2]+0)));
             inputs_list.push(parseInt(((p2Pickup[0]+0)<<2) + ((p2Pickup[1]+0)<<1) + (p2Pickup[2]+0)));
-            inputs_list.push(percents[3].toString(36).padStart(2,0));
+            inputs_list.push(percents[3].padStart(2,0));
             inputs_list.push(parseInt(((inactive2[0]+0)<<2) + ((inactive2[1]+0)<<1) + (inactive2[2]+0)));
             inputs_list.push(parseInt(((endPickup[0]+0)<<2) + ((endPickup[1]+0)<<1) + (endPickup[2]+0)));
-            inputs_list.push(percents[4].toString(36).padStart(2,0));
+            inputs_list.push(percents[4].padStart(2,0));
             inputs_list.push(parseInt(endClimb=="None"?0:(endClimb=="Level1"?1:(endClimb=="Level2"?2:endClimb=="Level3"?3:4))));
             inputs_list.push(d.inputs.skill.value.padStart(2, 0));
             inputs_list.push(d.inputs.defense.value.padStart(2, 0));
@@ -1813,6 +1813,7 @@ input[type="text"].initials {
 </script>
 </body>
 </html>
+
 
 
 
