@@ -1665,7 +1665,7 @@ input[type="text"].initials {
         period = findPeriod(period);
         document.getElementById("telePeriodText").textContent = period;
         document.inputs.depotFuel.checked = findPickup(period)[0]; document.inputs.substionFuel.checked = findPickup(period)[1]; document.inputs.nuetralFuel.checked = findPickup(period)[2];
-        doctument.inputs.outpost.checked = outposts[findJ(period)];
+        document.inputs.outpost.checked = outposts[findJ(period)];
         document.inputs.shotsMiss.value = percents[findJ(period)];
         if(period == "Autonomous"){
             document.getElementById("activeTelePeriod").style.width = "50%";
@@ -1804,7 +1804,7 @@ input[type="text"].initials {
     }
     function pushedChange(){
         period = document.getElementById("telePeriodText").textContent;
-        outposts[findJ(period)] = doctument.inputs.outpost.checked;
+        outposts[findJ(period)] = document.inputs.outpost.checked;
     }
     function percentChange(){
         percents[findJ(period)] = document.inputs.shotsMiss.value;
@@ -1812,4 +1812,5 @@ input[type="text"].initials {
 </script>
 </body>
 </html>
+
 
