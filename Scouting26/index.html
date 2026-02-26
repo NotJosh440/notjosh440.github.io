@@ -742,7 +742,7 @@ Amazon Fire HD 10 800x1280 1.6-->
             inputs_list.push(document.inputs.noshow.checked+0);
             inputs_list.push(d.inputs.location.value.padStart(2, 0));
 
-            inputs_list.push((((outposts[4]+0)<<4) + ((autoPickup[3]+0)<<3) + ((outposts[2]+0)<<2) + ((autoPickup[1]+0)<<1) + (autoPickup[0]+0)).toString(36).padStart(1,0));
+            inputs_list.push((((outposts[4]+0)<<4) + ((outposts[3]+0)<<3) + ((outposts[2]+0)<<2) + ((outposts[1]+0)<<1) + (outposts[0]+0)).toString(36).padStart(1,0));
             inputs_list.push(((autoPickup[0]+0)<<2) + ((autoPickup[1]+0)<<1) + (autoPickup[2]+0));
             inputs_list.push(percents[0].toString(36).padStart(2,0));
             inputs_list.push(parseInt(autoClimb=="None"?0:(autoClimb=="Level1"?1:(autoClimb=="Level2"?2:autoClimb=="Level3"?3:4))));
@@ -1813,6 +1813,7 @@ input[type="text"].initials {
 </script>
 </body>
 </html>
+
 
 
 
