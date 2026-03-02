@@ -734,33 +734,45 @@ Amazon Fire HD 10 800x1280 1.6-->
 
             d = document;
             inputs_list = [];
-            inputs_list.push(d.inputs.names1.value+d.inputs.names2.value);
+            inputs_list.push(d.inputs.names1.value+d.inputs.names2.value);                                          //4
             // inputs_list.push(d.inputs.names3.value);
-            inputs_list.push(Number(d.inputs.match.value).toString(36).padStart(2, 0));
-            inputs_list.push(Number(d.inputs.teamnumber.value).toString(36).padStart(3, 0));
-            inputs_list.push(d.inputs.robot.value==""?3:d.inputs.robot.value);
-            inputs_list.push(document.inputs.noshow.checked+0);
-            inputs_list.push(d.inputs.location.value.padStart(2, 0));
+            inputs_list.push(Number(d.inputs.match.value).toString(36).padStart(2, 0));                             //2
+            inputs_list.push(Number(d.inputs.teamnumber.value).toString(36).padStart(3, 0));                        //3
+            inputs_list.push(d.inputs.robot.value==""?3:d.inputs.robot.value);                                      //1
+            inputs_list.push(document.inputs.noshow.checked+0);                                                     //1
+            inputs_list.push(d.inputs.location.value.padStart(2, 0));                                               //2
+            inputs_list.push((((outposts[4]+0)<<4) + ((outposts[3]+0)<<3) + ((outposts[2]+0)<<2) + ((outposts[1]+0)<<1) + (outposts[0]+0)).toString(36).padStart(1,0)); //1
 
-            inputs_list.push((((outposts[4]+0)<<4) + ((outposts[3]+0)<<3) + ((outposts[2]+0)<<2) + ((outposts[1]+0)<<1) + (outposts[0]+0)).toString(36).padStart(1,0));
-            inputs_list.push(((autoPickup[0]+0)<<2) + ((autoPickup[1]+0)<<1) + (autoPickup[2]+0));
-            inputs_list.push(percents[0].padStart(2,0));
-            inputs_list.push(parseInt(autoClimb=="None"?0:(autoClimb=="Level1"?1:(autoClimb=="Level2"?2:autoClimb=="Level3"?3:4))));
-            inputs_list.push(parseInt(((transPickup[0]+0)<<2) + ((transPickup[1]+0)<<1) + (transPickup[2]+0)));
-            inputs_list.push(percents[1].padStart(2,0));
-            inputs_list.push(parseInt(((p1Pickup[0]+0)<<2) + ((p1Pickup[1]+0)<<1) + (p1Pickup[2]+0)));
-            inputs_list.push(percents[2].padStart(2,0));
-            inputs_list.push(parseInt(((inactive1[0]+0)<<2) + ((inactive1[1]+0)<<1) + (inactive1[2]+0)));
-            inputs_list.push(parseInt(((p2Pickup[0]+0)<<2) + ((p2Pickup[1]+0)<<1) + (p2Pickup[2]+0)));
-            inputs_list.push(percents[3].padStart(2,0));
-            inputs_list.push(parseInt(((inactive2[0]+0)<<2) + ((inactive2[1]+0)<<1) + (inactive2[2]+0)));
-            inputs_list.push(parseInt(((endPickup[0]+0)<<2) + ((endPickup[1]+0)<<1) + (endPickup[2]+0)));
-            inputs_list.push(percents[4].padStart(2,0));
-            inputs_list.push(parseInt(endClimb=="None"?0:(endClimb=="Level1"?1:(endClimb=="Level2"?2:endClimb=="Level3"?3:4))));
-            inputs_list.push(d.inputs.skill.value.padStart(2, 0));
-            inputs_list.push(d.inputs.defense.value.padStart(2, 0));
-            inputs_list.push(parseInt(d.inputs.died.checked+0));
-            inputs_list.push(Date.now().toString(36));
+
+
+/*Auto*/    inputs_list.push(((autoPickup[0]+0)<<2) + ((autoPickup[1]+0)<<1) + (autoPickup[2]+0));                  //15, 1
+            inputs_list.push(String(percents[0]).padStart(2,0));                                                    //2
+            inputs_list.push(((parseInt(autoClimb=="None"?0:(autoClimb=="Level1"?1:(autoClimb=="Level2"?2:autoClimb=="Level3"?3:4))) << 3) + ((autoClimbPos[0]+0)<<2) + ((autoClimbPos[1]+0)<<1) + (autoClimbPos[2]+0)).toString(36).padStart(1,0));    //1
+
+/*Tran*/    inputs_list.push(parseInt(((transPickup[0]+0)<<2) + ((transPickup[1]+0)<<1) + (transPickup[2]+0)));     //1
+            inputs_list.push(String(percents[1]).padStart(2,0));                                                    //2
+
+/*Act1*/    inputs_list.push(parseInt(((p1Pickup[0]+0)<<2) + ((p1Pickup[1]+0)<<1) + (p1Pickup[2]+0)));              //1
+            inputs_list.push(String(percents[2]).padStart(2,0));                                                    //2
+
+/*Ina1*/    inputs_list.push(parseInt(((inactive1[0]+0)<<2) + ((inactive1[1]+0)<<1) + (inactive1[2]+0)));           //1
+
+/*Act2*/    inputs_list.push(parseInt(((p2Pickup[0]+0)<<2) + ((p2Pickup[1]+0)<<1) + (p2Pickup[2]+0)));              //1
+            inputs_list.push(String(percents[3]).padStart(2,0));                                                    //2
+
+/*Ina2*/    inputs_list.push(parseInt(((inactive2[0]+0)<<2) + ((inactive2[1]+0)<<1) + (inactive2[2]+0)));           //1
+            
+/*Endg*/    inputs_list.push(parseInt(((endPickup[0]+0)<<2) + ((endPickup[1]+0)<<1) + (endPickup[2]+0)));           //1
+            inputs_list.push(String(percents[4]).padStart(2,0));                                                    //2
+            inputs_list.push(((parseInt(endClimb=="None"?0:(endClimb=="Level1"?1:(endClimb=="Level2"?2:endClimb=="Level3"?3:4))) << 3) + ((endClimbPos[0]+0)<<2) + ((endClimbPos[1]+0)<<1) + (endClimbPos[2]+0)).toString(36).padStart(1,0));           //2
+
+/*Eval*/    inputs_list.push(d.inputs.skill.value.padStart(2, 0));                                                  //2
+            inputs_list.push(d.inputs.defense.value.padStart(2, 0));                                                //2
+            inputs_list.push(parseInt(d.inputs.died.checked+0));                                                    //1
+
+
+
+            inputs_list.push(Date.now().toString(36));                                                              //8
             inputs_list = [inputs_list.join("")];
 
             inputs_list.push(shotPlacesA.join(""));
@@ -1066,7 +1078,7 @@ input[type="text"].initials {
     height: 100%;
     display: grid;
     /* Create a 4x4 grid of equal size cells */
-    grid-template-columns: repeat(25, 1fr);
+    grid-template-columns: repeat(12, 1fr);
 }
 .grid-cell {
     /* border: 1px, white, solid; */
@@ -1287,19 +1299,9 @@ input[type="text"].initials {
                 <h3 class="pickUpTitle">Active</h3>
                 <p>
                     <input type="checkbox" id="outpost" name="outpost" value=1 onchange='pushedChange()'>
-                    <label for="outpost">Pushed in Outpost?</label></p>
-                    <p>
-                        <label for="fuel1">Total Shots</label><br>
-                    <button type="button" onclick="decrement('fuel1')"><h3 class="increment">&emsp;-&emsp;</h3></button>
-                    <input type="number" id="fuel1" name="fuel1" value=0 min=0>
-                    <button type="button" onclick="increment('fuel1')"><h3 class="increment">&emsp;+&emsp;</h3></button>
+                    <label for="outpost">Pushed in Outpost?</label>
                 </p>
-                <p>
-                    <label for="fuelFail1">Missed Shots</label><br>
-                    <button type="button" onclick="decrement('fuelFail1')"><h3 class="increment">&emsp;-&emsp;</h3></button>
-                    <input type="number" id="fuelFail1" name="fuelFail1" value=0 min=0>
-                    <button type="button" onclick="increment('fuelFail1')"><h3 class="increment">&emsp;+&emsp;</h3></button>
-                </p>
+                <h3 class="pickUpTitle">Percent Missed</h3>
                 <p>0%<input type="range" id="shotsMiss" name="shotsMiss" min=0 value=0 max=99 onchange='percentChange()'>100%</p>
             </div>
             
@@ -1344,6 +1346,22 @@ input[type="text"].initials {
                     <p style="display: inline;" class="centerRightAligned">
                         <input type="radio" id="Level3" name="endgame" value="Level3" onchange="climbChange()">
                         <label for="Level3">Level 3</label>
+                    </p>
+                </div>
+
+                <h3 class="pickUPTitel">Position</h3>
+                <div class="centerAligned">
+                    <p style="display: inline;" class="leftAligned">
+                        <input type="checkbox" id="Left" name="left" value="Left" onchange="climbPosChange()">
+                        <label for="Left">Left</label>
+                    </p>
+                    <p style="display: inline;" class="centerAligned">
+                        <input type="checkbox" id="Center" name="center" value="Center" onchange="climbPosChange()">
+                        <label for="Center">Center</label>
+                    </p>
+                    <p style="display: inline;" class="rightAligned">
+                        <input type="checkbox" id="Right" name="right" value="Right" onchange="climbPosChange()">
+                        <label for="Right">Right</label>
                     </p>
                 </div>
             </div>
@@ -1410,6 +1428,11 @@ input[type="text"].initials {
     <p style="color: #000000;">Please hand this tablet to the scouter to the right of your name.</p><br><br>
     <button type="reset" id="ok-button" class="cancel-button" onclick="removePopup()" style="width: 30%; margin-left: 35%; background-color: whitesmoke;"><h2>Ok</h2></button><br><br>
 </div>
+<div id="tooLarge" style="background-color: whitesmoke; width: 60%; margin: auto; position: fixed; top: calc(50% - 200px); opacity: 100%; left: 20%; display: none;">
+    <h3>Make sure your Match and Team Number are correct</h3>
+    <p style="color: #000000;">If this is a mistake, type a zero and put in the number in the comments</p><br><br>
+    <button type="reset" id="ok-button" class="cancel-button" onclick="removePopup()" style="width: 30%; margin-left: 35%; background-color: whitesmoke;"><h2>Ok</h2></button><br><br>
+</div>
 
 
 
@@ -1435,9 +1458,12 @@ input[type="text"].initials {
     let inactive1 = [false, false, false];
     let inactive2 = [false, false, false];
 
-     let outposts = [false, false, false, false, false];
+    let outposts = [false, false, false, false, false];
 
     let percents = [0, 0, 0, 0, 0];
+
+    let autoClimbPos = [false, false, false];
+    let endClimbPos = [false, false, false];
     
     document.getElementById('reset-button').addEventListener('click', (event) => {
         document.getElementById('clear').style.display = "block";
@@ -1448,6 +1474,7 @@ input[type="text"].initials {
         document.getElementById('clear').style.display = "none";
         document.getElementById('switch').style.display = "none";
         document.getElementById('backGround').style.display = "none";
+        document.getElementById('tooLarge').style.display = "none";
     };
     
     document.getElementById('confirm-button').addEventListener('click', (event) => {
@@ -1494,7 +1521,11 @@ input[type="text"].initials {
         inactive2 = [false, false, false];
 
         outposts = [false, false, false, false, false];
+
         percents = [0, 0, 0, 0, 0];
+
+        autoClimbPos = [false, false, false];
+        endClimbPos = [false, false, false];
 
         resetGrid();
         periodChange("Auto");
@@ -1519,20 +1550,25 @@ input[type="text"].initials {
     document.getElementById('submit').addEventListener('click', (event) => {
         event.preventDefault();
         if(!showingPrev){
-            elements = document.querySelectorAll(".required");
-            qr = true;
-            for(i=0; i<elements.length; i++){
-                if(elements[i].value == ""){
-                    elements[i].scrollIntoView({ behavior: 'smooth', block: "center"});
-                    elements[i].classList.add('error');
-                    qr = false;
-                }else{
-                    elements[i].classList.remove("error");
+            if((Number(document.inputs.teamnumber.value) > 46655 || Number(document.inputs.teamnumber.value) < 0) || (Number(document.inputs.match.value) > 1295 || Number(document.inputs.match.value) < 0)){
+                document.getElementById("backGround").style.display = "block";
+                document.getElementById("tooLarge").style.display = "block";
+            }else{
+                elements = document.querySelectorAll(".required");
+                qr = true;
+                for(i=0; i<elements.length; i++){
+                    if(elements[i].value == ""){
+                        elements[i].scrollIntoView({ behavior: 'smooth', block: "center"});
+                        elements[i].classList.add('error');
+                        qr = false;
+                    }else{
+                        elements[i].classList.remove("error");
+                    }
                 }
-            }
-            if(qr){
-                doqr();
-                document.getElementById("qrcanv").scrollIntoView({ behavior: 'smooth', block: "center"});
+                if(qr){
+                    doqr();
+                    document.getElementById("qrcanv").scrollIntoView({ behavior: 'smooth', block: "center"});
+                }
             }
         }
     });
@@ -1567,8 +1603,8 @@ input[type="text"].initials {
         }
         const gridOverlays = document.getElementsByClassName('grid-overlay');
         const undo = document.getElementById('undo-grid');
-        const rows = 25;
-        const cols = 25;
+        const rows = 12;
+        const cols = 12;
         // A map to keep track of active timeout IDs for each cell
 
         // 1. Generate the grid cells (this part stays the same)
@@ -1679,6 +1715,7 @@ input[type="text"].initials {
             document.getElementById("periods").value = 0;
             document.getElementById("periods").selectedIndex = 0;
             document.getElementById(autoClimb).checked = true;
+            document.inputs.left.checked = findClimbPos(period)[0]; document.inputs.center.checked = findClimbPos(period)[1]; document.inputs.right.checked = findClimbPos(period)[2];
         }
         if(period == "Transition Period"){
             document.getElementById("activeTelePeriod").style.width = "100%";
@@ -1730,6 +1767,7 @@ input[type="text"].initials {
             document.getElementById("periods").value = 4;
             document.getElementById("periods").selectedIndex = 4;
             document.getElementById(endClimb).checked = true;
+            document.inputs.left.checked = findClimbPos(period)[0]; document.inputs.center.checked = findClimbPos(period)[1]; document.inputs.right.checked = findClimbPos(period)[2];
         }
     }
     function incPeriod(){
@@ -1755,7 +1793,6 @@ input[type="text"].initials {
         switch (findJ(document.getElementById("telePeriodText").textContent)){
             case 0:
                 autoPickup = [document.inputs.depotFuel.checked, document.inputs.substionFuel.checked, document.inputs.nuetralFuel.checked];
-
                 return;
             case 1:
                 transPickup = [document.inputs.depotFuel.checked, document.inputs.substionFuel.checked, document.inputs.nuetralFuel.checked];
@@ -1810,10 +1847,27 @@ input[type="text"].initials {
         period = document.getElementById("telePeriodText").textContent;
         percents[findJ(period)] = document.inputs.shotsMiss.value;
     }
+    function climbPosChange(){
+        switch (findJ(document.getElementById("telePeriodText").textContent)){
+            case 0:
+                autoClimbPos = [document.inputs.left.checked, document.inputs.center.checked, document.inputs.right.checked];
+                return;
+            case 4:
+                endClimbPos = [document.inputs.left.checked, document.inputs.center.checked, document.inputs.right.checked];
+                return;
+        }
+    }
+    function findClimbPos(period){
+        switch (findJ(period)){
+            case 0:
+                return autoClimbPos;
+            case 4:
+                return endClimbPos;
+        }
+    }
 </script>
 </body>
 </html>
-
 
 
 
