@@ -1119,54 +1119,48 @@ input[type="text"].initials {
         <p><label for="names">Scouter Name</label></p>
         <p style="width: 400px; margin: auto;"><select type="select" id="names" name="names1" class="required" value="">
             <option value="">--Your name--</option>
-            <option value=00>Alex</option>
-            <option value=01>Anthony</option>
-            <option value=02>Crystal</option>
-            <option value=03>Darren</option>
-            <option value=04>Elijah</option>
-            <option value=05>Finnan</option>
-            <option value=06>Jacob</option>
-            <option value=07>Jennifer</option>
-            <option value=08>Jeremiah</option>
-            <option value=09>Joshua</option>
-            <option value=10>Liam</option>
-            <option value=11>Libby</option>
-            <option value=12>Luka</option>
-            <option value=13>Melike</option>
-            <option value=14>Nathan</option>
-            <option value=15>Robert</option>
-            <option value=16>Rocco</option>
-            <option value=17>Sophia</option>
-            <option value=18>Sophie</option>
-            <option value=19>William</option>
-            <option value=20>Xiaohan</option>
+            <option value=00>Darren</option>
+            <option value=01>Yusuf</option>
+            <option value=02>Robert</option>
+            <option value=03>Dylan</option>
+            <option value=04>Rocco</option>
+            <option value=05>Jack</option>
+            <option value=06>Joshua</option>
+            <option value=07>Tianze</option>
+            <option value=08>Evie</option>
+            <option value=09>Cece</option>
+            <option value=10>Nathan</option>
+            <option value=11>Selena</option>
+            <option value=12>Kimmie</option>
+            <option value=13>Izzy</option>
+            <option value=14>Sophia</option>
+            <option value=15>Mila</option>
+            <option value=16>Jennifer</option>
+            <option value=17>Liz</option>
             <option value=21>Other (Comments)</option>
         </select></p>
         <p><label for="names">Partners</label></p>
         <p style="width: 400px; margin: auto;">
             <select type="text" id="names" name="names2" class="required" value="">
                 <option value="">--Your name--</option>
-                <option value=00>Alex</option>
-                <option value=01>Anthony</option>
-                <option value=02>Crystal</option>
-                <option value=03>Darren</option>
-                <option value=04>Elijah</option>
-                <option value=05>Finnan</option>
-                <option value=06>Jacob</option>
-                <option value=07>Jennifer</option>
-                <option value=08>Jeremiah</option>
-                <option value=09>Joshua</option>
-                <option value=10>Liam</option>
-                <option value=11>Libby</option>
-                <option value=12>Luka</option>
-                <option value=13>Melike</option>
-                <option value=14>Nathan</option>
-                <option value=15>Robert</option>
-                <option value=16>Rocco</option>
-                <option value=17>Sophia</option>
-                <option value=18>Sophie</option>
-                <option value=19>William</option>
-                <option value=20>Xiaohan</option>A
+                <option value=00>Darren</option>
+                <option value=01>Yusuf</option>
+                <option value=02>Robert</option>
+                <option value=03>Dylan</option>
+                <option value=04>Rocco</option>
+                <option value=05>Jack</option>
+                <option value=06>Joshua</option>
+                <option value=07>Tianze</option>
+                <option value=08>Evie</option>
+                <option value=09>Cece</option>
+                <option value=10>Nathan</option>
+                <option value=11>Selena</option>
+                <option value=12>Kimmie</option>
+                <option value=13>Izzy</option>
+                <option value=14>Sophia</option>
+                <option value=15>Mila</option>
+                <option value=16>Jennifer</option>
+                <option value=17>Liz</option>
                 <option value=21>Other (Comments)</option>
             </select>
             <!-- <select type="text" id="names" name="names3" class="required" value="">
@@ -1494,7 +1488,7 @@ input[type="text"].initials {
         document.inputs.match.value = match+1;
         document.inputs.robot.value = color;
         document.inputs.comments.value = "";
-        if((document.inputs.match.value-1) % 3 == 0){
+        if((document.inputs.match.value-1) % 5 == 0){
             document.getElementById('switch').style.display = "block";
             document.getElementById('backGround').style.display = "block";
         }
@@ -1635,6 +1629,7 @@ input[type="text"].initials {
 
             if (isShooting) {
                 // If it's already active, clear the existing timer and revert immediately
+                console.log("shooting");
                 if(shotStart!=null){
                     shotStart.classList.add('touched-cell-perm'); // Revert color
                     shotStart.classList.remove("touched-cell-temp");
@@ -1649,7 +1644,7 @@ input[type="text"].initials {
                 if(targetCell.getAttribute("data-shots")==null){
                     targetCell.setAttribute("data-shots", 1);
                 }else{
-                    targetCell.setAttribute("data-shots", parseInt(shotStart.getAttribute("data-shots"))+1);
+                    targetCell.setAttribute("data-shots", parseInt(targetCell.getAttribute("data-shots"))+1);
                 }
                 console.log(findShotPlaces(period));
                 isShooting = false;
@@ -1666,7 +1661,7 @@ input[type="text"].initials {
         function remove(){
             let period = document.getElementById("telePeriodText").textContent;
             if(findShotPlaces(period).length==0){return;}
-            if(!isShooting){isShooting=true; remove();}
+            if(!isShooting){shotStart = document.getElementsByClassName("grid-cell"+findJ(period)+parseInt(findShotPlaces(period)[findShotPlaces(period).length-2].slice(0, 2),36).toString().padStart(3, 0))[0]; shotStart.classList.add("touched-cell-temp"); shotStart.setAttribute("data-shots", parseInt(shotStart.getAttribute("data-shots"))-1)}
             let removed = document.getElementsByClassName("grid-cell"+findJ(period)+parseInt(findShotPlaces(period)[findShotPlaces(period).length-1].slice(0, 2),36).toString().padStart(3, 0))[0];
             removed.classList.remove('touched-cell-temp'); // Revert color
             if(removed.classList.contains("touched-cell-perm")){
@@ -1678,7 +1673,7 @@ input[type="text"].initials {
                     removed.setAttribute("data-shots", parseInt(removed.getAttribute("data-shots"))-1);
                 }
             }
-            isShooting = false;
+            isShooting = !isShooting;
             findShotPlaces(period).pop();
         }
     });
