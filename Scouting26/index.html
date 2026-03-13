@@ -1643,7 +1643,7 @@ input[type="text"].initials {
                 targetCell.classList.add('touched-cell-perm'); // Revert color
                 if(targetCell.getAttribute("data-shots")==null){
                     targetCell.setAttribute("data-shots", 1);
-                }else{
+                }else if(targetCell!=shotStart){
                     targetCell.setAttribute("data-shots", parseInt(targetCell.getAttribute("data-shots"))+1);
                 }
                 console.log(findShotPlaces(period));
@@ -1661,16 +1661,30 @@ input[type="text"].initials {
         function remove(){
             let period = document.getElementById("telePeriodText").textContent;
             if(findShotPlaces(period).length==0){return;}
-            if(!isShooting){shotStart = document.getElementsByClassName("grid-cell"+findJ(period)+parseInt(findShotPlaces(period)[findShotPlaces(period).length-2].slice(0, 2),36).toString().padStart(3, 0))[0]; shotStart.classList.add("touched-cell-temp"); shotStart.setAttribute("data-shots", parseInt(shotStart.getAttribute("data-shots"))-1)}
+            shotStart = null;
+            if(!isShooting){shotStart = document.getElementsByClassName("grid-cell"+findJ(period)+parseInt(findShotPlaces(period)[findShotPlaces(period).length-2].slice(0, 2),36).toString().padStart(3, 0))[0]; shotStart.classList.add("touched-cell-temp");}
+            console.log(shotStart);
             let removed = document.getElementsByClassName("grid-cell"+findJ(period)+parseInt(findShotPlaces(period)[findShotPlaces(period).length-1].slice(0, 2),36).toString().padStart(3, 0))[0];
             removed.classList.remove('touched-cell-temp'); // Revert color
+            // removed.classList.add('touched-cell-perm'); // Revert color
             if(removed.classList.contains("touched-cell-perm")){
-                if(removed.getAttribute("data-shots")<=1){
+                if(removed.getAttribute("data-shots")<=1 && removed!=shotStart && shotStart!=null){
+                    console.log("kess than zeero")
+                    shotStart.setAttribute("data-shots", parseInt(shotStart.getAttribute("data-shots"))-1);
                     removed.style.backgroundColor = null;
                     removed.classList.remove("touched-cell-perm");
                     removed.setAttribute("data-shots", 0);
-                }else{
+                }else if(removed.getAttribute("data-shots")>1 && removed!=shotStart && shotStart!=null){
+                    shotStart.setAttribute("data-shots", parseInt(shotStart.getAttribute("data-shots"))-1);
                     removed.setAttribute("data-shots", parseInt(removed.getAttribute("data-shots"))-1);
+                    removed.classList.add("touched-cell-perm");
+                    console.log("more than zeero")
+                }else if(removed==shotStart){
+                    console.log("double")
+                    // removed.setAttribute("data-shots", parseInt(removed.getAttribute("data-shots"))-1);
+                    removed.setAttribute("data-shots", parseInt(removed.getAttribute("data-shots"))-1);
+                    removed.classList.remove("touched-cell-perm");
+                    removed.classList.add("touched-cell-temp");
                 }
             }
             isShooting = !isShooting;
